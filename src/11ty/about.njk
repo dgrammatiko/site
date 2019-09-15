@@ -1,0 +1,25 @@
+---
+layout: layouts/base.njk
+title: About
+---
+
+{% include "layouts/menu.njk" %}
+
+<style>
+  {{ './gh-pages/_assets/css/about.min.css' | inlineCss | safe }}
+</style>
+
+<main id="main">
+  <section class="split contact">
+    <section class="center">
+      <img class="mypic" src="/_assets/tmpl_starchaser/images/mstile-144x144.png" alt=""/>
+      <h4>Hello, I'm Dimitris</h4>
+      
+      <p class="center">I like to create/build/assemble things</p>
+      <p class="center">[exemption assembling anything from IKEA 😛].</p>
+      <p class="center">I do care about UX/UI, performance</p>
+      <p class="center">and anything web related.</p>
+    </section>
+</main>
+
+{% include "layouts/footer.njk" %}

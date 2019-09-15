@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+}
+
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'dgrammatiko';
+    src: url("/_assets/tmpl_starchaser/fonts/dgrammatiko.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap
+}
+
+body, html {
+  font-family: "dgrammatiko", "sans-serif";
+}
+
+body {
+  text-align: left;
+  text-align: start;
+  color: var(--container-foreground-color);
+  font-weight: 200;
+  line-height: var(--line-height);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  line-height: 1.5;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+  line-break: auto;
+  word-break: break-word;
+}
+
+img {
+  max-width: 100%;
+}
+
+.icon {
+  width: 2.2rem;
+  height: 1rem;
+  color: currentColor;
+}
+
+a {
+  text-decoration: none;
+  color: #2b3e50;
+}
+
+a:hover,
+a:focus {
+  color: #6589ac;
+}
+.screen-reader-only {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}

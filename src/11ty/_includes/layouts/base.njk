@@ -1,0 +1,36 @@
+<!--I Make 💩 🚀. By Dimitris Grammatikogiannis-->
+<!doctype html>
+<html lang="en">
+<head>
+  <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
+  <link rel="preload" href="/_assets/tmpl_starchaser/fonts/dgrammatiko.woff" as="font" type="font/woff" crossorigin>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="description" content="Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP"><meta name="generator" content="Joomla! - Open Source Content Management">
+  <meta name="apple-mobile-web-app-title" content="dGrammatiko">
+  <meta name="application-name" content="dGrammatiko">
+  <meta name="msapplication-TileColor" content="#50617c">
+  <meta name="msapplication-config" content="/_assets/tmpl_starchaser/images/browserconfig.xml">
+  <meta name="theme-color" content="#50617c">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@dgrammatiko">
+  <meta property="og:url" content="https://www.dgrammatiko.online/">
+  <meta property="og:title" content="Blog">
+  <meta property="og:image" content="_assets/tmpl_starchaser/images/android-chrome-512x512.png">
+  <meta property="og:description" content="Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP">
+  <link rel="manifest" href="/_assets/tmpl_starchaser/manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="/_assets/tmpl_starchaser/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/_assets/tmpl_starchaser/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/_assets/tmpl_starchaser/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/_assets/tmpl_starchaser/images/safari-pinned-tab.svg" color="#000000">
+  <style>
+      {{ './gh-pages/_assets/css/base.min.css' | inlineCss | safe }}
+  </style>
+
+</head>
+
+  <body class="grid-it">
+    {{ layoutContent | safe }}
+  </body>
+</html>

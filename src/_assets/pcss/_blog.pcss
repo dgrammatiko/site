@@ -1,0 +1,108 @@
+#main {
+  background-color: #ffffff;
+  margin: 0 auto;
+}
+
+#main > * {
+  border-top: solid 2px #eeeeee;
+  margin: 0;
+}
+
+#main > *:first-child {
+  border-top: 0;
+}
+
+header.major {
+  text-align: center;
+}
+
+header > p {
+font-style: italic;
+}
+
+header > h1 + p {
+  font-size: 1.1rem;
+  margin-top: -0.5rem;
+  line-height: 2;
+}
+
+header > .date {
+  display: block;
+  font-size: 1rem;
+  margin: -2rem 0 4rem 0;
+  padding-top: .6rem;
+  position: relative;
+}
+
+header.major > .date::before,
+header.major > .date::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: .3rem;
+  width: calc(50% - 6rem);
+  border-top: solid 2rem;
+}
+
+header.major > .date:before {
+  left: 0;
+}
+
+header.major > .date:after {
+  right: 0;
+}
+
+header.major .date:before,
+header.major .date:after {
+    border-top-color: #eeeeee;
+}
+
+#main > .post header.major > h1, #main > .post header.major h2 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin: 0 0 2rem 0;
+}
+
+header.major>p {
+  margin-top: 0;
+  text-align: center;
+}
+
+header.major>:last-child {
+  argin-bottom: 0;
+}
+
+header.major {
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.articleBody {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+}
+
+p {
+  text-align: justify;
+  margin: 0 0 .6rem 0;
+  font-size: 1.2rem;
+}
+
+@media only screen and (min-width: 768px)  {
+  .articleBody {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    max-width: 72rem;
+  }
+
+  header.major {
+    max-width: 72rem;
+    margin-left:  auto;
+    margin-right:  auto;
+  }
+}

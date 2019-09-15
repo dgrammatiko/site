@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+---
+{% include "layouts/menu.njk" %}
+
+<style>
+  {{ './gh-pages/_assets/css/blog.min.css' | inlineCss | safe }}
+</style>
+
+<main id="main">
+  <section class="post">
+    <header class="major">
+      <span class="date">
+        <svg class="icon">
+          <use xlink:href="#ttc-i-calendar-alt"></use>
+        </svg>
+        <time datetime="{{ page.date | htmlDateString }}" itemprop="datePublished"> {{ page.date | readableDate }} </time>
+      </span>
+
+      <h1>{{ title }}</h1>
+
+      <p>{{ custom_excerpt }}</p>
+    </header>
+
+      {% if fulltextImage %}
+        <figure class="item-image">
+          <img 
+          data-srcset="{{ fulltextImage | imgSuffix('320') }} 320w,
+          {{ fulltextImage | imgSuffix('480') }} 480w,
+          {{ fulltextImage | imgSuffix('768') }} 768w,
+          {{ fulltextImage | imgSuffix('992') }} 992w,
+          {{ fulltextImage | imgSuffix('1200') }} 1200w,
+          {{ fulltextImage | imgSuffix('1600') }} 1600w,"
+          data-src="{{ fulltextImage | imgSuffix('320') }}"
+          loading="lazy"
+          class="lazyload"
+          alt="{{ blog.data.introImageAlt }}">
+          <noscript>
+          <img src="{{ fulltextImage | imgSuffix('320') }}" loading="lazy" class="lazyload" >
+          </noscript>
+        </figure>
+      {% endif %}
+
+      <article class="articleBody"> 
+        {{ layoutContent | safe }}
+      </article>
+    <hr>
+  </section>
+
+  <!--<a href="/blog">Back to all posts</a> -->
+</main>
+
+{% include "layouts/footer.njk" %}
+
+<script>
+  {{ './gh-pages/_assets/js/lazyloadImgs.js' | inlineCss | safe }}
+</script>
