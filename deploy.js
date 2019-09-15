@@ -5,12 +5,12 @@ const token = process.env.GH_TOKEN;
 ghpages.publish(
   '.www',
   {
-    repo: `https://${token}@github.com/Snugug/blog.git`,
+    repo: `https://${token}@github.com/dgrammatiko/dgrammatiko.online.git`,
     // silent: true,
     message: ':shipit: Deploy to Pages',
     user: {
       name: 'Deploy Bot',
-      email: 'sam@snug.ug',
+      email: 'd.grammatiko@gmail.com',
     },
   },
   err => {
