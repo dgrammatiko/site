@@ -1,0 +1,416 @@
+<!doctype html><html lang="en"><head><title>dGrammatiko - Solving Joomla’s UX problems</title><link rel="preload" href="/_assets/tmpl_starchaser/fonts/dgrammatiko.woff" as="font" type="font/woff" crossorigin><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"><meta name="description" content="Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP"><meta name="generator" content="Joomla! - Open Source Content Management"><meta name="apple-mobile-web-app-title" content="dGrammatiko"><meta name="application-name" content="dGrammatiko"><meta name="msapplication-TileColor" content="#50617c"><meta name="msapplication-config" content="/_assets/tmpl_starchaser/images/browserconfig.xml"><meta name="theme-color" content="#50617c"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@dgrammatiko"><meta property="og:url" content="https://www.dgrammatiko.online/"><meta property="og:title" content="Blog"><meta property="og:image" content="_assets/tmpl_starchaser/images/android-chrome-512x512.png"><meta property="og:description" content="Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP"><link rel="manifest" href="/_assets/tmpl_starchaser/manifest.json"><link rel="apple-touch-icon" sizes="180x180" href="/_assets/tmpl_starchaser/images/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/_assets/tmpl_starchaser/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/_assets/tmpl_starchaser/images/favicon-16x16.png"><link rel="mask-icon" href="/_assets/tmpl_starchaser/images/safari-pinned-tab.svg" color="#000000"><style>*{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  vertical-align:baseline;
+}
+
+*,
+:after,
+:before{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  vertical-align:baseline;
+  box-sizing:border-box;
+}
+
+@font-face{
+    font-family:'dgrammatiko';
+    src:url("/_assets/tmpl_starchaser/fonts/dgrammatiko.woff") format("woff");
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap
+}
+
+body, html{
+  font-family:"dgrammatiko", "sans-serif";
+}
+
+[dir="ltr"] body{
+  text-align:left;
+}
+
+[dir="rtl"] body{
+  text-align:right;
+}
+
+body{
+  text-align:left;
+  color:var(--container-foreground-color);
+  font-weight:200;
+  line-height:var(--line-height);
+  overflow-x:hidden;
+  text-rendering:optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight:900;
+  line-height:1.5;
+  letter-spacing:0.075em;
+  text-transform:uppercase;
+  margin:0 0 1rem 0;
+  line-break:auto;
+  word-break:break-word;
+}
+
+img{
+  max-width:100%;
+}
+
+.icon{
+  width:2.2rem;
+  height:1rem;
+  color:currentColor;
+}
+
+a{
+  text-decoration:none;
+  color:#2b3e50;
+}
+
+a:hover,
+a:focus{
+  color:#6589ac;
+}
+
+.screen-reader-only{
+  border:0;
+  clip:rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path:inset(50%);
+          clip-path:inset(50%);
+  height:1px;
+  margin:-1px;
+  overflow:hidden;
+  padding:0;
+  position:absolute;
+  width:1px;
+  word-wrap:normal !important;
+}
+
+.grid-it{
+  min-height:100vh;
+  display:-ms-grid;
+  display:grid;
+  -ms-grid-rows:auto 1fr auto;
+  grid-template-rows:auto 1fr auto;
+}
+
+button,
+.btn{
+  -webkit-appearance:none;
+     -moz-appearance:none;
+          appearance:none;
+  transition:background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, color 0.2s ease-in-out;
+  border:0;
+  cursor:pointer;
+  display:inline-block;
+  font-size:0.8rem;
+  font-weight:900;
+  letter-spacing:0.075em;
+  height:3rem;
+  line-height:3rem;
+  padding:0 2rem;
+  text-align:center;
+  text-decoration:none;
+  text-transform:uppercase;
+  white-space:nowrap;
+  background-color:transparent;
+  box-shadow:inset 0 0 0 2px #2b3e50;
+  color:#2b3e50
+}
+
+button:hover,
+  button:focus,
+  .btn:hover,
+  .btn:focus{
+    background-color:#2b3e50;
+    box-shadow:inset 0 0 0 1px #2b3e50;
+    color:#fff;
+  }</style></head><body class="grid-it"><style>nav{
+  width:100%;
+  height:5rem;
+  background-color:#2B3E50;
+  padding-left:30px;
+  padding-right:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  display:none;
+  color:#fff;
+  font-family:inherit;
+  font-size:2rem;
+  text-decoration:none;
+}
+
+.logo:hover,
+.logo:focus{
+  background-color:white;
+  color:#2B3E50;
+  padding:1.4rem 0;
+}
+
+@media only screen and (min-width: 768px){
+  .logo{
+    display:inline-block;
+  }
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+}
+
+.nav-item a{
+  display:inline-block;
+  padding:10px 15px;
+  text-decoration:none;
+  color:white;
+}
+
+.nav-item a:hover,
+.nav-item a:focus{
+  background-color:white;
+  color:#2B3E50;
+}
+
+.logo img{
+  width:175px;
+  vertical-align:middle;
+}</style><header role="banner"><div class="wrapper"><nav class="navbar"><a href="/" class="logo">dGrammatiko</a><ul class="nav-links"><li class="nav-item"><a href="/" aria-current="page">Home</a></li><li class="nav-item"><a href="/blog">Blog</a></li><li class="nav-item"><a href="/about">About</a></li><li class="nav-item"><a href="/contact">Contact</a></li></ul></nav></div></header><style>#main{
+  background-color:#ffffff;
+  margin:0 auto;
+}
+
+#main > *{
+  border-top:solid 2px #eeeeee;
+  margin:0;
+}
+
+#main > *:first-child{
+  border-top:0;
+}
+
+header.major{
+  text-align:center;
+}
+
+header > p{
+font-style:italic;
+}
+
+header > h1 + p{
+  font-size:1.1rem;
+  margin-top:-0.5rem;
+  line-height:2;
+}
+
+header > .date{
+  display:block;
+  font-size:1rem;
+  margin:-2rem 0 4rem 0;
+  padding-top:.6rem;
+  position:relative;
+}
+
+header.major > .date::before,
+header.major > .date::after{
+  content:'';
+  display:block;
+  position:absolute;
+  top:.3rem;
+  width:calc(50% - 6rem);
+  border-top:solid 2rem;
+}
+
+header.major > .date:before{
+  left:0;
+}
+
+header.major > .date:after{
+  right:0;
+}
+
+header.major .date:before,
+header.major .date:after{
+    border-top-color:#eeeeee;
+}
+
+#main > .post header.major > h1, #main > .post header.major h2{
+  font-size:4rem;
+  line-height:1.1;
+  margin:0 0 2rem 0;
+}
+
+header.major>p{
+  margin-top:0;
+  text-align:center;
+}
+
+header.major>:last-child{
+  argin-bottom:0;
+}
+
+header.major{
+  padding:2rem 1rem;
+  text-align:center;
+  margin-right:auto;
+  margin-left:auto;
+}
+
+.articleBody{
+  padding-left:1rem;
+  padding-right:1rem;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:3rem;
+}
+
+p{
+  text-align:justify;
+  margin:0 0 .6rem 0;
+  font-size:1.2rem;
+}
+
+@media only screen and (min-width: 768px){
+  .articleBody{
+    padding-left:3rem;
+    padding-right:3rem;
+    max-width:72rem;
+  }
+
+  header.major{
+    max-width:72rem;
+    margin-left:auto;
+    margin-right:auto;
+  }
+}
+
+code[class*="language-"], pre[class*="language-"]{
+    color:#ccc;
+    background:none;
+    font-family:Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align:left;
+    white-space:pre;
+    word-spacing:normal;
+    word-break:normal;
+    word-wrap:normal;
+    line-height:1.5;
+    -moz-tab-size:4;
+    -o-tab-size:4;
+    tab-size:4;
+    -webkit-hyphens:none;
+    -ms-hyphens:none;
+    hyphens:none
+}
+
+pre[class*="language-"]{
+    padding:1em;
+    margin:.5em 0;
+    overflow:auto
+}
+
+:not(pre) > code[class*="language-"], pre[class*="language-"]{
+    background:#2d2d2d
+}
+
+:not(pre) > code[class*="language-"]{
+    padding:.1em;
+    border-radius:.3em;
+    white-space:normal
+}
+
+.token.comment, .token.block-comment, .token.prolog, .token.doctype,
+.token.cdata{
+    color:#999
+}
+
+.token.punctuation{
+    color:#ccc
+}
+
+.token.tag, .token.attr-name, .token.namespace, .token.deleted{
+    color:#e2777a
+}
+
+.token.function-name{
+    color:#6196cc
+}
+
+.token.boolean, .token.number, .token.function{
+    color:#f08d49
+}
+
+.token.property, .token.class-name, .token.constant, .token.symbol{
+    color:#f8c555
+}
+
+.token.selector, .token.important, .token.atrule, .token.keyword,
+.token.builtin{
+    color:#cc99cd
+}
+
+.token.string, .token.char, .token.attr-value, .token.regex, .token.variable{
+    color:#7ec699
+}
+
+.token.operator, .token.entity, .token.url{
+    color:#67cdcc
+}
+
+.token.important, .token.bold{
+    font-weight:bold
+}
+
+.token.italic{
+    font-style:italic
+}
+
+.token.entity{
+    cursor:help
+}
+
+.token.inserted{
+    color:green
+}
+
+.highlight-line{
+  display:inline-block;
+  text-decoration:none;
+  color:inherit;
+}
+
+.highlight-line:empty:before{
+  content:" ";
+}
+
+.highlight-line:not(:last-child){
+  min-width:100%;
+}
+
+.highlight-line .highlight-line:not(:last-child){
+  min-width:0;
+}</style><main id="main"><section class="post"><header class="major"><span class="date"><svg class="icon"><use xlink:href="#ttc-i-calendar-alt"></use></svg> <time datetime="2018-10-26" itemprop="datePublished">26 Oct 2018</time></span><h1>Solving Joomla’s UX problems</h1><p>Joomla 4.0 is painstakingly crafted by a bunch of people. One of the main areas of improvement was to simplify the convoluted User Experience. So how things are evolving? What’s the plan there?</p></header><figure class="item-image"><img data-srcset="/_assets/img/ryan-johnston-124209-unsplash@320.jpg 320w,
+          /_assets/img/ryan-johnston-124209-unsplash@480.jpg 480w,
+          /_assets/img/ryan-johnston-124209-unsplash@768.jpg 768w,
+          /_assets/img/ryan-johnston-124209-unsplash@992.jpg 992w,
+          /_assets/img/ryan-johnston-124209-unsplash@1200.jpg 1200w,
+          /_assets/img/ryan-johnston-124209-unsplash@1600.jpg 1600w," data-src="/_assets/img/ryan-johnston-124209-unsplash@320.jpg" loading="lazy" class="lazyload" alt=""><noscript><img src="/_assets/img/ryan-johnston-124209-unsplash@320.jpg" loading="lazy" class="lazyload"></noscript></figure><article class="articleBody"><p>Joomla is one of three major open source CMSs, which tends to loose users due to the poor interface and the extremely difficult workflows. A very reasonable reason, since no-one (except hardcore mazochists) wants a system that is extremelly weird and needs some deep knowledge to even complete the very simple tasks. But Joomla used to be one of the pioneers in the Content Management a decade ago, so how that system was ruined so badly?</p><h2 id="the-%E2%80%9Calways-be-yourself%E2%80%9D-mantra">The “Always be yourself” mantra <a class="direct-link" href="#the-%E2%80%9Calways-be-yourself%E2%80%9D-mantra" aria-hidden="true">#</a></h2><p>Wordpress and Drupal, right from the beginning of their existence, followed a different path than the one the Mambo (the predecessor of Joomla) chose. The architecture of these systems is so vastly different, so any idea that any of these systems could mirror major the other one is damn stupid! To give you a simple example think of Wordpress as an offroad car and Joomla as a lake boat. You can add wheels to the boat but it will never be a <strong>real</strong> car, or you can add some inflatable balloons in the car but it will never be a <strong>real</strong> boat. So it’s better to understand each system for what it trully is and use (or improve) it as such. This is by far the best course of action. Use each system for what it truly is, don’t try to cannibalize it for whatever stupid reason.</p><blockquote><p>Well Joomla has been cannibalised to the extreme to match the other two major CMSs, with poor results, because in the process people canceled out the principle “form follows function”</p></blockquote><h2 id="form-follows-function">Form follows function <a class="direct-link" href="#form-follows-function" aria-hidden="true">#</a></h2><p>If you studied design (by the way due to my engineering background I have), you are already familliar with this essential principle. For those not familliar with, let me call it the law, please spent some time to educate yourself, starting here: <a href="https://en.wikipedia.org/wiki/Form_follows_function">https://en.wikipedia.org/wiki/Form_follows_function</a>. So, you might ask, how the heck an industrial, architecture principle is affecting a softwares program? The answer is obvious, or it should be at least for the so called developers, buildings and softwares share something common: Architecture. But you already knew that, didn’t you?<br>What I’m trying to highlight here (maybe spending more time than what is appropriate) is that the three well known CMSs don’t share the same architecture and therefore will never, ever have the same workflows. No matter what gimmicks and shortcuts and other fancy things you throw at them they can only pretend to be something that are not truly are.<br>And that is the problem of Joomla: people want the system to become a clone of Wordpress. They don’t like to put it straight forward like that so they came up with a nice wrapper for that: we want Joomla to have the good UX of Wordpress. The problems start to arise when you blindly copying the workflow of something vastly different, thinking that:</p><blockquote><p>if it works for that system then most probably it will work for us</p></blockquote><h2 id="hell-no!">Hell no! <a class="direct-link" href="#hell-no!" aria-hidden="true">#</a></h2><p>Yes programmers, in essence, most of the times craft code that replicates, or improves a functionality that some other software already introduced. The real “<strong>new</strong>” and “<strong>unseen”</strong> features are vary rare and most of the times those need some time to be accepted by the majority of developers. What I’m trying to highlight here is that you can implement “your” version of drag and drop to your system and that will be a good “copying” of that feature that another system already had implemented. But there is a caveat here, you as developer have the responsibility to adjust that feature to fit the system and not change the system to fit the feature. And there we go, we reached the root of all UX problems in Joomla:</p><blockquote><p>New features should embrace the system for what it truly is and NOT try to change it</p></blockquote><h2 id="combine-and-concur">Combine and concur <a class="direct-link" href="#combine-and-concur" aria-hidden="true">#</a></h2><p>So if someone want to distil this post to a couple lines those will be:</p><p>Form always follows function and all features should embrace the system for what it truly is without ever trying to change it’s basic architecture.</p><p>Then someone could ask: is Joomla built uppon a good architecture?</p><p>Oh, yes! Joomla is using the very familiar tree like organization of the data, visualise it as something similar to the filesystem that your operating system is using. Folders can have subfolders (categories and subcategories) and files (articles, banners, contacts, items, etc). Also this structure is already familiar to all the people using a computer as this data structure is apparent to all operating systems (exception IOS, that very cleverly hides it for the end user, but it’s still there). So, a naïve person could think how the heck a so familliar architecture became so painful for users in Joomla? Well the answer is that by time a gazillion features were added and those features were actually fighting the systemby time over time instead of embracing it and improving it.</p><h2 id="take-a-step-back-and-start-removing-the-clutter">Take a step back and start removing the clutter <a class="direct-link" href="#take-a-step-back-and-start-removing-the-clutter" aria-hidden="true">#</a></h2><p>I didn’t expect that you make till here, but good news as in this section I’ll try to give you my view of an ultra simplified workflow and therefore a vastly improved user experience. Let’s take com_content as our point of reference and particularly the edit view:</p><p>So what will happen if instead of all the known tabs:</p><figure class="graf graf--figure graf-after--p" id="daef"><div class="aspectRatioPlaceholder is-locked"><div class="aspectRatioPlaceholder-fill">Content, Images and Links, Options, Publishing, Configure Edit Screen, Permissions</div></div></figure>we end up only with the essential ones:<figure class="graf graf--figure graf-after--p" id="229f"><div class="aspectRatioPlaceholder is-locked"><div class="aspectRatioPlaceholder-fill">Content, Images and Links, Publishing</div></div></figure>Someone could just say “you cannot do that, we’re gonna loose all the flexibility for the displayed article and the ability to control the permissions”<p><strong><em>AND THEY’LL BE F@#$NG WRONG,</em> probably, because they don’t understand Joomla! 😮.</strong> Remember all these things I wrote above about the tree like architecture? Well that in Joomla comes with another magic word: “inheritance”. Put it simple: all articles under a specific category should have the same properties which are inherited from the category or the menu, if that article is published under a menu item. But my idea goes a little bit further than that. So instead moving those options up to the tree, which obviously will be a great improvement, why not eliminating them all together and leave the display options to the template, as the architecture already dictates. So my complete idea is: have just a layout selector in the article edit (will default to the one that the category should imply, if none was selected) and have a GUI override creator in the template, with a very clear path that user could, effortlessly create the desired design (without even knowing PHP, HTML, JAVASCRIPT or CSS).</p><p>Does that seems very hard to achieve? Then try asking if people want green or red button to click as they go away…</p><p>EMBRACE WHAT WE FUCKING ARE STOP DRESSING IT UP AS A CLONE</p></article><hr></section></main><style>footer{
+  background-color:#2B3E50;
+  color:#fff;
+}
+
+.footer-text{
+  display:none;
+}
+
+@media only screen and (min-width: 768px){
+  .footer-text{
+    display:inherit;
+  }
+}</style><footer><nav><h3 class="footer-text">Also @</h3><ul class="nav-links"><li class="nav-item"><a href="https://twitter.com/dgrammatiko"><svg class="icon" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" class=""></path></svg> Twitter</a></li><li class="nav-item"><a href="https://www.facebook.com/dimitris.grammatikogiannis"><svg class="icon" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" class=""></path></svg> Facebook</a></li><li class="nav-item"><a href="https://github.com/dgrammatiko"><svg class="icon" aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg> GitHub</a></li></ul></nav></footer><script>var testWebP=function(){var e="object"==typeof document?document.createElement("canvas"):{};return e.width=e.height=1,!!e.toDataURL&&5===e.toDataURL("image/webp").indexOf("image/webp")},swapAttr=function(e){var t=e.getAttribute("data-src"),n=e.getAttribute("data-srcset");e.src=window.supportsWebp?t.replace(new RegExp("jpeg","g"),"webp").replace(new RegExp("jpg","g"),"webp").replace(new RegExp("png","g"),"webp"):t,n&&e.setAttribute("srcset",window.supportsWebp?n.replace(new RegExp("jpeg","g"),"webp").replace(new RegExp("jpg","g"),"webp").replace(new RegExp("png","g"),"webp"):n)},onPolyfillReady=function(){var e=[].slice.call(document.querySelectorAll('img[loading="lazy"]'));e.length&&e.forEach(lazyload)},lazyload=function(e){new IntersectionObserver((function(e,t){e.forEach((function(e){e.isIntersecting&&(swapAttr(e.target),t.disconnect())}))})).observe(e)};document.addEventListener("DOMContentLoaded",(function(){window.supportsWebp=testWebP();var e=[].slice.call(document.querySelectorAll('img[loading="lazy"]'));if(e.length)if("loading"in HTMLImageElement.prototype)e.forEach(swapAttr);else if(!1 in window&&!1 in window&&!1 in window.IntersectionObserverEntry.prototype){document.addEventListener("intersection-observer-loaded",onPolyfillReady);var t=document.createElement("script");t.src="/_assets/js/io-polyfill.js",document.head.appendChild(t)}else e.forEach(lazyload)}));</script></body></html>

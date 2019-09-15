@@ -1,4 +1,4 @@
 node_modules
-gh-pages
+#gh-pages
 .vscode
 .DS_Store
