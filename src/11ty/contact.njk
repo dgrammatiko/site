@@ -10,25 +10,35 @@ title: Contact
 </style>
 
 <main id="main">
-<section>
-  <form id="contact-me" method="post" action="#">
-    <div class="field">
-      <label for="name">Name</label>
-      <input type="text" name="name" id="name" autocomplete="name">
+  <section class="center">
+    <form id="form" method="POST">
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" autocomplete="name" required minlength="3">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" autocomplete="email" required pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="3"  required pattern=""></textarea>
+      </div>
+      <div class="field">
+        <button id="js-contact-submit-" type="submit">Submit</button>
+      </div>
+    </form>
+
+    <div style="display:none;" id="thankyou_message">
+        <h2>
+            <em>Thanks</em> for contacting me!
+        </h2>
     </div>
-    <div class="field">
-      <label for="email">Email</label>
-      <input type="text" name="email" id="email" autocomplete="email">
-    </div>
-    <div class="field">
-      <label for="message">Message</label>
-      <textarea name="message" id="message" rows="3"></textarea>
-    </div>
-    <div class="field">
-      <input id="js-contact-submit" type="submit" value="Send Message" disabled="">
-    </div>
-  </form>
-</section>
+  </section>
 </main>
 
 {% include "layouts/footer.njk" %}
+
+<script>
+  {{ './gh-pages/_assets/js/validate.js' | inlineCss | safe }}
+</script>
