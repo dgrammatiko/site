@@ -14,6 +14,10 @@ const mkdirp = require('mkdirp');
 const xPath = Path.dirname(`${paths.buildDest}/_assets/js/io.js`);
 if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
 
+fs.writeFileSync(`${paths.buildDest}/.nojekyll`, '', { encoding: 'utf8' });
+
+fs.writeFileSync(`${paths.buildDest}/CNAME`, 'site.dgrammatiko.online', { encoding: 'utf8' });
+
 
 // Cope with the intersection-observer polyfill
 if (fs.existsSync('node_modules/intersection-observer/intersection-observer.js')) {

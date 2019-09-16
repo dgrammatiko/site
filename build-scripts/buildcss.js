@@ -29,7 +29,7 @@ const browserSettings = [
       'nesting-rules': true,
     },
   }),
-  // require('cssnano')({ from: undefined })
+  require('cssnano')({ from: undefined })
 ];
 
 const compile = async (file, opts) => {
