@@ -9,7 +9,7 @@
   "background_color": "#50617c",
   "icons": [
     {
-      "src": "/_assets/tmpl_tarchaser/images/android-chrome-192x192.png",
+      "src": "/_assets/tmpl_starchaser/images/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
