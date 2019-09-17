@@ -4,6 +4,7 @@
   "description": "Personal site",
   "main": "build.js",
   "scripts": {
+    "postversion": "git push && git push --tags",
     "deploy": "node ./build-scripts/deploy.js",
     "build": "node ./build-scripts/clean.js && node ./build-scripts/copy-static.js && node ./build-scripts/buildcss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy",
     "dev": "node ./build-scripts/clean.js && node ./build-scripts/copy-static.js && node ./build-scripts/buildcss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy --serve"
