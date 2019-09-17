@@ -1,9 +1,11 @@
 {
   "name": "dgrammatiko.online",
-  "version": "0.0.2",
+  "private": true,
+  "version": "0.0.3",
   "description": "Personal site",
   "main": "build.js",
   "scripts": {
+    "deploy-patch": "npm version patch --force -m \"version %s\"",
     "postversion": "git push && git push --tags",
     "deploy": "node ./build-scripts/deploy.js",
     "build": "node ./build-scripts/clean.js && node ./build-scripts/copy-static.js && node ./build-scripts/buildcss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy",
