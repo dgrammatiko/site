@@ -1,6 +1,6 @@
 {
   "name": "dgrammatiko.online",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Personal site",
   "main": "build.js",
   "scripts": {
