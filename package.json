@@ -39,7 +39,7 @@
     "require-dir": "latest",
     "rmrf": "2.0.2",
     "sharp": "0.23.1",
-    "terser": "4.3.4"
+    "terser": "4.3.6"
   },
   "dependencies": {
     "intersection-observer": "^0.7.0"
