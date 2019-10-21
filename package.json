@@ -18,7 +18,7 @@
     "cssnano": "4.1.10",
     "fs-extra": "8.1.0",
     "gh-pages": "2.1.1",
-    "glob": "7.1.4",
+    "glob": "7.1.5",
     "html-minifier": "4.0.0",
     "http-server": "0.11.1",
     "lodash": "4.17.15",
