@@ -38,7 +38,7 @@
     "rename": "1.0.4",
     "require-dir": "latest",
     "rmrf": "2.0.2",
-    "sharp": "0.23.2",
+    "sharp": "0.23.3",
     "terser": "4.4.0"
   },
   "dependencies": {
