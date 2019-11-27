@@ -20,7 +20,7 @@
     "gh-pages": "2.1.1",
     "glob": "7.1.6",
     "html-minifier": "4.0.0",
-    "http-server": "0.11.1",
+    "http-server": "0.12.0",
     "lodash": "4.17.15",
     "luxon": "latest",
     "markdown-it-anchor": "5.2.5",
