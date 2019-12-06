@@ -1,6 +1,6 @@
 # DGRAMMATIKO.ONLINE
 
-# ![live](https://site.dgrammatiko.online)
+# ![https://site.dgrammatiko.online](live)
 
 Simple static site based on [Eleventy](https://www.11ty.io)
 
