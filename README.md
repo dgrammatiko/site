@@ -1,5 +1,7 @@
 # DGRAMMATIKO.ONLINE
 
+# ![live](https://site.dgrammatiko.online)
+
 Simple static site based on [Eleventy](https://www.11ty.io)
 
 ## What's in the box?
