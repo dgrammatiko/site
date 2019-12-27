@@ -17,9 +17,8 @@
 
       <a class="image main" href="{{ blog.url }}" tabindex="-1">
       {% if blog.data.fulltextImage %}
-            <img data-srcset="{{ blog.data.fulltextImage | imgSuffix('320') }} 320w,
-              {{ blog.data.fulltextImage | imgSuffix('480') }} 480w,
-              {{ blog.data.fulltextImage | imgSuffix('768') }} 768w"
+            <img 
+              data-srcset="{{ blog.data.fulltextImage | imgSuffix('320') }} 320w, {{ blog.data.fulltextImage | imgSuffix('480') }} 480w, {{ blog.data.fulltextImage | imgSuffix('768') }} 768w"
               data-src="{{ blog.data.fulltextImage | imgSuffix('320') }}"
               alt="{{ blog.data.introImageAlt }}"
               class="lazyload"
