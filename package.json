@@ -45,6 +45,6 @@
     "terser": "4.4.3"
   },
   "dependencies": {
-    "intersection-observer": "^0.7.0"
+    "intersection-observer": "0.7.0"
   }
 }
