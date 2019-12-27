@@ -23,8 +23,8 @@ jobs:
           npm run build
         env:
           CI: true
-      - name: Deploy to GitHub Pages
-        if: success() && github.ref == 'refs/heads/master'
-        run: npm run deploy
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+#       - name: Deploy to GitHub Pages
+#         if: success() && github.ref == 'refs/heads/master'
+#         run: npm run deploy
+#         env:
+#           GH_TOKEN: ${{ secrets.GH_TOKEN }}
