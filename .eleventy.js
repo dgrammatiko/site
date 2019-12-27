@@ -42,6 +42,7 @@ const imgOptions = {
 };
 
 module.exports = function (eleventyConfig) {
+  // eleventyConfig.setTemplateFormats("html,njk");
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.setDataDeepMerge(true);
@@ -133,11 +134,11 @@ module.exports = function (eleventyConfig) {
   // });
 
   return {
-    templateFormats: ["html", "njk", "md"],
+    // templateFormats: ["njk", "html", "md"],
     pathPrefix: "/",
-    markdownTemplateEngine: "njk",
-    htmlTemplateEngine: "njk",
-    dataTemplateEngine: "njk",
+    // markdownTemplateEngine: "njk",
+    // htmlTemplateEngine: "njk",
+    // dataTemplateEngine: "njk",
     passthroughFileCopy: true,
     dir: {
       input: `${buildSrc}/11ty`,

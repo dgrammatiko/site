@@ -5,6 +5,7 @@ const CACHE_KEYS = {
 
 // URLS that we don’t want to end up in the cache
 const EXCLUDED_URLS = [
+  'contact',
   'admin',
   '.netlify',
   'https://identity.netlify.com/v1/netlify-identity-widget.js',
@@ -12,7 +13,7 @@ const EXCLUDED_URLS = [
 ];
 
 // URLS that we want to be cached when the worker is installed
-const PRE_CACHE_URLS = ['/', '/_assets/tmpl_starchaser/fonts/dgrammatiko.woff2', ...`${preCached}`];
+const PRE_CACHE_URLS = ['/', '/_assets/tmpl_starchaser/fonts/dgrammatiko.woff2', ...preCached];
 
 // You might want to bypass a certain host
 const IGNORED_HOSTS = ['localhost', 'unpkg.com',];

@@ -1,0 +1,14 @@
+---
+eleventyExcludeFromCollections: true
+permalink: '/service-worker.js'
+---
+
+const VERSION = {{ page.date.getTime() }};
+
+const preCached = [
+{%- for post in collections.all -%}
+    '{{post.url}}',
+{%- endfor -%}
+  ];
+
+{% include "layouts/service-worker.js" %}

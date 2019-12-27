@@ -15,9 +15,9 @@ const fsExtra = require('fs-extra');
 const xPath = Path.dirname(`${paths.buildDest}/_assets/js/io.js`);
 if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
 
-fs.writeFileSync(`${paths.buildDest}/.nojekyll`, '', { encoding: 'utf8' });
+// fs.writeFileSync(`${paths.buildDest}/.nojekyll`, '', { encoding: 'utf8' });
 
-fs.writeFileSync(`${paths.buildDest}/CNAME`, 'site.dgrammatiko.online', { encoding: 'utf8' });
+// fs.writeFileSync(`${paths.buildDest}/CNAME`, 'site.dgrammatiko.online', { encoding: 'utf8' });
 
 // fsExtra.copySync(`${paths.buildSrc}/_assets/js/validate.js`, `${paths.buildDest}/_assets/js/validate.js`);
 // Cope with the contact script
