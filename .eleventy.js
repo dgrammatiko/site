@@ -135,11 +135,7 @@ module.exports = function (eleventyConfig) {
   // });
 
   return {
-    // templateFormats: ["njk", "html", "md"],
     pathPrefix: "/",
-    // markdownTemplateEngine: "njk",
-    // htmlTemplateEngine: "njk",
-    // dataTemplateEngine: "njk",
     passthroughFileCopy: true,
     dir: {
       input: `${buildSrc}/11ty`,
