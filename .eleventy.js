@@ -32,9 +32,7 @@ const imgOptions = {
         rename: { suffix: '@1920' },
       }]
     },
-    sizes: {
-
-    }
+    sizes: {}
   },
   quality: 80,
   progressive: true,
