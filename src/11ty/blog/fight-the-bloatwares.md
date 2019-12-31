@@ -24,3 +24,4 @@ Now the realistic part is that this won't happen anytime soon, (if it will ever 
 
 I've created [an SPA](https://dgrammatiko.github.io/on-a-diet/ "Open the removeFat application") (Single Page Application) that illustrates all the possible components/modules/plugins/templates that come preinstalled on each Joomla. Also, it gives you the ability to select which ones to disable and then will create a simple Joomla plugin that you can install directly after installing Joomla and disable things en mass! Another good part is that the plugin will uninstall itself after disabling all the components, plugins, modules, templates.  
 Since this SPA is running and doing all its hard work in your browser, there is no data exchanged.
+
