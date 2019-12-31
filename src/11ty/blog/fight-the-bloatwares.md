@@ -27,4 +27,3 @@ Since this SPA is running and doing all its hard work in your browser, there is 
 
            
 ![Change is coming](/_assets/img/ross-findon-mG28olYFgHI-unsplash.jpg)
-
