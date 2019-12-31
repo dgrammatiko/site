@@ -31,6 +31,9 @@ const imgOptions = {
         width: 1920,
         rename: { suffix: '@1920' },
       }]
+    },
+    sizes: {
+
     }
   },
   quality: 80,
