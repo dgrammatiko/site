@@ -17,13 +17,16 @@ function analyze_options(option) {
     temp[srcset[i]].rules = option.srcset[srcset[i]];
   }
 
-  sizes = Object.keys(option.sizes);
-  for (i = 0; i < sizes.length; i++) {
-    // check if the same key is contained in 'srcset'
-    if (temp[sizes[i]]) {
-      temp[sizes[i]].sizes = option.sizes[sizes[i]];
+  if (option.sizes) {
+    sizes = Object.keys(option.sizes);
+    for (i = 0; i < sizes.length; i++) {
+      // check if the same key is contained in 'srcset'
+      if (temp[sizes[i]]) {
+        temp[sizes[i]].sizes = option.sizes[sizes[i]];
+      }
     }
   }
+
 
   keys = Object.keys(temp);
   for (i = 0; i < keys.length; i++) {
