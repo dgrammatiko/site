@@ -27,7 +27,7 @@
     "lodash": "4.17.15",
     "luxon": "latest",
     "markdown-it-anchor": "5.2.5",
-    "mkdirp": "0.5.1",
+    "mkdirp": "1.0.3",
     "path": "0.12.7",
     "postcss": "7.0.26",
     "postcss-custom-media": "7.0.8",
