@@ -3,8 +3,10 @@
   max-width: 72rem;
 }
 
-#main > .post.featured {
+.post.featured {
   text-align: center;
+  padding: 0 4rem;
+  border-top: 0 !important;
 }
 
 header.major {
@@ -29,7 +31,7 @@ header.major > .date {
 
 header.major .date:before,
 header.major .date:after {
-  border-top-color: var(--button-bg);
+  border-top-color: var(--menu-bg);
 }
 
 header.major > .date::before {
@@ -41,7 +43,7 @@ header.major > .date::after {
   content: '';
   display: block;
   position: absolute;
-  top: .3rem;
+  top: 0;
   width: calc(50% - 6rem);
   border-top: solid 2rem;
 }
@@ -60,15 +62,15 @@ header.major > .date:before {
 }
 
 header.major .date:before, header.major .date:after {
-  border-top-color: var(--button-bg);
+  border-top-color: var(--menu-bg);
 }
 
 header.major > .date:after {
   right: 0;
 }
 
-#main > .post header.major > h1,
-#main > .post header.major h2 {
+.post header.major > h1,
+.post header.major h2 {
   font-size: 4rem;
   line-height: 1.1;
   margin: 0 0 2rem 0;
@@ -98,17 +100,18 @@ header.major > :last-child {
 }
 
 #main > * {
-  border-top: solid 2px var(--button-bg);
+  border-top: solid 2px var(--menu-bg);
   margin: 0;
 }
 
-#main > .posts > * {
+.posts > * {
   flex-shrink: 1;
   flex-grow: 0;
+  padding: 4rem;
   width: 50%;
 }
 
-#main > .posts {
+.posts {
   display: -moz-flex;
   display: -ms-flex;
   display: flex;
@@ -120,47 +123,28 @@ header.major > :last-child {
   margin-top: -4px;
 }
 
-#main > * {
-  border-top: solid 2px var(--button-bg);
-  margin: 0;
-}
-
-#main > .posts > * {
-  padding: 4rem;
-  width: 50%;
-}
-
-#main > .post {
-  padding: 4rem 4rem;
-  border-top: 0;
-}
-
 .post {
   padding: 4rem 4rem;
 }
 
-#main > .posts > article {
-  border-color: var(--button-bg);
+.posts > article {
+  border-color: var(--menu-bg);
   border-left-width: 2px;
   border-style: solid;
   border-top-width: 2px;
   text-align: center;
 }
 
-#main > .posts > article:nth-child(2n+1) {
-  /* border-left-width: 0; */
-}
-
-#main > .posts > article:nth-child(odd) {
+.posts > article:nth-child(odd) {
   border-left: none;
 }
 
 @media only screen and (max-width: 768px)  {
-  #main > .posts > * {
+  .posts > * {
     padding: 1rem;
     width: 100%;
   }
-  #main > .post {
+  .post {
     padding: 1rem;
   }
 }
