@@ -27,6 +27,7 @@
 
   <body class="grid-it">
     {{ layoutContent | safe }}
+    <script type=module>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/service-worker.js'); }); } </script>
     <script src="/_assets/js/toggler.esm.js" type=module></script>
     <script src="/_assets/js/toggler.es5.js" nomodule></script>
   </body>
