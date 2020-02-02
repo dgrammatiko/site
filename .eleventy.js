@@ -5,6 +5,7 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const responsiveImg = require('./src/11ty/_11ty/resp/resp');
 const htmlmin = require("html-minifier");
 const { buildSrc, buildDest } = require('./build-scripts/paths');
+const imageTransform = require('./src/11ty/_11ty/imgTransforms.js');
 
 const imgOptions = {
   responsive: {
@@ -92,6 +93,8 @@ module.exports = function (eleventyConfig) {
     }
     return cssCached;
   })
+
+  eleventyConfig.addTransform('parse', imageTransform);
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (outputPath.endsWith(".html")) {

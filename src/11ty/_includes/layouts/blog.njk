@@ -23,14 +23,12 @@ layout: layouts/base.njk
     </header>
 
       {% if fulltextImage %}
-        <figure class="item-image">
           <img data-srcset="{{ fulltextImage | imgSuffix('320') }} 320w, {{ fulltextImage | imgSuffix('480') }} 480w, {{ fulltextImage | imgSuffix('768') }} 768w, {{ fulltextImage | imgSuffix('992') }} 992w, {{ fulltextImage | imgSuffix('1200') }} 1200w, {{ fulltextImage | imgSuffix('1600') }} 1600w,"
           data-src="{{ fulltextImage | imgSuffix('320') }}"
           class="lazyload"
           loading="lazy"
           alt="{{ blog.data.introImageAlt }}">
           <noscript><img src="{{ fulltextImage | imgSuffix('320') }}" loading="lazy" class="lazyload" ></noscript>
-        </figure>
       {% endif %}
 
       <article class="articleBody"> 
