@@ -5,11 +5,12 @@
   "description": "Personal site",
   "main": "build.js",
   "scripts": {
+    "copy-assets": "node ./build-scripts/copy-assets.js",
     "deploy-patch": "npm version patch --force -m \"version %s\"",
     "postversion": "git push && git push --tags",
     "deploy": "node ./build-scripts/deploy.js",
-    "build": "node ./build-scripts/clean.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy",
-    "dev": "node ./build-scripts/clean.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy --serve"
+    "build": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy",
+    "dev": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy --serve"
   },
   "author": "dgrammatiko",
   "license": "MIT",
@@ -17,7 +18,11 @@
     "@11ty/eleventy": "0.10.0",
     "@11ty/eleventy-plugin-rss": "1.0.7",
     "@11ty/eleventy-plugin-syntaxhighlight": "3.0.1",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "@gerhobbelt/markdown-it-responsive": "latest",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.0",
     "cssnano": "4.1.10",
     "fs-extra": "8.1.0",
     "gh-pages": "2.2.0",
@@ -42,9 +47,13 @@
     "require-dir": "latest",
     "rmrf": "2.0.2",
     "sharp": "0.24.0",
-    "terser": "4.6.3"
+    "terser": "4.6.3",
+    "rollup": "^1.31.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.2.0"
   },
   "dependencies": {
+    "ce-theme-switcher": "0.0.3",
     "intersection-observer": "0.7.0"
   }
 }

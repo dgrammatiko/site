@@ -1,5 +1,4 @@
 #main {
-  background-color: #ffffff;
   margin: 0 auto;
   max-width: 72rem;
 }
@@ -20,6 +19,7 @@ header > .date {
   margin: 0 0 1rem 0;
   padding-top: .6rem;
   position: relative;
+  color: var(--button-bg);
 }
 header.major > .date {
   font-size: 1rem;
@@ -29,7 +29,7 @@ header.major > .date {
 
 header.major .date:before,
 header.major .date:after {
-  border-top-color: #eeeeee;
+  border-top-color: var(--button-bg);
 }
 
 header.major > .date::before {
@@ -60,7 +60,7 @@ header.major > .date:before {
 }
 
 header.major .date:before, header.major .date:after {
-  border-top-color: #eeeeee;
+  border-top-color: var(--button-bg);
 }
 
 header.major > .date:after {
@@ -98,7 +98,7 @@ header.major > :last-child {
 }
 
 #main > * {
-  border-top: solid 2px #eeeeee;
+  border-top: solid 2px var(--button-bg);
   margin: 0;
 }
 
@@ -117,10 +117,11 @@ header.major > :last-child {
   text-align: center;
   width: 100%;
   padding: 0;
+  margin-top: -4px;
 }
 
 #main > * {
-  border-top: solid 2px #eeeeee;
+  border-top: solid 2px var(--button-bg);
   margin: 0;
 }
 
@@ -139,7 +140,7 @@ header.major > :last-child {
 }
 
 #main > .posts > article {
-  border-color: #eeeeee;
+  border-color: var(--button-bg);
   border-left-width: 2px;
   border-style: solid;
   border-top-width: 2px;
@@ -147,7 +148,7 @@ header.major > :last-child {
 }
 
 #main > .posts > article:nth-child(2n+1) {
-  border-left-width: 0;
+  /* border-left-width: 0; */
 }
 
 #main > .posts > article:nth-child(odd) {
