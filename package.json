@@ -22,7 +22,7 @@
     "@babel/preset-env": "7.8.4",
     "@gerhobbelt/markdown-it-responsive": "latest",
     "@rollup/plugin-commonjs": "11.0.2",
-    "@rollup/plugin-node-resolve": "7.1.0",
+    "@rollup/plugin-node-resolve": "7.1.1",
     "@tbranyen/jsdom": "13.0.0",
     "cssnano": "4.1.10",
     "fs-extra": "8.1.0",
