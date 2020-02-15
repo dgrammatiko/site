@@ -38,8 +38,7 @@ watch.watchTree(`./${paths.staticSrc}`, function (f, curr, prev) {
 
     // pcss
     if (Path.parse(f).base.match(/\.css$/)) {
-      removeImages(f);
-      buildImages(f);
+      addCssFile(f);
     }
   }
 })

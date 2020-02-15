@@ -7,27 +7,6 @@ const fs = require('fs');
 const postcss = require('postcss');
 const paths = require('../paths');
 
-var atImport = require("postcss-import")
-const browserSettings = [
-  // require('postcss-easy-import')({ extensions: '.css' }),
-  // require('postcss-import'), //({ extensions: '.css' })
-  require('postcss-mixins'),
-  require('postcss-custom-selectors'),
-  require('postcss-nesting'),
-  require('postcss-custom-media'),
-  require('postcss-discard-comments')({ removeAll: true }),
-  require('postcss-preset-env')({
-    autoprefixer: {
-      grid: true,
-      from: undefined,
-    },
-    features: {
-      'nesting-rules': true,
-    },
-  }),
-  require('cssnano')({ from: undefined })
-];
-
 module.exports.addCssFile = async (file) => {
   await postcss([
     // require('postcss-easy-import')({ extensions: '.css' }),

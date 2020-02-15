@@ -9,8 +9,10 @@
     "deploy-patch": "npm version patch --force -m \"version %s\"",
     "postversion": "git push && git push --tags",
     "deploy": "node ./build-scripts/deploy.js",
+    "preDev": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js",
     "build": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy",
-    "dev": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy --serve"
+    "serve11ty": "npx eleventy --serve",
+    "dev": "concurrently \"node ./build-scripts/dev.js\" \"npm run serve11ty\""
   },
   "author": "dgrammatiko",
   "license": "MIT",
@@ -24,6 +26,7 @@
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "7.1.1",
     "@tbranyen/jsdom": "13.0.0",
+    "concurrently": "^5.1.0",
     "cssnano": "4.1.10",
     "fs-extra": "8.1.0",
     "gh-pages": "2.2.0",
@@ -52,7 +55,8 @@
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-terser": "5.2.0",
     "sharp": "0.24.1",
-    "terser": "4.6.3"
+    "terser": "4.6.3",
+    "watch": "^1.0.2"
   },
   "dependencies": {
     "ce-theme-switcher": "0.0.3",
