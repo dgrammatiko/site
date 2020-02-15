@@ -1,0 +1,22 @@
+{
+  "name": "dGrammatiko",
+  "short_name": "dGrammatiko",
+  "description": "My personal site",
+  "lang": "en-UK",
+  "start_url": "https://dgrammatiko.online/",
+  "display": "minimal-ui",
+  "theme_color": "#50617c",
+  "background_color": "#50617c",
+  "icons": [
+    {
+      "src": "/tmpl_starchaser/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/tmpl_starchaser/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

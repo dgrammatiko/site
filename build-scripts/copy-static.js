@@ -8,4 +8,4 @@
 const fsExtra = require('fs-extra');
 const paths = require('./paths');
 
-fsExtra.copy(`${paths.buildSrc}/_assets/tmpl_starchaser`, `${paths.buildDest}/_assets/tmpl_starchaser`);
+fsExtra.copy(`${paths.staticSrc}/tmpl_starchaser`, `${paths.staticDest}/tmpl_starchaser`);

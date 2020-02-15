@@ -38,7 +38,7 @@ const plugins = {
 const settings = ['esm', 'iife'];
 
 const execRollup = async function (file, setting) {
-    const output = `${paths.buildDest}/_assets/js/toggler${setting === 'esm' ? '.esm.js' : '.es5.js'}`;
+    const output = `${paths.staticDest}/js/toggler${setting === 'esm' ? '.esm.js' : '.es5.js'}`;
     const ppp = {
         input: file,
         output: {
@@ -63,8 +63,8 @@ const execRollup = async function (file, setting) {
 
 settings.forEach((setting) => { execRollup('./node_modules/ce-theme-switcher/src/index.js', setting); });
 
-FsExtra.copyFileSync('./node_modules/ce-theme-switcher/src/index.css', `${paths.buildSrc}/_assets/pcss/toggler.pcss`)
+FsExtra.copyFileSync('./node_modules/ce-theme-switcher/src/index.css', `${paths.staticSrc}/css/toggler.css`)
 
-// FsExtra.mkdirp(`${paths.buildDest}/_assets/js`);
-// FsExtra.copyFileSync(`${paths.buildSrc}/_assets/js/toggler.esm.js`, `${paths.buildDest}/_assets/js/toggler.esm.js`)
-// FsExtra.copyFileSync(`${paths.buildSrc}/_assets/js/toggler.es5.js`, `${paths.buildDest}/_assets/js/toggler.es5.js`)
+// FsExtra.mkdirp(`${paths.staticDest}/js`);
+// FsExtra.copyFileSync(`${paths.staticSrc}/js/toggler.esm.js`, `${paths.staticDest}/js/toggler.esm.js`)
+// FsExtra.copyFileSync(`${paths.staticSrc}/js/toggler.es5.js`, `${paths.staticDest}/js/toggler.es5.js`)

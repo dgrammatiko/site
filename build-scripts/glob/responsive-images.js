@@ -9,10 +9,10 @@ const paths = require('../paths.js');
 const mkdirp = require('mkdirp');
 const buildImages = require('../add/responsive-images.js');
 
-glob.sync(`./${paths.buildSrc}/_assets/img/**/*.{jpg,png}`).forEach((file) => {
+glob.sync(`./${paths.staticSrc}/img/**/*.{jpg,png}`).forEach((file) => {
   console.log('Processing:', file)
 
-  const xPath = Path.dirname(file.replace(`${paths.buildSrc}`, `${paths.buildDest}`));
+  const xPath = Path.dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
   if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
 
   buildImages(file);

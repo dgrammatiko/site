@@ -7,13 +7,13 @@ const { addCssFile } = require('./add/buildCssFile.js');
 const { buildImages } = require('./add/responsive-images.js');
 const { removeImages } = require('./remove/responsive-images.js');
 
-watch.watchTree(`./${paths.buildSrc}/_assets`, function (f, curr, prev) {
+watch.watchTree(`./${paths.staticSrc}`, function (f, curr, prev) {
   if (typeof f == "object" && prev === null && curr === null) {
     // Finished walking the tree
   } else if (prev === null) {
     // f is a new file
     // pcss
-    if (Path.parse(f).base.match(/\.pcss$/)) {
+    if (Path.parse(f).base.match(/\.css$/)) {
       addCssFile(f);
     }
 
@@ -25,7 +25,7 @@ watch.watchTree(`./${paths.buildSrc}/_assets`, function (f, curr, prev) {
     // f was removed
 
     // pcss
-    if (Path.parse(f).base.match(/\.pcss$/)) {
+    if (Path.parse(f).base.match(/\.css$/)) {
       removeCssFile(f);
     }
 
@@ -37,7 +37,7 @@ watch.watchTree(`./${paths.buildSrc}/_assets`, function (f, curr, prev) {
     // f was changed
 
     // pcss
-    if (Path.parse(f).base.match(/\.pcss$/)) {
+    if (Path.parse(f).base.match(/\.css$/)) {
       removeImages(f);
       buildImages(f);
     }

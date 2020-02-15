@@ -20,7 +20,7 @@ async function checkIfExists(file) {
 module.exports.removeCssFile = async function (file) {
   if (Path.parse(file).base.match(/^_/)) { return false; }
 
-  const xPath = file.replace(`${paths.buildSrc}`, `${paths.buildDest}`).replace('/pcss/', '/css/').replace('.pcss', '.min.css');
+  const xPath = file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.css', '.min.css');
 
   console.log(xPath)
   if (checkIfExists(xPath)) {

@@ -2,10 +2,10 @@ const { DateTime } = require("luxon");
 const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const responsiveImg = require('./src/11ty/_11ty/resp/resp');
+const responsiveImg = require('./build-scripts/_11ty/resp/resp');
 const htmlmin = require("html-minifier");
-const { buildSrc, buildDest } = require('./build-scripts/paths');
-const imageTransform = require('./src/11ty/_11ty/imgTransforms.js');
+const { siteSrc, siteDest } = require('./build-scripts/paths');
+const imageTransform = require('./build-scripts/_11ty/imgTransforms.js');
 
 const imgOptions = {
   responsive: {
@@ -44,17 +44,15 @@ const imgOptions = {
 };
 
 module.exports = function (eleventyConfig) {
-  // eleventyConfig.setTemplateFormats("html,njk");
+  // eleventyConfig.setTemplateFormats("md,html,njk");
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.setDataDeepMerge(true);
 
-  // eleventyConfig.addLayoutAlias("post", "layouts/blog.njk");
-
   // Filter source file names using a glob
   eleventyConfig.addCollection("blogs", function (collection) {
     // Also accepts an array of globs!
-    return collection.getFilteredByGlob(["src/11ty/blog/*.md"]);
+    return collection.getFilteredByGlob([`${siteSrc}/blog/*.md`]);
   });
 
   eleventyConfig.addFilter("readableDate", dateObj => {
@@ -109,7 +107,7 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
-  eleventyConfig.addCollection("tagList", require("./src/11ty/_11ty/getTagList"));
+  eleventyConfig.addCollection("tagList", require("./build-scripts/_11ty/getTagList"));
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
@@ -141,10 +139,11 @@ module.exports = function (eleventyConfig) {
     pathPrefix: "/",
     passthroughFileCopy: true,
     dir: {
-      input: `${buildSrc}/11ty`,
-      output: buildDest,
-      data: "_data",
-      includes: "_includes"
+      input: `${siteSrc}`,
+      output: siteDest,
+      data: `${siteSrc}/data`,
+      // includes: `${process.cwd()}/includes`,
+      // layouts: `_includes/layouts`,
     },
   };
 };

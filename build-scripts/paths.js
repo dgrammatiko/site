@@ -6,6 +6,8 @@
   * License MIT
   */
 module.exports = {
-  buildSrc: 'src',
-  buildDest: 'gh-pages',
+  siteSrc: 'src_site',
+  staticSrc: 'src_assets',
+  staticDest: 'live',
+  siteDest: 'live',
 };

@@ -10,11 +10,11 @@ const { addCssFile } = require('../add/buildCssFile.js');
 const paths = require('../paths');
 const mkdirp = require('mkdirp');
 
-glob.sync(`./${paths.buildSrc}/_assets/pcss/**/*.pcss`).forEach((file) => {
+glob.sync(`./${paths.staticSrc}/css/**/*.css`).forEach((file) => {
   if (Path.parse(file).base.match(/^_/)) { return; }
   console.log('Processing:', file)
 
-  const xPath = Path.dirname(file.replace(`${paths.buildSrc}`, `${paths.buildDest}`).replace('/pcss/', '/css/'));
+  const xPath = Path.dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
   if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
 
   addCssFile(file)

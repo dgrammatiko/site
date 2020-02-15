@@ -10,15 +10,15 @@ const sharp = require('sharp');
 const mkdirp = require('mkdirp');
 const sizes = [320, 480, 768, 992, 1200, 1600, 1920];
 
-glob.sync(`./${paths.buildSrc}/_assets/img/**/*.{jpg,png}`).forEach((file) => {
+glob.sync(`./${paths.staticSrc}/img/**/*.{jpg,png}`).forEach((file) => {
   console.log('Processing:', file)
 
-  const xPath = Path.dirname(file.replace(`${paths.buildSrc}`, `${paths.buildDest}`));
+  const xPath = Path.dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
   if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
 
   sizes.forEach(size => {
-    const newFile = file.replace(`${paths.buildSrc}`, `${paths.buildDest}`).replace('.png', `@${size}.png`).replace('.jpg', `@${size}.jpg`)
-    const newFile2 = file.replace(`${paths.buildSrc}`, `${paths.buildDest}`).replace('.png', `@${size}.webp`).replace('.jpg', `@${size}.webp`)
+    const newFile = file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.png', `@${size}.png`).replace('.jpg', `@${size}.jpg`)
+    const newFile2 = file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.png', `@${size}.webp`).replace('.jpg', `@${size}.webp`)
 
     sharp(file)
       .resize(size)
