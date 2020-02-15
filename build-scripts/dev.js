@@ -1,48 +1,97 @@
-const watch = require('watch');
-const paths = require('./paths.js');
+const chokidar = require('chokidar');
+const { staticSrc, staticDest } = require('./paths.js');
 const Path = require('path');
-const Fs = require('fs');
+const glob = require('glob');
+const fs = require('fs');
+const mkdirp = require('mkdirp');
 const { removeCssFile } = require('./remove/removeCss.js');
 const { addCssFile } = require('./add/buildCssFile.js');
 const { buildImages } = require('./add/responsive-images.js');
 const { removeImages } = require('./remove/responsive-images.js');
 
-watch.watchTree(`./${paths.staticSrc}`, function (f, curr, prev) {
-  if (typeof f == "object" && prev === null && curr === null) {
-    // Finished walking the tree
-  } else if (prev === null) {
-    // f is a new file
+
+// Initialize watcher.
+const watcher = chokidar.watch(`${staticSrc}/**/*`, {
+  ignored: /(^|[\/\\])\../, // ignore dotfiles
+  persistent: true
+});
+
+// Something to use when events are received.
+const log = console.log.bind(console);
+// Add event listeners.
+watcher
+  .on('add', path => {
+    const file = Path.parse(path);
     // pcss
-    if (Path.parse(f).base.match(/\.css$/)) {
-      addCssFile(f);
+    if (file.base.match(/\.css$/)) {
+      if (file.base.startsWith('_')) {
+        glob.sync(`./${staticSrc}/css/**/*.css`).forEach((f) => {
+          if (Path.parse(f).base.match(/^_/)) { return; }
+          console.log('Processing:', f)
+
+          const xPath = Path.dirname(f.replace(`${staticSrc}`, `${staticDest}`));
+          if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
+
+          addCssFile(f);
+        });
+      } else {
+        addCssFile(path);
+      }
     }
 
     // jpg,png
-    if (Path.parse(f).base.match(/\.jpg$/) || Path.parse(f).base.match(/\.jpeg$/) || Path.parse(f).base.match(/\.png$/)) {
-      buildImages(f);
+    if (file.base.match(/\.jpg$/) || file.base.match(/\.jpeg$/) || file.base.match(/\.png$/)) {
+      buildImages(path);
     }
-  } else if (curr.nlink === 0) {
-    // f was removed
-
+    log(`File ${path} has been added`)
+  })
+  .on('change', path => {
+    const file = Path.parse(path);
     // pcss
-    if (Path.parse(f).base.match(/\.css$/)) {
-      removeCssFile(f);
+    if (file.base.match(/\.css$/)) {
+      if (file.base.startsWith('_')) {
+        glob.sync(`./${staticSrc}/css/**/*.css`).forEach((f) => {
+          if (Path.parse(f).base.match(/^_/)) { return; }
+          console.log('Processing:', f)
+
+          const xPath = Path.dirname(f.replace(`${staticSrc}`, `${staticDest}`));
+          if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
+
+          addCssFile(f);
+        });
+      } else {
+        addCssFile(path);
+      }
+    }
+
+    log(`File ${path} has been changed`);
+  })
+  .on('unlink', path => {
+    const file = Path.parse(path);
+    // pcss
+    if (file.base.match(/\.css$/)) {
+      removeCssFile(path);
     }
 
     // jpg,png
-    if (Path.parse(f).base.match(/\.jpg$/) || Path.parse(f).base.match(/\.jpeg$/) || Path.parse(f).base.match(/\.png$/)) {
-      removeImages(f);
+    if (file.base.match(/\.jpg$/) || file.base.match(/\.jpeg$/) || file.base.match(/\.png$/)) {
+      removeImages(path);
     }
-  } else {
-    // f was changed
+    log(`File ${path} has been removed`);
+  });
 
-    // pcss
-    if (Path.parse(f).base.match(/\.css$/)) {
-      addCssFile(f);
-    }
-  }
-})
+// More possible events.
+// watcher
+//   .on('addDir', path => log(`Directory ${path} has been added`))
+//   .on('unlinkDir', path => log(`Directory ${path} has been removed`))
+//   .on('error', error => log(`Watcher error: ${error}`))
+//   .on('ready', () => log('Initial scan complete. Ready for changes'))
+//   .on('raw', (event, path, details) => { // internal
+//     log('Raw event info:', event, path, details);
+//   });
 
-  // Switch for supported files
-  // js
-  // woff, woff2
+// 'add', 'addDir' and 'change' events also receive stat() results as second
+// argument when available: https://nodejs.org/api/fs.html#fs_class_fs_stats
+watcher.on('change', (path, stats) => {
+  if (stats) console.log(`File ${path} changed`); //size to ${stats.size}
+});

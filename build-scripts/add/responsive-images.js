@@ -5,7 +5,7 @@
 const fs = require('fs');
 const paths = require('../paths.js');
 const sharp = require('sharp');
-const sizes = require('../sizes.js');
+const { sizes } = require('../sizes.js');
 
 module.exports.buildImages = function (originalImage) {
   sizes.forEach(size => {
