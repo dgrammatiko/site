@@ -1,0 +1,8 @@
+---
+eleventyExcludeFromCollections: true
+permalink: '/service-worker.js'
+---
+
+const VERSION = {{ page.date.getTime() }};
+const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html'];
+{% include "service-worker.js" %}

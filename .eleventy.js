@@ -2,11 +2,12 @@ const { DateTime } = require("luxon");
 const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const responsiveImg = require('./src/11ty/_11ty/resp/resp');
+const responsiveImg = require('./src/_11ty/resp/resp');
 const htmlmin = require("html-minifier");
 const { buildSrc, buildDest } = require('./build-scripts/paths');
-const imageTransform = require('./src/11ty/_11ty/imgTransforms.js');
+const imageTransform = require('./src/_11ty/imgTransforms.js');
 
+const root = process.cwd();
 const imgOptions = {
   responsive: {
     'srcset': {
@@ -54,8 +55,13 @@ module.exports = function (eleventyConfig) {
   // Filter source file names using a glob
   eleventyConfig.addCollection("blogs", function (collection) {
     // Also accepts an array of globs!
-    return collection.getFilteredByGlob(["src/11ty/blog/*.md"]);
+    return collection.getFilteredByGlob(["src/blog/*.md"]);
   });
+
+  // eleventyConfig.addCollection('sitemap', collection => collection
+  //   .getAll()
+  //   .filter(item => !['/index-top.html', '/index-bottom.html', '/offline.html'].includes(item.url))
+  // );
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
@@ -85,7 +91,6 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("inlineCss", (path) => {
     let cssCached;
-    console.log(path)
     if (fs.existsSync(path)) {
       cssCached = fs.readFileSync(path, { encoding: 'utf8' });
     } else {
@@ -94,22 +99,21 @@ module.exports = function (eleventyConfig) {
     return cssCached;
   })
 
-  eleventyConfig.addTransform('parse', imageTransform);
-
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-    if (outputPath.endsWith(".html")) {
+    if (outputPath.endsWith(".html") && ![`${root}/gh-pages/index-top.html`, `${root}/gh-pages/index-bottom.html`].includes(outputPath)) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
         collapseWhitespace: true
       });
+
       return minified;
     }
 
     return content;
   });
 
-  eleventyConfig.addCollection("tagList", require("./src/11ty/_11ty/getTagList"));
+  eleventyConfig.addCollection("tagList", require("./src/_11ty/getTagList"));
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
@@ -130,6 +134,9 @@ module.exports = function (eleventyConfig) {
     .use(responsiveImg, imgOptions)
   );
 
+  eleventyConfig.addTransform('parse', imageTransform);
+
+
   // eleventyConfig.setFrontMatterParsingOptions({
   //   excerpt: true,
   //   // Eleventy custom option
@@ -141,10 +148,11 @@ module.exports = function (eleventyConfig) {
     pathPrefix: "/",
     passthroughFileCopy: true,
     dir: {
-      input: `${buildSrc}/11ty`,
-      output: buildDest,
-      data: "_data",
-      includes: "_includes"
+      input: buildSrc,
+      output: `${process.cwd()}/${buildDest}`,
+      data: '_data',
+      includes: 'layouts',
+      layouts: 'layouts'
     },
   };
 };

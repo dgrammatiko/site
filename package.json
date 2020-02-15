@@ -9,8 +9,9 @@
     "deploy-patch": "npm version patch --force -m \"version %s\"",
     "postversion": "git push && git push --tags",
     "deploy": "node ./build-scripts/deploy.js",
-    "build": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy",
-    "dev": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js && npx eleventy --serve"
+    "build": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js",
+    "production": "npm run build && npx eleventy",
+    "dev": "npm run build && npx eleventy --serve"
   },
   "author": "dgrammatiko",
   "license": "MIT",
