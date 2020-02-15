@@ -34,7 +34,8 @@ nav {
   display: flex;
 }
 
-.nav-item a {
+.nav-item a,
+.nav-item dark-light-switch {
   display: inline-block;
   padding: 10px 15px;
   text-decoration: none;
