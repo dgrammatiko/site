@@ -1,7 +1,7 @@
 const jsDom = require('@tbranyen/jsdom');
 const { JSDOM } = jsDom;
 const sizeOf = require('image-size');
-const Fs = require('fs');
+const { existsSync } = require('fs');
 
 module.exports = function (value, outputPath) {
     if (outputPath.endsWith('.html')) {
@@ -16,7 +16,7 @@ module.exports = function (value, outputPath) {
             articleImages.forEach(image => {
                 if (!image.getAttribute('data-src')) return;
                 const path = `${process.cwd()}/src${image.getAttribute('data-src').replace('@480', '').replace('@320', '')}`;
-                if (Fs.existsSync(path)) {
+                if (existsSync(path)) {
                     const dimensions = sizeOf(path);
                     const ratio = (dimensions.height / dimensions.width * 100).toFixed(3);
                     const figure = document.createElement('figure');

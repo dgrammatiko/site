@@ -2,19 +2,19 @@
   * Build script
   * Dimitris Grammatikogiannis
   */
-const fs = require('fs');
-const Path = require('path');
-const glob = require('glob');
+const { existsSync, writeFileSync } = require('fs');
+const { dirname } = require('path');
+const { sync } = require('glob');
 const paths = require('./paths');
 const sharp = require('sharp');
-const mkdirp = require('mkdirp');
+const { mkdirSync } = require('fs-extra');
 const sizes = [320, 480, 768, 992, 1200, 1600, 1920];
 
-glob.sync(`./${paths.staticSrc}/img/**/*.{jpg,png}`).forEach((file) => {
+sync(`./${paths.staticSrc}/img/**/*.{jpg,png}`).forEach((file) => {
   console.log('Processing:', file)
 
-  const xPath = Path.dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
-  if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
+  const xPath = dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
+  if (!existsSync(xPath)) mkdirSync(xPath);
 
   sizes.forEach(size => {
     const newFile = file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.png', `@${size}.png`).replace('.jpg', `@${size}.jpg`)
@@ -24,7 +24,7 @@ glob.sync(`./${paths.staticSrc}/img/**/*.{jpg,png}`).forEach((file) => {
       .resize(size)
       .toBuffer()
       .then(data => {
-        fs.writeFileSync(newFile, data);
+        writeFileSync(newFile, data);
       })
       .catch(err => {
         console.log(err);
@@ -34,7 +34,7 @@ glob.sync(`./${paths.staticSrc}/img/**/*.{jpg,png}`).forEach((file) => {
       .resize(size)
       .toBuffer()
       .then(data => {
-        fs.writeFileSync(newFile2, data);
+        writeFileSync(newFile2, data);
       })
       .catch(err => {
         console.log(err);

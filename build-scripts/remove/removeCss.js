@@ -3,12 +3,12 @@
   *
   * Dimitris Grammatikogiannis
   */
-const fs = require('fs');
-const Path = require('path');
+const { exists, unlinkSync } = require('fs');
+const { parse } = require('path');
 const paths = require('../paths');
 
 async function checkIfExists(file) {
-  const vas = await fs.exists(file, err => {
+  const vas = await exists(file, err => {
     if (err) {
       console.log(err)
     }
@@ -18,12 +18,12 @@ async function checkIfExists(file) {
 };
 
 module.exports.removeCssFile = async function (file) {
-  if (Path.parse(file).base.match(/^_/)) { return false; }
+  if (parse(file).base.startsWith('_')) { return false; }
 
   const xPath = file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.css', '.min.css');
 
   console.log(xPath)
   if (checkIfExists(xPath)) {
-    await fs.unlinkSync(xPath);
+    await unlinkSync(xPath);
   }
 }
