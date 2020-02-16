@@ -12,7 +12,7 @@ const { removeImages } = require('./remove/responsive-images.js');
 
 // Initialize watcher.
 const watcher = watch(`${staticSrc}/**/*`, {
-  ignored: /(^|[\/\\])\../, // ignore dotfiles
+  ignored: /(^|[\/\\])\..|\/static\/images\//, // ignore dotfiles
   persistent: true
 });
 
@@ -41,6 +41,10 @@ watcher
 
     // jpg,png
     if (file.base.match(/\.jpg$/) || file.base.match(/\.jpeg$/) || file.base.match(/\.png$/)) {
+      if (file.dir.match(/images\//)) {
+        console.log(file.dir)
+        return
+      }
       buildImages(path);
     }
     log(`File ${path} has been added`)
@@ -75,6 +79,10 @@ watcher
 
     // jpg,png
     if (file.base.match(/\.jpg$/) || file.base.match(/\.jpeg$/) || file.base.match(/\.png$/)) {
+      if (file.dir.match(/images\//)) {
+        console.log(file.dir)
+        return
+      }
       removeImages(path);
     }
     log(`File ${path} has been removed`);

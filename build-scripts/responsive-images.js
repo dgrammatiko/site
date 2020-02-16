@@ -10,7 +10,7 @@ const sharp = require('sharp');
 const { mkdirSync } = require('fs-extra');
 const sizes = [320, 480, 768, 992, 1200, 1600, 1920];
 
-sync(`./${paths.staticSrc}/img/**/*.{jpg,png}`).forEach((file) => {
+sync(`./${paths.staticSrc}/img/*.{jpg,png}`).forEach((file) => {
   console.log('Processing:', file)
 
   const xPath = dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));

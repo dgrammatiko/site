@@ -139,11 +139,8 @@ module.exports = function (eleventyConfig) {
     pathPrefix: "/",
     passthroughFileCopy: true,
     dir: {
-      input: `${siteSrc}`,
+      input: siteSrc,
       output: siteDest,
-      data: `${siteSrc}/data`,
-      // includes: `${process.cwd()}/includes`,
-      // layouts: `_includes/layouts`,
     },
   };
 };

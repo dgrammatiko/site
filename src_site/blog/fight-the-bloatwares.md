@@ -3,9 +3,9 @@ title: Fight the bloatwares
 description:
 tags: blog, Joomla
 date: 2019-03-27T12:46:54+00:00
-introImage: /img/Screenshot_2019-03-26_at_220717.jpg
+introImage: /static/img/Screenshot_2019-03-26_at_220717.jpg
 introImageAlt: Screenshot of the application
-fulltextImage: /img/Screenshot_2019-03-26_at_220717.jpg
+fulltextImage: /static/img/Screenshot_2019-03-26_at_220717.jpg
 fulltextImageAlt: Screenshot of the application
 custom_excerpt: According to urbandictionary.com, the term is described as software that comes piggy-backed on other software installations. Bloatware usually includes toolbars desktop widgets or external unrelated applications. Most piggy-backing bloatware can perform a mundane task that is generally non-essential to everyday computer use.
 layout: blog.njk

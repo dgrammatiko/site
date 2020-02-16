@@ -5,7 +5,7 @@
   *
   * License MIT
   */
-const { rmrf } = require('rmrf');
+const rmrf = require('rmrf');
 const { existsSync } = require('fs');
 const paths = require('./paths');
 

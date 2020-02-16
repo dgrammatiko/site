@@ -1,16 +1,38 @@
 {
   "title": "dGrammatiko",
   "url": "https://dgrammatiko.online/",
-  "description": "I am writing about my experiences as a naval navel-gazer.",
+  "description": "Dimitrios Grammatikogiannnis's personal site",
   "feed": {
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
+    "subtitle": "Web related posts",
     "filename": "feed.xml",
     "path": "/feed/feed.xml",
     "url": "https://dgrammatiko.online/feed/feed.xml",
     "id": "https://dgrammatiko.online/"
   },
   "author": {
-    "name": "Dimitris Grammatikogiannis",
+    "name": "Dimitrios Grammatikogiannis",
     "email": "dgrammatiko@gmail.com"
+  },
+  "manifest": {
+    "name": "dGrammatiko",
+    "short_name": "dGrammatiko",
+    "description": "My personal site",
+    "lang": "en-US",
+    "start_url": "https://dgrammatiko.online/",
+    "display": "minimal-ui",
+    "theme_color": "#50617c",
+    "background_color": "#50617c",
+    "icons": [
+      {
+        "src": "/static/images/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/static/images/android-chrome-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
   }
 }
