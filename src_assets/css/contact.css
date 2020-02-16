@@ -84,4 +84,4 @@ form input:required:valid {
   border-style:solid;
 }
 
-@import '_button.css';
+@import 'partials/_button.css';

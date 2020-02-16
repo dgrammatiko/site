@@ -1,9 +1,9 @@
-const chokidar = require('chokidar');
+const { watch } = require('chokidar');
 const { staticSrc, staticDest } = require('./paths.js');
-const Path = require('path');
-const glob = require('glob');
-const fs = require('fs');
-const mkdirp = require('mkdirp');
+const { parse, dirname } = require('path');
+const { sync } = require('glob');
+const { existsSync } = require('fs');
+const { mkdirSync } = require('fs-extra');
 const { removeCssFile } = require('./remove/removeCss.js');
 const { addCssFile } = require('./add/buildCssFile.js');
 const { buildImages } = require('./add/responsive-images.js');
@@ -11,7 +11,7 @@ const { removeImages } = require('./remove/responsive-images.js');
 
 
 // Initialize watcher.
-const watcher = chokidar.watch(`${staticSrc}/**/*`, {
+const watcher = watch(`${staticSrc}/**/*`, {
   ignored: /(^|[\/\\])\../, // ignore dotfiles
   persistent: true
 });
@@ -21,16 +21,16 @@ const log = console.log.bind(console);
 // Add event listeners.
 watcher
   .on('add', path => {
-    const file = Path.parse(path);
+    const file = parse(path);
     // pcss
     if (file.base.match(/\.css$/)) {
       if (file.base.startsWith('_')) {
-        glob.sync(`./${staticSrc}/css/**/*.css`).forEach((f) => {
-          if (Path.parse(f).base.match(/^_/)) { return; }
+        sync(`./${staticSrc}/css/**/*.css`).forEach((f) => {
+          if (parse(f).base.match(/^_/)) { return; }
           console.log('Processing:', f)
 
-          const xPath = Path.dirname(f.replace(`${staticSrc}`, `${staticDest}`));
-          if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
+          const xPath = dirname(f.replace(`${staticSrc}`, `${staticDest}`));
+          if (!existsSync(xPath)) mkdirSync(xPath);
 
           addCssFile(f);
         });
@@ -46,16 +46,16 @@ watcher
     log(`File ${path} has been added`)
   })
   .on('change', path => {
-    const file = Path.parse(path);
+    const file = parse(path);
     // pcss
     if (file.base.match(/\.css$/)) {
       if (file.base.startsWith('_')) {
-        glob.sync(`./${staticSrc}/css/**/*.css`).forEach((f) => {
-          if (Path.parse(f).base.match(/^_/)) { return; }
+        sync(`./${staticSrc}/css/**/*.css`).forEach((f) => {
+          if (parse(f).base.match(/^_/)) { return; }
           console.log('Processing:', f)
 
-          const xPath = Path.dirname(f.replace(`${staticSrc}`, `${staticDest}`));
-          if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
+          const xPath = dirname(f.replace(`${staticSrc}`, `${staticDest}`));
+          if (!existsSync(xPath)) mkdirSync(xPath);
 
           addCssFile(f);
         });
@@ -67,7 +67,7 @@ watcher
     log(`File ${path} has been changed`);
   })
   .on('unlink', path => {
-    const file = Path.parse(path);
+    const file = parse(path);
     // pcss
     if (file.base.match(/\.css$/)) {
       removeCssFile(path);

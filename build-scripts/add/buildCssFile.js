@@ -3,7 +3,7 @@
   *
   * Dimitris Grammatikogiannis
   */
-const fs = require('fs');
+const { readFileSync, writeFileSync } = require('fs');
 const postcss = require('postcss');
 const paths = require('../paths');
 
@@ -27,6 +27,6 @@ module.exports.addCssFile = async (file) => {
     }),
     require('cssnano')({ from: undefined })
   ])
-    .process(fs.readFileSync(`${file}`, 'utf8'), { from: file, removeAll: true })
-    .then((result) => { fs.writeFileSync(`${file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.css', '')}.min.css`, result.css); });
+    .process(readFileSync(`${file}`, 'utf8'), { from: file, removeAll: true })
+    .then((result) => { writeFileSync(`${file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.css', '')}.min.css`, result.css); });
 }

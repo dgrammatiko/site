@@ -5,10 +5,10 @@
   *
   * License MIT
   */
-const rmrf = require('rmrf');
-const fs = require('fs');
+const { rmrf } = require('rmrf');
+const { existsSync } = require('fs');
 const paths = require('./paths');
 
-if (fs.existsSync(`${paths.staticDest}`)) {
+if (existsSync(`${paths.staticDest}`)) {
   rmrf(`${paths.staticDest}`)
 }

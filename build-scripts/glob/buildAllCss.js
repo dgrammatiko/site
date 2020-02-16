@@ -3,19 +3,19 @@
   *
   * Dimitris Grammatikogiannis
   */
-const fs = require('fs');
-const Path = require('path');
-const glob = require('glob');
+const { existsSync } = require('fs');
+const { parse, dirname } = require('path');
+const { sync } = require('glob');
 const { addCssFile } = require('../add/buildCssFile.js');
 const paths = require('../paths');
-const mkdirp = require('mkdirp');
+const { mkdirSync } = require('fs-extra');
 
-glob.sync(`./${paths.staticSrc}/css/**/*.css`).forEach((file) => {
-  if (Path.parse(file).base.match(/^_/)) { return; }
+sync(`./${paths.staticSrc}/css/**/*.css`).forEach((file) => {
+  if (parse(file).base.match(/^_/)) { return; }
   console.log('Processing:', file)
 
-  const xPath = Path.dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
-  if (!fs.existsSync(xPath)) mkdirp.sync(xPath);
+  const xPath = dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
+  if (!existsSync(xPath)) mkdirSync(xPath);
 
   addCssFile(file)
 });

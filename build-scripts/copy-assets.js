@@ -1,14 +1,14 @@
 const paths = require('./paths.js');
-const rollup = require('rollup');
+const { rollup } = require('rollup');
 const babel = require('rollup-plugin-babel');
-const FsExtra = require('fs-extra');
+const { mkdirsSync, copyFileSync } = require('fs-extra');
 const commonjs = require('@rollup/plugin-commonjs');
-const path = require('path');
+const { dirname } = require('path');
 const resolve = require('@rollup/plugin-node-resolve');
-const terser = require('rollup-plugin-terser');
+const { terser } = require('rollup-plugin-terser');
 
 const commonPlugins = [
-    terser.terser(),
+    terser(),
 ];
 
 const plugins = {
@@ -50,9 +50,9 @@ const execRollup = async function (file, setting) {
 
     ppp.plugins = plugins[`${setting}`].concat(commonPlugins);
 
-    FsExtra.mkdirsSync(path.dirname(output));
+    mkdirsSync(dirname(output));
 
-    const bundle = await rollup.rollup(ppp);
+    const bundle = await rollup(ppp);
     await bundle.write(ppp.output);
 
     // eslint-disable-next-line no-console
@@ -63,8 +63,8 @@ const execRollup = async function (file, setting) {
 
 settings.forEach((setting) => { execRollup('./node_modules/ce-theme-switcher/src/index.js', setting); });
 
-FsExtra.copyFileSync('./node_modules/ce-theme-switcher/src/index.css', `${paths.staticSrc}/css/toggler.css`)
+copyFileSync('./node_modules/ce-theme-switcher/src/index.css', `${paths.staticSrc}/css/toggler.css`)
 
-// FsExtra.mkdirp(`${paths.staticDest}/js`);
+// mkdirsSync(`${paths.staticDest}/js`);
 // FsExtra.copyFileSync(`${paths.staticSrc}/js/toggler.esm.js`, `${paths.staticDest}/js/toggler.esm.js`)
 // FsExtra.copyFileSync(`${paths.staticSrc}/js/toggler.es5.js`, `${paths.staticDest}/js/toggler.es5.js`)
