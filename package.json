@@ -49,7 +49,7 @@
     "rename": "1.0.4",
     "require-dir": "latest",
     "rmrf": "2.0.2",
-    "rollup": "1.31.1",
+    "rollup": "1.32.1",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-terser": "5.2.0",
     "sharp": "0.24.1",
