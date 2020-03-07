@@ -20,8 +20,8 @@
     "@11ty/eleventy": "0.10.0",
     "@11ty/eleventy-plugin-rss": "1.0.7",
     "@11ty/eleventy-plugin-syntaxhighlight": "3.0.1",
-    "@babel/core": "7.8.4",
-    "@babel/preset-env": "7.8.4",
+    "@babel/core": "7.8.7",
+    "@babel/preset-env": "7.8.7",
     "@gerhobbelt/markdown-it-responsive": "latest",
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "7.1.1",
@@ -37,7 +37,7 @@
     "luxon": "latest",
     "markdown-it-anchor": "5.2.5",
     "path": "0.12.7",
-    "postcss": "7.0.26",
+    "postcss": "7.0.27",
     "postcss-custom-media": "7.0.8",
     "postcss-custom-selectors": "5.1.2",
     "postcss-discard-comments": "4.0.2",
@@ -49,11 +49,11 @@
     "rename": "1.0.4",
     "require-dir": "latest",
     "rmrf": "2.0.2",
-    "rollup": "1.31.1",
+    "rollup": "1.32.1",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-terser": "5.2.0",
     "sharp": "0.24.1",
-    "terser": "4.6.3"
+    "terser": "4.6.6"
   },
   "dependencies": {
     "ce-theme-switcher": "0.0.3",
