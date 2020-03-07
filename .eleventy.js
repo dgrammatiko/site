@@ -55,6 +55,12 @@ module.exports = function (eleventyConfig) {
     return collection.getFilteredByGlob([`${siteSrc}/blog/*.md`]);
   });
 
+  // Filter source file names using a glob
+  eleventyConfig.addCollection("code", function (collection) {
+    // Also accepts an array of globs!
+    return collection.getFilteredByGlob([`${siteSrc}/code/*.md`]);
+  });
+
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
   });
