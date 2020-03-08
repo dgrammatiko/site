@@ -1,4 +1,4 @@
-<style>{{ './gh-pages/_assets/css/blogs.css' | inlineCss | safe }}</style>
+<style>{{ '_assets/css/blogs.css' | inlineCss | safe }}</style>
 
 <section class="posts" itemscope="" itemtype="https://schema.org/Blog">
   {% for blog in collections.blogs | reverse %}
@@ -26,3 +26,5 @@
     </article>
   {% endfor %}
 </section>
+<script>{{ '_assets/js/lazyloadImgs.js' | inlineCss | safe }}</script>
+

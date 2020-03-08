@@ -112,8 +112,6 @@ header.major > :last-child {
 }
 
 .posts {
-  display: -moz-flex;
-  display: -ms-flex;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;

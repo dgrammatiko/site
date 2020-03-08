@@ -6,6 +6,7 @@ const responsiveImg = require('./src/_11ty/resp/resp');
 const htmlmin = require("html-minifier");
 const { buildSrc, buildDest } = require('./build-scripts/paths');
 const imageTransform = require('./src/_11ty/imgTransforms.js');
+const postCss = require('./src/_11ty/postcss-process.js');
 
 const root = process.cwd();
 const imgOptions = {
@@ -91,8 +92,8 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("inlineCss", (path) => {
     let cssCached;
-    if (fs.existsSync(path)) {
-      cssCached = fs.readFileSync(path, { encoding: 'utf8' });
+    if (fs.existsSync(`${process.cwd()}/${buildDest}/${path}`)) {
+      cssCached = fs.readFileSync(`${process.cwd()}/${buildDest}/${path}`, { encoding: 'utf8' });
     } else {
       console.log('Crap');
     }
@@ -136,13 +137,15 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addTransform('parse', imageTransform);
 
-
+  // eleventyConfig.addPassthroughCopy(`${process.cwd()}/${buildSrc}/_assets/js`, `${process.cwd()}/${buildDest}/_assets/js`)
   // eleventyConfig.setFrontMatterParsingOptions({
   //   excerpt: true,
   //   // Eleventy custom option
   //   // The variable where the excerpt will be stored.
   //   excerpt_alias: 'custom_excerpt'
   // });
+
+  // postCss(`${process.cwd()}/${buildSrc}/_assets/css`, `${process.cwd()}/${buildDest}/_assets/css`, eleventyConfig);
 
   return {
     pathPrefix: "/",

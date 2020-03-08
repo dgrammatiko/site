@@ -1,0 +1,89 @@
+const fs = require('fs');
+const path = require('path');
+const postcss = require('postcss');
+const root = process.cwd();
+const fsExtra = require('fs-extra');
+
+const d = [];
+const files = fs.readdirSync(`${root}/src/_assets/css`, { withFileTypes: true });
+
+files.forEach(file => {
+    if (file.name.startsWith('_')) { return; }
+    d.push({
+        permalink: `_assets/css/${file.name}`,
+        rawFilepath: `${root}/src/_assets/css/${file.name}`,
+        rawCss: fs.readFileSync(`${root}/src/_assets/css/${file.name}`)
+    })
+});
+
+module.exports = class {
+    async data() {
+        d.forEach(a => {
+            return postcss([
+                // require('postcss-import'),
+                // require('postcss-mixins'),
+                // require('cssnano')
+
+                require('postcss-easy-import')({ extensions: '.css' }),
+                require('postcss-import')({ extensions: '.css' }),
+                require('postcss-mixins'),
+                require('postcss-custom-selectors'),
+                require('postcss-nesting'),
+                require('postcss-custom-media'),
+                require('postcss-discard-comments')({ removeAll: true }),
+                require('postcss-preset-env')({
+                    autoprefixer: {
+                        grid: true,
+                        from: undefined,
+                    },
+                    features: {
+                        'nesting-rules': true,
+                    },
+                }),
+                require('cssnano')({ from: undefined })
+            ])
+                .process(a.rawCss, { from: a.rawFilepath })
+                .then(result => {
+                    fsExtra.mkdirpSync(path.dirname(`${root}/gh-pages/${a.permalink}`))
+                    fs.writeFileSync(`${root}/gh-pages/${a.permalink}`, result.css, (err) => {
+                        //console.log(err)
+                    });
+                    result.css
+                });
+        });
+
+        return {
+            postCss: d
+        }
+    };
+
+    async render({ postCss }) {
+        postCss.forEach(a => {
+            return postcss([
+                require('postcss-easy-import')({ extensions: '.css' }),
+                require('postcss-import')({ extensions: '.css' }),
+                require('postcss-mixins'),
+                require('postcss-custom-selectors'),
+                require('postcss-nesting'),
+                require('postcss-custom-media'),
+                require('postcss-discard-comments')({ removeAll: true }),
+                require('postcss-preset-env')({
+                    autoprefixer: {
+                        grid: true,
+                        from: undefined,
+                    },
+                    features: {
+                        'nesting-rules': true,
+                    },
+                }),
+                require('cssnano')({ from: undefined })
+            ])
+                .process(a.rawCss, { from: a.rawFilepath })
+                .then(result => {
+                    fsExtra.mkdirpSync(path.dirname(`${root}/gh-pages/${a.permalink}`))
+                    fs.writeFileSync(`${root}/gh-pages/${a.permalink}`, result.css, (err) => { console.log(err) });
+                    result.css
+                });
+        });
+    };
+}

@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 ---
-<style>{{ './gh-pages/_assets/css/blog.css' | inlineCss | safe }}</style>
+<style>{{ '_assets/css/blog.css' | inlineCss | safe }}</style>
 
 <main id="main">
   <section class="post">
@@ -38,3 +38,5 @@ layout: base.njk
   <script type=module id=only-for-partials>
     document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";
   </script>
+  <script>{{ '_assets/js/lazyloadImgs.js' | inlineCss | safe }}</script>
+
