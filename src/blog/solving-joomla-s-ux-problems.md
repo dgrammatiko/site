@@ -1,18 +1,3 @@
-<<<<<<< HEAD:src/blog/solving-joomla-s-ux-problems.md
----json
-{
-  "title": "Solving Joomla’s UX problems",
-  "description": "",
-  "tags": ["blog", "Joomla"],
-  "date": "2018-10-26T11:38:59+00:00",
-  "introImage": "/_assets/img/ryan-johnston-124209-unsplash.jpg",
-  "introImageAlt": "A tunnel",
-  "fulltextImage": "/_assets/img/ryan-johnston-124209-unsplash.jpg",
-  "fulltextImageAlt": "A tunnel",
-  "custom_excerpt": "Joomla 4.0 is painstakingly crafted by a bunch of people. One of the main areas of improvement was to simplify the convoluted User Experience. So how things are evolving? What’s the plan there?",
-  "layout": "blog.njk"
-}
-=======
 ---
 title: Solving Joomla’s UX problems
 description:
@@ -24,7 +9,6 @@ fulltextImage: /static/img/ryan-johnston-124209-unsplash.jpg
 fulltextImageAlt: A tunnel
 custom_excerpt: Joomla 4.0 is painstakingly crafted by a bunch of people. One of the main areas of improvement was to simplify the convoluted User Experience. So how things are evolving? What’s the plan there?
 layout: blog.njk
->>>>>>> ab1d657801479675f6decb3576be72a6ff9ec3a0:src_site/blog/solving-joomla-s-ux-problems.md
 ---
 Joomla is one of three major open source CMSs, which tends to loose users due to the poor interface and the extremely difficult workflows. A very reasonable reason, since no-one (except hardcore mazochists) wants a system that is extremelly weird and needs some deep knowledge to even complete the very simple tasks. But Joomla used to be one of the pioneers in the Content Management a decade ago, so how that system was ruined so badly?
 

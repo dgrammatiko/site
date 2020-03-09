@@ -1,14 +1,10 @@
 const jsDom = require('@tbranyen/jsdom');
 const { JSDOM } = jsDom;
 const sizeOf = require('image-size');
-<<<<<<< HEAD:src/_11ty/imgTransforms.js
 const Fs = require('fs');
 const FsExtra = require('fs-extra');
 const path = require('path');
 const root = process.cwd();
-=======
-const { existsSync } = require('fs');
->>>>>>> ab1d657801479675f6decb3576be72a6ff9ec3a0:build-scripts/_11ty/imgTransforms.js
 
 module.exports = function (value, outputPath) {
     if (outputPath.endsWith('.html')) {

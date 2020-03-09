@@ -1,18 +1,3 @@
-<<<<<<< HEAD:src/blog/fight-the-bloatwares.md
----json
-{
-  "title": "Fight the bloatwares",
-  "description": "",
-  "tags": ["blog", "Joomla"],
-  "date": "2019-03-27T12:46:54+00:00",
-  "introImage": "/_assets/img/Screenshot_2019-03-26_at_220717.jpg",
-  "introImageAlt": "Screenshot of the application",
-  "fulltextImage": "/_assets/img/Screenshot_2019-03-26_at_220717.jpg",
-  "fulltextImageAlt": "Screenshot of the application",
-  "custom_excerpt": "According to urbandictionary.com, the term is described as software that comes piggy-backed on other software installations. Bloatware usually includes toolbars, desktop widgets or external unrelated applications. Most piggy-backing bloatware can perform a mundane task that is generally non-essential to everyday computer use.",
-  "layout": "blog.njk"
-}
-=======
 ---
 title: Fight the bloatwares
 description:
@@ -24,7 +9,6 @@ fulltextImage: /static/img/Screenshot_2019-03-26_at_220717.jpg
 fulltextImageAlt: Screenshot of the application
 custom_excerpt: According to urbandictionary.com, the term is described as software that comes piggy-backed on other software installations. Bloatware usually includes toolbars desktop widgets or external unrelated applications. Most piggy-backing bloatware can perform a mundane task that is generally non-essential to everyday computer use.
 layout: blog.njk
->>>>>>> ab1d657801479675f6decb3576be72a6ff9ec3a0:src_site/blog/fight-the-bloatwares.md
 ---
 Google Android devices and Microsoft Windows personal computers usually are heavily loaded with a plethora of software that the user never bought or asked for. This happens mostly due to some profit that the phone or pc manufacturers are gaining by allowing some software to be preinstalled on their machines. There are few downsides on this, namely the space that is occupied by those applications and (or) the time that the user needs to spend in order to remove them to get a clean system. Also, it's fairly safe to presume that this is a really bad practice and if you can avoid the trap of bloatware is something that you should always consider.
 
