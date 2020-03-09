@@ -3,14 +3,7 @@ layout: base.njk
 title: Home
 ---
 
-{% include "menu.njk" %}
-
-<main id="main">
-  {% include "listing-3.njk" %}
-</main>
-
-{% include "footer.njk" %}
-
-<script>
-  {{ './live/static/js/lazyloadImgs.js' | inlineCss | safe }}
-</script>
+ <main id="main">
+   {% include "listing-3.njk" %}
+   <script type="module" id="only-for-partials">document.title="{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
+ </main>

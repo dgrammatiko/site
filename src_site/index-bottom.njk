@@ -1,0 +1,12 @@
+---
+eleventyExcludeFromCollections: true
+permalink: '/index-bottom.html'
+---
+{% include "footer.njk" %}
+
+<script src="/static/js/toggler.esm.js" type=module></script>
+<script src="/static/js/toggler.es5.js" nomodule></script>
+<script>{{ 'static/js/lazyloadImgs.js' | inlineCss | safe }}</script>
+</body>
+
+</html>

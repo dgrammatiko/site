@@ -1,4 +1,5 @@
-<style>{{ './live/static/css/blogs.min.css' | inlineCss | safe }}</style>
+<main id="main">
+<style>{{ 'static/css/blogs.css' | inlineCss | safe }}</style>
 
 <section class="posts" itemscope="" itemtype="https://schema.org/Blog">
   {% for blog in collections.blogs | reverse %}
@@ -26,3 +27,6 @@
     </article>
   {% endfor %}
 </section>
+<script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
+<script>{{ 'static/js/lazyloadImgs.js' | inlineCss | safe }}</script>
+</main>

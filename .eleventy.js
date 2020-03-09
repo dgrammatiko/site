@@ -6,7 +6,9 @@ const responsiveImg = require('./build-scripts/_11ty/resp/resp');
 const htmlmin = require("html-minifier");
 const { siteSrc, siteDest } = require('./build-scripts/paths');
 const imageTransform = require('./build-scripts/_11ty/imgTransforms.js');
+// const postCss = require('./src/_11ty/postcss-process.js');
 
+const root = process.cwd();
 const imgOptions = {
   responsive: {
     'srcset': {
@@ -44,7 +46,6 @@ const imgOptions = {
 };
 
 module.exports = function (eleventyConfig) {
-  // eleventyConfig.setTemplateFormats("md,html,njk");
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.setDataDeepMerge(true);
@@ -89,19 +90,16 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("inlineCss", (path) => {
     let cssCached;
-    console.log(path)
-    if (fs.existsSync(path)) {
-      cssCached = fs.readFileSync(path, { encoding: 'utf8' });
+    if (fs.existsSync(`${process.cwd()}/${siteDest}/${path}`)) {
+      cssCached = fs.readFileSync(`${process.cwd()}/${siteDest}/${path}`, { encoding: 'utf8' });
     } else {
       console.log('Crap');
     }
     return cssCached;
   })
 
-  eleventyConfig.addTransform('parse', imageTransform);
-
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-    if (outputPath.endsWith(".html")) {
+    if (outputPath.endsWith(".html") && ![`${siteDest}/index-top.html`, `${siteDest}/index-bottom.html`].includes(outputPath)) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
@@ -109,7 +107,6 @@ module.exports = function (eleventyConfig) {
       });
       return minified;
     }
-
     return content;
   });
 
@@ -134,11 +131,23 @@ module.exports = function (eleventyConfig) {
     .use(responsiveImg, imgOptions)
   );
 
-  // eleventyConfig.setFrontMatterParsingOptions({
-  //   excerpt: true,
-  //   // Eleventy custom option
-  //   // The variable where the excerpt will be stored.
-  //   excerpt_alias: 'custom_excerpt'
+  eleventyConfig.addTransform('parse', imageTransform);
+
+  // eleventyConfig.setBrowserSyncConfig({
+  //   callbacks: {
+  //     ready: function (err, bs) {
+  //       const content_404 = fs.readFileSync(`${buildDest}/404.html`);
+
+  //       bs.addMiddleware("*", (req, res) => {
+  //         // Provides the 404 content without redirect.
+  //         res.write(content_404);
+  //         // Add 404 http status code in request header.
+  //         // res.writeHead(404, { "Content-Type": "text/html" });
+  //         res.writeHead(404);
+  //         res.end();
+  //       });
+  //     }
+  //   }
   // });
 
   return {
@@ -146,7 +155,7 @@ module.exports = function (eleventyConfig) {
     passthroughFileCopy: true,
     dir: {
       input: siteSrc,
-      output: siteDest,
+      output: `${process.cwd()}/${siteDest}`,
     },
   };
 };
