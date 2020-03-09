@@ -8,7 +8,7 @@
 const cacheName = `dGrammatiko-${VERSION}`;
 
 // Urls that needs to be cached on installation
-const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/static/fonts/dgrammatiko.woff2', '/static/manifest.json', '/static/js/toggler.esm.js'];
+const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/static/fonts/dgrammatiko.woff2', '/static/js/toggler.esm.js'];
 
 addEventListener('install', (event) => {
     skipWaiting();
@@ -70,7 +70,7 @@ async function streamArticle(event, url) {
 
     const parts = [
         caches.match('/index-top.html'),
-        myFetch(theUrl).catch(() => caches.match('/offline.content.html')),
+        fetch(theUrl).catch(() => caches.match('/offline.content.html')),
         caches.match('/index-bottom.html')
     ];
 
@@ -84,7 +84,7 @@ async function streamArticle(event, url) {
     }());
 
     const cache = await caches.open(cacheName);
-    const theStreamedPart = new myResponse(identity.readable, {
+    const theStreamedPart = new Response(identity.readable, {
         headers: { 'Content-Type': 'text/html; charset=UTF-8' }
     });
 

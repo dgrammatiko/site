@@ -12,7 +12,7 @@
     "build1": "node ./build-scripts/clean.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/glob/buildAllCss.js && node ./build-scripts/buildjs.js && node ./build-scripts/responsive-images.js",
     "production": "npm run build && npx eleventy",
     "dev": "npm run build && npx eleventy --serve",
-    "watch": "ELEVENTY_ENV=watch node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/responsive-images.js && node ./build-scripts/postcss-process.js && npx eleventy --watch --serve",
+    "watch": "ELEVENTY_ENV=watch npx rollup -c rollup.config.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/responsive-images.js && node ./build-scripts/postcss-process.js && npx eleventy --watch --serve",
     "build": "npx rollup -c rollup.config.js && node ./build-scripts/copy-assets.js && node ./build-scripts/copy-static.js && node ./build-scripts/responsive-images.js && node ./build-scripts/postcss-process.js && npx eleventy"
   },
   "author": "dgrammatiko",
