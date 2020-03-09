@@ -35,7 +35,7 @@
 
     {% include "footer.njk" %}
 
-    <script type=module>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/service-worker.js'); }); } </script>
+    <script type=module>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('service-worker.js'); }); } </script>
     <script src="/static/js/toggler.esm.js" type=module></script>
     <script src="/static/js/toggler.es5.js" nomodule></script>
   </body>
