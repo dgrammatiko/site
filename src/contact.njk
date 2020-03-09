@@ -3,9 +3,8 @@ layout: base.njk
 title: Contact
 ---
 
-<style>{{ '_assets/css/contact.css' | inlineCss | safe }}</style>
-
 <main id="main">
+<style>{{ '_assets/css/contact.css' | inlineCss | safe }}</style>
   <section class="center">
     <form id="form" method="POST">
       <div class="field">
@@ -31,6 +30,8 @@ title: Contact
         </h2>
     </div>
   </section>
+  <script type="module" id="only-for-partials">document.title = "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
+<script>{{ './gh-pages/_assets/js/validate.js' | inlineCss | safe }}</script>
+
 </main>
 
-<script>{{ './gh-pages/_assets/js/validate.js' | inlineCss | safe }}</script>

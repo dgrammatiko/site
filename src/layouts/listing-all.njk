@@ -26,5 +26,6 @@
     </article>
   {% endfor %}
 </section>
+<script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
 <script>{{ '_assets/js/lazyloadImgs.js' | inlineCss | safe }}</script>
 

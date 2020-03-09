@@ -100,7 +100,6 @@ header.major > :last-child {
 }
 
 #main > * {
-  border-top: solid 2px var(--menu-bg);
   margin: 0;
 }
 

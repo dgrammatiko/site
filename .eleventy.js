@@ -6,7 +6,7 @@ const responsiveImg = require('./src/_11ty/resp/resp');
 const htmlmin = require("html-minifier");
 const { buildSrc, buildDest } = require('./build-scripts/paths');
 const imageTransform = require('./src/_11ty/imgTransforms.js');
-const postCss = require('./src/_11ty/postcss-process.js');
+// const postCss = require('./src/_11ty/postcss-process.js');
 
 const root = process.cwd();
 const imgOptions = {
@@ -46,23 +46,15 @@ const imgOptions = {
 };
 
 module.exports = function (eleventyConfig) {
-  // eleventyConfig.setTemplateFormats("html,njk");
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.setDataDeepMerge(true);
-
-  // eleventyConfig.addLayoutAlias("post", "layouts/blog.njk");
 
   // Filter source file names using a glob
   eleventyConfig.addCollection("blogs", function (collection) {
     // Also accepts an array of globs!
     return collection.getFilteredByGlob(["src/blog/*.md"]);
   });
-
-  // eleventyConfig.addCollection('sitemap', collection => collection
-  //   .getAll()
-  //   .filter(item => !['/index-top.html', '/index-bottom.html', '/offline.html'].includes(item.url))
-  // );
 
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
@@ -78,7 +70,6 @@ module.exports = function (eleventyConfig) {
     if (n < 0) {
       return array.slice(n);
     }
-
     return array.slice(0, n);
   });
 
@@ -101,16 +92,14 @@ module.exports = function (eleventyConfig) {
   })
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-    if (outputPath.endsWith(".html") && ![`${root}/gh-pages/index-top.html`, `${root}/gh-pages/index-bottom.html`].includes(outputPath)) {
+    if (outputPath.endsWith(".html") && ![`${buildDest}/index-top.html`, `${buildDest}/index-bottom.html`].includes(outputPath)) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
         collapseWhitespace: true
       });
-
       return minified;
     }
-
     return content;
   });
 
@@ -137,15 +126,22 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addTransform('parse', imageTransform);
 
-  // eleventyConfig.addPassthroughCopy(`${process.cwd()}/${buildSrc}/_assets/js`, `${process.cwd()}/${buildDest}/_assets/js`)
-  // eleventyConfig.setFrontMatterParsingOptions({
-  //   excerpt: true,
-  //   // Eleventy custom option
-  //   // The variable where the excerpt will be stored.
-  //   excerpt_alias: 'custom_excerpt'
-  // });
+  // eleventyConfig.setBrowserSyncConfig({
+  //   callbacks: {
+  //     ready: function (err, bs) {
+  //       const content_404 = fs.readFileSync(`${buildDest}/404.html`);
 
-  // postCss(`${process.cwd()}/${buildSrc}/_assets/css`, `${process.cwd()}/${buildDest}/_assets/css`, eleventyConfig);
+  //       bs.addMiddleware("*", (req, res) => {
+  //         // Provides the 404 content without redirect.
+  //         res.write(content_404);
+  //         // Add 404 http status code in request header.
+  //         // res.writeHead(404, { "Content-Type": "text/html" });
+  //         res.writeHead(404);
+  //         res.end();
+  //       });
+  //     }
+  //   }
+  // });
 
   return {
     pathPrefix: "/",

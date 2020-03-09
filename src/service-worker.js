@@ -1,49 +1,113 @@
-import { precache } from 'workbox-precaching';
-import { cacheNames } from 'workbox-core';
-import { getCacheKeyForURL } from 'workbox-precaching';
-import { registerRoute } from 'workbox-routing';
-import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
-import { strategy as composeStrategies } from 'workbox-streams';
-import { CacheableResponsePlugin } from 'workbox-cacheable-response';
+// @TODO add WritableStream support for FF and Safari
+// import "@stardazed/streams-polyfill";
+// import { createAdaptedFetch, createAdaptedResponse } from "@stardazed/streams-fetch-adapter/dist/";
+// import 'web-streams-polyfill/dist/polyfill.es2018';
+// import { ReadableStream, WritableStream } from "@stardazed/streams/dist/sd-streams.esm";
 
-precache(preCached);
 
-const shellStrategy = new CacheFirst({ cacheName: cacheNames.precache });
-const contentStrategy = new CacheFirst({
-  // cacheName: 'content',
-  cacheName: cacheNames.content,
-  plugins: [
-    new CacheableResponsePlugin({
-      statuses: [0, 200],
-    }),
-  ],
+const cacheName = `dGrammatiko-${VERSION}`;
+
+// Urls that needs to be cached on installation
+const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/_assets/tmpl_starchaser/fonts/dgrammatiko.woff2', '/_assets/tmpl_starchaser/manifest.json', '/_assets/js/toggler.esm.js'];
+
+addEventListener('install', (event) => {
+  skipWaiting();
+  event.waitUntil(
+    caches.open(cacheName)
+      .then((cache) => {
+        return cache.addAll(preCached);
+      })
+  );
 });
 
-const navigationHandler = ({ url }) => {
-  let nUrl;
-  if (!/\/|\/index.html$/.test(url.href)) {
-    return fetch(url);
-  }
-  if (/\/$/.test(url.href)) {
-    nUrl = `${url.href}index.content.html`
-  }
-  if (/\/index.html$/.test(url.href)) {
-    nUrl = `${url.href.replace(/\/index.html$/, '/index.content.html')}index.content.html`
+addEventListener('activate', (event) => {
+  event.waitUntil(caches.keys().then((cacheNames) => {
+    return Promise.all(
+      cacheNames.map((cacheName_) => {
+        if (cacheName !== cacheName_) {
+          return caches.delete(cacheName_);
+        }
+      })
+    );
+  })
+  );
+});
+
+class IdentityStream {
+  constructor() {
+    let readableController;
+    let writableController;
+
+    this.readable = new ReadableStream({
+      start(controller) {
+        readableController = controller;
+      },
+      cancel(reason) {
+        writableController.error(reason);
+      }
+    });
+
+    this.writable = new WritableStream({
+      start(controller) {
+        writableController = controller;
+      },
+      write(chunk) {
+        readableController.enqueue(chunk);
+      },
+      close() {
+        readableController.close();
+      },
+      abort(reason) {
+        readableController.error(reason);
+      }
+    });
   }
 }
 
-composeStrategies([
-  () => shellStrategy.handle({
-    request: new Request(getCacheKeyForURL('/index-top.html')),
-  }),
-  ({ nUrl }) => {
-    contentStrategy.handle({
-      request: new Request(nUrl),
-    })
-  },
-  () => shellStrategy.handle({
-    request: new Request(getCacheKeyForURL('/index-bottom.html')),
-  }),
-]);
+async function streamArticle(event, url) {
+  const theUrl = new URL(url);
+  theUrl.pathname += 'index.content.html';
 
-registerRoute(({ request }) => request.mode === 'navigate', navigationHandler);
+  const parts = [
+    caches.match('/index-top.html'),
+    myFetch(theUrl).catch(() => caches.match('/offline.content.html')),
+    caches.match('/index-bottom.html')
+  ];
+
+  const identity = new IdentityStream();
+  event.waitUntil(async function () {
+    for (const responsePromise of parts) {
+      const response = await responsePromise;
+      await response.body.pipeTo(identity.writable, { preventClose: true });
+    }
+    identity.writable.getWriter().close();
+  }());
+
+  const cache = await caches.open(cacheName);
+  const theStreamedPart = new myResponse(identity.readable, {
+    headers: { 'Content-Type': 'text/html; charset=UTF-8' }
+  });
+
+  await cache.put(event.request, theStreamedPart.clone());
+  return theStreamedPart;
+}
+
+addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+  if (event.request.method !== 'GET') return;
+
+  event.respondWith(async function () {
+    // This works only on chromium based UA
+    if (typeof WritableStream === 'function') {
+      if (url.origin === location.origin && routes.includes(url.pathname)) {
+        return streamArticle(event, url);
+      }
+    }
+
+    // Full page fetch fallback
+    const cachedReponse = await caches.match(event.request);
+    if (cachedReponse) return cachedReponse;
+
+    return await fetch(event.request).catch(() => caches.match('/offline.html'));
+  }());
+});
