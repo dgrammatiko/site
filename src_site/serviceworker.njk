@@ -2,13 +2,5 @@
 eleventyExcludeFromCollections: true
 permalink: '/service-worker.js'
 ---
-
-const VERSION = {{ page.date.getTime() }};
-
-const preCached = [
-{%- for post in collections.all -%}
-    '{{post.url}}',
-{%- endfor -%}
-  ];
-
-{% include "service-worker.js" %}
+const VERSION={{ page.date.getTime() }},routes=['admin','.netlify','https://identity.netlify.com/v1/netlify-identity-widget.js','https://unpkg.com/netlify-cms@^2.9.3/dist/netlify-cms.js',{%- for entry in collections.all %}'{{ entry.url | url }}',{%- endfor %}];
+{% include "serviceworker.js" %}

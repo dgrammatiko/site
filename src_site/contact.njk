@@ -2,14 +2,10 @@
 layout: base.njk
 title: Contact
 ---
-
-{% include "menu.njk" %}
-
-<style>
-  {{ './live/static/css/contact.min.css' | inlineCss | safe }}
-</style>
-
 <main id="main">
+<style>
+  {{ 'static/css/contact.css' | inlineCss | safe }}
+</style>
   <section class="center">
     <form id="form" method="POST">
       <div class="field">
@@ -35,10 +31,12 @@ title: Contact
         </h2>
     </div>
   </section>
+
+  <script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
+<script>
+  {{ 'static/static/js/validate.js' | inlineCss | safe }}
+</script>
 </main>
 
-{% include "footer.njk" %}
 
-<script>
-  {{ './live/static/static/js/validate.js' | inlineCss | safe }}
-</script>
+

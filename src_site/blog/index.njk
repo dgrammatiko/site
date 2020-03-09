@@ -3,14 +3,6 @@ layout: base.njk
 title: Blog
 ---
 
-{% include "menu.njk" %}
-
 <main id="main">
   {% include "listing-all.njk" %}
 </main>
-
-{% include "footer.njk" %}
-
-<script>
-  {{ './live/static/js/lazyloadImgs.js' | inlineCss | safe }}
-</script>

@@ -1,13 +1,10 @@
 ---
 layout: base.njk
 ---
-{% include "menu.njk" %}
-
-<style>
-  {{ './live/static/css/blog.min.css' | inlineCss | safe }}
-</style>
-
 <main id="main">
+<style>
+  {{ 'static/css/blog.css' | inlineCss | safe }}
+</style>
   <section class="post">
     <header class="major">
       <span class="date">
@@ -38,10 +35,7 @@ layout: base.njk
   </section>
 
   <!--<a href="/blog">Back to all posts</a> -->
+  <script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
+  <script>{{ 'static/js/lazyloadImgs.js' | inlineCss | safe }}</script>
+
 </main>
-
-{% include "footer.njk" %}
-
-<script>
-  {{ './live/static/js/lazyloadImgs.js' | inlineCss | safe }}
-</script>

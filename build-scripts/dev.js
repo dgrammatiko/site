@@ -12,7 +12,7 @@ const { removeImages } = require('./remove/responsive-images.js');
 
 // Initialize watcher.
 const watcher = watch(`${staticSrc}/**/*`, {
-  ignored: /(^|[\/\\])\..|\/static\/images\//, // ignore dotfiles
+  ignored: /(^|[\/\\])\..|\/images\//, // ignore dotfiles
   persistent: true
 });
 

@@ -2,14 +2,10 @@
 layout: base.njk
 title: About
 ---
-
-{% include "menu.njk" %}
-
-<style>
-  {{ './live/static/css/about.min.css' | inlineCss | safe }}
-</style>
-
 <main id="main">
+<style>
+  {{ 'static/css/about.css' | inlineCss | safe }}
+</style>
     <section class="center">
       <img class="mypic" src="/static/images/mstile-144x144.png" alt=""/>
       <h4>Hello, I'm Dimitris</h4>
@@ -21,4 +17,3 @@ title: About
     </section>
 </main>
 
-{% include "footer.njk" %}
