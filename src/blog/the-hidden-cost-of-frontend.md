@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/blog/the-hidden-cost-of-frontend.md
 ---json
 {
   "title": "The hidden cost of Frontend",
@@ -11,6 +12,19 @@
   "custom_excerpt": "Joomla 3.9 introduced a new feature for content privacy which is a great addition to the tools provided out of the box but, after 4 patches and countless mentions for it, still has a flaw. A major one...",
   "layout": "blog.njk"
 }
+=======
+---
+title: The hidden cost of Frontend
+description: 
+tags: blog, Joomla
+date: 2019-03-16T19:02:40+00:00
+introImage: /static/img/riccardo-annandale-140624-unsplash.jpg
+introImageAlt: 
+fulltextImage: /static/img/riccardo-annandale-140624-unsplash.jpg
+fulltextImageAlt: 
+custom_excerpt: Joomla 3.9 introduced a new feature for content privacy which is a great addition to the tools provided out of the box but, after 4 patches and countless mentions for it, still has a flaw. A major one...
+layout: blog.njk
+>>>>>>> ab1d657801479675f6decb3576be72a6ff9ec3a0:src_site/blog/the-hidden-cost-of-frontend.md
 ---
 The idea for this post came from a tweet of a friend expressing gratitude towards all the people that worked to deliver this feature to the community. I stupidly responded with "Especially for those Mootools Modals..." and this response caused a chained reaction. So I guess I had to express myself a little bit more and since Twitter is kinda forbidden for such things this post was more appropriate.
 

@@ -1,10 +1,14 @@
 const jsDom = require('@tbranyen/jsdom');
 const { JSDOM } = jsDom;
 const sizeOf = require('image-size');
+<<<<<<< HEAD:src/_11ty/imgTransforms.js
 const Fs = require('fs');
 const FsExtra = require('fs-extra');
 const path = require('path');
 const root = process.cwd();
+=======
+const { existsSync } = require('fs');
+>>>>>>> ab1d657801479675f6decb3576be72a6ff9ec3a0:build-scripts/_11ty/imgTransforms.js
 
 module.exports = function (value, outputPath) {
     if (outputPath.endsWith('.html')) {
@@ -20,7 +24,7 @@ module.exports = function (value, outputPath) {
             articleImages.forEach(image => {
                 if (!image.getAttribute('data-src')) return;
                 const path = `${process.cwd()}/src${image.getAttribute('data-src').replace('@480', '').replace('@320', '')}`;
-                if (Fs.existsSync(path)) {
+                if (existsSync(path)) {
                     const dimensions = sizeOf(path);
                     const ratio = (dimensions.height / dimensions.width * 100).toFixed(3);
                     const figure = document.createElement('figure');

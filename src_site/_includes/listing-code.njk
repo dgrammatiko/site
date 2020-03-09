@@ -1,0 +1,27 @@
+<style>{{ './live/static/css/codes.min.css' | inlineCss | safe }}</style>
+
+<section class="grid-cards">
+  {% for code in collections.code | reverse %}
+    <article  class="grid-cards-item">
+      <header class="card-header">
+          {% if code.data.fulltextImage %}
+            <img data-src="{{ code.data.fulltextImage | imgSuffix('480') }}"
+              class="lazyload" loading="lazy"
+              alt="{{ code.data.introImageAlt }}" />
+              <noscript>
+                <img src="{{ code.data.fulltextImage | imgSuffix('480') }}" alt="{{ code.data.introImageAlt }}"/>
+              </noscript>
+          {% endif %}
+          <a href="{{ code.url | url }}">
+            <h2>{% if code.data.title %}{{ code.data.title }}{% endif %}</h2>
+          </a>
+      </header>
+      <div class="card-body">
+        <p>{{ blog.data.custom_excerpt }}</p>
+      </div>
+      <footer class="card-footer">
+          <a class="btn" href="{{ blog.url }}">Full Story</a>
+      </footer>
+    </article>
+  {% endfor %}
+</section>
