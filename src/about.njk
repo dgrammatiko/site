@@ -1,0 +1,19 @@
+---
+layout: base.njk
+title: About
+---
+
+<main id="main">
+  <style>{{ '_assets/css/about.css' | inlineCss | safe }}</style>
+  <section class="center">
+    <img class="mypic" src="/_assets/tmpl_starchaser/images/mstile-144x144.png" alt=""/>
+    <h4>Hello, I'm Dimitris</h4>
+    
+    <p class="center">I like to create/build/assemble things</p>
+    <p class="center">[exemption assembling anything from IKEA 😛].</p>
+    <p class="center">I do care about UX/UI, performance</p>
+    <p class="center">and anything web related.</p>
+  </section>
+  <script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
+</main>
+

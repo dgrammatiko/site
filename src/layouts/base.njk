@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="description" content="Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP">
+    <meta name="apple-mobile-web-app-title" content="dGrammatiko">
+    <meta name="application-name" content="dGrammatiko">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:creator" content="@dgrammatiko">
+    <meta property="og:url" content="https://dgrammatiko.online{{ page.url }}">
+    <meta property="og:title" content="Blog">
+    <meta property="og:image" content="/_assets/tmpl_starchaser/images/android-chrome-512x512.png">
+    <meta property="og:description" content="Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP">
+    <link rel="manifest" href="/_assets/tmpl_starchaser/manifest.json">
+    <meta name="theme-color" content="#2b3e50">
+    <link rel="apple-touch-icon" sizes="180x180" href="/_assets/tmpl_starchaser/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/_assets/tmpl_starchaser/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/_assets/tmpl_starchaser/images/favicon-16x16.png">
+    <link rel="mask-icon" href="/_assets/tmpl_starchaser/images/safari-pinned-tab.svg" color="#000000">
+    <style>
+        {{ '_assets/css/base.css' | inlineCss | safe }}
+        {{ '_assets/css/nav.css' | inlineCss | safe }}
+        {{ '_assets/css/toggler-alt.css' | inlineCss | safe }}
+        {{ '_assets/css/footer.css' | inlineCss | safe }}
+    </style>
+    <script>this.customElements||document.write('<script src="//unpkg.com/document-register-element"><\x2fscript>');</script>
+  </head>
+
+  <body class="grid-it">
+
+    {% include "header.njk" %}
+
+
+    {{ layoutContent | safe }}
+
+
+    {% include "footer.njk" %}
+
+
+    <script type="module">if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/service-worker.js'); }); } </script>
+    <script src="/_assets/js/toggler.esm.js" type="module"></script>
+    <script src="/_assets/js/toggler.es5.js" nomodule></script>
+  </body>
+
+</html>

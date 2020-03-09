@@ -9,8 +9,8 @@ const paths = require('../paths');
 
 
 const browserSettings = [
-  require('postcss-easy-import')({ extensions: '.pcss' }),
-  require('postcss-import')({ extensions: '.pcss' }),
+  require('postcss-easy-import')({ extensions: '.css' }),
+  require('postcss-import')({ extensions: '.css' }),
   require('postcss-mixins'),
   require('postcss-custom-selectors'),
   require('postcss-nesting'),
@@ -31,5 +31,5 @@ const browserSettings = [
 module.exports.addCssFile = async (file) => {
   await postcss(browserSettings)
     .process(fs.readFileSync(`${file}`, 'utf8'), { from: undefined, removeAll: true })
-    .then((result) => { fs.writeFileSync(`${file.replace(`${paths.buildSrc}`, `${paths.buildDest}`).replace('/pcss/', '/css/').replace('.pcss', '')}.min.css`, result.css); });
+    .then((result) => { fs.writeFileSync(`${file.replace(`${paths.buildSrc}`, `${paths.buildDest}`).replace('/pcss/', '/css/').replace('.pcss', '')}.css`, result.css); });
 }

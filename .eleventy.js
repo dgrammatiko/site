@@ -2,11 +2,13 @@ const { DateTime } = require("luxon");
 const fs = require("fs");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const responsiveImg = require('./src/11ty/_11ty/resp/resp');
+const responsiveImg = require('./src/_11ty/resp/resp');
 const htmlmin = require("html-minifier");
 const { buildSrc, buildDest } = require('./build-scripts/paths');
-const imageTransform = require('./src/11ty/_11ty/imgTransforms.js');
+const imageTransform = require('./src/_11ty/imgTransforms.js');
+// const postCss = require('./src/_11ty/postcss-process.js');
 
+const root = process.cwd();
 const imgOptions = {
   responsive: {
     'srcset': {
@@ -44,17 +46,14 @@ const imgOptions = {
 };
 
 module.exports = function (eleventyConfig) {
-  // eleventyConfig.setTemplateFormats("html,njk");
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.setDataDeepMerge(true);
 
-  // eleventyConfig.addLayoutAlias("post", "layouts/blog.njk");
-
   // Filter source file names using a glob
   eleventyConfig.addCollection("blogs", function (collection) {
     // Also accepts an array of globs!
-    return collection.getFilteredByGlob(["src/11ty/blog/*.md"]);
+    return collection.getFilteredByGlob(["src/blog/*.md"]);
   });
 
   eleventyConfig.addFilter("readableDate", dateObj => {
@@ -71,7 +70,6 @@ module.exports = function (eleventyConfig) {
     if (n < 0) {
       return array.slice(n);
     }
-
     return array.slice(0, n);
   });
 
@@ -85,19 +83,16 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("inlineCss", (path) => {
     let cssCached;
-    console.log(path)
-    if (fs.existsSync(path)) {
-      cssCached = fs.readFileSync(path, { encoding: 'utf8' });
+    if (fs.existsSync(`${process.cwd()}/${buildDest}/${path}`)) {
+      cssCached = fs.readFileSync(`${process.cwd()}/${buildDest}/${path}`, { encoding: 'utf8' });
     } else {
       console.log('Crap');
     }
     return cssCached;
   })
 
-  eleventyConfig.addTransform('parse', imageTransform);
-
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-    if (outputPath.endsWith(".html")) {
+    if (outputPath.endsWith(".html") && ![`${buildDest}/index-top.html`, `${buildDest}/index-bottom.html`].includes(outputPath)) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
@@ -105,11 +100,10 @@ module.exports = function (eleventyConfig) {
       });
       return minified;
     }
-
     return content;
   });
 
-  eleventyConfig.addCollection("tagList", require("./src/11ty/_11ty/getTagList"));
+  eleventyConfig.addCollection("tagList", require("./src/_11ty/getTagList"));
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
@@ -130,21 +124,34 @@ module.exports = function (eleventyConfig) {
     .use(responsiveImg, imgOptions)
   );
 
-  // eleventyConfig.setFrontMatterParsingOptions({
-  //   excerpt: true,
-  //   // Eleventy custom option
-  //   // The variable where the excerpt will be stored.
-  //   excerpt_alias: 'custom_excerpt'
+  eleventyConfig.addTransform('parse', imageTransform);
+
+  // eleventyConfig.setBrowserSyncConfig({
+  //   callbacks: {
+  //     ready: function (err, bs) {
+  //       const content_404 = fs.readFileSync(`${buildDest}/404.html`);
+
+  //       bs.addMiddleware("*", (req, res) => {
+  //         // Provides the 404 content without redirect.
+  //         res.write(content_404);
+  //         // Add 404 http status code in request header.
+  //         // res.writeHead(404, { "Content-Type": "text/html" });
+  //         res.writeHead(404);
+  //         res.end();
+  //       });
+  //     }
+  //   }
   // });
 
   return {
     pathPrefix: "/",
     passthroughFileCopy: true,
     dir: {
-      input: `${buildSrc}/11ty`,
-      output: buildDest,
-      data: "_data",
-      includes: "_includes"
+      input: buildSrc,
+      output: `${process.cwd()}/${buildDest}`,
+      data: '_data',
+      includes: 'layouts',
+      layouts: 'layouts'
     },
   };
 };

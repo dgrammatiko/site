@@ -63,7 +63,7 @@ const execRollup = async function (file, setting) {
 
 settings.forEach((setting) => { execRollup('./node_modules/ce-theme-switcher/src/index.js', setting); });
 
-FsExtra.copyFileSync('./node_modules/ce-theme-switcher/src/index.css', `${paths.buildSrc}/_assets/pcss/toggler.pcss`)
+// FsExtra.copyFileSync('./node_modules/ce-theme-switcher/src/index.css', `${paths.buildSrc}/_assets/pcss/toggler.pcss`)
 
 // FsExtra.mkdirp(`${paths.buildDest}/_assets/js`);
 // FsExtra.copyFileSync(`${paths.buildSrc}/_assets/js/toggler.esm.js`, `${paths.buildDest}/_assets/js/toggler.esm.js`)

@@ -1,0 +1,16 @@
+{
+  "title": "dGrammatiko",
+  "url": "https://dgrammatiko.online/",
+  "description": "Dimitris Grammatikogiannis's personal site",
+  "feed": {
+    "subtitle": "Dimitris Grammatikogiannis's personal site",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "url": "https://dgrammatiko.online/feed/feed.xml",
+    "id": "https://dgrammatiko.online/"
+  },
+  "author": {
+    "name": "Dimitris Grammatikogiannis",
+    "email": "d.grammatiko@gmail.com"
+  }
+}
