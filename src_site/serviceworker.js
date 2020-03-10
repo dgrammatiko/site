@@ -66,7 +66,7 @@ class IdentityStream {
 
 async function streamArticle(event, url) {
     const theUrl = new URL(url);
-    theUrl.pathname += 'index.content.html';
+    theUrl.pathname = /\/index\.html$/.test(theUrl.pathname) ? theUrl.pathname.replace('index.html', 'index.content.html') : `${theUrl.pathname}index.content.html`;
 
     const parts = [
         caches.match('/index-top.html'),
