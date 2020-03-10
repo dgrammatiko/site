@@ -99,7 +99,7 @@ module.exports = function (eleventyConfig) {
   })
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-    if (outputPath.endsWith(".html") && ![`${siteDest}/index-top.html`, `${siteDest}/index-bottom.html`].includes(outputPath)) {
+    if (outputPath.endsWith(".html") && ![`${root}/${siteDest}/index-top.html`, `${root}/${siteDest}/index-bottom.html`].includes(outputPath)) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
