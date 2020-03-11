@@ -8,7 +8,7 @@
 const cacheName = `dGrammatiko-${VERSION}`;
 
 // Urls that needs to be cached on installation
-const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/static/fonts/dgrammatiko.woff2', '/static/js/toggler.esm.js'];
+const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/manifest.json', '/static/fonts/dgrammatiko.woff2', '/static/js/toggler.esm.js'];
 
 addEventListener('install', (event) => {
     skipWaiting();
