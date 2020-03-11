@@ -8,7 +8,7 @@
 const cacheName = `dGrammatiko-${VERSION}`;
 
 // Urls that needs to be cached on installation
-const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/static/fonts/dgrammatiko.woff2', '/static/js/toggler.esm.js'];
+const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/manifest.json', '/static/fonts/dgrammatiko.woff2', '/static/js/toggler.esm.js'];
 
 addEventListener('install', (event) => {
     skipWaiting();
@@ -66,7 +66,8 @@ class IdentityStream {
 
 async function streamArticle(event, url) {
     const theUrl = new URL(url);
-    theUrl.pathname += 'index.content.html';
+    theUrl.pathname = /\/index\.html$/.test(theUrl.pathname) ? theUrl.pathname.replace(/index.html$/, 'index.content.html') :
+    /\/$/.test(theUrl.pathname) ? `${theUrl.pathname}index.content.html` : `${theUrl.pathname}/index.content.html`;
 
     const parts = [
         caches.match('/index-top.html'),
@@ -75,6 +76,7 @@ async function streamArticle(event, url) {
     ];
 
     const identity = new IdentityStream();
+
     event.waitUntil(async function () {
         for (const responsePromise of parts) {
             const response = await responsePromise;
