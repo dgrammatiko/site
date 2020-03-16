@@ -11,6 +11,6 @@ module.exports = {
     plugins: [
         resolve(),
         replace({ 'process.env.NODE_ENV': '"production"' }),
-        terser(),
+        // terser(),
     ]
 };
