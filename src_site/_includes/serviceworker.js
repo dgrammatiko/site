@@ -100,7 +100,7 @@ addEventListener('fetch', event => {
 
     event.respondWith(async function () {
         // This works only on chromium based UA
-        if (url.origin === location.origin && routes.includes(url.pathname) && typeof WritableStream === 'function') {
+        if (url.origin === location.origin && routes.includes(url.pathname) && typeof WritableStream === 'function' && event.request.mode === 'navigate') {
             return streamArticle(event, url);
         }
 
