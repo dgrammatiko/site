@@ -12,25 +12,22 @@ const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.ht
 
 addEventListener('install', (event) => {
     skipWaiting();
-    event.waitUntil(
-        caches.open(cacheName)
-            .then((cache) => {
-                return cache.addAll(preCached);
-            })
-    );
+
+    event.waitUntil(async function () {
+      const cache = await caches.open(cacheName);
+      await cache.addAll(preCached);
+    }());
 });
 
 addEventListener('activate', (event) => {
-    event.waitUntil(caches.keys().then((cacheNames) => {
-        return Promise.all(
-            cacheNames.map((cacheName_) => {
-                if (cacheName !== cacheName_) {
-                    return caches.delete(cacheName_);
-                }
-            })
+    event.waitUntil(async function () {
+        const keys = await caches.keys();
+        await Promise.all(
+          keys.map(key => {
+            if (key !== cacheName) return caches.delete(key);
+          })
         );
-    })
-    );
+      }());
 });
 
 class IdentityStream {
@@ -100,7 +97,7 @@ addEventListener('fetch', event => {
 
     event.respondWith(async function () {
         // This works only on chromium based UA
-        if (url.origin === location.origin && routes.includes(url.pathname) && typeof WritableStream === 'function' && event.request.mode === 'navigate') {
+        if (url.origin === location.origin && event.request.mode === 'navigate' && routes.includes(url.pathname) && typeof WritableStream === 'function') {
             return streamArticle(event, url);
         }
 
