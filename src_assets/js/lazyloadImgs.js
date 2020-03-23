@@ -8,8 +8,11 @@ var swapAttr = function (img) {
   var src = img.getAttribute('data-src');
   var srcset = img.getAttribute('data-srcset');
 
-  img.src = window.supportsWebp ? src.replace(new RegExp('jpeg', 'g'), 'webp').replace(new RegExp('jpg', 'g'), 'webp').replace(new RegExp('png', 'g'), 'webp') : src;
-  if (srcset) img.setAttribute('srcset', window.supportsWebp ? srcset.replace(new RegExp('jpeg', 'g'), 'webp').replace(new RegExp('jpg', 'g'), 'webp').replace(new RegExp('png', 'g'), 'webp') : srcset);
+  if (srcset) {
+    img.setAttribute('srcset', window.supportsWebp ? srcset.replace(new RegExp('jpeg', 'g'), 'webp').replace(new RegExp('jpg', 'g'), 'webp').replace(new RegExp('png', 'g'), 'webp') : srcset);
+  } else {
+    img.src = window.supportsWebp ? src.replace(new RegExp('jpeg', 'g'), 'webp').replace(new RegExp('jpg', 'g'), 'webp').replace(new RegExp('png', 'g'), 'webp') : src;
+  }
 };
 
 var onPolyfillReady = function () {
