@@ -1,11 +1,5 @@
 /*
-  Content-Security-Policy = "default-src 'self'; script-src 'nonce-8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7'"
-
-  # Block site from being framed with X-Frame-Options
-  X-Frame-Options = "DENY"
-
-  # Prevent the browser from inferring the MIME type of files
-  X-Content-Type-Options = "nosniff"
-
-  # Only send the Referer header when loading or linking to other same-origin resources
-  Referrer-Policy = "same-origin"
+  Content-Security-Policy: default-src 'self'; script-src 'nonce-8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7'
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-origin
