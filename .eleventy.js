@@ -150,6 +150,8 @@ module.exports = function (eleventyConfig) {
   //   }
   // });
 
+  eleventyConfig.addPassthroughCopy('src_site/_headers', 'live/_headers')
+
   return {
     pathPrefix: "/",
     passthroughFileCopy: true,
