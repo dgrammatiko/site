@@ -56,7 +56,7 @@
     "rollup": "2.1.0",
     "rollup-plugin-babel": "4.4.0",
     "rollup-plugin-terser": "5.3.0",
-    "sharp": "0.25.1",
+    "sharp": "0.25.2",
     "terser": "4.6.7",
     "workbox-cacheable-response": "5.1.1"
   },
