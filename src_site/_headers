@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'unsafe-inline'; connect-src 'self'; worker-src 'self'; script-src 'nonce-8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7'
+  Content-Security-Policy: default-src 'unsafe-inline'; connect-src 'self'; img-src 'self'; font-src 'self'; worker-src 'self'; script-src 'nonce-8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7'
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: same-origin
