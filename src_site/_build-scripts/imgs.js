@@ -80,13 +80,17 @@ async function prepareImage(file) {
       const newFile = `${process.cwd()}/${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`).replace('.png', `@${size}.png`).replace('.jpg', `@${size}.jpg`)}`
       const newFile2 = `${process.cwd()}/${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`).replace('.png', `@${size}.webp`).replace('.jpg', `@${size}.webp`)}`
 
+      function log(err) {
+        if (err) throw err;
+        console.log('The file has been saved!');
+      }
       console.log(`${process.cwd()}/${file.replace('src_assets/static', 'src_assets')}`)
       await sharp(`${process.cwd()}/${file.replace('src_assets/static', 'src_assets')}`)
       .resize(size)
       .toBuffer()
       .then(async data => {
-        await writeFile(newFile, data);
-        await writeFile(newFile2, data);
+        await writeFile(newFile, data, log);
+        await writeFile(newFile2, data, log);
       })
       .catch(err => {
         console.log(err);
