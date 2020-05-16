@@ -1,110 +1,145 @@
-// @TODO add WritableStream support for FF and Safari
-// import "@stardazed/streams-polyfill";
-// import { createAdaptedFetch, createAdaptedResponse } from "@stardazed/streams-fetch-adapter/dist/";
-// import 'web-streams-polyfill/dist/polyfill.es2018';
-// import { ReadableStream, WritableStream } from "@stardazed/streams/dist/sd-streams.esm";
-
-
-const cacheName = `dGrammatiko-${VERSION}`;
+// Serviceworkers file. This code gets installed in users browsers and runs code before the request is made.
+const staticCacheName = `dGrammatiko-${VERSION}`;
+const expectedCaches = [
+  staticCacheName
+];
 
 // Urls that needs to be cached on installation
-const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/manifest.json', '/static/fonts/dgrammatiko.woff2', '/static/js/toggler.esm.js'];
+const preCached =
+self.addEventListener('install', event => {
+  self.skipWaiting();
 
-addEventListener('install', (event) => {
-    skipWaiting();
-
-    event.waitUntil(async function () {
-      const cache = await caches.open(cacheName);
-      await cache.addAll(preCached);
-    }());
+  // Populate initial serviceworker cache.
+  event.waitUntil(
+    caches.open(staticCacheName)
+      .then(cache => cache.addAll([
+        '/index-top.html',
+        '/index-bottom.html',
+        '/offline.content.html',
+        '/offline.html',
+        '/manifest.json',
+        '/static/fonts/dgrammatiko.woff2',
+        '/static/js/ce-theme-switcher.esm.js']))
+  );
 });
 
-addEventListener('activate', (event) => {
-    event.waitUntil(async function () {
-        const keys = await caches.keys();
-        await Promise.all(
-          keys.map(key => {
-            if (key !== cacheName) return caches.delete(key);
-          })
-        );
-      }());
+// remove caches that aren't in expectedCaches
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.map(key => {
+        if (!expectedCaches.includes(key)) return caches.delete(key);
+      })
+    ))
+  );
 });
 
-class IdentityStream {
-    constructor() {
-        let readableController;
-        let writableController;
-
-        this.readable = new ReadableStream({
-            start(controller) {
-                readableController = controller;
-            },
-            cancel(reason) {
-                writableController.error(reason);
+// Create a composed streamed webpage with shell and core content
+function createPageStream(request) {
+  const stream = new ReadableStream({
+    start(controller) {
+      Promise.all([caches.match('/index-top.html'), caches.match('/index-bottom.html')])
+        .then((cachedShellMatches) => {
+          const cachedShellTop = cachedShellMatches[0];
+          const cachedShellBottom = cachedShellMatches[1];
+          if (!cachedShellTop || !cachedShellBottom) { // return if shell isn't cached.
+            return
+          }
+          // the body url is the request url plus 'include'
+          const url = new URL(request.url);
+          url.pathname = /\/index\.html$/.test(url.pathname) ? url.pathname.replace(/index.html$/, 'index.content.html') :
+          /\/$/.test(url.pathname) ? `${url.pathname}index.content.html` : `${url.pathname}/index.content.html`;
+          // const url = new URL(request.url); //.replace('index.html', 'index.content.html')
+          const startFetch = Promise.resolve(cachedShellTop);
+          const endFetch = Promise.resolve(cachedShellBottom);
+          const middleFetch = fetch(url).then(response => {
+            if (!response.ok && response.status === 404) {
+              return caches.match('/404.html');
             }
-        });
+            // if (!response.ok && response.status != 404) {
+            //   return caches.match('/500.html');
+            // }
+            return response;
+          }).catch(err => caches.match('/offline.html'));
 
-        this.writable = new WritableStream({
-            start(controller) {
-                writableController = controller;
-            },
-            write(chunk) {
-                readableController.enqueue(chunk);
-            },
-            close() {
-                readableController.close();
-            },
-            abort(reason) {
-                readableController.error(reason);
-            }
-        });
+          function pushStream(stream) {
+            const reader = stream.getReader();
+            return reader.read().then(function process(result) {
+              if (result.done) return;
+              controller.enqueue(result.value);
+              return reader.read().then(process);
+            });
+          }
+          startFetch
+            .then(response => pushStream(response.body))
+            .then(() => middleFetch)
+            .then(response => pushStream(response.body))
+            .then(() => endFetch)
+            .then(response => pushStream(response.body))
+            .then(() => controller.close());
+        })
+
     }
+  });
+
+  return new Response(stream, {
+    headers: {'Content-Type': 'text/html; charset=utf-8'}
+  });
 }
 
-async function streamArticle(event, url) {
-    const theUrl = new URL(url);
-    theUrl.pathname = /\/index\.html$/.test(theUrl.pathname) ? theUrl.pathname.replace(/index.html$/, 'index.content.html') :
-    /\/$/.test(theUrl.pathname) ? `${theUrl.pathname}index.content.html` : `${theUrl.pathname}/index.content.html`;
+self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+  url.pathname = /\/index\.html$/.test(url.pathname) ? url.pathname.replace(/index.html$/, 'index.content.html') :
+  /\/$/.test(url.pathname) ? `${url.pathname}index.content.html` : `${url.pathname}/index.content.html`;
 
-    const parts = [
-        caches.match('/index-top.html'),
-        fetch(theUrl).catch(() => caches.match('/offline.content.html')),
-        caches.match('/index-bottom.html')
-    ];
+  // const url = new URL(event.request.url);
+  if (/iPhone|CriOS|iPad/i.test(navigator.userAgent) && event.request.referrer.includes('t.co')) {
+     // Twitter on iOS seems to cause problems
+     return;
+  }
+  if (url.origin === location.origin) {
+    if (event.clientId === "" && // Not fetched via AJAX after page load.
+      event.request.method == "GET" && // Don't fetch on POST, DELETE, etc.
 
-    const identity = new IdentityStream();
+      !url.href.includes('.css') && // Don't run on CSS.
+      !url.href.includes('.js') && // Don't run on JS.
 
-    event.waitUntil(async function () {
-        for (const responsePromise of parts) {
-            const response = await responsePromise;
-            await response.body.pipeTo(identity.writable, { preventClose: true });
-        }
-        identity.writable.getWriter().close();
-    }());
+      caches.match('/shell_top') && // Ensure shell_top is in the cache.
+      caches.match('/shell_bottom')) { // Ensure shell_bottom is in the cache.
+      event.respondWith(createPageStream(event.request)); // Respond with the stream
 
-    const cache = await caches.open(cacheName);
-    const theStreamedPart = new Response(identity.readable, {
-        headers: { 'Content-Type': 'text/html; charset=UTF-8' }
-    });
+      // Ping version endpoint to see if we should fetch new shell.
+      // if (!caches.match('/async_info/shell_version')) { // Check if we have a cached shell version
+      //   caches.open(staticCacheName)
+      //   .then(cache => cache.addAll([
+      //     "/async_info/shell_version",
+      //   ]));
+      //   return;
+      // }
 
-    await cache.put(event.request, theStreamedPart.clone());
-    return theStreamedPart;
-}
+      // fetch('/async_info/shell_version').then(response => response.json()).then(json => {
+      //   caches.match('/async_info/shell_version').then(cachedResponse => cachedResponse.json()).then(cacheJson => {
+      //     if (cacheJson['version'] != json['version']) {
+      //       caches.open(staticCacheName)
+      //       .then(cache => cache.addAll([
+      //         "/shell_top",
+      //         "/shell_bottom",
+      //         "/async_info/shell_version"
+      //       ]));
+      //     }
+      //   })
+      // })
+      return;
+    }
 
-addEventListener('fetch', event => {
-    const url = new URL(event.request.url);
-    if (event.request.method !== 'GET') return;
-
-    event.respondWith(async function () {
-        // This works only on chromium based UA
-        if (url.origin === location.origin && event.request.mode === 'navigate' && routes.includes(url.pathname) && typeof WritableStream === 'function') {
-            return streamArticle(event, url);
-        }
-
-        // Full page fetch fallback
-        const cachedReponse = await caches.match(event.request);
-        if (cachedReponse) return cachedReponse;
-
-        return await fetch(event.request).catch(() => caches.match('/offline.html'));
-    }());
+    // Fetch new shell upon events that signify change in session.
+    // if (event.clientId === "" &&
+    //   (event.request.referrer.includes('/signout_confirm') || url.href.includes('?signin') || url.href.includes('/onboarding'))) {
+    //   caches.open(staticCacheName)
+    //   .then(cache => cache.addAll([
+    //     "/shell_top",
+    //     "/shell_bottom",
+    //   ]));
+    // }
+  }
 });

@@ -1,8 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
 import { terser } from 'rollup-plugin-terser';
-import { siteSrc } from './build-scripts/paths.esm'
-module.exports = {
+import {siteSrc, staticDest, intermidiate} from './build-scripts/paths.esm'
+
+
+module.exports = [{
     input: `${siteSrc}/serviceworker.js`,
     output: {
         file: `${siteSrc}/_includes/serviceworker.js`,
@@ -10,7 +11,54 @@ module.exports = {
     },
     plugins: [
         resolve(),
-        replace({ 'process.env.NODE_ENV': '"production"' }),
-        // terser(),
+        // replace({ 'process.env.NODE_ENV': '"production"' }),
+        terser(),
     ]
-};
+},
+{
+  input: './node_modules/ce-theme-switcher/src/index.js',
+  output: {
+      sourcemap: false,
+      format: 'esm',
+      file: `./${staticDest}/js/${'./node_modules/ce-theme-switcher/src/index.js'.replace('./node_modules/', '').replace('/src/index.js', '')}.esm.js`
+  },
+  plugins: [
+    terser(),
+  ]
+}
+,{
+input: './node_modules/ce-theme-switcher/src/index.js',
+output: {
+    sourcemap: false,
+    format: 'esm',
+    file: `${intermidiate}/js/${'./node_modules/ce-theme-switcher/src/index.js'.replace('./node_modules/', '').replace('/src/index.js', '')}.esm.js`
+},
+plugins: [
+  terser(),
+]
+},
+{
+  input: './node_modules/lite-youtube-embed/src/index.js',
+  output: {
+      sourcemap: false,
+      format: 'esm',
+      file: `./${staticDest}/js/${'./node_modules/lite-youtube-embed/src/index.js'.replace('./node_modules/', '').replace('/src/index.js', '')}.esm.js`
+  },
+  plugins: [
+    terser(),
+  ]
+}
+,{
+input: './node_modules/lite-youtube-embed/src/index.js',
+output: {
+    sourcemap: false,
+    format: 'esm',
+    file: `${intermidiate}/js/${'./node_modules/lite-youtube-embed/src/index.js'.replace('./node_modules/', '').replace('/src/index.js', '')}.esm.js`
+},
+plugins: [
+  terser(),
+]
+}
+
+
+];

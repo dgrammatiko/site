@@ -3,9 +3,9 @@ title: Fight the bloatwares
 description:
 tags: blog, Joomla
 date: 2019-03-27T12:46:54+00:00
-introImage: /static/img/Screenshot_2019-03-26_at_220717.jpg
+introImage: /static/img/screenshot_2019-03-26_at_220717.jpg
 introImageAlt: Screenshot of the application
-fulltextImage: /static/img/Screenshot_2019-03-26_at_220717.jpg
+fulltextImage: /static/img/screenshot_2019-03-26_at_220717.jpg
 fulltextImageAlt: Screenshot of the application
 custom_excerpt: According to urbandictionary.com, the term is described as software that comes piggy-backed on other software installations. Bloatware usually includes toolbars desktop widgets or external unrelated applications. Most piggy-backing bloatware can perform a mundane task that is generally non-essential to everyday computer use.
 layout: blog.njk
@@ -20,5 +20,5 @@ The solution here is called distributions, Linux is doing that for years and als
 
 Now the realistic part is that this won't happen anytime soon, (if it will ever happen) so what could be the remedy, especially for people that using this bloatware, sorry I mean software, to do multiple installations per day? Here comes Javascript to save the day.
 
-I've created [an SPA](https://dgrammatiko.github.io/on-a-diet/ "Open the removeFat application") (Single Page Application) that illustrates all the possible components/modules/plugins/templates that come preinstalled on each Joomla. Also, it gives you the ability to select which ones to disable and then will create a simple Joomla plugin that you can install directly after installing Joomla and disable things en mass! Another good part is that the plugin will uninstall itself after disabling all the components, plugins, modules, templates.  
+I've created [an SPA](https://dgrammatiko.github.io/on-a-diet/ "Open the removeFat application") (Single Page Application) that illustrates all the possible components/modules/plugins/templates that come preinstalled on each Joomla. Also, it gives you the ability to select which ones to disable and then will create a simple Joomla plugin that you can install directly after installing Joomla and disable things en mass! Another good part is that the plugin will uninstall itself after disabling all the components, plugins, modules, templates.
 Since this SPA is running and doing all its hard work in your browser, there is no data exchanged.
