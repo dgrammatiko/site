@@ -21,7 +21,7 @@ module.exports.translateImages = async function (document) {
   wannaBePictures.forEach(async wannaBePic => {
     const src = wannaBePic.getAttribute('src');
 
-    await prepareImage(`${process.cwd()}/src_assets${src}`);
+    await prepareImage(`src_assets${src}`);
 
     const picture = pictureEl.cloneNode(true);
     const figure = figureEl.cloneNode(true);
@@ -71,7 +71,7 @@ module.exports.translateImages = async function (document) {
 
 async function prepareImage(file) {
   if (!existsSync(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.png', `@320.png`).replace('.jpg', `@320.jpg`))) {
-    const livePath = dirname(`${process.cwd()}/${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`)}`);
+    const livePath = dirname(`${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`)}`);
     // const packagePath = dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
     if (!existsSync(livePath)) await mkdirp(livePath);
     // if (! await exists(packagePath)) await mkdir(packagePath);
