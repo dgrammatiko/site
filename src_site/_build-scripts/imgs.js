@@ -80,7 +80,7 @@ async function prepareImage(file) {
       const newFile = `${process.cwd()}/${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`).replace('.png', `@${size}.png`).replace('.jpg', `@${size}.jpg`)}`
       const newFile2 = `${process.cwd()}/${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`).replace('.png', `@${size}.webp`).replace('.jpg', `@${size}.webp`)}`
 
-      await sharp(`${process.cwd()}/${file.replace('/static', '')}`)
+      await sharp(`${file.replace('src_assets/static', 'src_assets')}`)
       .resize(size)
       .toBuffer()
       .then(async data => {
