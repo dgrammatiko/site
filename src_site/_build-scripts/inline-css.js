@@ -40,6 +40,6 @@ async function processPcss(file) {
     const livePath = dirname(file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`));
     if (! await exists(livePath)) await mkdirp(livePath);
 
-    await execSync(`./node_modules/.bin/postcss ${file.replace('/static', '')} -o ${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`)}`);
+    await execSync(`./node_modules/.bin/postcss ${file.replace('src_assets/static', 'src_assets')} -o ${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`)}`);
   }
 }
