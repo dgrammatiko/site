@@ -34,8 +34,8 @@ module.exports.translateScripts = async function(document) {
 
 async function rollup(file) {
   if (file === '/static/js/ce-theme-switcher.esm.js') {
-    if (! await exists(`${paths.staticDest}/js/ce-theme-switcher.esm.js`)) {
-      if (! await exists(`${paths.staticDest}/js`)) await mkdirp(`${paths.staticDest}/js`);
+    if (! await exists(`${process.cwd()}/${paths.staticDest}/js/ce-theme-switcher.esm.js`)) {
+      if (! await exists(`${process.cwd()}/${paths.staticDest}/js`)) await mkdirp(`${paths.staticDest}/js`);
       await execSync(`./node_modules/.bin/rollup ./node_modules/ce-theme-switcher/src/index.js -o ./live${file}`);
 
       return '/static/js/ce-theme-switcher.esm.js?' + Math.random(32)

@@ -71,16 +71,16 @@ module.exports.translateImages = async function (document) {
 
 async function prepareImage(file) {
   if (!existsSync(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`).replace('.png', `@320.png`).replace('.jpg', `@320.jpg`))) {
-    const livePath = dirname(file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`));
+    const livePath = dirname(`${process.cwd()}/${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`)}`);
     // const packagePath = dirname(file.replace(`${paths.staticSrc}`, `${paths.staticDest}`));
     if (!existsSync(livePath)) await mkdirp(livePath);
     // if (! await exists(packagePath)) await mkdir(packagePath);
 
     await sizes.forEach(async size => {
-      const newFile = file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`).replace('.png', `@${size}.png`).replace('.jpg', `@${size}.jpg`)
-      const newFile2 = file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`).replace('.png', `@${size}.webp`).replace('.jpg', `@${size}.webp`)
+      const newFile = `${process.cwd()}/${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`).replace('.png', `@${size}.png`).replace('.jpg', `@${size}.jpg`)}`
+      const newFile2 = `${process.cwd()}/${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`).replace('.png', `@${size}.webp`).replace('.jpg', `@${size}.webp`)}`
 
-      await sharp(file.replace('/static', ''))
+      await sharp(`${process.cwd()}/${file.replace('/static', '')}`)
       .resize(size)
       .toBuffer()
       .then(async data => {
