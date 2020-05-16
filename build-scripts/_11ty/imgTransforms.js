@@ -4,8 +4,8 @@ const {extname} = require('path');
 const {exists, existsSync, mkdirp, writeFile } = require('fs-extra');
 const { camelCase, paramCase } =require("change-case");
 const {translateImages} = require('./imgs');
-const {translateInlineStyles} = require('./inlineCss');
-const {translateInlineJs} = require('./inlineJS');
+const {translateInlineStyles} = require('./inline-css');
+const {translateInlineJs} = require('./inline-js');
 const {translateScripts} = require('./scripts');
 
 const { siteSrc, siteDest } = require('../paths');
