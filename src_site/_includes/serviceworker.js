@@ -17,9 +17,10 @@ self.addEventListener('install', event => {
         '/index-bottom.html',
         '/offline.content.html',
         '/offline.html',
-        '/manifest.json',
+        // '/manifest.json',
         '/static/fonts/dgrammatiko.woff2',
-        '/static/js/ce-theme-switcher.esm.js']))
+        // '/static/js/ce-theme-switcher.esm.js',
+      ]))
   );
 });
 

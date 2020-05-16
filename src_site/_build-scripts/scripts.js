@@ -1,4 +1,4 @@
-const {exists, existsSync, mkdirp, readFile, readFileSync } = require('fs-extra');
+const {exists, existsSync, mkdirp, mkdirpSync, readFile, readFileSync } = require('fs-extra');
 const crypto = require('crypto');
 const {dirname} = require('path');
 const {execSync} = require('child_process');
@@ -24,7 +24,7 @@ module.exports.translateScripts = async function(document) {
       script.setAttribute(`data-${paramCase(dt)}`, wannaBeScript.dataset[dt]);
     }
 
-    script.src = await rollup(srcO);
+    script.src = rollup(srcO);
 
     const hash = crypto.createHash('sha256');
     hash.update(readFileSync(`${paths.siteDest}${srcO}`, {encoding: 'utf8'}));
@@ -36,11 +36,12 @@ module.exports.translateScripts = async function(document) {
   return document;
 }
 
-async function rollup(file) {
+function rollup(file) {
   if (file === '/static/js/ce-theme-switcher.esm.js') {
-    if (! await exists(`${process.cwd()}/${paths.staticDest}/js/ce-theme-switcher.esm.js`)) {
-      if (! await exists(`${process.cwd()}/${paths.staticDest}/js`)) await mkdirp(`${paths.staticDest}/js`);
-      await execSync(`./node_modules/.bin/rollup ./node_modules/ce-theme-switcher/src/index.js -o ./live${file}`);
+    if (!existsSync(`${process.cwd()}/${paths.staticDest}/js/ce-theme-switcher.esm.js`)) {
+      if (!existsSync(`${process.cwd()}/${paths.staticDest}/js`)) mkdirpSync(`${paths.staticDest}/js`);
+
+        execSync(`./node_modules/.bin/rollup ./node_modules/ce-theme-switcher/src/index.js -o ./live${file}`);
 
       return '/static/js/ce-theme-switcher.esm.js?' + Math.random(32)
     }

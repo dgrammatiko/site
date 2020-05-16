@@ -82,7 +82,7 @@ async function prepareImage(file) {
 
       function log(err) {
         if (err) throw err;
-        console.log('The file has been saved!');
+        // console.log('The file has been saved!');
       }
 
       const img = sharp(`${process.cwd()}/${file.replace('src_assets/static', 'src_assets')}`)

@@ -36,13 +36,9 @@ module.exports = async function (value, outputPath) {
           return document.documentElement.outerHTML.replace('<!DOCTYPE html><html><head></head><body>', '') //[^|]*$
         }
 
-        if (document.querySelector('main')) {
-          let documentNew = document.cloneNode(true)
-          // const toBeDeleted = [...documentNew.querySelectorAll('style, script')];
-          // for (let iidx of toBeDeleted) {
-          //   iidx.remove()
-          // }
-          const main = documentNew.querySelector('main');
+        const main = document.querySelector('main');
+
+        if (main) {
           await writeFile(outputPath.replace('.html', '.content.html'), `${main.outerHTML}`, {encoding: 'utf8'});
         }
 
