@@ -84,9 +84,10 @@ async function prepareImage(file) {
         if (err) throw err;
         console.log('The file has been saved!');
       }
-      console.log(`${process.cwd()}/${file.replace('src_assets/static', 'src_assets')}`)
-      await sharp(`${process.cwd()}/${file.replace('src_assets/static', 'src_assets')}`)
-      .resize(size)
+
+      const img = sharp(`${process.cwd()}/${file.replace('src_assets/static', 'src_assets')}`)
+
+      await img.resize(size)
       .toBuffer()
       .then(async data => {
         await writeFile(newFile, data, log);
