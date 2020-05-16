@@ -8,7 +8,7 @@ const {translateInlineStyles} = require('./inline-css');
 const {translateInlineJs} = require('./inline-js');
 const {translateScripts} = require('./scripts');
 
-const { siteSrc, siteDest } = require('../paths');
+const { siteSrc, siteDest } = require('./paths');
 const root = process.cwd();
 
 module.exports = async function (value, outputPath) {

@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const {dirname} = require('path');
 const {execSync} = require('child_process');
 const decode = require('decode-html');
-const paths = require('../paths');
+const paths = require('./paths');
 
 module.exports.translateInlineStyles = async function(document) {
   const wannaBeStyles = [...document.querySelectorAll('wanna-be-inline-style')];

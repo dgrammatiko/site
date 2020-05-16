@@ -2,8 +2,8 @@ const { DateTime } = require("luxon");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const htmlmin = require("html-minifier");
-const { siteSrc, siteDest } = require('./build-scripts/paths');
-const imageTransform = require('./build-scripts/_11ty/imgTransforms.js');
+const { siteSrc, siteDest } = require('./src_site/_build-scripts/paths');
+const imageTransform = require('./src_site/_build-scripts/alltransforms.js');
 
 const root = process.cwd();
 
@@ -56,7 +56,7 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
-  eleventyConfig.addCollection("tagList", require("./build-scripts/_11ty/getTagList"));
+  eleventyConfig.addCollection("tagList", require("./src_site/_build-scripts/getTagList"));
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");

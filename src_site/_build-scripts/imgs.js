@@ -3,7 +3,7 @@ const { exists, writeFile, mkdirp, existsSync } = require('fs-extra');
 const { dirname, extname } = require('path');
 const sharp = require('sharp');
 
-const paths = require('../paths');
+const paths = require('./paths');
 const sizes = [160, 320, 480, 640, 800, 960, 1200, 1600, 1920];
 
 module.exports.translateImages = async function (document) {

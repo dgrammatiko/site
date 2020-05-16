@@ -2,7 +2,7 @@ const {exists, existsSync, mkdirp, readFile, readFileSync } = require('fs-extra'
 const crypto = require('crypto');
 const {dirname} = require('path');
 const {execSync} = require('child_process');
-const paths = require('../paths');
+const paths = require('./paths');
 
 module.exports.translateScripts = async function(document) {
   const wannaBeScripts = [...document.querySelectorAll('wanna-be-script')];
