@@ -8,7 +8,7 @@
     "production": "./node_modules/.bin/eleventy",
     "dev": "./node_modules/.bin/eleventy --serve",
     "watch": "ELEVENTY_ENV=watch ./node_modules/.bin/eleventy --watch --serve",
-    "build": "./node_modules/.bin/eleventy && ./node_modules/.bin/eleventy"
+    "build": "./node_modules/.bin/eleventy"
   },
   "author": "dgrammatiko",
   "license": "MIT",
