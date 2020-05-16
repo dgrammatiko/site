@@ -12,7 +12,7 @@ module.exports.translateScripts = async function(document) {
   const scriptEl = document.createElement('script');
 
   wannaBeScripts.forEach(async wannaBeScript => {
-    let src = wannaBeScript.getAttribute('src');
+    let srcO = wannaBeScript.getAttribute('src');
 
     const script = scriptEl.cloneNode(true);
 
@@ -24,7 +24,11 @@ module.exports.translateScripts = async function(document) {
       script.setAttribute(`data-${paramCase(dt)}`, wannaBeScript.dataset[dt]);
     }
 
-    script.src =  await rollup(src);// Hash it
+    script.src = await rollup(srcO);
+
+    const hash = crypto.createHash('sha256');
+    hash.update(readFileSync(`${paths.siteDest}${srcO}`, {encoding: 'utf8'}));
+    script.nonce = `sha256-${hash.digest('hex')}`;
 
     wannaBeScript.replaceWith(script);
   });
