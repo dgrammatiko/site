@@ -3,12 +3,10 @@
 // import { createAdaptedFetch, createAdaptedResponse } from "@stardazed/streams-fetch-adapter/dist/";
 // import 'web-streams-polyfill/dist/polyfill.es2018';
 // import { ReadableStream, WritableStream } from "@stardazed/streams/dist/sd-streams.esm";
-
-
 const cacheName = `dGrammatiko-${VERSION}`;
 
 // Urls that needs to be cached on installation
-const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/manifest.json', '/static/fonts/dgrammatiko.woff2', '/static/js/toggler.esm.js'];
+const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/manifest.json', '/static/fonts/dgrammatiko.woff2', '/static/js/ce-theme-switcher.esm.js'];
 
 addEventListener('install', (event) => {
     skipWaiting();

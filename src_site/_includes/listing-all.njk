@@ -1,6 +1,5 @@
 <main id="main">
-<style nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7>{{ 'static/css/blogs.css' | inlineCss | safe }}</style>
-
+<wanna-be-inline-style src="static/css/blogs.css" in-place></wanna-be-inline-style>
 <section class="posts" itemscope="" itemtype="https://schema.org/Blog">
   {% for blog in collections.blogs | reverse %}
     <article itemscope="" itemtype="https://schema.org/BlogPosting">
@@ -15,18 +14,17 @@
         <p>{{ blog.data.custom_excerpt }}</p>
       </header>
         {% if blog.data.fulltextImage %}
-          <img data-src="{{ blog.data.fulltextImage | imgSuffix('480') }}"
-            class="lazyload" loading="lazy"
-            alt="{{ blog.data.introImageAlt }}" />
-            <noscript>
-              <img src="{{ blog.data.fulltextImage | imgSuffix('480') }}" alt="{{ blog.data.introImageAlt }}"/>
-            </noscript>
+          <wanna-be-picture class="lazyload"
+              src="{{ blog.data.fulltextImage }}"
+              alt="{{ blog.data.introImageAlt }}"
+              sizes="160,320,480"
+              class="responsive"
+              ></wanna-be-picture>
         {% endif %}
 
         <a class="btn" href="{{ blog.url }}">Full Story</a>
     </article>
   {% endfor %}
 </section>
-<script nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7 type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
-<script nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7>{{ 'static/js/lazyloadImgs.js' | inlineCss | safe }}</script>
+<wanna-be-inline-script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</wanna-be-inline-script>
 </main>

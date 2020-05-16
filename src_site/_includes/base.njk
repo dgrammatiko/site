@@ -20,12 +20,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
     <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#000000">
-    <style nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7>
-        {{ 'static/css/base.css' | inlineCss | safe }}
-        {{ 'static/css/nav.css' | inlineCss | safe }}
-        {{ 'static/css/toggler-alt.css' | inlineCss | safe }}
-        {{ 'static/css/footer.css' | inlineCss | safe }}</style>
-    <script nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7>this.customElements||document.write('<script src="//unpkg.com/document-register-element"><\x2fscript>');</script>
+    <wanna-be-inline-style src="static/css/base.css,static/css/nav.css,static/css/ce-theme-switcher-alt.css,static/css/footer.css" in-place></wanna-be-inline-style>
+    <wanna-be-script type="module" src="/static/js/ce-theme-switcher.esm.js"></wanna-be-script>
   </head>
 
   <body class="grid-it">
@@ -35,9 +31,7 @@
 
     {% include "footer.njk" %}
 
-    <script type=module nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/service-worker.js'); }); } </script>
-    <script nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7 src="/static/js/toggler.esm.js" type=module></script>
-    <script nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7 src="/static/js/toggler.es5.js" nomodule></script>
+    <wanna-be-inline-script type="module">if('serviceWorker' in navigator){window.addEventListener('load',() => {navigator.serviceWorker.register('/service-worker.js');});}</wanna-be-inline-script>
   </body>
 
 </html>

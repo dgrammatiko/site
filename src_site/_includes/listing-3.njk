@@ -1,6 +1,3 @@
-<main id="main">
-<style nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7>{{ 'static/css/blogs.css' | inlineCss | safe }}</style>
-
 {% for blog in collections.blogs | reverse %}
   {% if loop.index < 3 %}
   {% if loop.index == 1 %}
@@ -14,27 +11,17 @@
         <p>{{ blog.data.custom_excerpt }}</p>
       </header>
 
-      <a class="image main" href="{{ blog.url }}" tabindex="-1">
+
       {% if blog.data.fulltextImage %}
-            <img 
-              data-srcset="{{ blog.data.fulltextImage | imgSuffix('320') }} 320w, {{ blog.data.fulltextImage | imgSuffix('480') }} 480w, {{ blog.data.fulltextImage | imgSuffix('768') }} 768w"
-              data-src="{{ blog.data.fulltextImage | imgSuffix('320') }}"
+            <wanna-be-picture class="lazyload"
+              src="{{ blog.data.fulltextImage }}"
               alt="{{ blog.data.introImageAlt }}"
-              class="lazyload"
-              loading="lazy">
-              <noscript>
-                <img srcset="{{ blog.data.fulltextImage | imgSuffix('320') }} 320w,
-                  {{ blog.data.fulltextImage | imgSuffix('480') }} 480w,
-                  {{ blog.data.fulltextImage | imgSuffix('768') }} 768w"
-                  src="{{ blog.data.fulltextImage | imgSuffix('320') }}"
-                  alt="{{ blog.data.introImageAlt }}">
-              </noscript>
-              <span class="screen-reader-only">blog.title</span>
+              sizes="160,320,480"></wanna-be-picture>
+
             {% endif %}
-      </a>
 
       <p>
-        <a class="btn big" href="{{ blog.url }}">Full Story</a>
+        <a class="btn big" href="{{ blog.url }}">{{ blog.data.title }}</a>
       </p>
   </article>
   {% endif %}
@@ -50,28 +37,24 @@
           <span class="date">
             <svg class="icon">
               <use xlink:href="#ttc-i-calendar-alt"></use>
-            </svg> 
+            </svg>
             <time class="postslist-date" datetime="{{ blog.date | htmlDateString }}">{{ blog.date | readableDate }}</time>
           </span>
-          <a href="{{ blog.url | url }}" class="postslist-link">
             <h2>{% if blog.data.title %}{{ blog.data.title }}{% endif %}</h2>
-          </a>
           <p>{{ blog.data.custom_excerpt }}</p>
         </header>
           {% if blog.data.fulltextImage %}
-            <img data-src="{{ blog.data.fulltextImage | imgSuffix('480') }}"
-              class="lazyload" loading="lazy" alt="{{ blog.data.fulltextImageAlt}}"/>
-              <noscript>
-                <img src="{{ blog.data.fulltextImage | imgSuffix('480') }}" alt="{{ blog.data.fulltextImageAlt}}" />
-              </noscript>
+            <wanna-be-picture class="lazyload"
+              src="{{ blog.data.fulltextImage }}"
+              alt="{{ blog.data.introImageAlt }}"
+              sizes="160,320,480"></wanna-be-picture>
           {% endif %}
-          <a class="btn" href="{{ blog.url }}">Full Story</a>
+          <a class="btn" href="{{ blog.url }}">{{ blog.data.title }}</a>
       </article>
 
   {% endif %}
   {% endif %}
 {% endfor %}
 </section>
-<script type="module" nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7 id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
-<script nonce=8ef3d1e2e9fd100a12f47d7dd14c3fd7b24873cc0d5c9c93f322d47680b5e9f7>{{ 'static/js/lazyloadImgs.js' | inlineCss | safe }}</script>
+<wanna-be-inline-script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</wanna-be-inline-script>
 </main>

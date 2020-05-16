@@ -9,5 +9,6 @@ module.exports = {
   siteSrc: 'src_site',
   staticSrc: 'src_assets',
   staticDest: 'live/static',
+  intermediate: 'intermediate/static',
   siteDest: 'live',
 };

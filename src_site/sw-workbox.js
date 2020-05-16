@@ -9,7 +9,7 @@ const shellStrategy = new CacheFirst({ cacheName: cacheName });
 const contentStrategy = new StaleWhileRevalidate({ cacheName: cacheName });
 
 // Urls that needs to be cached on installation
-const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/_assets/tmpl_starchaser/fonts/dgrammatiko.woff2', '/_assets/tmpl_starchaser/manifest.json', '/_assets/js/toggler.esm.js'];
+const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/_assets/tmpl_starchaser/fonts/dgrammatiko.woff2', '/_assets/tmpl_starchaser/manifest.json', '/_assets/js/ce-theme-switcher.esm.js'];
 
 addEventListener('install', (event) => {
     skipWaiting();
