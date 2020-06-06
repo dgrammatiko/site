@@ -3,34 +3,29 @@
 // import { createAdaptedFetch, createAdaptedResponse } from "@stardazed/streams-fetch-adapter/dist/";
 // import 'web-streams-polyfill/dist/polyfill.es2018';
 // import { ReadableStream, WritableStream } from "@stardazed/streams/dist/sd-streams.esm";
-
-
 const cacheName = `dGrammatiko-${VERSION}`;
 
 // Urls that needs to be cached on installation
-const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/static/fonts/dgrammatiko.woff2', '/static/js/toggler.esm.js'];
+const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/manifest.json', '/static/fonts/dgrammatiko.woff2', '/static/js/ce-theme-switcher.esm.js'];
 
 addEventListener('install', (event) => {
     skipWaiting();
-    event.waitUntil(
-        caches.open(cacheName)
-            .then((cache) => {
-                return cache.addAll(preCached);
-            })
-    );
+
+    event.waitUntil(async function () {
+      const cache = await caches.open(cacheName);
+      await cache.addAll(preCached);
+    }());
 });
 
 addEventListener('activate', (event) => {
-    event.waitUntil(caches.keys().then((cacheNames) => {
-        return Promise.all(
-            cacheNames.map((cacheName_) => {
-                if (cacheName !== cacheName_) {
-                    return caches.delete(cacheName_);
-                }
-            })
+    event.waitUntil(async function () {
+        const keys = await caches.keys();
+        await Promise.all(
+          keys.map(key => {
+            if (key !== cacheName) return caches.delete(key);
+          })
         );
-    })
-    );
+      }());
 });
 
 class IdentityStream {
@@ -66,7 +61,8 @@ class IdentityStream {
 
 async function streamArticle(event, url) {
     const theUrl = new URL(url);
-    theUrl.pathname += 'index.content.html';
+    theUrl.pathname = /\/index\.html$/.test(theUrl.pathname) ? theUrl.pathname.replace(/index.html$/, 'index.content.html') :
+    /\/$/.test(theUrl.pathname) ? `${theUrl.pathname}index.content.html` : `${theUrl.pathname}/index.content.html`;
 
     const parts = [
         caches.match('/index-top.html'),
@@ -75,6 +71,7 @@ async function streamArticle(event, url) {
     ];
 
     const identity = new IdentityStream();
+
     event.waitUntil(async function () {
         for (const responsePromise of parts) {
             const response = await responsePromise;
@@ -98,10 +95,8 @@ addEventListener('fetch', event => {
 
     event.respondWith(async function () {
         // This works only on chromium based UA
-        if (typeof WritableStream === 'function') {
-            if (url.origin === location.origin && routes.includes(url.pathname)) {
-                return streamArticle(event, url);
-            }
+        if (url.origin === location.origin && event.request.mode === 'navigate' && routes.includes(url.pathname) && typeof WritableStream === 'function') {
+            return streamArticle(event, url);
         }
 
         // Full page fetch fallback

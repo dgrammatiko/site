@@ -1,17 +1,14 @@
 
 <header role="banner">
-<style>
-  {{ 'static/css/nav.css' | inlineCss | safe }}
-  {{ 'static/css/toggler-alt.css' | inlineCss | safe }}
-</style>
+<wanna-be-inline-style src="static/css/nav.css,static/css/ce-theme-switcher-alt.css" in-place></wanna-be-inline-style>
   <div class="wrapper">
       <nav class="navbar">
         <a href="/" class="logo">dGrammatiko</a>
         <ul class="nav-links">
           <li class="nav-item"><a href="/" aria-current="page">Home</a></li>
           <li class="nav-item"><a href="/blog">Blog</a></li>
-          <li class="nav-item"><a href="/about">About</a></li>
-          <li class="nav-item"><a href="/contact">Contact</a></li>
+          <li class="nav-item"><a href="/code">Code</a></li>
+          <li class="nav-item"><a href="/presentations">Presentations</a></li>
           <li class="nav-item"><dark-light-switch></dark-light-switch></li>
         </ul>
       </nav>

@@ -1,17 +1,16 @@
 <main id="main">
-<style>{{ 'static/css/codes.css' | inlineCss | safe }}</style>
-
+<wanna-be-inline-style src="static/css/codes.css" in-place></wanna-be-inline-style>
 <section class="grid-cards">
   {% for code in collections.code | reverse %}
     <article  class="grid-cards-item">
       <header class="card-header">
           {% if code.data.fulltextImage %}
-            <img data-src="{{ code.data.fulltextImage | imgSuffix('480') }}"
-              class="lazyload" loading="lazy"
-              alt="{{ code.data.introImageAlt }}" />
-              <noscript>
-                <img src="{{ code.data.fulltextImage | imgSuffix('480') }}" alt="{{ code.data.introImageAlt }}"/>
-              </noscript>
+          <wanna-be-picture class="lazyload"
+              src="{{ blog.data.fulltextImage }}"
+              alt="{{ blog.data.introImageAlt }}"
+              sizes="160,320,480"
+              class="responsive"
+              ></wanna-be-picture>
           {% endif %}
           <a href="{{ code.url | url }}">
             <h2>{% if code.data.title %}{{ code.data.title }}{% endif %}</h2>
@@ -26,6 +25,5 @@
     </article>
   {% endfor %}
 </section>
-<script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
-<script>{{ 'static/js/lazyloadImgs.js' | inlineCss | safe }}</script>
+<wanna-be-inline-script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</wanna-be-inline-script>
 </main>

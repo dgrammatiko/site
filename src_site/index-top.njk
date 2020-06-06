@@ -24,11 +24,8 @@ permalink: '/index-top.html'
     <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
     <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#000000">
-    <style>{{ 'static/css/base.css' | inlineCss | safe }}</style>
-    <style>{{ 'static/css/footer.css' | inlineCss | safe }}</style>
-    <style>{{ 'static/css/nav.css' | inlineCss | safe }}</style>
-    <style>{{ 'static/css/toggler-alt.css' | inlineCss | safe }}</style>
-    <script>this.customElements||document.write('<script src="//unpkg.com/document-register-element"><\x2fscript>');</script>
+    <wanna-be-inline-style src="static/css/base.css,static/css/footer.css,static/css/nav.css,static/css/ce-theme-switcher-alt.css"></wanna-be-inline-style>
+    <wanna-be-script src="/static/js/ce-theme-switcher.esm.js" type="module"></wanna-be-script>
   </head>
   <body class="grid-it">
   {% include "menu.njk" %}
