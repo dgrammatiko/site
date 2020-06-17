@@ -2,8 +2,9 @@ const { DateTime } = require("luxon");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const htmlmin = require("html-minifier");
-const { siteSrc, siteDest } = require('./src_site/_build-scripts/paths');
-const imageTransform = require('./src_site/_build-scripts/alltransforms.js');
+const { siteSrc, siteDest } = require("./src_site/_build-scripts/paths");
+const imageTransform = require("./src_site/_build-scripts/alltransforms.js");
+const codepenIt = require("11ty-to-codepen");
 
 const root = process.cwd();
 
@@ -24,13 +25,15 @@ module.exports = function (eleventyConfig) {
     return collection.getFilteredByGlob([`${siteSrc}/code/*.md`]);
   });
 
-  eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat("dd LLL yyyy");
+  eleventyConfig.addFilter("readableDate", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
+      "dd LLL yyyy"
+    );
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('yyyy-LL-dd');
+  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
 
   // Get the first `n` elements of a collection.
@@ -43,20 +46,34 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
-    if (outputPath.endsWith(".html") && ![`${root}/${siteDest}/index-top.html`, `${root}/${siteDest}/index-bottom.html`].includes(outputPath)) {
+    if (
+      outputPath.endsWith(".html") &&
+      ![
+        `${root}/${siteDest}/index-top.html`,
+        `${root}/${siteDest}/index-bottom.html`,
+      ].includes(outputPath)
+    ) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
       });
       return minified;
-    } else if ([`${root}/${siteDest}/index-top.html`, `${root}/${siteDest}/index-bottom.html`].includes(outputPath)) {
-      return content.replace(/>\s*\n\s*</g, '><');
+    } else if (
+      [
+        `${root}/${siteDest}/index-top.html`,
+        `${root}/${siteDest}/index-bottom.html`,
+      ].includes(outputPath)
+    ) {
+      return content.replace(/>\s*\n\s*</g, "><");
     }
     return content;
   });
 
-  eleventyConfig.addCollection("tagList", require("./src_site/_build-scripts/getTagList"));
+  eleventyConfig.addCollection(
+    "tagList",
+    require("./src_site/_build-scripts/getTagList")
+  );
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
@@ -64,25 +81,28 @@ module.exports = function (eleventyConfig) {
   let options = {
     html: true,
     breaks: true,
-    linkify: true
+    linkify: true,
   };
   let opts = {
     permalink: true,
     permalinkClass: "direct-link",
-    permalinkSymbol: "🔗"
+    permalinkSymbol: "🔗",
   };
 
-  eleventyConfig.setLibrary("md", markdownIt(options)
-    .use(markdownItAnchor, opts)
+  eleventyConfig.setLibrary(
+    "md",
+    markdownIt(options).use(markdownItAnchor, opts)
   );
 
-  eleventyConfig.addTransform('parse', imageTransform);
+  eleventyConfig.addTransform("parse", imageTransform);
 
-  eleventyConfig.addPassthroughCopy('src_site/_headers', 'live/_headers')
-  eleventyConfig.addPassthroughCopy({'src_assets/images': 'static/images'})
-  eleventyConfig.addPassthroughCopy({'src_assets/fonts': 'static/fonts'})
+  eleventyConfig.addPassthroughCopy("src_site/_headers", "live/_headers");
+  eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
+  eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
 
   // eleventyConfig.addPassthroughCopy('intermediate/static', 'live/static')
+
+  eleventyConfig.addPairedShortcode("codepen", codepenIt);
 
   return {
     pathPrefix: "/",
