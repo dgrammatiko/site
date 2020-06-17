@@ -57,17 +57,21 @@ eleventyConfig.addPairedShortcode("codepen", codepenIt);
 
 {% codepen "https://unpkg.com/bonsai.css@latest/dist/bonsai.min.css", "https://unpkg.com/uhtml", "Heyyy", "Waz uuuuuuuup", "Test it" %}
 
-Some very important code:
+#### Some very important HTML code:
 
 ```html
 <h1 class="someClass" style="--grad:0deg; --grad-color:#3188c1;">Test</h1>
 ```
+
+#### Some very important CSS code:
 
 ```css
 body {
   margin: 4rem;
 }
 ```
+
+#### Some very important JavaScript code:
 
 ```js
 var foo = function (bar) {
@@ -76,5 +80,7 @@ var foo = function (bar) {
 
 console.log(foo(5));
 ```
+
+#### Click the following button to open the above 3 snippets on Codepen:
 
 {% endcodepen %}
