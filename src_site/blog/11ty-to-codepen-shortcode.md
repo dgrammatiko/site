@@ -74,11 +74,13 @@ body {
 #### Some very important JavaScript code:
 
 ```js
-var foo = function (bar) {
-  return bar * 2;
-};
+import { render, html, svg } from "https://unpkg.com/uhtml?module";
 
-console.log(foo(5));
+const h1 = document.querySelector("h1");
+
+h1.style.setProperty("--grad-color", "rebeccapurple");
+
+render(document.body, html`${h1}`);
 ```
 
 #### Click the following button to open the above 3 snippets on Codepen:
