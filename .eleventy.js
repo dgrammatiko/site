@@ -10,7 +10,9 @@ const root = process.cwd();
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  eleventyConfig.addPlugin(pluginSyntaxHighlight, {
+    alwaysWrapLineHighlights: false,
+  });
   eleventyConfig.setDataDeepMerge(true);
 
   // Filter source file names using a glob
@@ -108,6 +110,7 @@ module.exports = function (eleventyConfig) {
     pathPrefix: "/",
     passthroughFileCopy: true,
     dir: {
+      data: `_data`,
       input: siteSrc,
       output: `${process.cwd()}/${siteDest}`,
     },
