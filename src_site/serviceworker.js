@@ -6,103 +6,129 @@
 const cacheName = `dGrammatiko-${VERSION}`;
 
 // Urls that needs to be cached on installation
-const preCached = ['/index-top.html', '/index-bottom.html', '/offline.content.html', '/offline.html', '/manifest.json', '/static/fonts/dgrammatiko.woff2', '/static/js/ce-theme-switcher.esm.js'];
+const preCached = [
+  "/index-top.html",
+  "/index-bottom.html",
+  "/offline.content.html",
+  "/offline.html",
+  "/manifest.json",
+  "/static/fonts/dgrammatiko.woff2",
+  "/static/js/ce-theme-switcher.esm.js",
+];
 
-addEventListener('install', (event) => {
-    skipWaiting();
+addEventListener("install", (event) => {
+  skipWaiting();
 
-    event.waitUntil(async function () {
+  event.waitUntil(
+    (async function () {
       const cache = await caches.open(cacheName);
       await cache.addAll(preCached);
-    }());
+    })()
+  );
 });
 
-addEventListener('activate', (event) => {
-    event.waitUntil(async function () {
-        const keys = await caches.keys();
-        await Promise.all(
-          keys.map(key => {
-            if (key !== cacheName) return caches.delete(key);
-          })
-        );
-      }());
+addEventListener("activate", (event) => {
+  event.waitUntil(
+    (async function () {
+      const keys = await caches.keys();
+      await Promise.all(
+        keys.map((key) => {
+          if (key !== cacheName) return caches.delete(key);
+        })
+      );
+    })()
+  );
 });
 
 class IdentityStream {
-    constructor() {
-        let readableController;
-        let writableController;
+  constructor() {
+    let readableController;
+    let writableController;
 
-        this.readable = new ReadableStream({
-            start(controller) {
-                readableController = controller;
-            },
-            cancel(reason) {
-                writableController.error(reason);
-            }
-        });
+    this.readable = new ReadableStream({
+      start(controller) {
+        readableController = controller;
+      },
+      cancel(reason) {
+        writableController.error(reason);
+      },
+    });
 
-        this.writable = new WritableStream({
-            start(controller) {
-                writableController = controller;
-            },
-            write(chunk) {
-                readableController.enqueue(chunk);
-            },
-            close() {
-                readableController.close();
-            },
-            abort(reason) {
-                readableController.error(reason);
-            }
-        });
-    }
+    this.writable = new WritableStream({
+      start(controller) {
+        writableController = controller;
+      },
+      write(chunk) {
+        readableController.enqueue(chunk);
+      },
+      close() {
+        readableController.close();
+      },
+      abort(reason) {
+        readableController.error(reason);
+      },
+    });
+  }
 }
 
 async function streamArticle(event, url) {
-    const theUrl = new URL(url);
-    theUrl.pathname = /\/index\.html$/.test(theUrl.pathname) ? theUrl.pathname.replace(/index.html$/, 'index.content.html') :
-    /\/$/.test(theUrl.pathname) ? `${theUrl.pathname}index.content.html` : `${theUrl.pathname}/index.content.html`;
+  const theUrl = url;
+  theUrl.pathname = /\/index\.html$/.test(theUrl.pathname)
+    ? theUrl.pathname.replace(/index.html$/, "index.content.html")
+    : /\/$/.test(theUrl.pathname)
+    ? `${theUrl.pathname}index.content.html`
+    : `${theUrl.pathname}/index.content.html`;
 
-    const parts = [
-        caches.match('/index-top.html'),
-        fetch(theUrl).catch(() => caches.match('/offline.content.html')),
-        caches.match('/index-bottom.html')
-    ];
+  const parts = [
+    caches.match("/index-top.html"),
+    fetch(theUrl).catch(() => caches.match("/offline.content.html")),
+    caches.match("/index-bottom.html"),
+  ];
 
-    const identity = new IdentityStream();
+  const identity = new IdentityStream();
 
-    event.waitUntil(async function () {
-        for (const responsePromise of parts) {
-            const response = await responsePromise;
-            await response.body.pipeTo(identity.writable, { preventClose: true });
-        }
-        identity.writable.getWriter().close();
-    }());
+  event.waitUntil(
+    (async function () {
+      for (const responsePromise of parts) {
+        const response = await responsePromise;
+        await response.body.pipeTo(identity.writable, { preventClose: true });
+      }
+      identity.writable.getWriter().close();
+    })()
+  );
 
-    const cache = await caches.open(cacheName);
-    const theStreamedPart = new Response(identity.readable, {
-        headers: { 'Content-Type': 'text/html; charset=UTF-8' }
-    });
+  const cache = await caches.open(cacheName);
+  const theStreamedPart = new Response(identity.readable, {
+    headers: { "Content-Type": "text/html; charset=UTF-8" },
+  });
 
-    await cache.put(event.request, theStreamedPart.clone());
-    return theStreamedPart;
+  await cache.put(event.request, theStreamedPart.clone());
+  return theStreamedPart;
 }
 
-addEventListener('fetch', event => {
-    const url = new URL(event.request.url);
-    if (event.request.method !== 'GET') return;
+addEventListener("fetch", (event) => {
+  const url = new URL(event.request.url);
+  if (event.request.method !== "GET") return;
 
-    event.respondWith(async function () {
-        // This works only on chromium based UA
-        if (url.origin === location.origin && event.request.mode === 'navigate' && routes.includes(url.pathname) && typeof WritableStream === 'function') {
-            return streamArticle(event, url);
-        }
+  event.respondWith(
+    (async function () {
+      // This works only on chromium based UA
+      if (
+        url.origin === location.origin &&
+        event.request.mode === "navigate" &&
+        routes.includes(url.pathname) &&
+        typeof WritableStream === "function"
+      ) {
+        return streamArticle(event, url);
+      }
 
-        // Full page fetch fallback
-        const cachedReponse = await caches.match(event.request);
-        if (cachedReponse) return cachedReponse;
+      // Full page fetch fallback
+      const cachedReponse = await caches.match(event.request);
+      if (cachedReponse) return cachedReponse;
 
-        return await fetch(event.request).catch(() => caches.match('/offline.html'));
-    }());
+      return await fetch(event.request).catch(() =>
+        caches.match("/offline.html")
+      );
+    })()
+  );
 });
