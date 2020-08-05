@@ -1,10 +1,9 @@
 dark-light-switch {
-	position: relative;
-	display: block;
-	top: .8rem;
-	width: 44px;
-	height: 44px;
-	margin-left: 10px;
+  position: relative;
+  display: block;
+  top: -0.3rem;
+  width: 3rem;
+  margin-right: 2.5rem;
 }
 
 dark-light-switch button {
@@ -12,14 +11,11 @@ dark-light-switch button {
   font-weight: 100;
   letter-spacing: 0;
   padding: 0;
-  text-transform:none;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  text-transform: none;
   color: transparent;
   background-color: #000;
-  height: 15px;
+  width: 3.35rem;
+  height: 2rem;
   border: 0;
   font-size: 0.3rem;
   -webkit-transition: 0.4s;
@@ -27,13 +23,15 @@ dark-light-switch button {
   box-shadow: none;
 }
 
-dark-light-switch button:hover, dark-light-switch button:focus {
-  box-shadow: 0px 0px 12px 3px rgba(255,255,255,0.75);
+dark-light-switch button:hover,
+dark-light-switch button:focus {
+  box-shadow: 0px 0px 12px 3px rgba(255, 255, 255, 0.75);
   color: transparent;
 }
 
-dark-light-switch button[aria-pressed="true"]:hover, dark-light-switch button[aria-pressed="true"]:focus {
-  box-shadow: 0px 0px 12px 3px rgba(255,255,255,0.75);
+dark-light-switch button[aria-pressed="true"]:hover,
+dark-light-switch button[aria-pressed="true"]:focus {
+  box-shadow: 0px 0px 12px 3px rgba(255, 255, 255, 0.75);
   color: transparent;
   background-color: #000;
 }
@@ -46,16 +44,17 @@ dark-light-switch button span {
 dark-light-switch button:before {
   position: absolute;
   content: "";
-  height: 25px;
-  width: 25px;
-  left: -5px;
-  bottom: 5px;
-  top: 0;
-  bottom: 0;
+  height: 2rem;
+  width: 2rem;
+  left: -0.5rem;
+  /* bottom: 5px; */
+  /* top: 0;
+  bottom: 0; */
   margin: auto 0;
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  background: #000 url("data:image/svg+xml,%3Csvg aria-hidden='true' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='white' d='M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z'%3E%3C/path%3E%3C/svg%3E");
+  background: #000
+    url("data:image/svg+xml,%3Csvg aria-hidden='true' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='white' d='M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z'%3E%3C/path%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -66,13 +65,14 @@ button[aria-pressed="false"] {
 
 button[aria-pressed="false"]:before {
   transform: translateX(25px);
-  background: lightblue url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='white' d='M494.2 221.9l-59.8-40.5 13.7-71c2.6-13.2-1.6-26.8-11.1-36.4-9.6-9.5-23.2-13.7-36.2-11.1l-70.9 13.7-40.4-59.9c-15.1-22.3-51.9-22.3-67 0l-40.4 59.9-70.8-13.7C98 60.4 84.5 64.5 75 74.1c-9.5 9.6-13.7 23.1-11.1 36.3l13.7 71-59.8 40.5C6.6 229.5 0 242 0 255.5s6.7 26 17.8 33.5l59.8 40.5-13.7 71c-2.6 13.2 1.6 26.8 11.1 36.3 9.5 9.5 22.9 13.7 36.3 11.1l70.8-13.7 40.4 59.9C230 505.3 242.6 512 256 512s26-6.7 33.5-17.8l40.4-59.9 70.9 13.7c13.4 2.7 26.8-1.6 36.3-11.1 9.5-9.5 13.6-23.1 11.1-36.3l-13.7-71 59.8-40.5c11.1-7.5 17.8-20.1 17.8-33.5-.1-13.6-6.7-26.1-17.9-33.7zm-112.9 85.6l17.6 91.2-91-17.6L256 458l-51.9-77-90.9 17.6 17.6-91.2-76.8-52 76.8-52-17.6-91.2 91 17.6L256 53l51.9 76.9 91-17.6-17.6 91.1 76.8 52-76.8 52.1zM256 152c-57.3 0-104 46.7-104 104s46.7 104 104 104 104-46.7 104-104-46.7-104-104-104zm0 160c-30.9 0-56-25.1-56-56s25.1-56 56-56 56 25.1 56 56-25.1 56-56 56z'%3E%3C/path%3E%3C/svg%3E");
+  background: lightblue
+    url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='white' d='M494.2 221.9l-59.8-40.5 13.7-71c2.6-13.2-1.6-26.8-11.1-36.4-9.6-9.5-23.2-13.7-36.2-11.1l-70.9 13.7-40.4-59.9c-15.1-22.3-51.9-22.3-67 0l-40.4 59.9-70.8-13.7C98 60.4 84.5 64.5 75 74.1c-9.5 9.6-13.7 23.1-11.1 36.3l13.7 71-59.8 40.5C6.6 229.5 0 242 0 255.5s6.7 26 17.8 33.5l59.8 40.5-13.7 71c-2.6 13.2 1.6 26.8 11.1 36.3 9.5 9.5 22.9 13.7 36.3 11.1l70.8-13.7 40.4 59.9C230 505.3 242.6 512 256 512s26-6.7 33.5-17.8l40.4-59.9 70.9 13.7c13.4 2.7 26.8-1.6 36.3-11.1 9.5-9.5 13.6-23.1 11.1-36.3l-13.7-71 59.8-40.5c11.1-7.5 17.8-20.1 17.8-33.5-.1-13.6-6.7-26.1-17.9-33.7zm-112.9 85.6l17.6 91.2-91-17.6L256 458l-51.9-77-90.9 17.6 17.6-91.2-76.8-52 76.8-52-17.6-91.2 91 17.6L256 53l51.9 76.9 91-17.6-17.6 91.1 76.8 52-76.8 52.1zM256 152c-57.3 0-104 46.7-104 104s46.7 104 104 104 104-46.7 104-104-46.7-104-104-104zm0 160c-30.9 0-56-25.1-56-56s25.1-56 56-56 56 25.1 56 56-25.1 56-56 56z'%3E%3C/path%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
 }
 
 dark-light-switch button {
-  border-radius: 15px;
+  border-radius: 1rem;
 }
 
 dark-light-switch button:before {
