@@ -16,19 +16,20 @@ fields:
   label: date
 - type: file
   name: introImage
-  label: introImage
+  label: Intro Image
 - type: text
   name: introImageAlt
-  label: introImageAlt
+  label: Intro Image Alt Text
 - type: file
   name: fulltextImage
-  label: fulltextImage
+  label: Full Image
 - type: text
   name: fulltextImageAlt
-  label: fulltextImageAlt
+  label: Full Image Alt Text
 - type: textarea
   name: custom_excerpt
-  label: custom_excerpt
+  label: Excerpt
 - type: text
   name: layout
   label: layout
+  hidden: true
