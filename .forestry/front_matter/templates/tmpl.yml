@@ -1,0 +1,36 @@
+---
+label: tmpl
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: description
+  label: description
+- name: tags
+  type: tag_list
+  default: []
+  label: Tags
+- type: datetime
+  name: date
+  label: date
+- type: file
+  name: introImage
+  label: Intro Image
+- type: text
+  name: introImageAlt
+  label: Intro Image Alt Text
+- type: file
+  name: fulltextImage
+  label: Full Image
+- type: text
+  name: fulltextImageAlt
+  label: Full Image Alt Text
+- type: textarea
+  name: custom_excerpt
+  label: Excerpt
+- type: text
+  name: layout
+  label: layout
+  hidden: true
