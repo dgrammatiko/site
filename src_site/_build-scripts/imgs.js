@@ -41,8 +41,8 @@ module.exports.translateImages = async function (document) {
       webp.media = `(min-width:${size}px)`;
       webp.srcset = `${path.replace(`${ext}`, `@${size}.webp`).replace(`${process.cwd()}/live`, '')}`;
 
-      picture.appendChild(source);
       picture.appendChild(webp);
+      picture.appendChild(source);
     }
 
     const img = imgEl.cloneNode(true);

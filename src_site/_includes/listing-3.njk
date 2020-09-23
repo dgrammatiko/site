@@ -28,7 +28,7 @@
   {% endif %}
 {% endfor %}
 
-<section class="posts" itemscope="" itemtype="https://schema.org/Blog">
+<section class="posts deferred" itemscope="" itemtype="https://schema.org/Blog">
 {% for blog in collections.blogs | reverse %}
   {% if loop.index < 4 %}
   {% if loop.index !== 1 %}

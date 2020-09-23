@@ -147,3 +147,8 @@ header.major > :last-child {
     padding: 1rem;
   }
 }
+
+.deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: 100px 1000px;
+}
