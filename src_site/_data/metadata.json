@@ -1,6 +1,7 @@
 {
   "title": "dGrammatiko",
-  "url": "https://dgrammatiko.online/",
+  "domain": "dgrammatiko.online",
+  "url": "https://dgrammatiko.online",
   "description": "Dimitrios Grammatikogiannnis's personal site",
   "feed": {
     "subtitle": "Web related posts",

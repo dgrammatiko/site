@@ -53,6 +53,16 @@ module.exports = function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  eleventyConfig.addFilter("getWebmentionsForUrl", (webmentions, url) => {
+    return webmentions.children.filter(entry => entry['wm-target'] === url)
+  });
+  eleventyConfig.addFilter("size", (mentions) => {
+    return !mentions ? 0 : mentions.length
+  });
+  eleventyConfig.addFilter("webmentionsByType", (mentions, mentionType) => {
+    return mentions.filter(entry => !!entry[mentionType])
+  });
+
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (
       outputPath.endsWith(".html") &&
