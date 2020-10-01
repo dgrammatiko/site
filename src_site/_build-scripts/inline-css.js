@@ -1,4 +1,4 @@
-const {exists, existsSync, mkdirp, readFile, readFileSync } = require('fs-extra');
+const {existsSync, mkdirp, readFile, readFileSync } = require('fs-extra');
 const crypto = require('crypto');
 const {dirname} = require('path');
 const {execSync} = require('child_process');
@@ -36,9 +36,9 @@ module.exports.translateInlineStyles = async function(document) {
 }
 
 async function processPcss(file) {
-  if (! await exists(file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`))) {
+  if (!existsSync(file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`))) {
     const livePath = dirname(file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`));
-    if (! await exists(livePath)) await mkdirp(livePath);
+    if (!existsSync(livePath)) await mkdirp(livePath);
 
     await execSync(`./node_modules/.bin/postcss ${file.replace('src_assets/static', 'src_assets')} -o ${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`)}`);
   }
