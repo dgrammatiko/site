@@ -1,4 +1,5 @@
 const { DateTime } = require("luxon");
+let Nunjucks = require('nunjucks');
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const htmlmin = require("html-minifier");
@@ -9,6 +10,11 @@ const codepenIt = require("11ty-to-codepen");
 const root = process.cwd();
 
 module.exports = function (eleventyConfig) {
+  let nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('./src_site/_includes'));
+  // nunjucksRender.nunjucks.configure(['./templates/']);
+  // nunjucksEnvironment.addGlobal('foobar', (str) => `foo ${str} bar`)
+  eleventyConfig.setLibrary('njk', nunjucksEnvironment)
+
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     alwaysWrapLineHighlights: false,
