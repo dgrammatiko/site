@@ -5,10 +5,10 @@
   "description": "Personal site",
   "main": "build.js",
   "scripts": {
-    "production": "./node_modules/.bin/rollup -c rollup.config.js && ./node_modules/.bin/eleventy",
+    "production": "./node_modules/.bin/rollup -c rollup.config.js && NODE_ENV=production ./node_modules/.bin/eleventy",
     "dev": "./node_modules/.bin/rollup -c rollup.config.js && ./node_modules/.bin/eleventy --serve",
     "watch": "ELEVENTY_ENV=watch ./node_modules/.bin/eleventy --watch --serve",
-    "build": "./node_modules/.bin/rollup -c rollup.config.js && ./node_modules/.bin/eleventy"
+    "build": "./node_modules/.bin/rollup -c rollup.config.js && NODE_ENV=production ./node_modules/.bin/eleventy"
   },
   "author": "dgrammatiko",
   "license": "MIT",
