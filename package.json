@@ -36,7 +36,7 @@
     "node-fetch": "2.6.1",
     "path": "0.12.7",
     "postcss": "8.1.1",
-    "postcss-cli": "8.0.0",
+    "postcss-cli": "8.1.0",
     "postcss-custom-media": "7.0.8",
     "postcss-custom-selectors": "5.1.2",
     "postcss-discard-comments": "4.0.2",
