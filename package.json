@@ -14,7 +14,7 @@
     "production": "npm-run-all -p build:*",
     "dev": "npm-run-all -p watch:*",
     "watch": "npm-run-all -p watch:*",
-    "build": "npm-run-all -p build:*",
+    "build": "npm-run-all -s build:*",
     "test": "npm-run-all -p build:*"
   },
   "author": "dgrammatiko",
