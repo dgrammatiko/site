@@ -31,33 +31,11 @@ module.exports = [
     plugins: [terser()],
   },
   {
-    input: "./node_modules/ce-theme-switcher/src/index.js",
-    output: {
-      sourcemap: false,
-      format: "esm",
-      file: `${intermediate}/js/${"./node_modules/ce-theme-switcher/src/index.js"
-        .replace("./node_modules/", "")
-        .replace("/src/index.js", "")}.esm.js`,
-    },
-    plugins: [terser()],
-  },
-  {
     input: "./node_modules/lite-youtube-embed/src/index.js",
     output: {
       sourcemap: false,
       format: "esm",
       file: `./${staticDest}/js/${"./node_modules/lite-youtube-embed/src/index.js"
-        .replace("./node_modules/", "")
-        .replace("/src/index.js", "")}.esm.js`,
-    },
-    plugins: [terser()],
-  },
-  {
-    input: "./node_modules/lite-youtube-embed/src/index.js",
-    output: {
-      sourcemap: false,
-      format: "esm",
-      file: `${intermediate}/js/${"./node_modules/lite-youtube-embed/src/index.js"
         .replace("./node_modules/", "")
         .replace("/src/index.js", "")}.esm.js`,
     },

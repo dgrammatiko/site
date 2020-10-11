@@ -10,6 +10,10 @@ const codepenIt = require("11ty-to-codepen");
 const root = process.cwd();
 
 module.exports = function (eleventyConfig) {
+  eleventyConfig.addPassthroughCopy("src_site/_headers", "live/_headers");
+  eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
+  eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
+
   let nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('./src_site/_includes'));
   // nunjucksRender.nunjucks.configure(['./templates/']);
   // nunjucksEnvironment.addGlobal('foobar', (str) => `foo ${str} bar`)
@@ -113,10 +117,6 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.addTransform("parse", imageTransform);
-
-  eleventyConfig.addPassthroughCopy("src_site/_headers", "live/_headers");
-  eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
-  eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
 
   // eleventyConfig.addPassthroughCopy('intermediate/static', 'live/static')
 
