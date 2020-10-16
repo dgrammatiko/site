@@ -23,7 +23,7 @@
     "11ty-to-codepen": "1.0.2",
     "@11ty/eleventy": "0.11.0",
     "@11ty/eleventy-plugin-rss": "1.0.9",
-    "@11ty/eleventy-plugin-syntaxhighlight": "3.0.3",
+    "@11ty/eleventy-plugin-syntaxhighlight": "3.0.4",
     "@gerhobbelt/markdown-it-responsive": "latest",
     "@rollup/plugin-commonjs": "15.1.0",
     "@rollup/plugin-node-resolve": "9.0.0",
