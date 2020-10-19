@@ -58,7 +58,7 @@
     "rollup": "2.32.0",
     "rollup-plugin-terser": "7.0.2",
     "sharp": "0.26.2",
-    "terser": "5.3.6",
+    "terser": "5.3.7",
     "utils": "0.3.1",
     "watch": "1.0.2"
   },
