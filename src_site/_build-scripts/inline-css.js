@@ -19,7 +19,7 @@ module.exports.translateInlineStyles = async function(document) {
     let existingStyles = decode(stl.innerHTML);
 
     for await (let src of srcs) {
-      await processPcss(`${process.cwd()}/src_assets/${src}`)
+      // await processPcss(`${process.cwd()}/src_assets/${src}`)
       existingStyles = existingStyles + await readFile(`${process.cwd()}/live/${src}`, {encoding: 'utf8'});
     }
 
@@ -33,13 +33,4 @@ module.exports.translateInlineStyles = async function(document) {
   }
 
   return document;
-}
-
-async function processPcss(file) {
-  if (!existsSync(file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`))) {
-    const livePath = dirname(file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`));
-    if (!existsSync(livePath)) await mkdirp(livePath);
-
-    await execSync(`./node_modules/.bin/postcss ${file.replace('src_assets/static', 'src_assets')} -o ${file.replace(`${paths.staticSrc}/static`, `${paths.staticDest}`)}`);
-  }
 }
