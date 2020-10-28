@@ -11,8 +11,9 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@dgrammatiko">
     {% if fulltextImage %}
-    <meta name="twitter:image" content="https://dgrammatiko.online{{ fulltextImage }}">
-    <meta property="og:image" content="https://dgrammatiko.online{{ fulltextImage }}">
+    {% set image = fulltextImage.replace('.jpg', '@1200.jpg').replace('.png', '@1200.png') %}
+    <meta name="twitter:image" content="https://dgrammatiko.online{{ image }}">
+    <meta property="og:image" content="https://dgrammatiko.online{{ image }}">
     {% else %}
     <meta name="twitter:image" content="https://dgrammatiko.online/static/images/android-chrome-512x512.png">
     <meta property="og:image" content="https://dgrammatiko.online/static/images/android-chrome-512x512.png">
