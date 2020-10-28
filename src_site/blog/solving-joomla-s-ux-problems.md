@@ -1,6 +1,6 @@
 ---
 title: Solving Joomla’s UX problems
-description:
+description: A random blog about Joomla's architecture
 tags: blog, Joomla
 date: 2018-10-26T11:38:59+00:00
 introImage: /static/img/ryan-johnston-124209-unsplash.jpg
@@ -22,8 +22,8 @@ Wordpress and Drupal, right from the beginning of their existence, followed a di
 Form follows function
 ---------------------
 
-If you studied design (by the way due to my engineering background I have), you are already familliar with this essential principle. For those not familliar with, let me call it the law, please spent some time to educate yourself, starting here: https://en.wikipedia.org/wiki/Form\_follows\_function. So, you might ask, how the heck an industrial, architecture principle is affecting a softwares program? The answer is obvious, or it should be at least for the so called developers, buildings and softwares share something common: Architecture. But you already knew that, didn’t you?  
-What I’m trying to highlight here (maybe spending more time than what is appropriate) is that the three well known CMSs don’t share the same architecture and therefore will never, ever have the same workflows. No matter what gimmicks and shortcuts and other fancy things you throw at them they can only pretend to be something that are not truly are.  
+If you studied design (by the way due to my engineering background I have), you are already familliar with this essential principle. For those not familliar with, let me call it the law, please spent some time to educate yourself, starting here: https://en.wikipedia.org/wiki/Form\_follows\_function. So, you might ask, how the heck an industrial, architecture principle is affecting a softwares program? The answer is obvious, or it should be at least for the so called developers, buildings and softwares share something common: Architecture. But you already knew that, didn’t you?
+What I’m trying to highlight here (maybe spending more time than what is appropriate) is that the three well known CMSs don’t share the same architecture and therefore will never, ever have the same workflows. No matter what gimmicks and shortcuts and other fancy things you throw at them they can only pretend to be something that are not truly are.
 And that is the problem of Joomla: people want the system to become a clone of Wordpress. They don’t like to put it straight forward like that so they came up with a nice wrapper for that: we want Joomla to have the good UX of Wordpress. The problems start to arise when you blindly copying the workflow of something vastly different, thinking that:
 
 > if it works for that system then most probably it will work for us

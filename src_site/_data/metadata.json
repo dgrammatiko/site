@@ -2,7 +2,7 @@
   "title": "dGrammatiko",
   "domain": "dgrammatiko.online",
   "url": "https://dgrammatiko.online/",
-  "description": "Dimitrios Grammatikogiannnis's personal site",
+  "description": "Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP",
   "feed": {
     "subtitle": "Web related posts",
     "filename": "feed.xml",

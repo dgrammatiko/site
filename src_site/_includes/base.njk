@@ -5,7 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="description" content="Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP">
+    {% if description %}
+      {% set desc = description | safe %}
+    {% else %}
+      {% set desc = metadata.description | safe %}
+    {% endif %}
+
+    <meta name="description" content="{{ desc }}">
     <meta name="apple-mobile-web-app-title" content="dGrammatiko">
     <meta name="application-name" content="dGrammatiko">
     <meta name="twitter:card" content="summary">
@@ -19,7 +25,7 @@
     <meta property="og:image" content="https://dgrammatiko.online/static/images/android-chrome-512x512.png">
     {% endif %}
     <meta property="og:url" content="https://dgrammatiko.online{{ page.url }}">
-    <meta property="og:title" content="Blog">
+    <meta property="og:title" content="{{ metadata.title }}{% if title %} - {{ title }}{% endif %}">
     <meta property="og:description" content="Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2b3e50">

@@ -1,6 +1,6 @@
 ---
 title: Fight the bloatwares
-description: 
+description: "I made a thing: a pwa that creates a Joomla plugin to eliminate bloated extensions"
 tags: blog, Joomla
 date: 2019-03-27T12:46:54.000+00:00
 introImage: "/static/img/screenshot_2019_03_26.jpg"
