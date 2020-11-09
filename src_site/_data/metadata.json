@@ -1,8 +1,8 @@
 {
   "title": "dGrammatiko",
   "domain": "dgrammatiko.online",
-  "url": "https://dgrammatiko.online",
-  "description": "Dimitrios Grammatikogiannnis's personal site",
+  "url": "https://dgrammatiko.online/",
+  "description": "Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP",
   "feed": {
     "subtitle": "Web related posts",
     "filename": "feed.xml",
@@ -19,7 +19,7 @@
     "short_name": "dGrammatiko",
     "description": "My personal site",
     "lang": "en-US",
-    "start_url": "https://dgrammatiko.online/",
+    "start_url": "/",
     "display": "minimal-ui",
     "theme_color": "#50617c",
     "background_color": "#50617c",
@@ -27,7 +27,8 @@
       {
         "src": "/static/images/android-chrome-512x512.png",
         "sizes": "512x512",
-        "type": "image/png"
+        "type": "image/png",
+        "purpose": "any maskable"
       }
     ]
   }

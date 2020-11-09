@@ -1,6 +1,6 @@
 ---
 title: Pens of freedom
-description:
+description: A dead easy 11ty plugin for publishing automatically code snippets to Codepen
 tags: blog, eleventy
 date: 2020-06-17T23:46:54+00:00
 introImage: /static/img/digital-content-writers-india-y3Tl-cbU-CU-unsplash.jpg
