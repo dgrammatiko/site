@@ -57,7 +57,7 @@
     "rmrf": "2.0.2",
     "rollup": "2.33.2",
     "rollup-plugin-terser": "7.0.2",
-    "sharp": "0.26.2",
+    "sharp": "0.26.3",
     "terser": "5.4.0",
     "utils": "0.3.1",
     "watch": "1.0.2"
