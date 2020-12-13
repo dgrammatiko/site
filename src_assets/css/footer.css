@@ -12,3 +12,7 @@ footer {
     display: inherit;
   }
 }
+
+footer nav {
+  align-items: baseline;
+}

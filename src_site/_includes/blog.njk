@@ -17,10 +17,10 @@ layout: base.njk
       <p>{{ custom_excerpt }}</p>
     </header>
 
-      {% if fulltextImage %}
+      {% if image %}
           <wanna-be-picture class="lazyload"
-              src="{{ fulltextImage }}"
-              alt="{{ introImageAlt }}"
+              src="{{ image }}"
+              alt="{{ imageAltText }}"
               sizes="160,320,480,640,800,960,1200,1600,1920"
               ></wanna-be-picture>
       {% endif %}
@@ -29,13 +29,8 @@ layout: base.njk
         {{ layoutContent | safe }}
       </article>
     <hr>
-  </section>
-  <section class="articleBody">
-    <h3>Webmentions</h3>
     {% set webmentionUrl %}{{ page.url | url | absoluteUrl(site.url) }}{% endset %}
     {% include 'webmentions.njk' %}
   </section>
-  <!--<a href="/blog">Back to all posts</a> -->
   <wanna-be-inline-script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</wanna-be-inline-script>
-
 </main>

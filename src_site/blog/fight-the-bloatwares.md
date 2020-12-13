@@ -3,17 +3,13 @@ title: Fight the bloatwares
 description: "I made a thing: a pwa that creates a Joomla plugin to eliminate bloated extensions"
 tags: blog, Joomla
 date: 2019-03-27T12:46:54.000+00:00
-introImage: "/static/img/screenshot_2019_03_26.jpg"
-introImageAlt: Screenshot of the application
-fulltextImage: "/static/img/screenshot_2019_03_26.jpg"
-fulltextImageAlt: Screenshot of the application
+image: "/static/img/screenshot_2019_03_26.jpg"
+imageAltText: Screenshot of the application
 custom_excerpt: According to urbandictionary.com, the term is described as software
   that comes piggy-backed on other software installations. Bloatware usually includes
   toolbars desktop widgets or external unrelated applications. Most piggy-backing
   bloatware can perform a mundane task that is generally non-essential to everyday
   computer use.
-layout: blog.njk
-
 ---
 Google Android devices and Microsoft Windows personal computers usually are heavily loaded with a plethora of software that the user never bought or asked for. This happens mostly due to some profit that the phone or pc manufacturers are gaining by allowing some software to be preinstalled on their machines. There are few downsides on this, namely the space that is occupied by those applications and (or) the time that the user needs to spend to remove them to get a clean system. Also, it's relatively safe to presume that this is an awful practice and if you can avoid the trap of bloatware is something that you should always consider.
 

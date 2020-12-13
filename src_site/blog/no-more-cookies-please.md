@@ -3,12 +3,9 @@ title: No more cookies please
 description: A simple how-to for eliminating cookies in Joomla 3
 tags: blog, Joomla
 date: 2018-10-28T10:06:53+00:00
-introImage: /static/img/alex-loup-606850-unsplash.jpg
-introImageAlt: Hand holding a cookie
-fulltextImage: /static/img/alex-loup-606850-unsplash.jpg
-fulltextImageAlt: Hand holding a cookie
+image: /static/img/alex-loup-606850-unsplash.jpg
+imageAltText: Hand holding a cookie
 custom_excerpt: Monolithic applications, like PHP CMS', usually need a way to synchronise the state of the client [browser] with their own, but there are cases that a stateless application will work fine. Let's explore how we can achieve a cookieless Joomla instance
-layout: blog.njk
 ---
 This website is just a blog and therefore having a popup banner asking approval for some cookies wasn't really a user experience I had in my mind. The site is build using Joomla 3.x so a cookie is **always** created no matter what. Well, let's change that because quite frankly I really hate when things are dictated.
 
@@ -18,7 +15,7 @@ This website is just a blog and therefore having a popup banner asking approval 
 ```php
 public function onAfterRender() {
   /* The logic goes here */
-} 
+}
 ```
 
 
@@ -33,9 +30,9 @@ $app = Factory::getApplication();
 Make sure that you remove the cookies only for the front end:
 
 ```php
-if ($app->isClient('site') !== true) { 
+if ($app->isClient('site') !== true) {
   return;
-} 
+}
 ```
 
 And manipulate the cookie like:

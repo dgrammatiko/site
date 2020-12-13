@@ -1,14 +1,11 @@
 ---
 title: The hidden cost of Frontend
-description: 
+description:
 tags: blog, Joomla
 date: 2019-03-16T19:02:40+00:00
-introImage: /static/img/riccardo-annandale-140624-unsplash.jpg
-introImageAlt: 
-fulltextImage: /static/img/riccardo-annandale-140624-unsplash.jpg
-fulltextImageAlt: 
+image: /static/img/riccardo-annandale-140624-unsplash.jpg
+imageAltText:
 custom_excerpt: Joomla 3.9 introduced a new feature for content privacy which is a great addition to the tools provided out of the box but, after 4 patches and countless mentions for it, still has a flaw. A major one...
-layout: blog.njk
 ---
 The idea for this post came from a tweet of a friend expressing gratitude towards all the people that worked to deliver this feature to the community. I stupidly responded with "Especially for those Mootools Modals..." and this response caused a chained reaction. So I guess I had to express myself a little bit more and since Twitter is kinda forbidden for such things this post was more appropriate.
 
@@ -18,7 +15,7 @@ Steve Jobs has said it very nicely a few years ago when he was asked about the p
 
 Almost all websites have a hidden cost known to all frontend devs as performance cost. The more things you add in your page usually reflect to worse performance marks. And here is your hidden cost that originates in this feature (and could have been eliminated right from the first beta). The user consent and privacy plugins both have a modal that is not using the already loaded libraries of Bootstrap and jQuery but they are loading yet another library (Mootools) and another modal script. Total size cost: around 200kb. Performance cost per page: over 1-second delay on top of the known delay due to Bootstrap and jQuery of more than 2 seconds (values reflect 3G emulation on Google's Lighthouse).
 
-  
+
 Ok, so it's a bit slower, so what.
 -------------------------------------
 
