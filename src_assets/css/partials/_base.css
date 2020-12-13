@@ -1,12 +1,21 @@
 :root{
-  --body-bg: #fff;
+  --body-bg: #f3f3f3;
+  --body-color: #333;
+  --link-color: #2b3e50;
+  --link-focus-color: #6589ac;
+  --menu-bg: #161b22;
+  --menu-fg: #fff;
+  --button-bg: #161b22;
+  --button-fg: #fff;
+
+  /* --body-bg: #fff;
   --body-color: #333;
   --link-color: #2b3e50;
   --link-focus-color: #6589ac;
   --menu-bg: #2b3e50;
   --menu-fg: #fff;
   --button-bg: #2b3e50;
-  --button-fg: #fff;
+  --button-fg: #fff; */
 }
 
 * {
@@ -28,29 +37,28 @@
   box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'dgrammatiko';
-    src: url("/static/fonts/dgrammatiko.woff2") format("woff2"),
-          url("/static/fonts/dgrammatiko.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap
-}
-
 body, html {
-  font-family: "dgrammatiko", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not(.is-light) { /* :root is <html> for HTML documents */
-    --body-bg: #15202b;
+    --body-bg: #f3f3f3;
+    --body-color: #333;
+    --link-color: #2b3e50;
+    --link-focus-color: #6589ac;
+    --menu-bg: #161b22;
+    --menu-fg: #fff;
+    --button-bg: #161b22;
+    --button-fg: #fff;
+    /* --body-bg: #15202b;
     --body-color: #fff;
     --link-color: #9bebea;
     --link-focus-color: #b5fffe;
     --menu-bg: #192734;
     --menu-fg: #fff;
     --button-bg: #fff;
-    --button-fg: #192734;
+    --button-fg: #192734; */
   }
   img {
     opacity: .75;
@@ -62,14 +70,22 @@ body, html {
 }
 
 :root.is-dark { /* :root is <html> for HTML documents */
-  --body-bg: #15202b;
+  /* --body-bg: #15202b;
   --body-color: #fff;
   --link-color: #9bebea;
   --link-focus-color: #b5fffe;
   --menu-bg: #192734;
   --menu-fg: #fff;
   --button-bg: #fff;
-  --button-fg: #192734;
+  --button-fg: #192734; */
+  --body-bg: #0d1117;
+--body-color: #fff;
+--link-color: #6ff9e5;
+--link-focus-color: #bbfffe;
+--menu-bg: #161b22;
+--menu-fg: #fff;
+--button-bg: #bbfffe;
+--button-fg: #161b22;
 }
 
 body {
@@ -95,6 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 .icon {
@@ -109,7 +126,9 @@ a {
 
 a:hover,
 a:focus {
-  color: var(--link-focus-color);
+  /* color: var(--link-focus-color); */
+  color: var(--body-bg);
+  background-color: var(--link-color);
 }
 
 .screen-reader-only {

@@ -3,6 +3,10 @@ layout: base.njk
 title: Code
 ---
 <style>
+  #main {
+margin: 0 auto;
+max-width: 72rem;
+}
 .cards {
     height: auto;
     display: grid;
@@ -24,7 +28,7 @@ h2 {
   text-align: center;
 }
 </style>
-
+<main id="main">
 <h2 style="text-align: center">Web</h2>
 <section class="cards web">
 {# Loop through all the web widgets #}
@@ -34,7 +38,7 @@ h2 {
           <h2>{% if blog.title %}{{ blog.title }}{% endif %}</h2>
         </header>
         {% if blog.image %}
-            <img loading="lazy" src="/{{ blog.image }}" alt="{{ blog.imageAlt }}" />
+            <img loading="lazy" src="/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
         {% endif %}
         <p>{{ blog.description }}</p>
         <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}abandoned{% endif %}</p>
@@ -71,3 +75,4 @@ h2 {
 </section>
 
 <hr style="border: 5px solid"/>
+</main>

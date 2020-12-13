@@ -3,12 +3,9 @@ title: Solving Joomla’s UX problems
 description: A random blog about Joomla's architecture
 tags: blog, Joomla
 date: 2018-10-26T11:38:59+00:00
-introImage: /static/img/ryan-johnston-124209-unsplash.jpg
-introImageAlt: A tunnel
-fulltextImage: /static/img/ryan-johnston-124209-unsplash.jpg
-fulltextImageAlt: A tunnel
+image: /static/img/ryan-johnston-124209-unsplash.jpg
+imageAltText: A tunnel
 custom_excerpt: Joomla 4.0 is painstakingly crafted by a bunch of people. One of the main areas of improvement was to simplify the convoluted User Experience. So how things are evolving? What’s the plan there?
-layout: blog.njk
 ---
 Joomla is one of three major open source CMSs, which tends to loose users due to the poor interface and the extremely difficult workflows. A very reasonable reason, since no-one (except hardcore mazochists) wants a system that is extremelly weird and needs some deep knowledge to even complete the very simple tasks. But Joomla used to be one of the pioneers in the Content Management a decade ago, so how that system was ruined so badly?
 

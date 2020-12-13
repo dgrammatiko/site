@@ -2,7 +2,7 @@ const { camelCase, paramCase } =require("change-case");
 const { exists, writeFile, mkdirp, existsSync } = require('fs-extra');
 const { dirname, extname } = require('path');
 const sharp = require('sharp');
-
+const sizeOf = require('image-size');
 const paths = require('./paths');
 const sizes = [160, 320, 480, 640, 800, 960, 1200, 1600, 1920];
 
@@ -57,8 +57,12 @@ module.exports.translateImages = async function (document) {
 
     img.setAttribute('src', `${path.replace(`${ext}`, `@${sizes[0]}${ext}`).replace(`${process.cwd()}/live`, '')}`);
     img.setAttribute('loading', 'lazy');
-    img.setAttribute('style', 'position:absolute;top:0;left:0;width:100%')
-    figure.setAttribute('style', 'display:block;position:relative;padding-top: 56.25%;')
+    const dimensions = sizeOf(`src_assets/${src.replace('static/', '')}`);
+    img.width = dimensions.width;
+    img.height = dimensions.height;
+    img.loading = 'lazy';
+    // img.setAttribute('style', 'position:absolute;top:0;left:0;width:100%')
+    // figure.setAttribute('style', 'display:block;position:relative;padding-top: 56.25%;')
 
     picture.appendChild(img);
     figure.appendChild(picture);

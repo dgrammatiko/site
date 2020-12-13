@@ -13,6 +13,7 @@ const preCached = [
   "/offline.html",
   "/manifest.json",
   "/static/fonts/dgrammatiko.woff2",
+  "/static/fonts/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_LjQbMZhKSbpUVzEEQ.woff",
   "/static/js/ce-theme-switcher.esm.js",
 ];
 
@@ -112,6 +113,10 @@ addEventListener("fetch", (event) => {
 
   event.respondWith(
     (async function () {
+      // Full page fetch fallback
+      const cachedReponse = await caches.match(event.request);
+      if (cachedReponse) return cachedReponse;
+
       // This works only on chromium based UA
       if (
         url.origin === location.origin &&
@@ -121,10 +126,6 @@ addEventListener("fetch", (event) => {
       ) {
         return streamArticle(event, url);
       }
-
-      // Full page fetch fallback
-      const cachedReponse = await caches.match(event.request);
-      if (cachedReponse) return cachedReponse;
 
       return await fetch(event.request).catch(() =>
         caches.match("/offline.html")

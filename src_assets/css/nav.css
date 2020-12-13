@@ -58,6 +58,7 @@ nav {
   font-size: 3rem;
   color: var(--menu-fg);
   position: relative;
+  font-family: dgrammatiko;
 }
 @keyframes glitch-anim-1 {
   0% {

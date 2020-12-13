@@ -12,10 +12,10 @@
       </header>
 
 
-      {% if blog.data.fulltextImage %}
+      {% if blog.data.image %}
             <wanna-be-picture class="lazyload"
-              src="{{ blog.data.fulltextImage }}"
-              alt="{{ blog.data.introImageAlt }}"
+              src="{{ blog.data.image }}"
+              alt="{{ blog.data.imageAltText }}"
               sizes="160,320,480"></wanna-be-picture>
 
             {% endif %}
@@ -43,10 +43,10 @@
             <h2>{% if blog.data.title %}{{ blog.data.title }}{% endif %}</h2>
           <p>{{ blog.data.custom_excerpt }}</p>
         </header>
-          {% if blog.data.fulltextImage %}
+          {% if blog.data.image %}
             <wanna-be-picture class="lazyload"
-              src="{{ blog.data.fulltextImage }}"
-              alt="{{ blog.data.introImageAlt }}"
+              src="{{ blog.data.image }}"
+              alt="{{ blog.data.imageAltText }}"
               sizes="160,320,480"></wanna-be-picture>
           {% endif %}
           <a class="btn" href="{{ blog.url }}">{{ blog.data.title }}</a>

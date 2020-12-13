@@ -27,7 +27,7 @@ module.exports.translateInlineStyles = async function(document) {
 
     const hash = crypto.createHash('sha256');
     hash.update(style.innerHTML);
-    style.nonce = `sha256-${hash.digest('hex')}`;
+    // style.nonce = `sha256-${hash.digest('hex')}`;
 
     stl.replaceWith(style);
   }

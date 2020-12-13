@@ -16,7 +16,7 @@ module.exports.translateInlineJs = async function(document) {
 
     const hash = crypto.createHash('sha256');
     hash.update(script.innerHTML);
-    script.nonce = `sha256-${hash.digest('hex')}`;
+    // script.nonce = `sha256-${hash.digest('hex')}`;
 
     stl.replaceWith(script);
   });
