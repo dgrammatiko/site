@@ -30,7 +30,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "3.0.6",
     "@gerhobbelt/markdown-it-responsive": "latest",
     "@rollup/plugin-commonjs": "17.1.0",
-    "@rollup/plugin-node-resolve": "11.1.0",
+    "@rollup/plugin-node-resolve": "11.1.1",
     "@rollup/plugin-replace": "2.3.4",
     "11ty-to-codepen": "1.0.2",
     "change-case": "4.1.2",
