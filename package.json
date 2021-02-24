@@ -40,7 +40,7 @@
     "dotenv": "8.2.0",
     "fs-extra": "9.1.0",
     "html-minifier": "4.0.0",
-    "image-size": "0.9.3",
+    "image-size": "0.9.4",
     "jsdom": "16.4.0",
     "lodash": "4.17.21",
     "luxon": "1.26.0",
