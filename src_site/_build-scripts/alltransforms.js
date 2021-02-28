@@ -1,4 +1,5 @@
-const { JSDOM } = require('jsdom');
+// const { JSDOM } = require('jsdom');
+const {DOMParser, parseHTML} = require('linkedom');
 const sizeOf = require('image-size');
 const {extname} = require('path');
 const {exists, existsSync, mkdirp, writeFile } = require('fs-extra');
@@ -13,12 +14,12 @@ const root = process.cwd();
 
 module.exports = async function (value, outputPath) {
     if (outputPath.endsWith('.html')) {
-        const DOM = new JSDOM(value, {
-            resources: 'usable'
-        });
+        // const DOM = new JSDOM(value, {
+        //     resources: 'usable'
+        // });
+        // let document = DOM.window.document;
 
-        let document = DOM.window.document;
-
+        let { document } = parseHTML(value);
         document = await translateImages(document);
         document = await translateInlineStyles(document);
         document = await translateInlineJs(document);
@@ -33,7 +34,7 @@ module.exports = async function (value, outputPath) {
           return document.documentElement.outerHTML.replace(/<\/header>\?.*/, '</header>').replace('</body></html>', '') //[^|]*$
         }
         if (`${root}/${siteDest}/index-bottom.html` === outputPath) {
-          return document.documentElement.outerHTML.replace('<!DOCTYPE html><html><head></head><body>', '') //[^|]*$
+          return document.documentElement.outerHTML.replace('<html>', '') //[^|]*$
         }
 
         const main = document.querySelector('main');
