@@ -118,14 +118,14 @@ addEventListener("fetch", (event) => {
       if (cachedReponse) return cachedReponse;
 
       // This works only on chromium based UA
-      if (
-        url.origin === location.origin &&
-        event.request.mode === "navigate" &&
-        routes.includes(url.pathname) &&
-        typeof WritableStream === "function"
-      ) {
-        return streamArticle(event, url);
-      }
+      // if (
+      //   url.origin === location.origin &&
+      //   event.request.mode === "navigate" &&
+      //   routes.includes(url.pathname) &&
+      //   typeof WritableStream === "function"
+      // ) {
+      //   return streamArticle(event, url);
+      // }
 
       return await fetch(event.request).catch(() =>
         caches.match("/offline.html")
