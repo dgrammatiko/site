@@ -30,7 +30,7 @@ async function imageShortcode(src, alt, sizes) {
 const root = process.cwd();
 
 module.exports = function (eleventyConfig) {
-  // eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
+  eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
   eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
 
   let nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('./src_site/_includes'));
