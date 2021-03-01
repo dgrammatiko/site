@@ -1,5 +1,5 @@
 <main id="main">
-<wanna-be-inline-style src="static/css/blogs.css" in-place></wanna-be-inline-style>
+<style>{% include "assets/static/css/blogs.css" %}</style>
 <section class="posts" itemscope="" itemtype="https://schema.org/Blog">
   {% for blog in collections.blogs | reverse %}
     <article itemscope="" itemtype="https://schema.org/BlogPosting">
@@ -12,17 +12,12 @@
         <p>{{ blog.data.custom_excerpt }}</p>
       </header>
         {% if blog.data.image %}
-          <wanna-be-picture class="lazyload"
-              src="{{ blog.data.image }}"
-              alt="{{ blog.data.imageAltText }}"
-              sizes="160,320,480"
-              class="responsive"
-              ></wanna-be-picture>
+          {% imagine blog.data.image, blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
         {% endif %}
 
         <a class="btn" href="{{ blog.url }}">{% if blog.data.title %}{{ blog.data.title }}{% endif %}</a>
     </article>
   {% endfor %}
 </section>
-<wanna-be-inline-script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</wanna-be-inline-script>
+<script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
 </main>

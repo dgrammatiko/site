@@ -55,15 +55,15 @@ const processCss = async (fileName, filePath) => {
   }
 
   console.log(filePath)
-  if (!Fs.existsSync(filePath.replace('src_assets', 'live/static'))) {
-    await Fs.mkdirSync(dirname(filePath.replace('src_assets', 'live/static')), { recursive: true});
+  if (!Fs.existsSync(filePath.replace('src_assets', 'src_site/_includes/assets/static'))) {
+    await Fs.mkdirSync(dirname(filePath.replace('src_assets', 'src_site/_includes/assets/static')), { recursive: true});
   }
 
   const fileContent = await fs.readFile(filePath)
   postcss(plugins)
     .process(fileContent, {from: undefined})
     .then(result => {
-      fs.writeFile(filePath.replace('src_assets', 'live/static'), result.css, {encoding: 'utf8'})
+      fs.writeFile(filePath.replace('src_assets', 'src_site/_includes/assets/static'), result.css, {encoding: 'utf8'})
     })
     .catch(err => handleError(err.message));
 }

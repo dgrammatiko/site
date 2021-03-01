@@ -1,5 +1,5 @@
 <footer>
-<wanna-be-inline-style src="static/css/footer.css" in-place></wanna-be-inline-style>
+<style>{% include "assets/static/css/footer.css" %}</style>
   <nav aria-label="Footer Navigation">
     <h3 class="footer-text">Also @</h3>
     <ul class="nav-links">
@@ -27,5 +27,4 @@
     </ul>
   </nav>
 </footer>
-<wanna-be-script type="module" src="/static/js/ce-theme-switcher.esm.js"></wanna-be-script>
-<wanna-be-inline-style src="static/css/fonts.css" in-place></wanna-be-inline-style>
+<script src="/static/js/ce-theme-switcher.esm.js?{{ page.date.getTime() }}" type="module"></script>

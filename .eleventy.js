@@ -6,19 +6,35 @@ const htmlmin = require("html-minifier");
 const { siteSrc, siteDest } = require("./src_site/_build-scripts/paths");
 const imageTransform = require("./src_site/_build-scripts/alltransforms.js");
 const codepenIt = require("11ty-to-codepen");
-// const Image = require("@11ty/eleventy-img");
+const Image = require("@11ty/eleventy-img");
+
+async function imageShortcode(src, alt, sizes) {
+  let metadata = await Image(`./src_assets/img/${src}`, {
+    urlPath: '/static/images/',
+    outputDir: 'live/static/images/',
+    widths: [300, 600, 1024, 1240],
+    formats: ["avif", "jpeg"]
+  });
+
+  let imageAttributes = {
+    alt,
+    sizes,
+    loading: "lazy",
+    decoding: "async",
+  };
+
+  // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
+  return Image.generateHTML(metadata, imageAttributes);
+}
 
 const root = process.cwd();
 
-
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addPassthroughCopy("src_site/_headers", "live/_headers");
-  eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
+  // eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
   eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
 
   let nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('./src_site/_includes'));
   // nunjucksRender.nunjucks.configure(['./templates/']);
-  // nunjucksEnvironment.addGlobal('foobar', (str) => `foo ${str} bar`)
   eleventyConfig.setLibrary('njk', nunjucksEnvironment)
 
   eleventyConfig.addPlugin(pluginRss);
@@ -119,38 +135,12 @@ module.exports = function (eleventyConfig) {
     markdownIt(options).use(markdownItAnchor, opts)
   );
 
+  eleventyConfig.addNunjucksAsyncShortcode("imagine", imageShortcode);
+  eleventyConfig.addLiquidShortcode("imagine", imageShortcode);
+  eleventyConfig.addJavaScriptFunction("imagine", imageShortcode);
+
   eleventyConfig.addTransform("parse", imageTransform);
-
-  // eleventyConfig.addPassthroughCopy('intermediate/static', 'live/static')
-
   eleventyConfig.addPairedShortcode("codepen", codepenIt);
-
-  // works also with addLiquidShortcode or addJavaScriptFunction
-  // eleventyConfig.addNunjucksAsyncShortcode("myResponsiveImage", async function(src, alt) {
-  //   if(alt === undefined) {
-  //     // You bet we throw an error on missing alt (alt="" works okay)
-  //     throw new Error(`Missing \`alt\` on myResponsiveImage from: ${src}`);
-  //   }
-
-  //   let stats = await Image(src, {
-  //     widths: [350, null],
-  //     formats: ['avif', 'webp', 'jpeg']
-  //   });
-  //   let lowestSrc = stats[outputFormat][0];
-  //   let sizes = "100vw"; // Make sure you customize this!
-
-  //   // Iterate over formats and widths
-  //   return `<picture>
-  //     ${Object.values(stats).map(imageFormat => {
-  //       return `  <source type="image/${imageFormat[0].format}" srcset="${imageFormat.map(entry => entry.srcset).join(", ")}" sizes="${sizes}">`;
-  //     }).join("\n")}
-  //       <img
-  //         src="${lowestSrc.url}"
-  //         width="${lowestSrc.width}"
-  //         height="${lowestSrc.height}"
-  //         alt="${alt}">
-  //     </picture>`;
-  //   });
 
   return {
     pathPrefix: "/",

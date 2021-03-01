@@ -3,7 +3,7 @@ title: The hidden cost of Frontend
 description:
 tags: blog, Joomla
 date: 2019-03-16T19:02:40+00:00
-image: /static/img/riccardo-annandale-140624-unsplash.jpg
+image: riccardo-annandale-140624-unsplash.jpg
 imageAltText:
 custom_excerpt: Joomla 3.9 introduced a new feature for content privacy which is a great addition to the tools provided out of the box but, after 4 patches and countless mentions for it, still has a flaw. A major one...
 ---

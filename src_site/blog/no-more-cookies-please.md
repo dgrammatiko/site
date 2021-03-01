@@ -3,7 +3,7 @@ title: No more cookies please
 description: A simple how-to for eliminating cookies in Joomla 3
 tags: blog, Joomla
 date: 2018-10-28T10:06:53+00:00
-image: /static/img/alex-loup-606850-unsplash.jpg
+image: alex-loup-606850-unsplash.jpg
 imageAltText: Hand holding a cookie
 custom_excerpt: Monolithic applications, like PHP CMS', usually need a way to synchronise the state of the client [browser] with their own, but there are cases that a stateless application will work fine. Let's explore how we can achieve a cookieless Joomla instance
 ---

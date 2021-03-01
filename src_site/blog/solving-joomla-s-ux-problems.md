@@ -3,7 +3,7 @@ title: Solving Joomla’s UX problems
 description: A random blog about Joomla's architecture
 tags: blog, Joomla
 date: 2018-10-26T11:38:59+00:00
-image: /static/img/ryan-johnston-124209-unsplash.jpg
+image: ryan-johnston-124209-unsplash.jpg
 imageAltText: A tunnel
 custom_excerpt: Joomla 4.0 is painstakingly crafted by a bunch of people. One of the main areas of improvement was to simplify the convoluted User Experience. So how things are evolving? What’s the plan there?
 ---

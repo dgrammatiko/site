@@ -36,14 +36,15 @@
 
     <link href="https://github.com/dgrammatiko" rel="me">
     <link href="https://twitter.com/dgrammatiko" rel="me">
-    <link href="https://www.facebook.com/dimitris.grammatikogiannis" rel="me">
-
-
     <link rel="webmention" href="https://webmention.io/dgrammatiko.online/webmention" />
     <link rel="pingback" href="https://webmention.io/webmention?forward=https://dgrammatiko.online/webmention" />
     <link rel="pingback" href="https://webmention.io/dgrammatiko.online/xmlrpc" />
 
-    <wanna-be-inline-style src="static/css/base.css,static/css/nav.css,static/css/ce-theme-switcher-alt.css,static/css/footer.css" in-place></wanna-be-inline-style>
+    {% set css %}
+      {% include "assets/static/css/fonts.css" %}
+      {% include "assets/static/css/base.css" %}
+    {% endset %}
+    <style>{{ css | safe }}</style>
   </head>
 
   <body class="grid-it">
@@ -53,7 +54,7 @@
 
     {% include "footer.njk" %}
 
-    <wanna-be-inline-script type="module">if('serviceWorker' in navigator){window.addEventListener('load',() => {navigator.serviceWorker.register('/service-worker.js');});}</wanna-be-inline-script>
+    <script type="module">if('serviceWorker' in navigator){window.addEventListener('load',() => {navigator.serviceWorker.register('/service-worker.js');});}</script>
   </body>
 
 </html>

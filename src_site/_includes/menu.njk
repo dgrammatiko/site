@@ -1,6 +1,10 @@
 
 <header role="banner">
-<wanna-be-inline-style src="static/css/nav.css,static/css/ce-theme-switcher-alt.css" in-place></wanna-be-inline-style>
+  {% set css %}
+    {% include "assets/static/css/nav.css" %}
+    {% include "assets/static/css/ce-theme-switcher-alt.css" %}
+  {% endset %}
+  <style>{{ css | safe }}</style>
   <div class="wrapper">
       <nav class="navbar">
         <a href="/" class="logo">

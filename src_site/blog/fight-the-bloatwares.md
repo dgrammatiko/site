@@ -3,7 +3,7 @@ title: Fight the bloatwares
 description: "I made a thing: a pwa that creates a Joomla plugin to eliminate bloated extensions"
 tags: blog, Joomla
 date: 2019-03-27T12:46:54.000+00:00
-image: "/static/img/screenshot_2019_03_26.jpg"
+image: screenshot_2019_03_26.jpg
 imageAltText: Screenshot of the application
 custom_excerpt: According to urbandictionary.com, the term is described as software
   that comes piggy-backed on other software installations. Bloatware usually includes

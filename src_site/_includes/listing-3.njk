@@ -11,14 +11,9 @@
         <p>{{ blog.data.custom_excerpt }}</p>
       </header>
 
-
       {% if blog.data.image %}
-            <wanna-be-picture class="lazyload"
-              src="{{ blog.data.image }}"
-              alt="{{ blog.data.imageAltText }}"
-              sizes="160,320,480"></wanna-be-picture>
-
-            {% endif %}
+        {% imagine blog.data.image, blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+      {% endif %}
 
       <p>
         <a class="btn big" href="{{ blog.url }}">{{ blog.data.title }}</a>
@@ -44,10 +39,7 @@
           <p>{{ blog.data.custom_excerpt }}</p>
         </header>
           {% if blog.data.image %}
-            <wanna-be-picture class="lazyload"
-              src="{{ blog.data.image }}"
-              alt="{{ blog.data.imageAltText }}"
-              sizes="160,320,480"></wanna-be-picture>
+            {% imagine blog.data.image, blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
           {% endif %}
           <a class="btn" href="{{ blog.url }}">{{ blog.data.title }}</a>
       </article>
@@ -56,5 +48,5 @@
   {% endif %}
 {% endfor %}
 </section>
-<wanna-be-inline-script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</wanna-be-inline-script>
+<script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
 </main>
