@@ -17,9 +17,8 @@
   "manifest": {
     "name": "dGrammatiko",
     "short_name": "dGrammatiko",
-    "description": "My personal site",
+    "description": "dGrammatiko's personal site",
     "lang": "en-US",
-    "start_url": "https://dgrammatiko.online/index.html",
     "display": "minimal-ui",
     "theme_color": "#50617c",
     "background_color": "#50617c",
