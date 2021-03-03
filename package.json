@@ -42,7 +42,7 @@
     "html-minifier": "4.0.0",
     "image-size": "0.9.4",
     "jsdom": "16.4.0",
-    "linkedom": "0.5.4",
+    "linkedom": "0.5.5",
     "lodash": "4.17.21",
     "luxon": "1.26.0",
     "markdown-it": "12.0.4",
