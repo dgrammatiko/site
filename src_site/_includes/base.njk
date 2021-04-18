@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
     <meta charset="utf-8">
+    <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     {% if description %}
