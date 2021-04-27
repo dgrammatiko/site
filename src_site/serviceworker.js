@@ -42,14 +42,17 @@ addEventListener("activate", (event) => {
 });
 
 const checkUrl = (url) => {
+  let isValid = false;
   for (const xu in routes) {
-    if (xu.length > 1) {
-      xu.slice()
-    } else {
-      return true;
+    if (xu.length > 1 && xu.slice(0, 1) === url) {
+      isValid = true;
+    }
+
+    if (xu.length === 1 && url.length === 1) {
+      isValid = true;
     }
   }
-  return false;
+  return isValid;
 }
 class IdentityStream {
   constructor() {
@@ -106,16 +109,13 @@ async function streamArticle(event, url) {
     identity.writable.getWriter().close();
   }());
 
-  // const cache = await caches.open(cacheName);
-  // const theStreamedPart = new Response(identity.readable, {
-  //   headers: { "Content-Type": "text/html; charset=utf-8" },
-  // });
-
-  // await cache.put(event.request, theStreamedPart.clone());
-  // return theStreamedPart;
-  return new Response(identity.readable, {
+  const cache = await caches.open(cacheName);
+  const theStreamedPart = new Response(identity.readable, {
     headers: { "Content-Type": "text/html; charset=utf-8" },
   });
+
+  await cache.put(event.request, theStreamedPart.clone());
+  return theStreamedPart;
 }
 
 addEventListener("fetch", (event) => {
@@ -125,7 +125,8 @@ addEventListener("fetch", (event) => {
   // Failed to execute 'fetch' on 'ServiceWorkerGlobalScope': 'only-if-cached' can be set only with 'same-origin' mode
   //
   // See also https://stackoverflow.com/a/49719964/1217468
-  if (request.cache === 'only-if-cached' && request.mode !== 'same-origin') {
+  if ((request.cache === 'only-if-cached' && request.mode !== 'same-origin')
+    || request.method !== "GET" || request.mode !== "navigate") {
     return;
   }
 
@@ -133,26 +134,18 @@ addEventListener("fetch", (event) => {
     (async function () {
       const cache = await caches.open(cacheName)
       const url = new URL(request.url);
-      if (request.method !== "GET" || request.mode !== "navigate") return;
 
       // Full page fetch fallback
       const cachedReponse = await cache.match(request);
       if (cachedReponse) return cachedReponse;
 
       // This works only on chromium based UA
-      if (
-        routes.contains(request.url.pathname) &&
-        typeof WritableStream === "function"
-      ) {
-        const response = streamArticle(event, url);
-        let responseClone = response.clone();
-        cache.put(request, responseClone);
-        return response;
+      if (checkUrl(url.pathname) && typeof WritableStream === "function") {
+        return streamArticle(event, url);
       }
 
       fetch(request).then((response) => {
-        let responseClone = response.clone();
-        cache.put(request, responseClone);
+        cache.put(request, response.clone());
         return response;
       }).catch(() => {
           return caches.match("/offline.html");

@@ -5,4 +5,4 @@ permalink: '/service-worker.js'
 ---
 const VERSION={{ page.date.getTime() }};
 const routes=[{%- for entry in collections.all %}'{{ entry.url | url }}',{%- endfor %}];
-
+{% include "serviceworker.js" %}
