@@ -129,7 +129,7 @@ addEventListener("fetch", (event) => {
       .then(async (resp) => {
         const cache = await caches.open(cacheName);
         await cache.put(event.request, resp.clone());
-        return resp;
+        // return resp;
       })
       .catch(() =>
         caches.match("/offline.html")
