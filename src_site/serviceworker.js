@@ -56,13 +56,13 @@ self.addEventListener('fetch', event => {
     const cache = await caches.open(CACHENAME)
 
     const cachedResponsePromise = await cache.match(request)
-    const networkResponsePromise = fetch(request)
 
     if (request.url.startsWith(self.location.origin)) {
       event.waitUntil(async function () {
-        const networkResponse = await networkResponsePromise
-
-        await cache.put(request, networkResponse.clone())
+        fetch(request).then(async (resp) => {
+          await cache.put(request, resp.clone());
+          return resp;
+        }).catch(() => caches.match("/offline.html"));
       }())
     }
 
