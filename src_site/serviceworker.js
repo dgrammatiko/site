@@ -87,7 +87,7 @@ class IdentityStream {
 
 async function streamArticle(event, url) {
   url.pathname = /\/index\.html$/.test(url.pathname)
-    ? url.pathname.replace(/index.html$/, "index.content.html")
+    ? url.pathname.replace(/index\.html$/, "index.content.html")
     : /\/$/.test(url.pathname)
     ? `${url.pathname}index.content.html`
     : `${url.pathname}/index.content.html`;
@@ -142,14 +142,14 @@ addEventListener("fetch", (event) => {
       // This works only on chromium based UA
       if (checkUrl(url.pathname) && typeof WritableStream === "function") {
         return streamArticle(event, url);
+      } else {
+        return fetch(request).then((response) => {
+          cache.put(request, response.clone());
+          return response;
+        }).catch(() => {
+            return caches.match("/offline.html");
+        })
       }
-
-      fetch(request).then((response) => {
-        cache.put(request, response.clone());
-        return response;
-      }).catch(() => {
-          return caches.match("/offline.html");
-      })
     })()
   );
 });
