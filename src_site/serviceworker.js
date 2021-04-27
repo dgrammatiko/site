@@ -52,7 +52,7 @@ class IdentityStream {
       },
       cancel(reason) {
         writableController.error(reason);
-      },
+      }
     });
 
     this.writable = new WritableStream({
@@ -67,7 +67,7 @@ class IdentityStream {
       },
       abort(reason) {
         readableController.error(reason);
-      },
+      }
     });
   }
 }
@@ -88,19 +88,17 @@ async function streamArticle(event, url) {
 
   const identity = new IdentityStream();
 
-  event.waitUntil(
-    (async function () {
-      for (const responsePromise of parts) {
-        const response = await responsePromise;
-        await response.body.pipeTo(identity.writable, { preventClose: true });
-      }
-      identity.writable.getWriter().close();
-    })()
-  );
+  event.waitUntil(async function() {
+    for (const responsePromise of parts) {
+      const response = await responsePromise;
+      await response.body.pipeTo(identity.writable, { preventClose: true });
+    }
+    identity.writable.getWriter().close();
+  }());
 
   const cache = await caches.open(cacheName);
   const theStreamedPart = new Response(identity.readable, {
-    headers: { "Content-Type": "text/html; charset=UTF-8" },
+    headers: { "Content-Type": "text/html; charset=utf-8" },
   });
 
   await cache.put(event.request, theStreamedPart.clone());
@@ -118,16 +116,22 @@ addEventListener("fetch", (event) => {
       if (cachedReponse) return cachedReponse;
 
       // This works only on chromium based UA
-      // if (
-      //   url.origin === location.origin &&
-      //   event.request.mode === "navigate" &&
-      //   routes.includes(url.pathname) &&
-      //   typeof WritableStream === "function"
-      // ) {
-      //   return streamArticle(event, url);
-      // }
+      if (
+        url.origin === location.origin &&
+        event.request.mode === "navigate" &&
+        // routes.includes(url.pathname) &&
+        typeof WritableStream === "function"
+      ) {
+        return streamArticle(event, url);
+      }
 
-      return await fetch(event.request).catch(() =>
+      return await fetch(event.request)
+      .then(async (resp) => {
+        const cache = await caches.open(cacheName);
+        await cache.put(event.request, resp.clone());
+        return resp;
+      })
+      .catch(() =>
         caches.match("/offline.html")
       );
     })()
