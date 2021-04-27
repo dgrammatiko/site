@@ -41,6 +41,16 @@ addEventListener("activate", (event) => {
   );
 });
 
+const checkUrl = (url) => {
+  for (const xu in routes) {
+    if (xu.length > 1) {
+      xu.slice()
+    } else {
+      return true;
+    }
+  }
+  return false;
+}
 class IdentityStream {
   constructor() {
     let readableController;
@@ -73,16 +83,16 @@ class IdentityStream {
 }
 
 async function streamArticle(event, url) {
-  const theUrl = url;
-  theUrl.pathname = /\/index\.html$/.test(theUrl.pathname)
-    ? theUrl.pathname.replace(/index.html$/, "index.content.html")
-    : /\/$/.test(theUrl.pathname)
-    ? `${theUrl.pathname}index.content.html`
-    : `${theUrl.pathname}/index.content.html`;
+  url.pathname = /\/index\.html$/.test(url.pathname)
+    ? url.pathname.replace(/index.html$/, "index.content.html")
+    : /\/$/.test(url.pathname)
+    ? `${url.pathname}index.content.html`
+    : `${url.pathname}/index.content.html`;
 
+    console.log(url.pathname)
   const parts = [
     caches.match("/index-top.html"),
-    fetch(theUrl).catch(() => caches.match("/offline.content.html")),
+    fetch(url).catch(() => caches.match("/offline.content.html")),
     caches.match("/index-bottom.html"),
   ];
 
@@ -96,44 +106,57 @@ async function streamArticle(event, url) {
     identity.writable.getWriter().close();
   }());
 
-  const cache = await caches.open(cacheName);
-  const theStreamedPart = new Response(identity.readable, {
+  // const cache = await caches.open(cacheName);
+  // const theStreamedPart = new Response(identity.readable, {
+  //   headers: { "Content-Type": "text/html; charset=utf-8" },
+  // });
+
+  // await cache.put(event.request, theStreamedPart.clone());
+  // return theStreamedPart;
+  return new Response(identity.readable, {
     headers: { "Content-Type": "text/html; charset=utf-8" },
   });
-
-  await cache.put(event.request, theStreamedPart.clone());
-  return theStreamedPart;
 }
 
 addEventListener("fetch", (event) => {
-  const url = new URL(event.request.url);
-  if (event.request.method !== "GET") return;
+  const { request } = event;
+
+  // Prevent Chrome Developer Tools error:
+  // Failed to execute 'fetch' on 'ServiceWorkerGlobalScope': 'only-if-cached' can be set only with 'same-origin' mode
+  //
+  // See also https://stackoverflow.com/a/49719964/1217468
+  if (request.cache === 'only-if-cached' && request.mode !== 'same-origin') {
+    return;
+  }
 
   event.respondWith(
     (async function () {
+      const cache = await caches.open(cacheName)
+      const url = new URL(request.url);
+      if (request.method !== "GET" || request.mode !== "navigate") return;
+
       // Full page fetch fallback
-      const cachedReponse = await caches.match(event.request);
+      const cachedReponse = await cache.match(request);
       if (cachedReponse) return cachedReponse;
 
       // This works only on chromium based UA
       if (
-        url.origin === location.origin &&
-        event.request.mode === "navigate" &&
-        // routes.includes(url.pathname) &&
+        routes.contains(request.url.pathname) &&
         typeof WritableStream === "function"
       ) {
-        return streamArticle(event, url);
+        const response = streamArticle(event, url);
+        let responseClone = response.clone();
+        cache.put(request, responseClone);
+        return response;
       }
 
-      return await fetch(event.request)
-      .then(async (resp) => {
-        const cache = await caches.open(cacheName);
-        await cache.put(event.request, resp.clone());
-        // return resp;
+      fetch(request).then((response) => {
+        let responseClone = response.clone();
+        cache.put(request, responseClone);
+        return response;
+      }).catch(() => {
+          return caches.match("/offline.html");
       })
-      .catch(() =>
-        caches.match("/offline.html")
-      );
     })()
   );
 });
