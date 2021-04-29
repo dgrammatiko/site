@@ -35,7 +35,7 @@
     "@rollup/plugin-replace": "2.4.2",
     "change-case": "4.1.2",
     "chokidar": "3.5.1",
-    "cssnano": "5.0.1",
+    "cssnano": "5.0.2",
     "decode-html": "2.0.0",
     "dotenv": "8.2.0",
     "fs-extra": "9.1.0",
