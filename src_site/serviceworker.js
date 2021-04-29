@@ -59,7 +59,7 @@ self.onfetch = async (event) => {
       try {
         resp = await fetch(request)
       } catch (err) {
-        // resp = await caches.match("/offline.html");
+        return resp;
       }
 
       if (resp) {
@@ -97,12 +97,12 @@ self.onfetch = async (event) => {
         try {
           contentTmp = await fetch(url, {redirect: 'follow'});
         } catch (err) {
-          contentTmp = await caches.match("/offline.content.html");
-          storeToCache = false;
+          return new Response(await caches.match("/offline.content.html"), {
+            headers: { "Content-Type": "text/html; charset=utf-8" },
+          });
         }
 
         const content = await contentTmp.body;
-
         if (typeof TransformStream === 'function') {
           let {writable} = new TransformStream
 
@@ -118,11 +118,7 @@ self.onfetch = async (event) => {
           headers: { "Content-Type": "text/html; charset=utf-8" },
         });
 
-        if (storeToCache) {
-          await cache.put(event.request, responseF.clone());
-        }
-
-        return responseF;
+        return cache.put(event.request, responseF);
       }(event));
     } else {
       let resp;
