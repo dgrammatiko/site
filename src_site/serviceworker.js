@@ -95,7 +95,7 @@ self.onfetch = async (event) => {
         const top = await (await caches.match("/index-top.html")).body;
         const bottom = await (await caches.match("/index-bottom.html")).body;
         try {
-          contentTmp = await fetch(url);
+          contentTmp = await fetch(url, {redirect: 'follow'});
         } catch (err) {
           contentTmp = await caches.match("/offline.content.html");
           storeToCache = false;
@@ -128,7 +128,7 @@ self.onfetch = async (event) => {
       let resp;
       let cacheIt = false;
       try {
-        resp = await fetch(request);
+        resp = await fetch(request, {redirect: 'follow'});
         cacheIt = true
       } catch (err) {
         resp = await caches.match("/offline.html");
