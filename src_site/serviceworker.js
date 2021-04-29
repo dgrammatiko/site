@@ -91,16 +91,17 @@ self.onfetch = async (event) => {
         const storeToCache = true;
         let responseF;
         let resp;
-        let content;
+        let contentTmp;
         const top = await (await caches.match("/index-top.html")).body;
         const bottom = await (await caches.match("/index-bottom.html")).body;
         try {
-          const contentTmp = await (await caches.match(url));
-          content = contentTmp.body
+          contentTmp = await fetch(url);
         } catch (err) {
-          content = await (await caches.match("/offline.content.html")).body;
+          contentTmp = await caches.match("/offline.content.html");
           storeToCache = false;
         }
+
+        const content = await contentTmp.body;
 
         if (typeof TransformStream === 'function') {
           let {writable} = new TransformStream
@@ -125,13 +126,15 @@ self.onfetch = async (event) => {
       }(event));
     } else {
       let resp;
+      let cacheIt = false;
       try {
-        resp = await fetch(request)
+        resp = await fetch(request);
+        cacheIt = true
       } catch (err) {
         resp = await caches.match("/offline.html");
       }
 
-      if (resp) {
+      if (resp && cacheIt) {
         cache.put(request, resp.clone());
       }
       return resp;
