@@ -22,8 +22,7 @@
   "dependencies": {
     "@11ty/eleventy-img": "0.8.3",
     "ce-theme-switcher": "0.0.3",
-    "lite-youtube-embed": "github:dgrammatiko/lite-youtube-embed#master",
-    "workbox-streams": "^6.1.5"
+    "lite-youtube-embed": "github:dgrammatiko/lite-youtube-embed#master"
   },
   "devDependencies": {
     "11ty-to-codepen": "1.0.2",
