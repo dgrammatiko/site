@@ -31,11 +31,11 @@ self.addEventListener('activate', event => {
       }).map(oldCache => caches.delete(oldCache))
     );
 
-    const cache = await caches.open(CACHENAME);
-    preCached.filter((key) => !(key in cache)).map(async (non) =>  cache.put(non, await fetch(non)) )
+    // const cache = await caches.open(CACHENAME);
+    // preCached.filter((key) => !(key in cache)).map(async (non) =>  cache.put(non, await fetch(non)) )
   })())
 });
-
+/*
 self.onfetch = async (event) => {
   const { request } = event;
   // Prevent Chrome Developer Tools error:
@@ -137,3 +137,4 @@ self.onfetch = async (event) => {
     }
   })(event));
 };
+*/
