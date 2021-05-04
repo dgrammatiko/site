@@ -38,7 +38,7 @@
     "cssnano": "5.0.2",
     "decode-html": "2.0.0",
     "dotenv": "8.2.0",
-    "fs-extra": "9.1.0",
+    "fs-extra": "10.0.0",
     "html-minifier": "4.0.0",
     "image-size": "1.0.0",
     "jsdom": "16.5.3",
