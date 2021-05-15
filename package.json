@@ -20,7 +20,7 @@
   "author": "dgrammatiko",
   "license": "MIT",
   "dependencies": {
-    "@11ty/eleventy-img": "0.8.3",
+    "@11ty/eleventy-img": "0.9.0",
     "ce-theme-switcher": "0.0.3",
     "lite-youtube-embed": "github:dgrammatiko/lite-youtube-embed#master"
   },
