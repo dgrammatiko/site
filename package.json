@@ -44,7 +44,7 @@
     "jsdom": "16.6.0",
     "linkedom": "0.11.0",
     "lodash": "4.17.21",
-    "luxon": "1.28.0",
+    "luxon": "2.0.1",
     "markdown-it": "12.1.0",
     "markdown-it-anchor": "8.1.0",
     "node-fetch": "2.6.1",
