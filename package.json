@@ -41,7 +41,7 @@
     "fs-extra": "10.0.0",
     "html-minifier": "4.0.0",
     "image-size": "1.0.0",
-    "jsdom": "16.6.0",
+    "jsdom": "16.7.0",
     "linkedom": "0.11.1",
     "lodash": "4.17.21",
     "luxon": "2.0.1",
