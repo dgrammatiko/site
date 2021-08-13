@@ -4,7 +4,4 @@ _cache
 live
 .vscode
 .DS_Store
-nocommit
-unused
-intermediate
-src_site/_includes/assets
+
