@@ -4,7 +4,7 @@ title: Home
 ---
 
 <main id="main">
-<style>{% include "assets/static/css/blogs.css" %}</style>
+<style>{{ getCSS[0]["src_assets/css/blogs.css"] | safe }}</style>
 
 
 {% include "listing-3.njk" %}

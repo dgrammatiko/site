@@ -18,13 +18,13 @@
     <meta name="twitter:creator" content="@dgrammatiko">
     {% if fulltextImage %}
     {% set image = fulltextImage.replace('.jpg', '@1200.jpg').replace('.png', '@1200.png') %}
-    <meta name="twitter:image" content="https://dgrammatiko.online{{ image }}">
-    <meta property="og:image" content="https://dgrammatiko.online{{ image }}">
+    <meta name="twitter:image" content="https://{{ metadata.domain }}{{ image }}">
+    <meta property="og:image" content="https://{{ metadata.domain }}{{ image }}">
     {% else %}
-    <meta name="twitter:image" content="https://dgrammatiko.online/static/images/android-chrome-512x512.png">
-    <meta property="og:image" content="https://dgrammatiko.online/static/images/android-chrome-512x512.png">
+    <meta name="twitter:image" content="https://{{ metadata.domain }}/static/images/android-chrome-512x512.png">
+    <meta property="og:image" content="https://{{ metadata.domain }}/static/images/android-chrome-512x512.png">
     {% endif %}
-    <meta property="og:url" content="https://dgrammatiko.online{{ page.url }}">
+    <meta property="og:url" content="https://{{ metadata.domain }}{{ page.url }}">
     <meta property="og:title" content="{{ metadata.title }}{% if title %} - {{ title }}{% endif %}">
     <meta property="og:description" content="{{ desc }}">
     <meta name="monetization" content="$ilp.uphold.com/29KGbUJg6Xaq">
@@ -37,15 +37,10 @@
 
     <link href="https://github.com/dgrammatiko" rel="me">
     <link href="https://twitter.com/dgrammatiko" rel="me">
-    <link rel="webmention" href="https://webmention.io/dgrammatiko.online/webmention" />
-    <link rel="pingback" href="https://webmention.io/webmention?forward=https://dgrammatiko.online/webmention" />
-    <link rel="pingback" href="https://webmention.io/dgrammatiko.online/xmlrpc" />
-
-    {% set css %}
-      {% include "assets/static/css/fonts.css" %}
-      {% include "assets/static/css/base.css" %}
-    {% endset %}
-    <style>{{ css | safe }}</style>
+    <link rel="webmention" href="https://webmention.io/{{ metadata.domain }}/webmention" />
+    <link rel="pingback" href="https://webmention.io/webmention?forward=https://{{ metadata.domain }}/webmention" />
+    <link rel="pingback" href="https://webmention.io/{{ metadata.domain }}/xmlrpc" />
+    <style>{{ getCSS[0]["src_assets/css/fonts.css"] | safe }}{{ getCSS[0]["src_assets/css/base.css"] | safe }}</style>
   </head>
 
   <body class="grid-it">

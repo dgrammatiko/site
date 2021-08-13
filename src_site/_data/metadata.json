@@ -1,18 +1,16 @@
 {
   "title": "dGrammatiko",
-  "domain": "dgrammatiko.online",
-  "url": "https://dgrammatiko.online/",
+  "domain": "dgrammatiko.dev",
+  "url": "https://dgrammatiko.dev/",
   "description": "Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP",
   "feed": {
-    "subtitle": "Web related posts",
+    "subtitle": "Some text mainly about code",
     "filename": "feed.xml",
-    "path": "/feed/feed.xml",
-    "url": "https://dgrammatiko.online/feed/feed.xml",
-    "id": "https://dgrammatiko.online/"
-  },
-  "author": {
-    "name": "Dimitrios Grammatikogiannis",
-    "email": "d.grammatiko@gmail.com"
+    "url": "https://dgrammatiko.dev/feed.xml",
+    "author": {
+      "name": "Dimitrios Grammatikogiannis",
+      "email": "d.grammatiko@gmail.com"
+    }
   },
   "manifest": {
     "name": "dGrammatiko",

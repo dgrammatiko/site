@@ -3,7 +3,7 @@ layout: base.njk
 title: Code
 ---
 <main id="main">
-<style>{% include "assets/static/css/blogs.css" %}</style>
+<style>{{ getCSS[0]["assets/css/blogs.css"] | safe }}</style>
 <style>
   #main {
 margin: 0 auto;

@@ -1,30 +1,18 @@
----json
-{
-  "permalink": "feed.xml",
-  "eleventyExcludeFromCollections": true,
-  "metadata": {
-    "title": "dGrammatiko Blog",
-    "subtitle": "Some text mainly about code",
-    "url": "https://dgrammatiko.online/",
-    "feedUrl": "https://dgrammatiko.online/feed.xml",
-    "author": {
-      "name": "Dimitris",
-      "email": "dgrammatiko@gmail.com"
-    }
-  }
-}
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ metadata.title }}</title>
-  <subtitle>{{ metadata.subtitle }}</subtitle>
-  <link href="{{ metadata.feedUrl }}" rel="self"/>
+  <subtitle>{{ metadata.feed.subtitle }}</subtitle>
+  <link href="{{ metadata.feed.url }}" rel="self"/>
   <link href="{{ metadata.url }}"/>
   <updated>{{ collections.blogs | rssLastUpdatedDate }}</updated>
   <id>{{ metadata.url }}</id>
   <author>
-    <name>{{ metadata.author.name }}</name>
-    <email>{{ metadata.author.email }}</email>
+    <name>{{ metadata.feed.author.name }}</name>
+    <email>{{ metadata.feed.author.email }}</email>
   </author>
   {%- for post in collections.blogs %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}

@@ -96,7 +96,8 @@ body {
   background-color: var(--body-bg);
   font-weight: 200;
   line-height: 1.5rem;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  height: 100%;
   text-rendering: optimizeLegibility;
   transition: background 500ms ease-in-out, color 200ms ease;
 }

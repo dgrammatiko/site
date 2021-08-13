@@ -7,6 +7,7 @@ const { siteSrc, siteDest } = require("./src_site/_build-scripts/paths");
 const imageTransform = require("./src_site/_build-scripts/alltransforms.js");
 const codepenIt = require("11ty-to-codepen");
 const Image = require("@11ty/eleventy-img");
+const x = require("./src_site/_build-scripts/rollup.js");
 
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(`./src_assets/img/${src}`, {
@@ -32,6 +33,10 @@ const root = process.cwd();
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
   eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
+
+  eleventyConfig.on('beforeBuild', async () => {
+    await x();
+  });
 
   let nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('./src_site/_includes'));
   // nunjucksRender.nunjucks.configure(['./templates/']);
@@ -125,14 +130,15 @@ module.exports = function (eleventyConfig) {
     linkify: true,
   };
   let opts = {
-    permalink: true,
+    // permalink: true,
     permalinkClass: "direct-link",
     permalinkSymbol: "🔗",
   };
 
   eleventyConfig.setLibrary(
     "md",
-    markdownIt(options).use(markdownItAnchor, opts)
+    markdownIt(options)
+    .use(markdownItAnchor, opts)
   );
 
   eleventyConfig.addNunjucksAsyncShortcode("imagine", imageShortcode);
