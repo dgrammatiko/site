@@ -24,14 +24,14 @@ permalink: '/index-top.html'
     <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
     <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#000000">
     {% set css %}
-      {% include "assets/static/css/fonts.css" %}
-      {% include "assets/static/css/base.css" %}
-      {% include "assets/static/css/nav.css" %}
-      {% include "assets/static/css/ce-theme-switcher-alt.css" %}
-      {% include "assets/static/css/footer.css" %}
+      {{ getCSS[0]["src_assets/css/fonts.css"] | safe }}
+      {{ getCSS[0]["src_assets/css/base.css"] | safe }}
+      {{ getCSS[0]["src_assets/css/nav.css"] | safe }}
+      {{ getCSS[0]["src_assets/css/ce-theme-switcher-alt.css"] | safe }}
+      {{ getCSS[0]["src_assets/css/footer.css"] | safe }}
     {% endset %}
     <style>{{ css | safe }}</style>
-    <script src="/static/js/ce-theme-switcher.esm.js" type="module"></script>
+    <script type="module" src="/static/js/ce-theme-switcher.esm.js"></script>
   </head>
   <body class="grid-it">
   {% include "menu.njk" %}

@@ -1,5 +1,5 @@
 <main id="main">
-<style>{% include "assets/static/css/blogs.css" %}</style>
+<style>{{ getCSS[0]["src_assets/css/blogs.css"] | safe }}</style>
 <section class="posts" itemscope="" itemtype="https://schema.org/Blog">
   {% for blog in collections.blogs | reverse %}
     <article itemscope="" itemtype="https://schema.org/BlogPosting">

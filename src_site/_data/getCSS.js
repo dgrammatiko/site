@@ -1,7 +1,5 @@
 const { promises: fs } = require("fs");
 const Fs = require("fs");
-const {dirname, basename} = require('path');
-const chokidar = require('chokidar');
 const postcss = require('postcss');
 const postcssNested = require('postcss-nested');
 const postcssEasyImport = require('postcss-easy-import')
@@ -13,19 +11,7 @@ const postcssDiscardComments= require('postcss-discard-comments');
 const postcssPresetEnv = require('postcss-preset-env');
 const cssNano = require('cssnano');
 
-const myArgs = process.argv.slice(2);
-let hasWatch;
-
-switch (myArgs[0]) {
-  case '--watch':
-  case '-w':
-    hasWatch = true
-    break;
-  default:
-    hasWatch = false
-}
-
-console.log('Watching CSS changes: ', hasWatch);
+const output = {};
 
 const plugins = [
   postcssNested,
@@ -49,25 +35,6 @@ const plugins = [
   }),
 ];
 
-const processCss = async (fileName, filePath) => {
-  if (fileName.startsWith('_')) {
-    return;
-  }
-
-  console.log(filePath)
-  if (!Fs.existsSync(filePath.replace('src_assets', 'src_site/_includes/assets/static'))) {
-    await Fs.mkdirSync(dirname(filePath.replace('src_assets', 'src_site/_includes/assets/static')), { recursive: true});
-  }
-
-  const fileContent = await fs.readFile(filePath)
-  postcss(plugins)
-    .process(fileContent, {from: undefined})
-    .then(result => {
-      fs.writeFile(filePath.replace('src_assets', 'src_site/_includes/assets/static'), result.css, {encoding: 'utf8'})
-    })
-    .catch(err => handleError(err.message));
-}
-
 const getFiles = async (path = "./") => {
   const entries = await fs.readdir(path, { withFileTypes: true });
 
@@ -89,34 +56,26 @@ const getFiles = async (path = "./") => {
   return files;
 }
 
-async function getWatchedFiles(path = "./") {
-  const watcher = chokidar.watch(path, {
-    ignored: /(^|[\/\\])\../, // ignore dotfiles
-    persistent: true
-  });
-
-
-  // Add event listeners.
-  watcher
-    .on('add', async newPath => {
-      await processCss(basename(newPath), newPath)
-    })
-    .on('change', async newPath => {
-      await processCss(basename(newPath), newPath)
-    });
-    // .on('unlink', newPath => log(`File ${newPath} has been removed`));
-}
-
-const doIt = async () => {
-  if (!hasWatch) {
-    const files = await getFiles('./src_assets/css/');
-
-    files.map(async file => await processCss(file.name, file.path));
+const processCss = async (fileName, filePath) => {
+  if (fileName.startsWith('_')) {
+    return;
   }
 
-  if (hasWatch) {
-    await getWatchedFiles('./src_assets/css/');
-  }
+  // if (!Fs.existsSync(filePath.replace('src_assets', 'src_site/_includes/assets/static'))) {
+  //   await Fs.mkdirSync(dirname(filePath.replace('src_assets', 'src_site/_includes/assets/static')), { recursive: true});
+  // }
+
+  const fileContent = await fs.readFile(filePath)
+
+   const {css} = await postcss(plugins).process(fileContent, {from: undefined})
+  output[filePath.replace('./', '')] = css;
+
+  return output;
 }
 
-doIt()
+module.exports = async () => {
+  const files = await getFiles('./src_assets/css/');
+  const promises = [];
+  files.map(file => promises.push(processCss(file.name, file.path)));
+  return Promise.all(promises)
+}

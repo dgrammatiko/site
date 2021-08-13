@@ -1,10 +1,6 @@
 
 <header role="banner">
-  {% set css %}
-    {% include "assets/static/css/nav.css" %}
-    {% include "assets/static/css/ce-theme-switcher-alt.css" %}
-  {% endset %}
-  <style>{{ css | safe }}</style>
+  <style>{{ getCSS[0]["src_assets/css/nav.css"] | safe }}{{ getCSS[0]["src_assets/css/ce-theme-switcher-alt.css"] | safe }}</style>
   <div class="wrapper">
       <nav class="navbar">
         <a href="/" class="logo">
