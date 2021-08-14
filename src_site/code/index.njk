@@ -44,8 +44,8 @@ h2 {
         <p>{{ blog.description }}</p>
         <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}abandoned{% endif %}</p>
         <div style="display: grid; grid-auto-columns: max-content; grid-auto-flow: column; grid-column-gap: 1rem;">
-            <a href="{{ blog.link }}" rel="noopener noreferrer" target="_blank">site</a>
-            <a href="{{ blog.repo }}" rel="noopener noreferrer" target="_blank">repo</a>
+            <a href="{{ blog.link }}" rel="noopener" target="_blank">site</a>
+            <a href="{{ blog.repo }}" rel="noopener" target="_blank">repo</a>
         </div>
       </article>
 {% endfor %}
@@ -68,8 +68,8 @@ h2 {
         <p>{{ blog.description }}</p>
         <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}abandoned{% endif %}</p>
         <div style="display: grid; grid-auto-columns: max-content; grid-auto-flow: column; grid-column-gap: 1rem;">
-            <a href="{{ blog.link }}" rel="noopener noreferrer" target="_blank">site</a>
-            <a href="{{ blog.repo }}" rel="noopener noreferrer" target="_blank">repo</a>
+            <a href="{{ blog.link }}" rel="noopener" target="_blank">site</a>
+            <a href="{{ blog.repo }}" rel="noopener" target="_blank">repo</a>
         </div>
       </article>
 {% endfor %}
