@@ -1,12 +1,12 @@
 {
   "title": "dGrammatiko",
-  "domain": "dgrammatiko.dev",
-  "url": "https://dgrammatiko.dev/",
+  "domain": "dgrammatiko.online",
+  "url": "https://dgrammatiko.online/",
   "description": "Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP",
   "feed": {
     "subtitle": "Some text mainly about code",
     "filename": "feed.xml",
-    "url": "https://dgrammatiko.dev/feed.xml",
+    "url": "https://dgrammatiko.online/feed.xml",
     "author": {
       "name": "Dimitrios Grammatikogiannis",
       "email": "d.grammatiko@gmail.com"

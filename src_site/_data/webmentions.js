@@ -1,7 +1,7 @@
 const fs = require('fs')
-const fetch = require('node-fetch')
+const axios = require('axios').default;
 const unionBy = require('lodash/unionBy')
-const domain = require('./metadata.json').domain
+const {domain} = require('./metadata.json')
 
 // Load .env variables with dotenv
 require('dotenv').config()
@@ -18,7 +18,7 @@ async function fetchWebmentions(since, perPage = 10000) {
   }
   let url = `${API}/mentions.jf2?domain=${domain}&token=${TOKEN}&per-page=${perPage}`
   if (since) url += `&since=${since}` // only fetch new mentions
-  const response = await fetch(url)
+  const response = await axios.get(url)
   if (response.ok) {
     const feed = await response.json()
     console.log(`>>> ${feed.children.length} new webmentions fetched from ${API}`)
@@ -66,6 +66,7 @@ module.exports = async function () {
   if (process.env.NODE_ENV === 'production') {
     console.log('>>> Checking for new webmentions...');
     const feed = await fetchWebmentions(cache.lastFetched)
+    console.log(feed)
     if (feed) {
       const webmentions = {
         lastFetched: new Date().toISOString(),
