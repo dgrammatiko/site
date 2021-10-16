@@ -15,6 +15,7 @@ nav {
   font-family: inherit;
   font-size: 2rem;
   text-decoration: none;
+  margin-inline-start: 1rem;
 }
 .logo:hover,
 .logo:focus {
@@ -32,6 +33,7 @@ nav {
 .nav-links {
   list-style: none;
   display: flex;
+  margin-inline-end: 1rem;
 }
 
 .nav-item a,
