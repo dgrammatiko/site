@@ -8,6 +8,7 @@ const imageTransform = require("./src_site/_build-scripts/alltransforms.js");
 const codepenIt = require("11ty-to-codepen");
 const Image = require("@11ty/eleventy-img");
 const x = require("./src_site/_build-scripts/rollup.js");
+const y = require("./src_site/_build-scripts/postcss.js");
 
 async function imageShortcode(src, alt, sizes) {
   let metadata = await Image(`./src_assets/img/${src}`, {
@@ -36,6 +37,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.on('beforeBuild', async () => {
     await x();
+    await y();
   });
 
   let nunjucksEnvironment = new Nunjucks.Environment(new Nunjucks.FileSystemLoader('./src_site/_includes'));

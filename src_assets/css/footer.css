@@ -1,7 +1,7 @@
 footer {
   background-color: var(--menu-bg);
   color: var(--menu-fg);
-  position: sticky;
+  /* position: sticky; */
   bottom: 0;
 }
 

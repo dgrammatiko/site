@@ -24,6 +24,7 @@ header > .date {
   color: var(--button-bg);
 }
 header.major > .date {
+  font-family: var(--alt-font);
   font-size: 1rem;
   margin: 0 0 4rem 0;
 }
@@ -72,7 +73,7 @@ header.major > .date:after {
 
 .post header.major > h1,
 .post header.major h2 {
-  font-size: 4rem;
+  /* font-size: 4rem; */
   line-height: 1.1;
   margin: 0 0 2rem 0;
 }

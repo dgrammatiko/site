@@ -29,5 +29,6 @@
         "purpose": "any maskable"
       }
     ]
-  }
+  },
+  "version": "1.0.0"
 }

@@ -37,7 +37,7 @@ nav {
 .nav-item a,
 .nav-item dark-light-switch {
   display: inline-block;
-  padding: 1.75rem 1rem;
+  padding: 1.75rem .5rem;
   text-decoration: none;
   color: var(--menu-fg);
 }
@@ -59,6 +59,8 @@ nav {
   color: var(--menu-fg);
   position: relative;
   font-family: dgrammatiko;
+  padding-top: 5px;
+  height: 36px;
 }
 @keyframes glitch-anim-1 {
   0% {
@@ -178,16 +180,17 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
+  height: 36px;
   background: var(--menu-bg);
 }
 .glitch::after {
   left: 2px;
-  text-shadow: -1px 0 red;
-  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  text-shadow: -1px 0 rgb(145, 0, 255);
+  animation: glitch-anim-1 3s infinite linear alternate-reverse;
 }
 .glitch::before {
   left: -2px;
-  text-shadow: 2px 0 blue;
-  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  text-shadow: 2px 0 rgb(0, 255, 37);
+  animation: glitch-anim-2 5s infinite linear alternate-reverse;
 }
 

@@ -1,14 +1,14 @@
-button,
+:where(button),
 .btn {
   appearance: none;
   transition: background-color 0.2s ease-in-out;
   border: 0;
   cursor: pointer;
   display: inline-block;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
   font-weight: 900;
   letter-spacing: 0.075em;
-  height: 3rem;
+  /* height: 3rem; */
   line-height: 3rem;
   padding: 0 2rem;
   text-align: center;
