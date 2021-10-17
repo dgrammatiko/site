@@ -1,3 +1,5 @@
+@use postcss-nested;
+
 lazy-youtube {
     background-color: #000;
     position: relative;

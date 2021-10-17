@@ -1,45 +1,153 @@
+@use postcss-nested;
+
 #main {
   margin: 0 auto;
   max-width: 72rem;
 }
 
-.post.featured {
+.post {
+  padding: 1rem 4rem;
+
+  &.featured {
+    text-align: center;
+    padding: 0 4rem;
+    border-top: 0 !important;
+
+    p {
+      text-align: center;
+    }
+  }
+}
+
+header {
+  .major {
+    margin: 0 0 4rem 0;
+    text-align: center;
+
+    .date {
+      font-family: var(--alt-font);
+      font-size: 1rem;
+      margin: 0 0 4rem 0;
+    }
+  }
+
+  .date {
+    display: block;
+    font-size: 0.8rem;
+    height: 1;
+    margin: 0 0 1rem 0;
+    padding-top: .5rem;
+    position: relative;
+    text-align: center;
+    color: var(--button-bg);
+
+    &:before, &:after {
+      border-top: .4rem double;
+      content: "";
+      display: inline-block;
+      margin-top: 1rem;
+      top: 0;
+      width: calc(50% - 6rem);
+      padding-top: .2rem;
+      border-top-color: var(--button-bg);
+    }
+
+    &:before {
+      margin-right: .5rem;
+    }
+    &:after {
+      margin-left: 1rem;
+    }
+  }
+
+  h1,
+  h2 {
+    margin: 0 0 2rem 0;
+    text-align: center;
+  }
+
+  > p {
+    font-style: italic;
+    font-size: 1.2rem;
+  }
+
+  > h1 + p {
+    margin-top: -0.5rem;
+    line-height: 2;
+  }
+
+  > p {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  .btn {
+    text-align: center;
+  }
+}
+
+.posts {
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
   text-align: center;
-  padding: 0 4rem;
-  border-top: 0 !important;
+  width: 100%;
+  padding: 0;
+  margin-top: -4px;
+
+  > * {
+    flex-shrink: 1;
+    flex-grow: 0;
+    padding: 4rem;
+    width: 50%;
+  }
+
+  > article {
+    border-color: var(--menu-bg);
+    border-left-width: 2px;
+    border-style: solid;
+    border-top-width: 2px;
+    text-align: center;
+  }
+
+  > article:nth-child(odd) {
+    border-left: none;
+  }
 }
 
-header.major {
-  margin: 0 0 4rem 0;
-  text-align: center;
+.deferred {
+  content-visibility: auto;
+  contain-intrinsic-size: 100px 1000px;
 }
 
-header > .date {
-  display: block;
-  font-size: 0.8rem;
-  height: 1;
-  margin: 0 0 1rem 0;
-  padding-top: .5rem;
-  position: relative;
-  color: var(--button-bg);
-}
-header.major > .date {
-  font-family: var(--alt-font);
-  font-size: 1rem;
-  margin: 0 0 4rem 0;
+@media only screen and (max-width: 768px)  {
+  .posts {
+    > article {
+      border: 0;
+    }
+    > * {
+      padding: 1rem;
+      width: 100%;
+    }
+  }
+  .post {
+    padding: 1rem;
+  }
 }
 
 
-header.major .date:before,
+/* header.major .date:before,
 header.major .date:after {
   border-top-color: var(--menu-bg);
-}
+} */
 
-header.major > .date::before {
-left: 0;
-}
-
-header.major > .date::before,
+/* header.major > .date::before,
 header.major > .date::after {
   content: '';
   display: block;
@@ -57,100 +165,16 @@ header.major > .date:after {
   position: absolute;
   width: calc(50% - 6rem);
   border-top: .4rem double;
-}
+} */
 
-header.major > .date:before {
+/* header.major > .date:before {
   left: 0;
-}
+} */
 
-header.major .date:before, header.major .date:after {
+/* header.major .date:before, header.major .date:after {
   border-top-color: var(--menu-bg);
-}
+} */
 
-header.major > .date:after {
-  right: 0;
-}
-
-.post header.major > h1,
-.post header.major h2 {
-  /* font-size: 4rem; */
-  line-height: 1.1;
-  margin: 0 0 2rem 0;
-}
-
-header.major > p {
-  font-style: italic;
-  font-size: 1.2rem;
-}
-
-p {
+/* p {
   margin: 0 0 .6rem 0;
-}
-
-header.major > h1 + p {
-  margin-top: -0.5rem;
-  line-height: 2;
-}
-
-header.major > p {
-  margin-top: 0;
-  text-align: center;
-}
-
-header.major > :last-child {
-  margin-bottom: 0;
-}
-
-#main > * {
-  margin: 0;
-}
-
-.posts > * {
-  flex-shrink: 1;
-  flex-grow: 0;
-  padding: 4rem;
-  width: 50%;
-}
-
-.posts {
-  display: -moz-flex;
-  display: -ms-flex;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  text-align: center;
-  width: 100%;
-  padding: 0;
-  margin-top: -4px;
-}
-
-.post {
-  padding: 4rem 4rem;
-}
-
-.posts > article {
-  border-color: var(--menu-bg);
-  border-left-width: 2px;
-  border-style: solid;
-  border-top-width: 2px;
-  text-align: center;
-}
-
-.posts > article:nth-child(odd) {
-  border-left: none;
-}
-
-@media only screen and (max-width: 768px)  {
-  .posts > * {
-    padding: 1rem;
-    width: 100%;
-  }
-  .post {
-    padding: 1rem;
-  }
-}
-
-.deferred {
-  content-visibility: auto;
-  contain-intrinsic-size: 100px 1000px;
-}
+} */

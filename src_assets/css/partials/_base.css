@@ -19,14 +19,6 @@
   font-display: swap;
 }
 
-h1, h2, h3, h4, h5, h6, button, summary, nav {
-  font-family: var(--alt-font);
-}
-
-html,body {
-  font-family: var(--def-font);
-}
-
 :root {
   --body-bg: #f3f3f3;
   --body-color: #333;
@@ -68,7 +60,11 @@ html,body {
   box-sizing: border-box;
 }
 
-body, html {
+:where(h1, h2, h3, h4, h5, h6, button, summary, nav) {
+  font-family: var(--alt-font);
+}
+
+:where(html,body) {
   font-family: var(--def-font);
 }
 
@@ -91,11 +87,11 @@ body, html {
     --button-bg: #fff;
     --button-fg: #192734; */
   }
-  img {
+  :where(img) {
     opacity: .75;
     transition: opacity .5s ease-in-out;
   }
-  img:hover {
+  :where(img):hover {
     opacity: 1;
   }
 }
@@ -126,18 +122,17 @@ body, html {
   background-color: var(--body-bg);
   font-weight: 200;
   line-height: 1.5rem;
-  /* overflow-x: hidden; */
   height: 100%;
   text-rendering: optimizeLegibility;
   /* transition: background 500ms ease-in-out, color 200ms ease; */
 }
 
-:where(h1), :where(h2), :where(h3), :where(h4), :where(h5), :where(h6) {
+:where(h1, h2, h3, h4, h5, h6) {
   font-weight: 900;
   line-height: 1.5;
   letter-spacing: 0.075em;
   text-transform: uppercase;
-  margin: 0 0 1rem 0;
+  margin: 1rem 0;
   line-break: auto;
   word-break: break-word;
 }
@@ -166,6 +161,10 @@ body, html {
 
 :where(p) {
   margin-bottom: 1rem;
+}
+
+:where(ul) {
+  margin-left: 2rem;
 }
 
 .screen-reader-only {

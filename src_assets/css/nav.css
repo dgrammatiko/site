@@ -1,9 +1,9 @@
+@use postcss-nested;
+
 nav {
   width: 100%;
   height: 5rem;
   background-color: var(--menu-bg);
-  /* padding-left: 30px;
-  padding-right: 10px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -16,16 +16,11 @@ nav {
   font-size: 2rem;
   text-decoration: none;
   margin-inline-start: 1rem;
-}
-.logo:hover,
-.logo:focus {
-  background-color: var(--menu-fg);
-  color: var(--menu-bg);
-}
 
-@media only screen and (min-width: 768px) {
-  .logo {
-    display: inline-block;
+  &:hover,
+  &:focus {
+    background-color: var(--menu-fg);
+    color: var(--menu-bg);
   }
 }
 
@@ -49,10 +44,10 @@ nav {
   color: var(--menu-bg);
 }
 
-.logo:hover,
-.logo:focus {
-  background-color: var(--menu-bg);
-  color: var(--menu-fg);
+@media only screen and (min-width: 768px) {
+  .logo {
+    display: inline-block;
+  }
 }
 
 .glitch {

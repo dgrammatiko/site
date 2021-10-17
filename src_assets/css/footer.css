@@ -1,8 +1,13 @@
+@use postcss-nested;
+
 footer {
   background-color: var(--menu-bg);
   color: var(--menu-fg);
-  /* position: sticky; */
   bottom: 0;
+
+  & nav {
+    align-items: baseline;
+  }
 }
 
 .footer-text {
@@ -14,8 +19,4 @@ footer {
     display: inherit;
     margin-inline-start: 1rem;
   }
-}
-
-footer nav {
-  align-items: baseline;
 }

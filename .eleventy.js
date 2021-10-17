@@ -11,9 +11,9 @@ const x = require("./src_site/_build-scripts/rollup.js");
 const y = require("./src_site/_build-scripts/postcss.js");
 
 async function imageShortcode(src, alt, sizes) {
-  let metadata = await Image(`./src_assets/img/${src}`, {
-    urlPath: '/static/images/',
-    outputDir: 'live/static/images/',
+  let metadata = await Image(`./src_assets/images/blog/${src}`, {
+    urlPath: '/static/images/blog/',
+    outputDir: 'live/static/images/blog/',
     widths: [300, 600, 1024, 1240],
     formats: ["avif", "jpeg"]
   });
