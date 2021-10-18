@@ -1,5 +1,4 @@
-:where(button),
-.btn {
+:where(button, .btn) {
   appearance: none;
   transition: background-color 0.2s ease-in-out;
   border: 0;

@@ -1,10 +1,5 @@
 @use postcss-nested;
 
-#main {
-  margin: 0 auto;
-  max-width: 72rem;
-}
-
 .post {
   padding: 1rem 4rem;
 
@@ -16,6 +11,12 @@
     p {
       text-align: center;
     }
+  }
+
+  header.major > h1,
+  header.major h2 {
+    line-height: 1.1;
+    margin: 0 0 2rem 0;
   }
 }
 
@@ -140,41 +141,3 @@ header {
     padding: 1rem;
   }
 }
-
-
-/* header.major .date:before,
-header.major .date:after {
-  border-top-color: var(--menu-bg);
-} */
-
-/* header.major > .date::before,
-header.major > .date::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  width: calc(50% - 6rem);
-  border-top: .4rem double;
-  margin-top: 1rem;
-}
-
-header.major > .date:before,
-header.major > .date:after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: calc(50% - 6rem);
-  border-top: .4rem double;
-} */
-
-/* header.major > .date:before {
-  left: 0;
-} */
-
-/* header.major .date:before, header.major .date:after {
-  border-top-color: var(--menu-bg);
-} */
-
-/* p {
-  margin: 0 0 .6rem 0;
-} */

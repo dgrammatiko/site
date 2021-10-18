@@ -1,8 +1,14 @@
-@import 'base.css';
-@import 'blogs.css';
-@import 'blog.css'
-@import 'lazy-tube.css';
-@import 'codes.css';
-@import 'footer.css';
-@import 'nav.css';
-@import 'toggler.css';
+@import 'partials/_base.css';
+@import 'partials/_body.css';
+@import 'partials/_button.css';
+
+@import 'partials/_main.css';
+@import 'partials/_blogs.css';
+@import 'partials/_blog.css';
+@import 'partials/_blog_lang.css';
+
+@import 'partials/lazy-tube.css';
+@import 'partials/_codes.css';
+@import 'partials/footer.css';
+@import 'partials/nav.css';
+@import 'partials/toggler.css';

@@ -1,0 +1,14 @@
+@use postcss-nested;
+
+#main {
+  margin: 0 auto;
+  max-width: 72rem;
+
+  > * {
+    margin: 0;
+  }
+
+  > *:first-child {
+    border-top: 0;
+  }
+}
