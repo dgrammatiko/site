@@ -15,7 +15,7 @@ nav {
   font-family: inherit;
   font-size: 2rem;
   text-decoration: none;
-  margin-inline-start: 1rem;
+  margin-left: 1rem;
 
   &:hover,
   &:focus {
@@ -38,15 +38,11 @@ nav {
   color: var(--menu-fg);
 }
 
-.nav-item a:hover,
-.nav-item a:focus {
-  background-color: white;
-  color: var(--menu-bg);
-}
-
-@media only screen and (min-width: 768px) {
-  .logo {
-    display: inline-block;
+.nav-item {
+  a:hover,
+  a:focus {
+    background-color: white;
+    color: var(--menu-bg);
   }
 }
 
@@ -57,7 +53,35 @@ nav {
   font-family: dgrammatiko;
   padding-top: 5px;
   height: 36px;
+
+  &:before,
+  &:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    background: var(--menu-bg);
+  }
+  &:after {
+    left: 2px;
+    text-shadow: -1px 0 rgb(145, 0, 255);
+    animation: glitch-anim-1 3s infinite linear alternate-reverse;
+  }
+  &:before {
+    left: -2px;
+    text-shadow: 2px 0 rgb(0, 255, 37);
+    animation: glitch-anim-2 5s infinite linear alternate-reverse;
+  }
 }
+
+@media only screen and (min-width: 768px) {
+  .logo {
+    display: inline-block;
+  }
+}
+
 @keyframes glitch-anim-1 {
   0% {
     clip-path: inset(64% 0 25% 0);
@@ -170,23 +194,3 @@ nav {
     clip-path: inset(49% 0 28% 0);
   }
 }
-.glitch::before, .glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 36px;
-  background: var(--menu-bg);
-}
-.glitch::after {
-  left: 2px;
-  text-shadow: -1px 0 rgb(145, 0, 255);
-  animation: glitch-anim-1 3s infinite linear alternate-reverse;
-}
-.glitch::before {
-  left: -2px;
-  text-shadow: 2px 0 rgb(0, 255, 37);
-  animation: glitch-anim-2 5s infinite linear alternate-reverse;
-}
-
