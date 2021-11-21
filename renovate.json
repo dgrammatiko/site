@@ -1,7 +1,7 @@
 {
   "extends": [
     "config:base",
-    ":dependencyDashboard"
+    ":disableDependencyDashboard"
   ],
   "automerge": true,
   "major": {
