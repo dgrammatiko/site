@@ -6,9 +6,9 @@
 @import 'partials/_blogs.css';
 @import 'partials/_blog.css';
 @import 'partials/_blog_lang.css';
-
-@import 'partials/lazy-tube.css';
 @import 'partials/_codes.css';
 @import 'partials/footer.css';
 @import 'partials/nav.css';
+
+@import 'partials/lazy-tube.css';
 @import 'partials/toggler.css';

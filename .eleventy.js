@@ -10,10 +10,10 @@ const Image = require("@11ty/eleventy-img");
 const x = require("./src_site/_build-scripts/rollup.js");
 const y = require("./src_site/_build-scripts/postcss.js");
 
-async function imageShortcode(src, alt, sizes) {
-  let metadata = await Image(`./src_assets/images/blog/${src}`, {
-    urlPath: '/static/images/blog/',
-    outputDir: 'live/static/images/blog/',
+async function imageShortcode(src, dir, alt, sizes) {
+  let metadata = await Image(`./src_assets/images/${dir}/${src}`, {
+    urlPath: `/static/images/${dir}/`,
+    outputDir: `live/static/images/${dir}/`,
     widths: [300, 600, 1024, 1240],
     formats: ["avif", "jpeg"]
   });
@@ -34,7 +34,9 @@ const root = process.cwd();
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
   eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
+  eleventyConfig.addPassthroughCopy({ "src_site/talks/london-jug-december-2021": "talks/london-jug-december-2021" });
 
+  //src_site/talks/london-jug-december-2021
   eleventyConfig.on('beforeBuild', async () => {
     await x();
     await y();

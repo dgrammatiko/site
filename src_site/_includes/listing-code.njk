@@ -1,10 +1,10 @@
-<main id="main">
+<main class="main">
 <section class="grid-cards">
   {% for code in collections.code | reverse %}
     <article class="grid-cards-item">
       <header class="card-header">
           {% if code.data.image %}
-            {% imagine blog.data.image, blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+            {% imagine code.data.image, 'code', code.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
           {% endif %}
           <a href="{{ code.url | url }}">
             <h2>{% if code.data.title %}{{ code.data.title }}{% endif %}</h2>

@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 ---
-<main id="main">
+<main class="main">
   <section class="post">
     <header class="major">
       <span class="date">
@@ -17,7 +17,7 @@ layout: base.njk
     </header>
 
       {% if image %}
-        {% imagine image, imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+        {% imagine image, 'blog', imageAltText, "(min-width: 30em) 50vw, 100vw" %}
       {% endif %}
 
       <article class="articleBody">

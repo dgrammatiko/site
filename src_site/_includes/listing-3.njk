@@ -12,7 +12,7 @@
       </header>
 
       {% if blog.data.image %}
-        {% imagine blog.data.image, blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+        {% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
       {% endif %}
 
       <p>
@@ -39,7 +39,7 @@
           <p>{{ blog.data.custom_excerpt }}</p>
         </header>
           {% if blog.data.image %}
-            {% imagine blog.data.image, blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+            {% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
           {% endif %}
           <a class="btn" href="{{ blog.url }}">{{ blog.data.title }}</a>
       </article>

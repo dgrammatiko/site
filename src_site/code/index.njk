@@ -2,34 +2,7 @@
 layout: base.njk
 title: Code
 ---
-<main id="main">
-<style>{{ getCSS[0]["assets/css/blogs.css"] | safe }}</style>
-<style>
-  #main {
-margin: 0 auto;
-max-width: 72rem;
-}
-.cards {
-    height: auto;
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.cards article,
-.cards article {
-    background-color: var(--button-fg);
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    justify-content: space-between;
-    height: 360px;
-}
-h2 {
-  text-shadow: 2px 2px 0 #a79e9e;
-  text-align: center;
-}
-</style>
+<main class="main">
 <h2 style="text-align: center">Web</h2>
 <section class="cards web">
 {# Loop through all the web widgets #}
@@ -39,7 +12,7 @@ h2 {
           <h2>{% if blog.title %}{{ blog.title }}{% endif %}</h2>
         </header>
         {% if blog.image %}
-            <img loading="lazy" src="/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
+            <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
         {% endif %}
         <p>{{ blog.description }}</p>
         <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}abandoned{% endif %}</p>
@@ -63,7 +36,7 @@ h2 {
           <h2>{% if blog.title %}{{ blog.title }}{% endif %}</h2>
         </header>
         {% if blog.image %}
-            <img loading="lazy" src="/{{ blog.image }}" alt="{{ blog.imageAlt }}" />
+            <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAlt }}" />
         {% endif %}
         <p>{{ blog.description }}</p>
         <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}abandoned{% endif %}</p>

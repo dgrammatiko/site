@@ -1,3 +1,5 @@
+@use postcss-nested;
+
 .grid-cards {
   display: grid;
   flex-wrap: wrap;
@@ -39,3 +41,24 @@
 .card-footer {
   display: flex;
 }
+
+.cards {
+  height: auto;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  article {
+    background-color: var(--button-fg);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: space-between;
+    height: 360px;
+  }
+}
+
+/* h2 {
+  text-shadow: 2px 2px 0 #a79e9e;
+  text-align: center;
+} */

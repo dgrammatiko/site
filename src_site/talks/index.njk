@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: Talks
+---
+<main class="main" style="min-height: 100%">
+<h2 style="text-align: center">Web</h2>
+<section class="cards joomla" style="min-height: 100%">
+  {% for code in talksData.talks | reverse %}
+    <article>
+      <header>
+          {% if code.image %}
+            {% imagine code.image, 'talks', code.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+          {% endif %}
+      </header>
+      <footer class="card-footer">
+          <a href="{{ code.url | url }}">
+            <h2>{% if code.title %}{{ code.title }}{% endif %}</h2>
+          </a>
+      </footer>
+    </article>
+  {% endfor %}
+</section>
+<script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
+</main>

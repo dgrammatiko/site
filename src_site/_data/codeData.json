@@ -3,7 +3,7 @@
     {
       "title": "dark-switch",
       "description": "It is a custom element wrapper around postcss-dark-theme-class",
-      "image": "static/images/code/dark-switch.jpg",
+      "image": "dark-switch.jpg",
       "imageAltText" : "screenshot of the app",
       "link": "https://codepen.io/dgrammatiko/pen/bGNXVQQ?editors=1010",
       "repo": "https://github.com/dgrammatiko/dark-switch",
@@ -12,7 +12,7 @@
     {
       "title": "11ty-to-codepen",
       "description": "11ty shortcode for codepen",
-      "image": "static/images/code/11ty-to-codepen.jpg",
+      "image": "11ty-to-codepen.jpg",
       "imageAltText": "screenshot of the app",
       "link": "https://github.com/dgrammatiko/11ty-to-codepen",
       "repo": "https://github.com/dgrammatiko/11ty-to-codepen",
@@ -21,7 +21,7 @@
     {
       "title": "formally",
       "description": "A wrapper around the web platform validation",
-      "image": "static/images/code/formally.jpg",
+      "image": "formally.jpg",
       "imageAltText": "screenshot of the app",
       "link": "https://formally-valid.info",
       "repo": "https://github.com/dgrammatiko/formally",
@@ -30,7 +30,7 @@
     {
       "title": "naf-css",
       "description": "A glorified css reset",
-      "image": "static/images/code/naf-css.jpg",
+      "image": "naf-css.jpg",
       "imageAltText": "screenshot of the app",
       "link": "https://github.com/dgrammatiko/naf-css",
       "repo": "https://github.com/dgrammatiko/naf-css",
@@ -39,7 +39,7 @@
     {
       "title": "Docsify codepen generator",
       "description": "Docsify shortcode for codepen",
-      "image": "static/images/code/docsify-codepen.jpg",
+      "image": "docsify-codepen.jpg",
       "imageAltText": "screenshot of the app",
       "link": "https://github.com/ttc-freebies/documentation",
       "repo": "https://github.com/ttc-freebies/documentation",
@@ -48,7 +48,7 @@
     {
       "title": "wc-polyfills",
       "description": "Web Components polyfill",
-      "image": "static/images/code/wc-polyfills.jpg",
+      "image": "wc-polyfills.jpg",
       "imageAltText": "screenshot of the app",
       "link": "https://github.com/dgrammatiko/wc-polyfills",
       "repo": "https://github.com/dgrammatiko/wc-polyfills",
@@ -57,7 +57,7 @@
     {
       "title": "on-a-diet",
       "description": "11ty shortcode for codepen",
-      "image": "static/images/code/on-a-diet.jpg",
+      "image": "on-a-diet.jpg",
       "imageAltText": "screenshot of the app",
       "link": "https://dgrammatiko.github.io/on-a-diet",
       "repo": "https://github.com/dgrammatiko/on-a-diet",
@@ -66,7 +66,7 @@
     {
       "title": "showcase-audit",
       "description": "A simple 11ty based site that benchmarks some sites",
-      "image": "static/images/code/showcase-audit.png",
+      "image": "showcase-audit.png",
       "imageAltText": "screenshot of the app",
       "link": "https://joomla-needed-fixes.netlify.app/data",
       "repo": "https://github.com/dgrammatiko/showcase-audit",

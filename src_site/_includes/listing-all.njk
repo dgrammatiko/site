@@ -1,4 +1,4 @@
-<main id="main">
+<main class="main">
 <section class="posts">
   {% for blog in collections.blogs | reverse %}
     <article>
@@ -11,7 +11,7 @@
         <p>{{ blog.data.custom_excerpt }}</p>
       </header>
         {% if blog.data.image %}
-          {% imagine blog.data.image, blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+          {% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
         {% endif %}
 
         <a class="btn" href="{{ blog.url }}">{% if blog.data.title %}{{ blog.data.title }}{% endif %}</a>

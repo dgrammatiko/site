@@ -1,6 +1,6 @@
 @use postcss-nested;
 
-#main {
+.main {
   margin: 0 auto;
   max-width: 72rem;
 
