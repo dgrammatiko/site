@@ -28,13 +28,11 @@ opts = [
     plugins: [terser()],
   },
   {
-    input: "./node_modules/lite-youtube-embed/src/index.js",
+    input: "./node_modules/lite-youtube-embed/src/lite-yt-embed.js",
     output: {
       sourcemap: false,
       format: "esm",
-      file: `./live/static/js/${"./node_modules/lite-youtube-embed/src/index.js"
-        .replace("./node_modules/", "")
-        .replace("/src/index.js", "")}.esm.js`,
+      file: "./live/static/js/lite-youtube-embed.js"
     },
     plugins: [terser()],
   },

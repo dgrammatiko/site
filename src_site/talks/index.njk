@@ -8,17 +8,31 @@ title: Talks
   {% for code in talksData.talks | reverse %}
     <article>
       <header>
-          {% if code.image %}
-            {% imagine code.image, 'talks', code.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+          {% if code.videoId %}
+            <lite-youtube videoid="{{ code.videoId }}"  playlabel="Play Video: {{ code.title }}"></lite-youtube>
           {% endif %}
       </header>
       <footer class="card-footer">
-          <a href="{{ code.url | url }}">
-            <h2>{% if code.title %}{{ code.title }}{% endif %}</h2>
-          </a>
+        <nav>
+        <ul class="nav-links">
+          <li class="nav-item">
+            <a href="{{ code.url | url }}">
+              Slides
+            </a>
+          </li>
+          {% if code.videoId %}
+          <li class="nav-item">
+            <a target="_blank" rel="noopener noreferer" href="https://youtube.com/watch?v={{ code.videoId }}">
+              Video
+            </a>
+          </li>
+          {% endif %}
+          </ul>
+          </nav>
       </footer>
     </article>
   {% endfor %}
 </section>
+<script type="module" src="/static/js/lite-youtube-embed.js"></script>
 <script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
 </main>

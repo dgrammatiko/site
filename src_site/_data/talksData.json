@@ -5,7 +5,8 @@
       "description": "Deep dive into Child Templates",
       "image": "jug02021.jpg",
       "imageAltText" : "London JUG December 2021 banner",
-      "url": "/talks/london-jug-december-2021/index.html"
+      "videoId": "8lX44gS9QG8",
+      "slides": "/talks/london-jug-december-2021/index.html"
     }
   ]
 }
