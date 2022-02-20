@@ -21,24 +21,24 @@
 
 :root {
   --body-bg: #f3f3f3;
-  --body-color: #333;
-  --link-color: #2b3e50;
-  --link-focus-color: #6589ac;
-  --menu-bg: #161b22;
+  --body-color: rgb(55, 55, 55);
+  --link-color: rgb(0, 142, 147);
+  --link-focus-color: rgb(0, 204, 210);
+  --menu-bg: rgb(0, 78, 81);
   --menu-fg: #fff;
-  --button-bg: #161b22;
+  --button-bg: rgb(0, 142, 147);
   --button-fg: #fff;
   --def-font: "dgrammatiko", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --alt-font: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-
-  /* --body-bg: #fff;
-  --body-color: #333;
-  --link-color: #2b3e50;
-  --link-focus-color: #6589ac;
-  --menu-bg: #2b3e50;
-  --menu-fg: #fff;
-  --button-bg: #2b3e50;
-  --button-fg: #fff; */
+}
+@supports (color: color(display-p3 1 1 1)) {
+    :root {
+      /* P3 */
+      --link-color: color(display-p3 0.128 0.548 0.57);
+      --link-focus-color: color(display-p3 0.196 0.786 0.815);
+      --menu-bg: color(display-p3 0.011 0.301 0.315);
+      --button-bg: color(display-p3 0.128 0.548 0.57);
+    }
 }
 
 * {
@@ -70,23 +70,27 @@
 
 @media (prefers-color-scheme: dark) {
   :root { /* :root :not(.is-light)is <html> for HTML documents */
-    --body-bg: #f3f3f3;
+    --body-bg: rgb(26, 24, 24);
+    --link-color: rgb(62, 140, 146);
+    --link-focus-color: rgb(0, 204, 210);
+    --menu-bg: rgb(26, 24, 24);
+    --button-bg: rgb(0, 142, 147);
+    --button-fg: rgb(26, 24, 24);
     --body-color: #333;
-    --link-color: #2b3e50;
-    --link-focus-color: #6589ac;
-    --menu-bg: #161b22;
     --menu-fg: #fff;
-    --button-bg: #161b22;
-    --button-fg: #fff;
-    /* --body-bg: #15202b;
-    --body-color: #fff;
-    --link-color: #9bebea;
-    --link-focus-color: #b5fffe;
-    --menu-bg: #192734;
-    --menu-fg: #fff;
-    --button-bg: #fff;
-    --button-fg: #192734; */
   }
+
+  @supports (color: color(display-p3 1 1 1)) {
+    :root {
+      /* P3 */
+      --body-bg: color(display-p3 0.1 0.095 0.095);
+      --link-color: color(display-p3 0.128 0.548 0.57);
+      --link-focus-color: color(display-p3 0.196 0.786 0.815);
+      --button-bg: color(display-p3 0.128 0.548 0.57);
+      --button-fg: color(display-p3 0.1 0.095 0.095);
+    }
+  }
+
   :where(img) {
     opacity: .75;
     transition: opacity .5s ease-in-out;
@@ -97,22 +101,45 @@
 }
 
 :root.is-dark { /* :root is <html> for HTML documents */
-  /* --body-bg: #15202b;
-  --body-color: #fff;
-  --link-color: #9bebea;
-  --link-focus-color: #b5fffe;
-  --menu-bg: #192734;
+  --body-bg: rgb(26, 24, 24);
+  --link-color: rgb(62, 140, 146);
+  --link-focus-color: rgb(0, 204, 210);
+  --menu-bg: rgb(26, 24, 24);
+  --button-bg: rgb(0, 142, 147);
+  --button-fg: rgb(26, 24, 24);
+  --body-color: #f0f0f0;
   --menu-fg: #fff;
-  --button-bg: #fff;
-  --button-fg: #192734; */
-  --body-bg: #0d1117;
-  --body-color: #fff;
-  --link-color: #6ff9e5;
-  --link-focus-color: #bbfffe;
-  --menu-bg: #161b22;
+}
+
+:root.is-light {
+  --body-bg: #f3f3f3;
+  --body-color: rgb(55, 55, 55);
+  --link-color: rgb(0, 142, 147);
+  --link-focus-color: rgb(0, 204, 210);
+  --menu-bg: rgb(0, 78, 81);
   --menu-fg: #fff;
-  --button-bg: #bbfffe;
-  --button-fg: #161b22;
+  --button-bg: rgb(0, 142, 147);
+  --button-fg: #fff;
+  --def-font: "dgrammatiko", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --alt-font: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+    :root.is-light {
+      /* P3 */
+      --link-color: color(display-p3 0.128 0.548 0.57);
+      --link-focus-color: color(display-p3 0.196 0.786 0.815);
+      --menu-bg: color(display-p3 0.011 0.301 0.315);
+      --button-bg: color(display-p3 0.128 0.548 0.57);
+    }
+    :root.is-dark {
+      /* P3 */
+      --body-bg: color(display-p3 0.1 0.095 0.095);
+      --link-color: color(display-p3 0.128 0.548 0.57);
+      --link-focus-color: color(display-p3 0.196 0.786 0.815);
+      --button-bg: color(display-p3 0.128 0.548 0.57);
+      --button-fg: color(display-p3 0.1 0.095 0.095);
+    }
 }
 
 :where(body) {
@@ -150,13 +177,12 @@
 
 :where(a) {
   color: var(--link-color);
+}
 
-  :hover,
-  :focus {
-    /* color: var(--link-focus-color); */
-    color: var(--body-bg);
-    background-color: var(--link-color);
-  }
+:where(a):hover,
+:where(a):focus {
+  color: var(--body-bg);
+  background-color: var(--link-color);
 }
 
 :where(p) {

@@ -47,7 +47,7 @@ header.major {
 
   .date:before,
   .date:after {
-    border-top-color: var(--menu-bg);
+    border-top-color: var(--link-color);
   }
 
   > p {

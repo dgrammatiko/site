@@ -14,13 +14,10 @@
   },
   "manifest": {
     "name": "dGrammatiko",
-    "short_name": "dGrammatiko",
     "description": "dGrammatiko's personal site",
     "lang": "en-US",
     "start_url": "/",
     "display": "minimal-ui",
-    "theme_color": "#50617c",
-    "background_color": "#50617c",
     "icons": [
       {
         "src": "/static/images/android-chrome-512x512.png",

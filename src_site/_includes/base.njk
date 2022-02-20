@@ -3,18 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
-    <link rel="preload" href="/static/fonts/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_LjQbMZhKSbpUVzEEQ.woff" as="font" type="font/woff" crossorigin>
-    <link rel="preload" href="/static/fonts/dgrammatiko.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/static/fonts/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_LjQbMZhKSbpUVzEEQ.woff" as="font" type="font/woff">
+    <link rel="preload" href="/static/fonts/dgrammatiko.woff2" as="font" type="font/woff2">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% if description %}
       {% set desc = description | safe %}
     {% else %}
       {% set desc = metadata.description | safe %}
     {% endif %}
-
     <meta name="description" content="{{ desc }}">
-    <meta name="apple-mobile-web-app-title" content="dGrammatiko">
-    <meta name="application-name" content="dGrammatiko">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@dgrammatiko">
     {% if fulltextImage %}
@@ -30,11 +27,11 @@
     <meta property="og:description" content="{{ desc }}">
     <meta name="monetization" content="$ilp.uphold.com/29KGbUJg6Xaq">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#161b22">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicon-16x16.png">
-    <link rel="mask-icon" href="/static/images/safari-pinned-tab.svg" color="#000000">
+    <meta name="theme-color" content="#008e93" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1818" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="any" href="/static/images/favicon-32x32.png">
+    <link rel="icon" href="/static/images/safari-pinned-tab.svg">
 
     <link href="https://github.com/dgrammatiko" rel="me">
     <link href="https://twitter.com/dgrammatiko" rel="me">

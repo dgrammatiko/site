@@ -10,7 +10,7 @@ dark-light-switch {
     width: 64px;
     padding: 0;
     color: transparent;
-    background-color: #000;
+    /* background-color: #000; */
     border-radius: 16px;
     -webkit-transition: 0.4s;
     transition: 0.4s;
@@ -18,7 +18,7 @@ dark-light-switch {
     &:focus,
     &:hover {
       color: transparent;
-      background-color: lightblue;
+      background-color: var(--link-focus-color);
     }
 
      > span {
@@ -42,7 +42,7 @@ dark-light-switch {
     }
 
     &[aria-pressed="false"] {
-      background-color: #000;
+      /* background-color: #000; */
 
       &:focus,
       &:hover {

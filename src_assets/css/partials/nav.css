@@ -19,8 +19,8 @@ nav {
 
   &:hover,
   &:focus {
-    background-color: var(--menu-fg);
-    color: var(--menu-bg);
+    background-color: var(--link-color);
+    color: var(--menu-fg);
   }
 }
 
@@ -41,14 +41,14 @@ nav {
 .nav-item {
   a:hover,
   a:focus {
-    background-color: white;
-    color: var(--menu-bg);
+    background-color: var(--link-color);
+    color: var(--menu-fg);
   }
 }
 
 .glitch {
   font-size: 3rem;
-  color: var(--menu-fg);
+  color: var(--link-focus-color);
   position: relative;
   font-family: dgrammatiko;
   padding-top: 5px;

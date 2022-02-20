@@ -1,11 +1,15 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!DOCTYPE svg>
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="700.000000pt" height="700.000000pt" viewBox="0 0 700.000000 700.000000"
  preserveAspectRatio="xMidYMid meet">
-<g transform="translate(0.000000,700.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
+ <style>
+.im { fill: #000000; }
+@media (prefers-color-scheme: dark) {
+  .im { fill: #fff; }
+}
+ </style>
+<g class="im" transform="translate(0.000000,700.000000) scale(0.100000,-0.100000)" stroke="none">
 <path d="M3288 5805 c-1 -1 -23 -5 -48 -8 -191 -24 -360 -88 -633 -241 -72
 -40 -155 -77 -215 -96 -110 -33 -109 -33 -240 -163 -117 -115 -171 -196 -213
 -317 -18 -52 -47 -118 -65 -146 -50 -78 -50 -126 -4 -229 10 -22 37 -85 60
