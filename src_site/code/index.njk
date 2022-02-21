@@ -15,7 +15,7 @@ title: Code
             <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
         {% endif %}
         <p>{{ blog.description }}</p>
-        <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}abandoned{% endif %}</p>
+        <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}Not really maintained anymore{% endif %}</p>
         <div style="display: grid; grid-auto-columns: max-content; grid-auto-flow: column; grid-column-gap: 1rem;">
             {% if blog.link %}<a href="{{ blog.link }}" rel="noopener" target="_blank">site</a>{% endif %}
             {% if blog.repo %}<a href="{{ blog.repo }}" rel="noopener" target="_blank">repo</a>{% endif %}

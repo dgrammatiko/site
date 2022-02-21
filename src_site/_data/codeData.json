@@ -23,7 +23,7 @@
       "description": "A wrapper around the web platform validation",
       "image": "formally.jpg",
       "imageAltText": "screenshot of the app",
-      "link": "https://formally-valid.info",
+      "link": "https://formally-valid.dgrammatiko.dev/",
       "repo": "https://github.com/dgrammatiko/formally",
       "maintained": true
     },
@@ -75,12 +75,36 @@
   ],
   "joomla": [
     {
-      "title": "Responsive Content Images",
+      "title": "Responsive Images",
       "description": "A plugin for responsive images using the picture element. Supports Webp",
-      "image": "",
-      "link": "",
-      "repo": "",
+      "image": "responsive-images.jpg",
+      "link": "https://responsive-images.dgrammatiko.dev",
+      "repo": "https://github.com/ttc-freebies/plugin-responsive-images",
       "maintained": true
+    },
+    {
+      "title": "Responsive Images",
+      "description": "A plugin for invalidating the cache of static assets",
+      "image": "responsive-images.jpg",
+      "link": "https://invalidate-cache.dgrammatiko.dev",
+      "repo": "https://github.com/dgrammatiko/invalidate-cache",
+      "maintained": true
+    },
+    {
+      "title": "frontpage",
+      "description": "A simple SPA that creates a Joomla component for managing landing pages.",
+      "image": "",
+      "link": "https://landing-component.dgrammatiko.dev",
+      "repo": "https://github.com/dgrammatiko/com_frontpage",
+      "maintained": true
+    },
+    {
+      "title": "custom-edit-forms-per-cat",
+      "description": "A simple plugin that allows for a custom edit form per category.",
+      "image": "",
+      "link": "https://customcontenteditform.netlify.app/",
+      "repo": "https://github.com/ttc-freebies/custom-edit-forms-per-cat",
+      "maintained": false
     },
     {
       "title": "Gzip Control",
@@ -118,18 +142,11 @@
       "title": "frontpage-svelte",
       "description": "A simple svelte SPA that creates a Joomla component (by Michael Babker) for managing landing pages.",
       "image": "",
-      "link": "https://github.com/dgrammatiko/com_frontpage_svelte",
-      "repo": "",
+      "link": "",
+      "repo": "https://github.com/dgrammatiko/com_frontpage_svelte",
       "maintained": true
     },
-    {
-      "title": "frontpage",
-      "description": "A simple hyperHTML SPA that creates a Joomla component (by Michael Babker) for managing landing pages.",
-      "image": "",
-      "link": "https://github.com/dgrammatiko/com_frontpage",
-      "repo": "",
-      "maintained": true
-    },
+
     {
       "title": "sloth-pkg",
       "description": "A complete package for the Sloth template.",
@@ -150,16 +167,8 @@
       "title": "com-addlazyloading",
       "description": "A simple component that prepares the db images entries for the version 4.",
       "image": "",
-      "link": "https://github.com/ttc-freebies/com_addlazyloading",
-      "repo": "",
-      "maintained": false
-    },
-    {
-      "title": "custom-edit-forms-per-cat",
-      "description": "A simple plugin that allows for a custom edit form per category.",
-      "image": "",
-      "link": "https://github.com/ttc-freebies/custom-edit-forms-per-cat",
-      "repo": "",
+      "link": "",
+      "repo": "https://github.com/ttc-freebies/com_addlazyloading",
       "maintained": false
     },
     {
