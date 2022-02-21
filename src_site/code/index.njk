@@ -3,7 +3,7 @@ layout: base.njk
 title: Code
 ---
 <main class="main">
-<h2 style="text-align: center">Web</h2>
+<h2 style="text-align: center; font-size: 5rem; text-shadow: .2rem .2rem var(--link-focus-color);">Web</h2>
 <section class="cards web">
 {# Loop through all the web widgets #}
 {% for blog in codeData.web %}
@@ -40,9 +40,9 @@ title: Code
 {% endfor %}
 </section>
 
-<hr style="border: 5px solid"/>
+<hr style="border: 2rem solid transparent"/>
 
-<h2 style="text-align: center">Joomla</h2>
+<h2 style="text-align: center; font-size: 5rem; text-shadow: .2rem .2rem var(--link-focus-color);">Joomla</h2>
 
 <section class="cards joomla">
 {# Loop through all the joomla widgets #}
@@ -80,5 +80,5 @@ title: Code
 {% endfor %}
 </section>
 
-<hr style="border: 5px solid"/>
+<hr style="border: 2rem solid transparent"/>
 </main>

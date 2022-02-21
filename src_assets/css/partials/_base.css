@@ -20,6 +20,7 @@
 }
 
 :root {
+  color-scheme: dark light;
   --body-bg: #f3f3f3;
   --body-color: rgb(55, 55, 55);
   --link-color: rgb(0, 142, 147);
@@ -70,6 +71,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root { /* :root :not(.is-light)is <html> for HTML documents */
+    color-scheme: dark;
     --body-bg: rgb(26, 24, 24);
     --link-color: rgb(62, 140, 146);
     --link-focus-color: rgb(0, 204, 210);
@@ -101,6 +103,7 @@
 }
 
 :root.is-dark { /* :root is <html> for HTML documents */
+  color-scheme: dark;
   --body-bg: rgb(26, 24, 24);
   --link-color: rgb(62, 140, 146);
   --link-focus-color: rgb(0, 204, 210);
@@ -112,6 +115,7 @@
 }
 
 :root.is-light {
+  color-scheme: light;
   --body-bg: #f3f3f3;
   --body-color: rgb(55, 55, 55);
   --link-color: rgb(0, 142, 147);
