@@ -26,6 +26,7 @@
 
 .card-header {
   border-bottom: 1px solid rgba(100,100,100,.1);
+  padding: 0 1rem;
   /* max-height: 210px; */
   border-radius: 4px 4px 0 0;
   overflow: hidden;
@@ -49,7 +50,8 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   article {
-    background-color: var(--button-fg);
+    background-color: var(--menu-bg);
+    color: var(--menu-fg);
     display: flex;
     flex-direction: column;
     /* padding: 1rem; */

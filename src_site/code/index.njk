@@ -8,18 +8,34 @@ title: Code
 {# Loop through all the web widgets #}
 {% for blog in codeData.web %}
       <article>
-        <header>
-          <h2>{% if blog.title %}{{ blog.title }}{% endif %}</h2>
+        <header class="card-header">
+          <h2 class="card-title">{% if blog.title %}{{ blog.title }}{% endif %}</h2>
         </header>
-        {% if blog.image %}
-            <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
-        {% endif %}
-        <p>{{ blog.description }}</p>
-        <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}Not really maintained anymore{% endif %}</p>
-        <div style="display: grid; grid-auto-columns: max-content; grid-auto-flow: column; grid-column-gap: 1rem;">
-            {% if blog.link %}<a href="{{ blog.link }}" rel="noopener" target="_blank">site</a>{% endif %}
-            {% if blog.repo %}<a href="{{ blog.repo }}" rel="noopener" target="_blank">repo</a>{% endif %}
+        <div class="card-body">
+          {% if blog.image %}
+              <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
+          {% endif %}
+          <p>{{ blog.description }}</p>
+          <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}Not really maintained anymore{% endif %}</p>
         </div>
+        <footer>
+          <nav style="display: block;">
+            <ul class="nav-links" style="justify-content: space-around;">
+              {% if blog.link %}
+                <li class="nav-item">
+                  <a class="btn" target="_blank" rel="noopener" href="{{ blog.link }}" style="padding: 0 2rem;">
+                  website
+                  </a>
+                </li>
+              {% endif %}
+              {% if blog.repo %}
+                <li class="nav-item">
+                  <a class="btn" target="_blank" rel="noopener" href="{{ blog.repo }}" style="padding: 0 2rem;">
+                  Source code
+                  </a>
+                </li>
+              {% endif %}
+        </footer>
       </article>
 {% endfor %}
 </section>
@@ -32,18 +48,34 @@ title: Code
 {# Loop through all the joomla widgets #}
 {% for blog in codeData.joomla %}
       <article>
-        <header>
-          <h2>{% if blog.title %}{{ blog.title }}{% endif %}</h2>
+        <header class="card-header">
+          <h2 class="card-title">{% if blog.title %}{{ blog.title }}{% endif %}</h2>
         </header>
-        {% if blog.image %}
-            <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAlt }}" />
-        {% endif %}
-        <p>{{ blog.description }}</p>
-        <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}abandoned{% endif %}</p>
-        <div style="display: grid; grid-auto-columns: max-content; grid-auto-flow: column; grid-column-gap: 1rem;">
-            {% if blog.link %}<a href="{{ blog.link }}" rel="noopener" target="_blank">site</a>{% endif %}
-            {% if blog.repo %}<a href="{{ blog.repo }}" rel="noopener" target="_blank">repo</a>{% endif %}
+        <div class="card-body">
+          {% if blog.image %}
+              <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
+          {% endif %}
+          <p>{{ blog.description }}</p>
+          <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}Not really maintained anymore{% endif %}</p>
         </div>
+        <footer>
+          <nav style="display: block;">
+            <ul class="nav-links" style="justify-content: space-around;">
+              {% if blog.link %}
+                <li class="nav-item">
+                  <a class="btn" target="_blank" rel="noopener" href="{{ blog.link }}" style="padding: 0 2rem;">
+                  website
+                  </a>
+                </li>
+              {% endif %}
+              {% if blog.repo %}
+                <li class="nav-item">
+                  <a class="btn" target="_blank" rel="noopener" href="{{ blog.repo }}" style="padding: 0 2rem;">
+                  Source code
+                  </a>
+                </li>
+              {% endif %}
+        </footer>
       </article>
 {% endfor %}
 </section>

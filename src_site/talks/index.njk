@@ -7,22 +7,28 @@ title: Talks
 <section class="cards joomla">
   {% for code in talksData.talks | reverse %}
     <article>
-      <header>
-          {% if code.videoId %}
-            <lite-youtube videoid="{{ code.videoId }}"  playlabel="Play Video: {{ code.title }}"></lite-youtube>
-          {% endif %}
+      <header class="card-header">
+        <h3 class="card-title">{{ code.title | safe }}</h3>
       </header>
-      <footer class="card-footer">
-        <nav>
-        <ul class="nav-links">
-          <li class="nav-item">
-            <a href="{{ code.url | url }}">
-              Slides
-            </a>
-          </li>
+      <div class="card-body">
+        {% if code.videoId %}
+          <lite-youtube videoid="{{ code.videoId }}"  playlabel="Play Video: {{ code.title }}"></lite-youtube>
+        {% endif %}
+        <p class="card-text">{{ code.description }}</p>
+      </div>
+      <footer>
+        <nav style="display: block;">
+        <ul class="nav-links" style="justify-content: space-around;">
+          {% if code.slides %}
+            <li class="nav-item">
+              <a class="btn" target="_blank" href="{{ code.slides }}" style="padding: 0 2rem;">
+                Slides
+              </a>
+            </li>
+          {% endif %}
           {% if code.videoId %}
           <li class="nav-item">
-            <a target="_blank" rel="noopener noreferer" href="https://youtube.com/watch?v={{ code.videoId }}">
+            <a class="btn" target="_blank" rel="noopener noreferer" href="https://youtube.com/watch?v={{ code.videoId }}" style="padding: 0 2rem;">
               Video
             </a>
           </li>
