@@ -1,14 +1,15 @@
-@import 'partials/_base.css';
-@import 'partials/_body.css';
-@import 'partials/_button.css';
+@charset "UTF-8";
+@import './src_assets/css/partials/_base.css';
+@import './src_assets/css/partials/_body.css';
+@import './src_assets/css/partials/_button.css';
 
-@import 'partials/_main.css';
-@import 'partials/_blogs.css';
-@import 'partials/_blog.css';
-@import 'partials/_blog_lang.css';
-@import 'partials/_codes.css';
-@import 'partials/footer.css';
-@import 'partials/nav.css';
+@import './src_assets/css/partials/_main.css';
+@import './src_assets/css/partials/_blogs.css';
+@import './src_assets/css/partials/_blog.css';
+@import './src_assets/css/partials/_blog_lang.css';
+@import './src_assets/css/partials/_codes.css';
+@import './src_assets/css/partials/footer.css';
+@import './src_assets/css/partials/nav.css';
 
-@import 'partials/lazy-tube.css';
-@import 'partials/toggler.css';
+@import './src_assets/css/partials/lazy-tube.css';
+@import './src_assets/css/partials/toggler.css';

@@ -6,6 +6,8 @@
     <link rel="preload" href="/static/fonts/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_LjQbMZhKSbpUVzEEQ.woff" as="font" type="font/woff">
     <link rel="preload" href="/static/fonts/dgrammatiko.woff2" as="font" type="font/woff2">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#004e51" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1818" media="(prefers-color-scheme: dark)">
     {% if description %}
       {% set desc = description | safe %}
     {% else %}
@@ -27,8 +29,6 @@
     <meta property="og:description" content="{{ desc }}">
     <meta name="monetization" content="$ilp.uphold.com/29KGbUJg6Xaq">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#008e93" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1a1818" media="(prefers-color-scheme: dark)">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="any" href="/static/images/favicon-32x32.png">
     <link rel="icon" href="/static/images/safari-pinned-tab.svg">
@@ -49,6 +49,7 @@
     {% include "footer.njk" %}
 
     <script type="module">if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
+    <script>[...document.querySelectorAll('dark-light-switch')].forEach((el) => { el.addEventListener('change', (e) => { document.documentElement.style.setProperty('theme', '#YOURCOLOR');}); });</script>
   </body>
 
 </html>

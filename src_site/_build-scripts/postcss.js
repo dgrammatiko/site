@@ -11,9 +11,9 @@ const postcssPresetEnv = require('postcss-preset-env');
 const cssNano = require('cssnano');
 
 const plugins = [
-  postcssNested,
+  postcssImport({ extensions: '.css', path: ["./src_assets/css", "./src_assets/css/partials"]}),
   postcssEasyImport({ extensions: '.css'}),
-  postcssImport({ extensions: '.css', path: ["src_assets/css", "src_assets/css/partials"]}),
+  postcssNested,
   postcssMixins,
   postcssCustomSelectors,
   postcssCustomMedia,
