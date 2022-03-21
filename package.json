@@ -5,13 +5,13 @@
   "description": "Personal site",
   "main": "build.js",
   "scripts": {
-    "watch:eleventy": "ELEVENTY_ENV=watch ./node_modules/.bin/eleventy --watch --serve",
+    "watch:eleventy": "NODE_ENV=production ELEVENTY_ENV=watch ./node_modules/.bin/eleventy --watch --serve",
     "build:eleventy": "NODE_ENV=production ./node_modules/.bin/eleventy",
-    "production": "npm run build:eleventy",
-    "dev": "npm run watch:eleventy",
-    "watch": "npm run watch:eleventy",
-    "build": "npm run build:eleventy",
-    "test": "npm run build:eleventy"
+    "production": "NODE_ENV=production npm run build:eleventy",
+    "dev": "NODE_ENV=production npm run watch:eleventy",
+    "watch": "NODE_ENV=production npm run watch:eleventy",
+    "build": "NODE_ENV=production npm run build:eleventy",
+    "test": "NODE_ENV=production npm run build:eleventy"
   },
   "author": "dgrammatiko",
   "license": "MIT",
