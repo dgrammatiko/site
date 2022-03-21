@@ -4,6 +4,7 @@ _cache
 live
 .vscode
 .DS_Store
+.env
 
 draft
 
