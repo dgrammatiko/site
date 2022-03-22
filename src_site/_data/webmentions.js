@@ -8,19 +8,19 @@ require('dotenv').config()
 
 // Define Cache Location and API Endpoint
 const CACHE_FILE_PATH = '_cache/webmentions.json'
-const API = 'https://webmention.io/api'
+const API = 'https://webmention.io/api';
 const TOKEN = process.env.WEBMENTION_IO_TOKEN
 async function fetchWebmentions(since, perPage = 10000) {
   // If we dont have a domain name or token, abort
   if (!domain || !TOKEN) {
     console.warn('>>> unable to fetch webmentions: missing domain or token')
-    return false
+    return false;
   }
   let url = `${API}/mentions.jf2?domain=${domain}&token=${TOKEN}&per-page=${perPage}`
   if (since) url += `&since=${since}` // only fetch new mentions
   const response = await axios.get(url)
-  if (response.ok) {
-    const feed = await response.json()
+  if (response.status === 200) {
+    const feed = response.data
     console.log(`>>> ${feed.children.length} new webmentions fetched from ${API}`)
     return feed
   }
