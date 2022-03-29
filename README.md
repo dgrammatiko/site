@@ -1,4 +1,4 @@
-# DGRAMMATIKO.ONLINE
+# DGRAMMATIKO.DEV
 
 [![renovate-app badge][renovate-badge]][renovate-app]
 
@@ -7,7 +7,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/56cc2cb3-6b8d-40bd-8ab3-b04056a25889/deploy-status)](https://app.netlify.com/sites/dgrammatiko/deploys)
 
-# live @ https://dgrammatiko.online
+# live @ https://dgrammatiko.dev
 
 Simple static site based on [Eleventy](https://www.11ty.io)
 
