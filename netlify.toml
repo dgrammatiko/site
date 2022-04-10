@@ -19,6 +19,6 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
 [[headers]]
-  for = "*.css" # css files too
+  for = "/static/*" # css files too
   [headers.values]
     Cache-Control = "public, max-age=604800"
