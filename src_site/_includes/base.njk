@@ -37,8 +37,9 @@
     <link href="https://twitter.com/dgrammatiko" rel="me">
     <link rel="webmention" href="https://webmention.io/{{ metadata.domain }}/webmention" />
     <link rel="pingback" href="https://webmention.io/{{ metadata.domain }}/xmlrpc" />
-    <link rel="stylesheet" href="/static/css/main.css?{{metadata.version}}">
+    <!--<link rel="stylesheet" href="/static/css/main.css?{{metadata.version}}"> -->
     <meta name="generator" content="Eleventy">
+    <style>{{ getCSS[0]['src_assets/css/main.css'] | safe }}</style>
   </head>
 
   <body class="grid-it">

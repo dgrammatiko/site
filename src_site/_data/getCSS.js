@@ -46,12 +46,12 @@ const getFiles = async (path = "./") => {
   // Get folders within the current directory
   const folders = entries.filter(folder => folder.isDirectory());
 
-  for (const folder of folders)
-    /*
-      Add the found files within the subdirectory to the files array by calling the
-      current function itself
-    */
-    files.push(...await getFiles(`${path}${folder.name}/`));
+  // for (const folder of folders)
+  //   /*
+  //     Add the found files within the subdirectory to the files array by calling the
+  //     current function itself
+  //   */
+  //   files.push(...await getFiles(`${path}${folder.name}/`));
 
   return files;
 }
@@ -75,7 +75,5 @@ const processCss = async (fileName, filePath) => {
 
 module.exports = async () => {
   const files = await getFiles('./src_assets/css/');
-  const promises = [];
-  files.map(file => promises.push(processCss(file.name, file.path)));
-  return Promise.all(promises)
+  return Promise.all(files.map(file => processCss(file.name, file.path)))
 }
