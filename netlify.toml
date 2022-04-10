@@ -12,8 +12,7 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-    Feature-Policy = "camera 'none'; display-capture 'none'; document-domain 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none'"
-    # Content-Security-Policy-Report-Only = "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self'"
+    Feature-Policy = "camera=(); display-capture=(); document-domain=(); geolocation=(); microphone=(); payment=(); usb=();"
 
 [[headers]]
   for = "*.js" # js files should be set this way
