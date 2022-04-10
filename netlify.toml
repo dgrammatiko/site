@@ -12,7 +12,7 @@
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
-    Feature-Policy = "geolocation 'self' https://dgrammatiko.dev; microphone 'none'"
+    Feature-Policy = "geolocation=(self 'https://dgrammatiko.dev'), microphone=('none')"
     # Content-Security-Policy-Report-Only = "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self'"
 
 [[headers]]
