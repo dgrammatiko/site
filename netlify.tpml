@@ -4,12 +4,20 @@
   package = "netlify-plugin-cache-folder"
 
 [[headers]]
-for = "/*"
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self'"
+            Referrer-Policy = "same-origin"
+  Strict-Transport-Security = "max-age=15768000"
+    X-Content-Type-Options = "nosniff"
+            X-Frame-Options = "DENY"
+          X-XSS-Protection = "1; mode=block"
 
-[headers.values]
-  Content-Security-Policy = "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self'"
-          Referrer-Policy = "same-origin"
-Strict-Transport-Security = "max-age=15768000"
-   X-Content-Type-Options = "nosniff"
-          X-Frame-Options = "DENY"
-         X-XSS-Protection = "1; mode=block"
+[[headers]]
+  for = "*.js" # js files should be set this way
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+[[headers]]
+  for = "*.css" # css files too
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
