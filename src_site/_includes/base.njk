@@ -28,7 +28,7 @@
     <meta property="og:title" content="{{ metadata.title }}{% if title %} - {{ title }}{% endif %}">
     <meta property="og:description" content="{{ desc }}">
     <meta name="monetization" content="$ilp.uphold.com/29KGbUJg6Xaq">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.webmanifest?v=0">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="any" href="/static/images/favicon-32x32.png">
     <link rel="icon" href="/static/images/safari-pinned-tab.svg">
@@ -49,8 +49,7 @@
 
     {% include "footer.njk" %}
 
-    <script type="module">if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js'); }</script>
-    <script>[...document.querySelectorAll('dark-light-switch')].forEach((el) => { el.addEventListener('change', (e) => { document.documentElement.style.setProperty('theme', '#YOURCOLOR');}); });</script>
+    <script type="module">if ('serviceWorker' in navigator) { navigator.serviceWorker.register('/sw.js?v=0'); }</script>
   </body>
 
 </html>

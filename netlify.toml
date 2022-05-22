@@ -16,13 +16,15 @@
     Permissions-Policy = "camera=(); display-capture=(); document-domain=(); geolocation=(); microphone=(); payment=(); usb=();"
 
 [[headers]]
+  for = "/*.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+
+[[headers]]
   for = "*.js" # js files should be set this way
   [headers.values]
     Cache-Control = "public, max-age=604800"
-[[headers]]
-  for = "/*.json"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+
 [[headers]]
   for = "/static/*" # css files too
   [headers.values]
