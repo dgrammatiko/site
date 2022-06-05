@@ -1,8 +1,9 @@
 [build]
   command   = "npm run build"
   environment = { NODE_VERSION = "18.2.0" }
-[[plugins]]
-  package = "netlify-plugin-cache-folder"
+
+#[[plugins]]
+#  package = "netlify-plugin-cache-folder"
 
 [[headers]]
   for = "/*"
