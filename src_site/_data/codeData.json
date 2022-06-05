@@ -32,7 +32,7 @@
       "description": "A glorified css reset",
       "image": "naf-css.jpg",
       "imageAltText": "screenshot of the app",
-      "link": "https://github.com/dgrammatiko/naf-css",
+      "link": "https://dgrammatiko.github.io/naf-css/",
       "repo": "https://github.com/dgrammatiko/naf-css",
       "maintained": true
     },
@@ -83,8 +83,8 @@
       "maintained": true
     },
     {
-      "title": "Responsive Images",
-      "description": "A plugin for invalidating the cache of static assets",
+      "title": "Invalidate Cache",
+      "description": "A plugin for invalidating the browser cache of static assets",
       "image": "responsive-images.jpg",
       "link": "https://invalidate-cache.dgrammatiko.dev",
       "repo": "https://github.com/dgrammatiko/invalidate-cache",

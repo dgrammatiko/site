@@ -23,11 +23,11 @@
   color-scheme: dark light;
   --body-bg: #f3f3f3;
   --body-color: rgb(55, 55, 55);
-  --link-color: rgb(0, 142, 147);
-  --link-focus-color: rgb(0, 204, 210);
+  --link-color: rgb(0, 155, 167);
+  --link-focus-color: rgb(23, 235, 241);
   --menu-bg: rgb(0, 78, 81);
   --menu-fg: #fff;
-  --button-bg: rgb(0, 142, 147);
+  --button-bg: rgb(0, 155, 167);
   --button-fg: #fff;
   --def-font: "dgrammatiko", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --alt-font: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -105,10 +105,10 @@
 :root.is-dark { /* :root is <html> for HTML documents */
   color-scheme: dark;
   --body-bg: rgb(26, 24, 24);
-  --link-color: rgb(62, 140, 146);
-  --link-focus-color: rgb(0, 204, 210);
+  --link-color: rgb(0, 155, 167);
+  --link-focus-color: rgb(23, 235, 241);
   --menu-bg: rgb(26, 24, 24);
-  --button-bg: rgb(0, 142, 147);
+  --button-bg: rgb(0, 155, 167);
   --button-fg: rgb(26, 24, 24);
   --body-color: #f0f0f0;
   --menu-fg: #fff;

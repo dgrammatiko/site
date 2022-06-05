@@ -39,10 +39,18 @@ nav {
 }
 
 .nav-item {
-  a:hover,
-  a:focus {
-    background-color: var(--link-color);
+  a,
+  dark-light-switch {
     color: var(--menu-fg);
+    display: inline-block;
+    padding: 1.75rem .5rem;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      background-color: var(--link-color);
+      color: var(--menu-fg);
+    }
   }
 }
 
