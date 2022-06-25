@@ -60,7 +60,8 @@ header.major {
   }
 }
 
-.articleBody {
+.articleBody,
+.webmentions {
   padding-left: 1rem;
   padding-right: 1rem;
   margin-left: auto;
@@ -69,7 +70,8 @@ header.major {
 }
 
 @media only screen and (min-width: 768px)  {
-  .articleBody {
+  .articleBody,
+  .webmentions {
     padding-left: 3rem;
     padding-right: 3rem;
     max-width: 72rem;
