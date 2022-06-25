@@ -84,9 +84,10 @@ header.major {
   }
 }
 
-.webmentions {
+.webmentions__facepile {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: .5rem;
 }
 
 .h-card.u-url.link-u-exempt {
