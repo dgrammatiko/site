@@ -3,6 +3,9 @@
 footer {
   background-color: var(--menu-bg);
   color: var(--menu-fg);
+  border-top-color: var(--link-color);
+  border-top-style: double;
+  border-top-width: 4px;
   bottom: 0;
 
   & nav {

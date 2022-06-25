@@ -92,8 +92,6 @@ header {
 }
 
 .posts {
-  display: -moz-flex;
-  display: -ms-flex;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
@@ -110,15 +108,7 @@ header {
   }
 
   > article {
-    border-color: var(--menu-bg);
-    border-left-width: 2px;
-    border-style: solid;
-    border-top-width: 2px;
     text-align: center;
-  }
-
-  > article:nth-child(odd) {
-    border-left: none;
   }
 }
 
@@ -129,9 +119,6 @@ header {
 
 @media only screen and (max-width: 768px)  {
   .posts {
-    > article {
-      border: 0;
-    }
     > * {
       padding: 1rem;
       width: 100%;

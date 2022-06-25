@@ -46,7 +46,7 @@ nav {
   }
 
   & dark-light-switch {
-    padding-bottom: 1.3rem;
+    padding: 0;
   }
 }
 
