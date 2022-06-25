@@ -52,9 +52,8 @@
 {% endif %}
 
 {% if repliesSize > 0 %}
+<h3>{{ repliesSize }} {% if repliesSize == "1" %}Reply{% else %}Replies{% endif %}</h3>
 <div class="webmention-replies">
-  <h3>{{ repliesSize }} {% if repliesSize == "1" %}Reply{% else %}Replies{% endif %}</h3>
-
   {% for webmention in replies %}
     {% include 'webmention.njk' %}
   {% endfor %}
