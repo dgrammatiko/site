@@ -24,8 +24,10 @@ layout: base.njk
         {{ layoutContent | safe }}
       </article>
     <hr>
+
     {% set webmentionUrl %}{{ page.url | url | absoluteUrl(site.url) }}{% endset %}
-    {% include 'webmentions.njk' %}
+    {% include "webmentions.njk" %}
+
   </section>
   <script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
 </main>

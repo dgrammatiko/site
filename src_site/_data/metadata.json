@@ -2,6 +2,7 @@
   "title": "dGrammatiko",
   "domain": "dgrammatiko.dev",
   "url": "https://dgrammatiko.dev/",
+  "url2": "https://dgrammatiko.dev",
   "description": "Posts about the web, coding, Javascript, HTML, CSS and maybe some PHP",
   "feed": {
     "subtitle": "Some text mainly about code",

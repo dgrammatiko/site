@@ -81,3 +81,15 @@ header.major {
     margin-right:  auto;
   }
 }
+
+.webmentions {
+  display: flex;
+  flex-direction: column;
+}
+
+.h-card.u-url.link-u-exempt img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}

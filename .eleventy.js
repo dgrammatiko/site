@@ -53,46 +53,19 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
   // Filter source file names using a glob
-  eleventyConfig.addCollection("blogs", function (collection) {
-    // Also accepts an array of globs!
-    return collection.getFilteredByGlob([`${siteSrc}/blog/*.md`]);
-  });
-
+  eleventyConfig.addCollection("blogs", (collection) => collection.getFilteredByGlob([`${siteSrc}/blog/*.md`]));
   // Filter source file names using a glob
-  eleventyConfig.addCollection("code", function (collection) {
-    // Also accepts an array of globs!
-    return collection.getFilteredByGlob([`${siteSrc}/code/*.md`]);
-  });
-
-  eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
-      "dd LLL yyyy"
-    );
-  });
-
+  eleventyConfig.addCollection("code", (collection) =>  collection.getFilteredByGlob([`${siteSrc}/code/*.md`]));
+  eleventyConfig.addFilter("readableDate", (dateObj) => DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("dd LLL yyyy"));
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
-  });
+  eleventyConfig.addFilter("htmlDateString", (dateObj) => DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd"));
 
   // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter("head", (array, n) => {
-    if (n < 0) {
-      return array.slice(n);
-    }
+  eleventyConfig.addFilter("head", (array, n) => (n < 0) ? array.slice(n) : array.slice(0, n));
 
-    return array.slice(0, n);
-  });
-
-  eleventyConfig.addFilter("getWebmentionsForUrl", (webmentions, url) => {
-    return webmentions.children.filter(entry => entry['wm-target'] === url)
-  });
-  eleventyConfig.addFilter("size", (mentions) => {
-    return !mentions ? 0 : mentions.length
-  });
-  eleventyConfig.addFilter("webmentionsByType", (mentions, mentionType) => {
-    return mentions.filter(entry => !!entry[mentionType])
-  });
+  eleventyConfig.addFilter("getWebmentionsForUrl", (webmentions, url) => webmentions.children.filter(entry => entry['wm-target'] === url));
+  eleventyConfig.addFilter("size", (mentions) => !mentions ? 0 : mentions.length);
+  eleventyConfig.addFilter("webmentionsByType", (mentions, mentionType) => mentions.filter(entry => !!entry[mentionType]));
 
   eleventyConfig.addTransform("htmlmin", function (content, outputPath) {
     if (

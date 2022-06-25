@@ -59,6 +59,7 @@ function readFromCache() {
 module.exports = async function () {
   console.log('>>> Reading webmentions from cache...');
   const cache = readFromCache()
+  console.dir(cache)
   if (cache.children.length) {
     console.log(`>>> ${cache.children.length} webmentions loaded from cache`)
   }
