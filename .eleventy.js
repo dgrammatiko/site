@@ -10,7 +10,7 @@ const Image = require("@11ty/eleventy-img");
 const x = require("./src_site/_build-scripts/rollup.js");
 const y = require("./src_site/_build-scripts/postcss.js");
 
-async function imageShortcode(src, dir, alt, sizes) {
+async function imageShortcode(src, dir, alt, sizes, classs) {
   let metadata = await Image(`./src_assets/images/${dir}/${src}`, {
     urlPath: `/static/images/${dir}/`,
     outputDir: `live/static/images/${dir}/`,
@@ -23,6 +23,7 @@ async function imageShortcode(src, dir, alt, sizes) {
     sizes,
     loading: "lazy",
     decoding: "async",
+    class: classs
   };
 
   // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
