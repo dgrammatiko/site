@@ -30,27 +30,23 @@ nav {
   margin-inline-end: 1rem;
 }
 
-.nav-item a,
-.nav-item dark-light-switch {
-  display: inline-block;
-  padding: 1.75rem .5rem;
-  text-decoration: none;
-  color: var(--menu-fg);
-}
-
 .nav-item {
-  a,
-  dark-light-switch {
-    color: var(--menu-fg);
+  & a,
+  & dark-light-switch {
     display: inline-block;
-    padding: 1.75rem .5rem;
     text-decoration: none;
+    color: var(--menu-fg);
+    padding: 1.75rem .5rem;
 
     &:hover,
     &:focus {
       background-color: var(--link-color);
       color: var(--menu-fg);
     }
+  }
+
+  & dark-light-switch {
+    padding-bottom: 1.3rem;
   }
 }
 
