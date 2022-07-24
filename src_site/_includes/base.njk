@@ -16,14 +16,7 @@
     <meta name="description" content="{{ desc }}">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@dgrammatiko">
-    {% if fulltextImage %}
-    {% set image = fulltextImage.replace('.jpg', '@1200.jpg').replace('.png', '@1200.png') %}
-    <meta name="twitter:image" content="https://{{ metadata.domain }}{{ image }}">
-    <meta property="og:image" content="https://{{ metadata.domain }}{{ image }}">
-    {% else %}
-    <meta name="twitter:image" content="https://{{ metadata.domain }}/static/images/android-chrome-512x512.png">
-    <meta property="og:image" content="https://{{ metadata.domain }}/static/images/android-chrome-512x512.png">
-    {% endif %}
+    {% ogimg image, page.url, metadata %}
     <meta property="og:url" content="https://{{ metadata.domain }}{{ page.url }}">
     <meta property="og:title" content="{{ metadata.title }}{% if title %} - {{ title }}{% endif %}">
     <meta property="og:description" content="{{ desc }}">

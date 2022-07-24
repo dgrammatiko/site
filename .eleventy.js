@@ -6,29 +6,9 @@ const htmlmin = require("html-minifier");
 const { siteSrc, siteDest } = require("./src_site/_build-scripts/paths");
 const imageTransform = require("./src_site/_build-scripts/alltransforms.js");
 const codepenIt = require("11ty-to-codepen");
-const Image = require("@11ty/eleventy-img");
 const x = require("./src_site/_build-scripts/rollup.js");
 const y = require("./src_site/_build-scripts/postcss.js");
-
-async function imageShortcode(src, dir, alt, sizes, classs) {
-  let metadata = await Image(`./src_assets/images/${dir}/${src}`, {
-    urlPath: `/static/images/${dir}/`,
-    outputDir: `live/static/images/${dir}/`,
-    widths: [300, 600, 1024, 1240],
-    formats: ["avif", "jpeg"]
-  });
-
-  let imageAttributes = {
-    alt,
-    sizes,
-    loading: "lazy",
-    decoding: "async",
-    class: classs
-  };
-
-  // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
-  return Image.generateHTML(metadata, imageAttributes);
-}
+const { ogimage, imageShortcode } = require("./src_site/_build-scripts/ogimage.js");
 
 const root = process.cwd();
 
@@ -37,7 +17,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
   eleventyConfig.addPassthroughCopy({ "src_site/talks/london-jug-december-2021": "talks/london-jug-december-2021" });
 
-  //src_site/talks/london-jug-december-2021
   eleventyConfig.on('beforeBuild', async () => {
     await x();
     await y();
@@ -48,9 +27,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setLibrary('njk', nunjucksEnvironment)
 
   eleventyConfig.addPlugin(pluginRss);
-  eleventyConfig.addPlugin(pluginSyntaxHighlight, {
-    alwaysWrapLineHighlights: false,
-  });
+  eleventyConfig.addPlugin(pluginSyntaxHighlight, { alwaysWrapLineHighlights: false });
   eleventyConfig.setDataDeepMerge(true);
 
   // Filter source file names using a glob
@@ -94,10 +71,7 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
-  eleventyConfig.addCollection(
-    "tagList",
-    require("./src_site/_build-scripts/getTagList")
-  );
+  eleventyConfig.addCollection("tagList", require("./src_site/_build-scripts/getTagList"));
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
@@ -113,15 +87,12 @@ module.exports = function (eleventyConfig) {
     permalinkSymbol: "🔗",
   };
 
-  eleventyConfig.setLibrary(
-    "md",
-    markdownIt(options)
-    .use(markdownItAnchor, opts)
-  );
+  eleventyConfig.setLibrary("md", markdownIt(options).use(markdownItAnchor, opts));
 
   eleventyConfig.addNunjucksAsyncShortcode("imagine", imageShortcode);
   eleventyConfig.addLiquidShortcode("imagine", imageShortcode);
   eleventyConfig.addJavaScriptFunction("imagine", imageShortcode);
+  eleventyConfig.addNunjucksAsyncShortcode("ogimg", ogimage);
 
   eleventyConfig.addTransform("parse", imageTransform);
   eleventyConfig.addPairedShortcode("codepen", codepenIt);
