@@ -2,12 +2,12 @@
   command   = "npm run build"
   environment = { NODE_VERSION = "18.2.0" }
 
-#[[plugins]]
-#  package = "netlify-plugin-cache-folder"
+[[plugins]]
+  package = "netlify-plugin-cache-folder"
 
 [[headers]]
   for = "/*"
-  [headers.values]
+    [headers.values]
 #   Content-Security-Policy = "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'"
 #   Content-Security-Policy = "default-src https://*.dgrammatiko.dev; script-src https://*.dgrammatiko.dev 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.dgrammatiko.dev; font-src https://*.dgrammatiko.dev;"
     Referrer-Policy = "same-origin"
@@ -19,15 +19,17 @@
 
 [[headers]]
   for = "/*.webmanifest"
-  [headers.values]
+    [headers.values]
     Content-Type = "application/manifest+json"
 
+# js files should be set this way
 [[headers]]
-  for = "*.js" # js files should be set this way
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+  for = "*.js"
+    [headers.values]
+    Cache-Control = "public, max-age=31536000"
 
+# static files too
 [[headers]]
-  for = "/static/*" # css files too
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
+  for = "/static/*"
+    [headers.values]
+    Cache-Control = "public, max-age=31536000"
