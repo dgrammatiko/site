@@ -9,7 +9,9 @@ require('dotenv').config()
 // Define Cache Location and API Endpoint
 const CACHE_FILE_PATH = '_cache/webmentions.json'
 const API = 'https://webmention.io/api';
-const TOKEN = process.env.WEBMENTION_IO_TOKEN
+const TOKEN = process.env.WEBMENTION_IO_TOKEN;
+
+
 async function fetchWebmentions(since, perPage = 10000) {
   // If we dont have a domain name or token, abort
   if (!domain || !TOKEN) {
@@ -20,9 +22,8 @@ async function fetchWebmentions(since, perPage = 10000) {
   if (since) url += `&since=${since}` // only fetch new mentions
   const response = await axios.get(url)
   if (response.status === 200) {
-    const feed = response.data
-    console.log(`>>> ${feed.children.length} new webmentions fetched from ${API}`)
-    return feed
+    console.log(`>>> ${response.data.children.length} new webmentions fetched from ${API}`)
+    return response.data;
   }
   return null
 }
@@ -33,13 +34,13 @@ function mergeWebmentions(a, b) {
 // save combined webmentions in cache file
 function writeToCache(data) {
   const dir = '_cache'
-  const fileContent = JSON.stringify(data, null, 2)
+
   // create cache folder if it doesnt exist already
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir)
   }
   // write data to cache json file
-  fs.writeFile(CACHE_FILE_PATH, fileContent, err => {
+  fs.writeFile(CACHE_FILE_PATH, JSON.stringify(data, null, 2), err => {
     if (err) throw err
     console.log(`>>> webmentions cached to ${CACHE_FILE_PATH}`)
   })
@@ -47,8 +48,7 @@ function writeToCache(data) {
 // get cache contents from json file
 function readFromCache() {
   if (fs.existsSync(CACHE_FILE_PATH)) {
-    const cacheFile = fs.readFileSync(CACHE_FILE_PATH)
-    return JSON.parse(cacheFile)
+    return JSON.parse(fs.readFileSync(CACHE_FILE_PATH))
   }
   // no cache found.
   return {
@@ -59,7 +59,7 @@ function readFromCache() {
 module.exports = async function () {
   console.log('>>> Reading webmentions from cache...');
   const cache = readFromCache()
-  console.dir(cache)
+
   if (cache.children.length) {
     console.log(`>>> ${cache.children.length} webmentions loaded from cache`)
   }

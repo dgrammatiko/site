@@ -21,16 +21,12 @@ title: Talks
         <ul class="nav-links" style="justify-content: space-around;">
           {% if code.slides %}
             <li class="nav-item">
-              <a class="btn" target="_blank" href="{{ code.slides }}" style="padding: 0 2rem;">
-                Slides
-              </a>
+              <a class="btn" target="_blank" href="{{ code.slides }}" style="padding: 1rem 2rem;">Slides</a>
             </li>
           {% endif %}
           {% if code.videoId %}
           <li class="nav-item">
-            <a class="btn" target="_blank" rel="noopener noreferer" href="https://youtube.com/watch?v={{ code.videoId }}" style="padding: 0 2rem;">
-              Video
-            </a>
+            <a class="btn" target="_blank" rel="noopener noreferer" href="https://youtube.com/watch?v={{ code.videoId }}" style="padding: 1rem 2rem;">Video</a>
           </li>
           {% endif %}
           </ul>
