@@ -17,8 +17,9 @@
       X-Frame-Options = "DENY"
       X-XSS-Protection = "1; mode=block"
 
-      Link = "<assets/fonts/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_LjQbMZhKSbpUVzEEQ.woff> rel=preload as=font"
-      Link = "<src_assets/fonts/dgrammatiko.woff2> rel=preload as=font"
+      Link = '''
+      <assets/fonts/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_LjQbMZhKSbpUVzEEQ.woff> rel=preload as=font, \
+      <assets/fonts/dgrammatiko.woff2> rel=preload as=font'''
 
   for = "/*.webmanifest"
     [headers.values]
