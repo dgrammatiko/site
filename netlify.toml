@@ -21,10 +21,12 @@
       <assets/fonts/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_LjQbMZhKSbpUVzEEQ.woff> rel=preload as=font, \
       <assets/fonts/dgrammatiko.woff2> rel=preload as=font'''
 
+[[headers]]
   for = "/*.webmanifest"
     [headers.values]
       Content-Type = "application/manifest+json"
 
+[[headers]]
   for = "/static/*"
     [headers.values]
       Cache-Control = "public, max-age=31536000"
