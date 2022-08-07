@@ -1,4 +1,4 @@
-const Image = require("@11ty/eleventy-img");
+const Image = require('@11ty/eleventy-img');
 
 module.exports.ogimage = async function(image, outputPath, metadata) {
 
@@ -24,27 +24,28 @@ async function getImage(image, dir) {
       urlPath: `/static/images/${dir}/`,
       outputDir: `live/static/images/${dir}/`,
       widths: [1024],
-      formats: ["jpeg"]
+      formats: ['jpeg']
   });
   data = metadata.jpeg[metadata.jpeg.length - 1];
   return data.url;
 }
 
-module.exports.imageShortcode = async function(src, dir, alt, sizes, classs) {
+module.exports.imageShortcode = async function(src, dir, alt = '', sizes, classs = '', lazy = true) {
   let metadata = await Image(`./src_assets/images/${dir}/${src}`, {
     urlPath: `/static/images/${dir}/`,
     outputDir: `live/static/images/${dir}/`,
     widths: [300, 600, 1024, 1240],
-    formats: ["avif", "jpeg"]
+    formats: ['avif', 'jpeg']
   });
 
   let imageAttributes = {
-    alt,
+    alt: alt || '',
     sizes,
-    loading: "lazy",
-    decoding: "async",
-    class: classs
+    decoding: 'async',
   };
+  if (lazy) imageAttributes.loading = 'lazy';
+  if (classs) imageAttributes.class = classs;
+
 
   // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
   return Image.generateHTML(metadata, imageAttributes);
