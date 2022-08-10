@@ -138,14 +138,12 @@ header.major {
   margin-bottom:32px
 }
 .webmention-replies .webmention__meta{
-  margin-bottom:8px
+  display: flex;
+  column-gap: 1rem;
+  margin-bottom: .8rem;
 }
 .webmention-replies .webmention__meta time {
   display:block;
-  margin-top:8px
-}
-.webmention-text {
-  margin-top:0
 }
 .webmention-text a {
   margin-left:4px
