@@ -1,47 +1,36 @@
-const filters = require("./src_site/.scripts/filter/filters.js");
-const { ogimage, imageShortcode } = require("./src_site/.scripts/shortcodes/ogimage.js");
+const filters = require("./src_site/.scripts/filters/filters.js");
+const collections = require("./src_site/.scripts/collections/collections.js");
+const transforms = require("./src_site/.scripts/transforms/transforms.js");
+const shortcodes = require("./src_site/.scripts/shortcodes/shortcodes.js");
+const libraries = require("./src_site/.scripts/libraries/libraries.js");
+const beforeBuild = require("./src_site/.scripts/beforeBuild/beforeBuild.js");
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.on('beforeBuild', async () => {
-    await require("./src_site/.scripts/transorms/rollup.js")();
-    await require("./src_site/.scripts/transorms/postcss.js")();
-  });
-
   eleventyConfig.setDataDeepMerge(true);
-  eleventyConfig.setLibrary('njk', require('./src_site/.scripts/njk.js'));
-  eleventyConfig.setLibrary("md", require("./src_site/.scripts/md.js"));
-
+  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-rss"));
+  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"), { alwaysWrapLineHighlights: false });
   eleventyConfig.addPassthroughCopy({ "src_assets/images": "static/images" });
   eleventyConfig.addPassthroughCopy({ "src_assets/fonts": "static/fonts" });
   eleventyConfig.addPassthroughCopy({ "src_site/talks/london-jug-december-2021": "talks/london-jug-december-2021" });
 
-  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-rss"));
-  eleventyConfig.addPlugin(require("@11ty/eleventy-plugin-syntaxhighlight"), { alwaysWrapLineHighlights: false });
-
-  eleventyConfig.addCollection("blogs", (collection) => collection.getFilteredByGlob(['src_site/blog/*.md']));
-  eleventyConfig.addCollection("code", (collection) =>  collection.getFilteredByGlob(['src_site/code/*.md']));
-  eleventyConfig.addCollection("tagList", require("./src_site/.scripts/filter/getTagList"));
-
-  Object.keys(filters).forEach(filterName => {
-    eleventyConfig.addFilter(filterName, filters[filterName])
+  Object.keys(libraries).forEach(libraryName => eleventyConfig.setLibrary(libraryName, libraries[libraryName]));
+  Object.keys(collections).forEach(collectionName => eleventyConfig.addCollection(collectionName, collections[collectionName]));
+  Object.keys(filters).forEach(filterName => eleventyConfig.addFilter(filterName, filters[filterName]));
+  Object.keys(transforms).forEach(transformName => eleventyConfig.addTransform(transformName, transforms[transformName]));
+  Object.keys(shortcodes).forEach(shortcodeName => {
+    eleventyConfig.addNunjucksAsyncShortcode(shortcodeName, shortcodes[shortcodeName]);
+    eleventyConfig.addLiquidShortcode(shortcodeName, shortcodes[shortcodeName]);
+    eleventyConfig.addJavaScriptFunction(shortcodeName, shortcodes[shortcodeName]);
   });
 
-  eleventyConfig.addTransform("htmlmin", require("./src_site/.scripts/transorms/htmlmin.js"));
-  eleventyConfig.addTransform("parse", require("./src_site/.scripts/transorms/alltransforms.js"));
-
-  eleventyConfig.addNunjucksAsyncShortcode("imagine", imageShortcode);
-  eleventyConfig.addLiquidShortcode("imagine", imageShortcode);
-  eleventyConfig.addJavaScriptFunction("imagine", imageShortcode);
-  eleventyConfig.addNunjucksAsyncShortcode("ogimg", ogimage);
   eleventyConfig.addPairedShortcode("codepen", require("11ty-to-codepen"));
 
+  eleventyConfig.on('beforeBuild', async () => await Promise.all(Object.values(beforeBuild)));
+
   return {
-    pathPrefix: "/",
     passthroughFileCopy: true,
     dir: {
-      data: `_data`,
       input: 'src_site',
-      includes: `_includes`,
       layouts: `_includes`,
       output: `${process.cwd()}/live`,
     },

@@ -1,6 +1,8 @@
 /* Markdown Plugins */
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const Nunjucks = require('nunjucks');
+
 const options = {
   html: true,
   breaks: true,
@@ -12,4 +14,7 @@ const opts = {
   permalinkSymbol: "🔗",
 };
 
-module.exports = markdownIt(options).use(markdownItAnchor, opts);
+module.exports = {
+  md: markdownIt(options).use(markdownItAnchor, opts),
+  njk: new Nunjucks.Environment(new Nunjucks.FileSystemLoader('./src_site/_includes')),
+};

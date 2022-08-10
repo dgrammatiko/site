@@ -1,4 +1,3 @@
-// _11ty/filters.js
 const { DateTime } = require("luxon");
 
 module.exports = {
