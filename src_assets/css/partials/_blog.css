@@ -109,3 +109,47 @@ header.major {
   margin-left: -50vw;
   margin-right: -50vw;
 }
+
+.webmentions img {
+  border-radius:50%;
+  display:inline;
+  height:48px;
+  width:48px;
+  object-fit:cover
+}
+.webmentions h3 {
+  margin-top:40px
+}
+.webmentions__facepile a {
+  border:none;
+  box-shadow:none
+}
+.webmentions__facepile a:hover {
+  background:0 0
+}
+.webmentions a:hover img {
+  filter:drop-shadow(3px 5px 10px var(--button-bg))
+}
+.webmention-replies img {
+  height:24px;
+  width:24px
+}
+.webmention-replies article{
+  margin-bottom:32px
+}
+.webmention-replies .webmention__meta{
+  margin-bottom:8px
+}
+.webmention-replies .webmention__meta time {
+  display:block;
+  margin-top:8px
+}
+.webmention-text {
+  margin-top:0
+}
+.webmention-text a {
+  margin-left:4px
+}
+article.webmention {
+  padding:16px 16px 12px
+}

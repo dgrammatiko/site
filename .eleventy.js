@@ -1,4 +1,4 @@
-const { DateTime } = require("luxon");
+const filters = require("./src_site/.scripts/filter/filters.js");
 const { ogimage, imageShortcode } = require("./src_site/.scripts/shortcodes/ogimage.js");
 
 module.exports = function (eleventyConfig) {
@@ -22,12 +22,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addCollection("code", (collection) =>  collection.getFilteredByGlob(['src_site/code/*.md']));
   eleventyConfig.addCollection("tagList", require("./src_site/.scripts/filter/getTagList"));
 
-  eleventyConfig.addFilter("readableDate", (dateObj) => DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("dd LLL yyyy"));
-  eleventyConfig.addFilter("htmlDateString", (dateObj) => DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd"));
-  eleventyConfig.addFilter("head", (array, n) => (n < 0) ? array.slice(n) : array.slice(0, n));
-  eleventyConfig.addFilter("getWebmentionsForUrl", (webmentions, url) => webmentions.children.filter(entry => entry['wm-target'] === url));
-  eleventyConfig.addFilter("size", (mentions) => !mentions ? 0 : mentions.length);
-  eleventyConfig.addFilter("webmentionsByType", (mentions, mentionType) => mentions.filter(entry => !!entry[mentionType]));
+  Object.keys(filters).forEach(filterName => {
+    eleventyConfig.addFilter(filterName, filters[filterName])
+  });
 
   eleventyConfig.addTransform("htmlmin", require("./src_site/.scripts/transorms/htmlmin.js"));
   eleventyConfig.addTransform("parse", require("./src_site/.scripts/transorms/alltransforms.js"));
