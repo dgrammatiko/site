@@ -2,7 +2,7 @@
 title: Broken beyond repair‽
 description: One year after Joomla v4.0.0 might be an excellent time to write honest opinions about that release. Mainly on the bad things.
 tags: blog, Joomla, HTML, CSS, JavaScript
-date: 2022-09-07T22:55:54+00:00
+date: 2022-08-10T22:55:54+00:00
 image: balint-szabo-wmAyFfBgK2I-unsplash.jpg
 imageAltText: Image of a broken window by Bálint Szabó
 custom_excerpt: One year after Joomla v4.0.0 might be an excellent time to write honest opinions about that release. Mainly on the bad things.

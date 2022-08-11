@@ -11,11 +11,13 @@ nav {
 
 .logo {
   display: none;
-  color: var(--menu-fg);
-  font-family: inherit;
-  font-size: 2rem;
+  color: var(--link-color);
+  font-family: dgrammatiko;
+  font-size: 3rem;
   text-decoration: none;
   margin-left: 1rem;
+  padding-top: 5px;
+  height: 36px;
 
   &:hover,
   &:focus {
@@ -50,151 +52,8 @@ nav {
   }
 }
 
-.glitch {
-  font-size: 3rem;
-  color: var(--link-focus-color);
-  position: relative;
-  font-family: dgrammatiko;
-  padding-top: 5px;
-  height: 36px;
-
-  &:before,
-  &:after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 36px;
-    background: var(--menu-bg);
-  }
-  &:after {
-    left: 2px;
-    text-shadow: -1px 0 rgb(145, 0, 255);
-    animation: glitch-anim-1 3s infinite linear alternate-reverse;
-  }
-  &:before {
-    left: -2px;
-    text-shadow: 2px 0 rgb(0, 255, 37);
-    animation: glitch-anim-2 5s infinite linear alternate-reverse;
-  }
-}
-
 @media only screen and (min-width: 768px) {
   .logo {
     display: inline-block;
-  }
-}
-
-@keyframes glitch-anim-1 {
-  0% {
-    clip-path: inset(64% 0 25% 0);
-  }
-  5.8823529412% {
-    clip-path: inset(88% 0 10% 0);
-  }
-  11.7647058824% {
-    clip-path: inset(96% 0 4% 0);
-  }
-  17.6470588235% {
-    clip-path: inset(75% 0 8% 0);
-  }
-  23.5294117647% {
-    clip-path: inset(41% 0 42% 0);
-  }
-  29.4117647059% {
-    clip-path: inset(3% 0 63% 0);
-  }
-  35.2941176471% {
-    clip-path: inset(57% 0 19% 0);
-  }
-  41.1764705882% {
-    clip-path: inset(72% 0 24% 0);
-  }
-  47.0588235294% {
-    clip-path: inset(86% 0 15% 0);
-  }
-  52.9411764706% {
-    clip-path: inset(16% 0 61% 0);
-  }
-  58.8235294118% {
-    clip-path: inset(44% 0 29% 0);
-  }
-  64.7058823529% {
-    clip-path: inset(71% 0 6% 0);
-  }
-  70.5882352941% {
-    clip-path: inset(94% 0 3% 0);
-  }
-  76.4705882353% {
-    clip-path: inset(84% 0 4% 0);
-  }
-  82.3529411765% {
-    clip-path: inset(95% 0 6% 0);
-  }
-  88.2352941176% {
-    clip-path: inset(48% 0 47% 0);
-  }
-  94.1176470588% {
-    clip-path: inset(56% 0 2% 0);
-  }
-  100% {
-    clip-path: inset(2% 0 31% 0);
-  }
-}
-@keyframes glitch-anim-2 {
-  0% {
-    clip-path: inset(81% 0 6% 0);
-  }
-  5.8823529412% {
-    clip-path: inset(7% 0 34% 0);
-  }
-  11.7647058824% {
-    clip-path: inset(75% 0 11% 0);
-  }
-  17.6470588235% {
-    clip-path: inset(21% 0 51% 0);
-  }
-  23.5294117647% {
-    clip-path: inset(28% 0 73% 0);
-  }
-  29.4117647059% {
-    clip-path: inset(50% 0 4% 0);
-  }
-  35.2941176471% {
-    clip-path: inset(22% 0 48% 0);
-  }
-  41.1764705882% {
-    clip-path: inset(7% 0 25% 0);
-  }
-  47.0588235294% {
-    clip-path: inset(53% 0 25% 0);
-  }
-  52.9411764706% {
-    clip-path: inset(65% 0 15% 0);
-  }
-  58.8235294118% {
-    clip-path: inset(97% 0 2% 0);
-  }
-  64.7058823529% {
-    clip-path: inset(71% 0 5% 0);
-  }
-  70.5882352941% {
-    clip-path: inset(81% 0 14% 0);
-  }
-  76.4705882353% {
-    clip-path: inset(3% 0 81% 0);
-  }
-  82.3529411765% {
-    clip-path: inset(22% 0 10% 0);
-  }
-  88.2352941176% {
-    clip-path: inset(78% 0 14% 0);
-  }
-  94.1176470588% {
-    clip-path: inset(59% 0 38% 0);
-  }
-  100% {
-    clip-path: inset(49% 0 28% 0);
   }
 }
