@@ -4,36 +4,28 @@ const transforms = require('./src_site/.scripts/transforms/transforms.js');
 const shortcodes = require('./src_site/.scripts/shortcodes/shortcodes.js');
 const libraries = require('./src_site/.scripts/libraries/libraries.js');
 const beforeBuild = require('./src_site/.scripts/beforeBuild/beforeBuild.js');
+const { directories } = require('./src_site/.scripts/passthorughCopy/passthroughCopy.js');
+const shortcodeFns = ['addNunjucksAsyncShortcode', 'addLiquidShortcode', 'addJavaScriptFunction'];
 
-module.exports = function (eleventyConfig) {
-  eleventyConfig.setDataDeepMerge(true);
-  eleventyConfig.addPlugin(require('@11ty/eleventy-plugin-rss'));
-  eleventyConfig.addPlugin(require('@11ty/eleventy-plugin-syntaxhighlight'), { alwaysWrapLineHighlights: false });
+module.exports = (conf) => {
+  conf.addWatchTarget('./src_assets/css');
+  directories.forEach(obj => conf.addPassthroughCopy(obj));
 
-  eleventyConfig.addWatchTarget('./src_assets/css');
-  eleventyConfig.addPassthroughCopy({ 'src_assets/images': 'static/images' });
-  eleventyConfig.addPassthroughCopy({ 'src_assets/fonts': 'static/fonts' });
-  eleventyConfig.addPassthroughCopy({ 'src_site/talks/london-jug-december-2021': 'talks/london-jug-december-2021' });
+  Object.keys(libraries).forEach(name => conf.setLibrary(name, libraries[name]));
+  Object.keys(collections).forEach(name => conf.addCollection(name, collections[name]));
+  Object.keys(filters).forEach(name => conf.addFilter(name, filters[name]));
+  Object.keys(transforms).forEach(name => conf.addTransform(name, transforms[name]));
+  Object.keys(shortcodes).forEach(name => shortcodeFns.map(fn => conf[fn](name, shortcodes[name])));
 
-  Object.keys(libraries).forEach(libraryName => eleventyConfig.setLibrary(libraryName, libraries[libraryName]));
-  Object.keys(collections).forEach(collectionName => eleventyConfig.addCollection(collectionName, collections[collectionName]));
-  Object.keys(filters).forEach(filterName => eleventyConfig.addFilter(filterName, filters[filterName]));
-  Object.keys(transforms).forEach(transformName => eleventyConfig.addTransform(transformName, transforms[transformName]));
-  Object.keys(shortcodes).forEach(shortcodeName => {
-    eleventyConfig.addNunjucksAsyncShortcode(shortcodeName, shortcodes[shortcodeName]);
-    eleventyConfig.addLiquidShortcode(shortcodeName, shortcodes[shortcodeName]);
-    eleventyConfig.addJavaScriptFunction(shortcodeName, shortcodes[shortcodeName]);
-  });
+  conf.addPlugin(require('./src_site/.scripts/plugins/11ty-to-codepen.js'));
+  conf.addPlugin(require('@11ty/eleventy-plugin-rss'));
+  conf.addPlugin(require('@11ty/eleventy-plugin-syntaxhighlight'));
 
-  eleventyConfig.addPairedShortcode('codepen', require('11ty-to-codepen'));
-
-  eleventyConfig.on('beforeBuild', async () => await Promise.all(Object.values(beforeBuild)));
+  conf.on('beforeBuild', async () => await Promise.all(Object.values(beforeBuild)));
 
   return {
-    passthroughFileCopy: true,
     dir: {
       input: 'src_site',
-      layouts: `_includes`,
       output: `${process.cwd()}/live`,
     },
   };
