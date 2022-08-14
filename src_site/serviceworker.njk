@@ -2,7 +2,6 @@
 eleventyExcludeFromCollections: true
 permalink: '/sw.js'
 # {% include "serviceworker.js" %}
+# {{ page.date.getTime() }}
 ---
-const VERSION={{ page.date.getTime() }};
-const routes=[{%- for entry in collections.all %}'{{ entry.url | url }}',{%- endfor %}];
-{% include "serviceworker.js" %}
+const VERSION='{{ metadata.version }}',ROUTES=[{%- for entry in collections.all %}'{{ entry.url | url }}',{%- endfor %}];{% include 'serviceworker.js' %}

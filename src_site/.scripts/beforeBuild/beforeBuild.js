@@ -16,7 +16,7 @@ const replace = require('@rollup/plugin-replace');
 
 // PostCSS
 const plugins = [
-  postcssImport({ extensions: '.css', path: ["./src_assets/css", "./src_assets/css/partials"]}),
+  postcssImport({ extensions: '.css', path: ['./src_assets/css', './src_assets/css/partials']}),
   postcssEasyImport({ extensions: '.css'}),
   postcssNested,
   postcssMixins,
@@ -43,31 +43,31 @@ opts = [
     input: `src_site/serviceworker.js`,
     output: {
       file: `src_site/_includes/serviceworker.js`,
-      format: "esm",
+      format: 'esm',
     },
     plugins: [
       nodeResolve(),
-      replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }),
-      terser(),
+      // replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }),
+      // terser(),
     ],
   },
   {
-    input: "./node_modules/ce-theme-switcher/src/index.js",
+    input: './node_modules/ce-theme-switcher/src/index.js',
     output: {
       sourcemap: false,
-      format: "esm",
-      file: `./live/static/js/${"./node_modules/ce-theme-switcher/src/index.js"
-        .replace("./node_modules/", "")
-        .replace("/src/index.js", "")}.esm.js`,
+      format: 'esm',
+      file: `./live/static/js/${'./node_modules/ce-theme-switcher/src/index.js'
+        .replace('./node_modules/', '')
+        .replace('/src/index.js', '')}.esm.js`,
     },
     plugins: [terser()],
   },
   {
-    input: "./node_modules/lite-youtube-embed/src/lite-yt-embed.js",
+    input: './node_modules/lite-youtube-embed/src/lite-yt-embed.js',
     output: {
       sourcemap: false,
-      format: "esm",
-      file: "./live/static/js/lite-youtube-embed.js"
+      format: 'esm',
+      file: './live/static/js/lite-youtube-embed.js'
     },
     plugins: [terser()],
   },
