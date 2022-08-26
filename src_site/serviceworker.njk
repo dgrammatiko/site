@@ -4,4 +4,11 @@ permalink: '/sw.js'
 # {% include "serviceworker.js" %}
 # {{ page.date.getTime() }}
 ---
-const VERSION='{{ metadata.version }}',ROUTES=[{%- for entry in collections.all %}'{{ entry.url | url }}',{%- endfor %}];{% include 'serviceworker.js' %}
+skipWaiting();
+
+addEventListener('activate', async () => {
+  registration.unregister();
+  for (const client of await clients.matchAll()) {
+    client.navigate(client.url);
+  }
+});

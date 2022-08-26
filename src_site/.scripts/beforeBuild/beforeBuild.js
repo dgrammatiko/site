@@ -69,7 +69,16 @@ opts = [
       format: 'esm',
       file: './live/static/js/lite-youtube-embed.js'
     },
-    plugins: [terser()],
+    plugins: [nodeResolve(),terser()],
+  },
+  {
+    input: './src_site/router.js',
+    output: {
+      sourcemap: false,
+      format: 'esm',
+      file: './live/static/js/router.js'
+    },
+    plugins: [nodeResolve(),terser()],
   },
 ];
 

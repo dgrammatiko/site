@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "ce-theme-switcher": "0.0.3",
+    "flamethrower-router": "^0.0.0-meme.9",
     "lite-youtube-embed": "^0.2.0"
   },
   "devDependencies": {
@@ -49,7 +50,7 @@
     "postcss-mixins": "9.0.3",
     "postcss-nested": "5.0.6",
     "postcss-preset-env": "7.7.2",
-    "rollup": "2.77.3",
+    "rollup": "^2.77.3",
     "rollup-plugin-terser": "7.0.2"
   }
 }
