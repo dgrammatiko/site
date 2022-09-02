@@ -1,65 +1,5 @@
 @use postcss-nested;
 
-header.major {
-  text-align: center;
-  padding: 1.71rem 1rem;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-
-  > p {
-    font-style: italic;
-  }
-
-  > h1 + p {
-    font-size: 1.1rem;
-    margin-top: -0.5rem;
-    line-height: 2;
-  }
-
-  > .date {
-    display: block;
-    font-size: 1rem;
-    margin: -2rem 0 4rem 0;
-    padding-top: .5rem;
-    position: relative;
-    color: var(--button-bg);
-  }
-
-  > .date::before,
-  > .date::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: .3rem;
-    width: calc(50% - 6rem);
-    border-top: .4rem double;
-    margin-top: 1rem;
-  }
-
-  > .date:before {
-    left: 0;
-  }
-
-  > .date:after {
-    right: 0;
-  }
-
-  .date:before,
-  .date:after {
-    border-top-color: var(--link-color);
-  }
-
-  > p {
-    margin-top: 0;
-    text-align: center;
-  }
-
-  > :last-child {
-    margin-bottom: 0;
-  }
-}
-
 .articleBody,
 .webmentions {
   padding-left: 1rem;
@@ -75,12 +15,6 @@ header.major {
     padding-left: 3rem;
     padding-right: 3rem;
     max-width: 80ch;
-  }
-
-  header.major {
-    max-width: 80ch;
-    margin-left:  auto;
-    margin-right:  auto;
   }
 }
 
