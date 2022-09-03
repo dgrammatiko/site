@@ -47,7 +47,7 @@
     "postcss-discard-comments": "5.1.2",
     "postcss-easy-import": "4.0.0",
     "postcss-import": "15.0.0",
-    "postcss-mixins": "9.0.3",
+    "postcss-mixins": "9.0.4",
     "postcss-nested": "5.0.6",
     "postcss-preset-env": "7.8.0",
     "rollup": "2.79.0",
