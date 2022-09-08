@@ -7,15 +7,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 3rem;
-}
-
-@media only screen and (min-width: 768px)  {
-  .articleBody,
-  .webmentions {
-    padding-left: 3rem;
-    padding-right: 3rem;
-    max-width: 80ch;
-  }
+  max-width: 80ch;
 }
 
 .webmentions__facepile {

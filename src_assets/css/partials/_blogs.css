@@ -1,11 +1,11 @@
 @use postcss-nested;
 
 .post {
-  padding: 1rem 4rem;
+  padding: 1rem 1.2rem;
 
   &.featured {
     text-align: center;
-    padding: 0 4rem;
+    padding: 0 1.2rem;
     border-top: 0 !important;
 
     p {
@@ -22,13 +22,13 @@
 
 header {
   .major {
-    margin: 0 0 4rem 0;
+    margin: 0 0 1.2rem 0;
     text-align: center;
 
     .date {
       font-family: var(--alt-font);
       font-size: 1rem;
-      margin: 0 0 4rem 0;
+      margin: 0 0 1.2rem 0;
     }
   }
 
@@ -75,6 +75,9 @@ header {
   > h1 + p {
     margin-top: -0.5rem;
     line-height: 2;
+    max-width: 60ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   > p {
@@ -92,39 +95,22 @@ header {
 }
 
 .posts {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
+  --space-s-l: 1rem;
+  --grid-placement: auto-fit;
+  --grid-min-item-size: clamp(16rem,50vw,26rem);
   text-align: center;
   width: 100%;
   padding: 0;
   margin-top: -4px;
 
-  > * {
-    flex-shrink: 1;
-    flex-grow: 0;
-    padding: 4rem;
-    width: 50%;
-  }
-
-  > article {
+  & > article {
     text-align: center;
+    padding-inline-start: 1rem;
+    padding-inline-end: 1rem;
   }
 }
 
 .deferred {
   content-visibility: auto;
   contain-intrinsic-size: 100px 1000px;
-}
-
-@media only screen and (max-width: 768px)  {
-  .posts {
-    > * {
-      padding: 1rem;
-      width: 100%;
-    }
-  }
-  .post {
-    padding: 1rem;
-  }
 }

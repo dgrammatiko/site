@@ -146,7 +146,10 @@
     }
 }
 
-:where(body) {
+body {
+  --space-s-l: 1rem;
+  --grid-placement: auto-fill;
+  --grid-min-item-size: 1fr;
   text-align: left;
   text-align: start;
   color: var(--body-color);

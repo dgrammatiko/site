@@ -11,13 +11,12 @@ nav {
 
 .logo {
   display: none;
-  color: var(--link-color);
+  color: var(--menu-fg);
   font-family: dgrammatiko;
   font-size: 3rem;
   text-decoration: none;
   margin-left: 1rem;
-  padding-top: 5px;
-  height: 36px;
+  padding: 1.75rem .5rem;
 
   &:hover,
   &:focus {
@@ -29,7 +28,8 @@ nav {
 .nav-links {
   list-style: none;
   display: flex;
-  margin-inline-end: 1rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav-item {
@@ -52,8 +52,13 @@ nav {
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 555px) {
   .logo {
     display: inline-block;
+  }
+
+  .nav-links {
+    margin-left: unset;
+    margin-right: 2rem;
   }
 }
