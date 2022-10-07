@@ -22,7 +22,7 @@ dark-light-switch {
     transition: 0.3s;
     overflow: hidden;
 
-     > span {
+    & > span {
       color: transparent;
       background-color: transparent;
     }

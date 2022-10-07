@@ -50,7 +50,7 @@
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-  article {
+  & article {
     background-color: var(--menu-bg);
     color: var(--menu-fg);
     display: flex;
@@ -60,8 +60,3 @@
     /* min-height: 360px; */
   }
 }
-
-/* h2 {
-  text-shadow: 2px 2px 0 #a79e9e;
-  text-align: center;
-} */

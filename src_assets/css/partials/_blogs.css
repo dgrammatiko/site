@@ -8,31 +8,31 @@
     padding: 0 1.2rem;
     border-top: 0 !important;
 
-    p {
+    & p {
       text-align: center;
     }
   }
 
-  header.major > h1,
-  header.major h2 {
+  & header.major > h1,
+  & header.major h2 {
     line-height: 1.1;
     margin: 0 0 2rem 0;
   }
 }
 
 header {
-  .major {
+  & .major {
     margin: 0 0 1.2rem 0;
     text-align: center;
 
-    .date {
+    & .date {
       font-family: var(--alt-font);
       font-size: 1rem;
       margin: 0 0 1.2rem 0;
     }
   }
 
-  .date {
+  & .date {
     display: block;
     font-size: 0.8rem;
     height: 1;
@@ -61,18 +61,17 @@ header {
     }
   }
 
-  h1,
-  h2 {
+  & h1,
+  & h2 {
     margin: 0 0 2rem 0;
     text-align: center;
   }
 
-  > p {
+  & > p {
     font-style: italic;
-    font-size: 1.2rem;
   }
 
-  > h1 + p {
+  & > h1 + p {
     margin-top: -0.5rem;
     line-height: 2;
     max-width: 60ch;
@@ -80,16 +79,16 @@ header {
     margin-right: auto;
   }
 
-  > p {
+  & > p {
     margin-top: 0;
     text-align: center;
   }
 
-  > :last-child {
+  & > :last-child {
     margin-bottom: 0;
   }
 
-  .btn {
+  & .btn {
     text-align: center;
   }
 }
@@ -108,9 +107,4 @@ header {
     padding-inline-start: 1rem;
     padding-inline-end: 1rem;
   }
-}
-
-.deferred {
-  content-visibility: auto;
-  contain-intrinsic-size: 100px 1000px;
 }
