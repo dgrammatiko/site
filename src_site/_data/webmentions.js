@@ -1,5 +1,5 @@
 const fs = require('fs')
-const axios = require('axios').default;
+const axios = require('axios');
 const unionBy = require('lodash/unionBy')
 const {domain} = require('./metadata.json')
 
