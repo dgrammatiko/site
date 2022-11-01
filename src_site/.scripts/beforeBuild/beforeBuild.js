@@ -11,7 +11,7 @@ const postcssPresetEnv = require('postcss-preset-env');
 const cssNano = require('cssnano');
 const rollup = require('rollup');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const { terser } = require('rollup-plugin-terser');
+const terser = require('@rollup/plugin-terser');
 const replace = require('@rollup/plugin-replace');
 
 // PostCSS
@@ -47,8 +47,8 @@ opts = [
     },
     plugins: [
       nodeResolve(),
-      // replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }),
-      // terser(),
+      replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }),
+      terser(),
     ],
   },
   {
