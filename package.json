@@ -27,7 +27,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "4.2.0",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-replace": "5.0.2",
-    "@rollup/plugin-terser": "^0.2.0",
+    "@rollup/plugin-terser": "^0.4.0",
     "11ty-to-codepen": "1.0.2",
     "axios": "1.2.2",
     "change-case": "4.1.2",
