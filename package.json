@@ -44,7 +44,7 @@
     "netlify-plugin-cache-folder": "0.0.8",
     "postcss": "8.4.21",
     "postcss-custom-media": "9.0.1",
-    "postcss-custom-selectors": "7.0.0",
+    "postcss-custom-selectors": "7.1.2",
     "postcss-discard-comments": "5.1.2",
     "postcss-easy-import": "4.0.0",
     "postcss-import": "15.1.0",
