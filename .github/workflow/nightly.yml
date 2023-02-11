@@ -31,7 +31,7 @@ jobs:
         with:
           branch: ci/lockfile
           # Access token is needed to trigger CI on this PR
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           commit-message: '[ci] update lockfile'
           title: '[ci] update lockfile'
           body: >
