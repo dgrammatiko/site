@@ -5,13 +5,13 @@ name: 'Nightly'
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '22 02 * * *'
+    - cron:  '24 02 * * *'
     - timezone: 'Europe/Brussels'
   workflow_dispatch:
 
 jobs:
   lockfile:
-    #if: github.repository_owner == 'dgrammatiko'
+    if: github.repository_owner == 'dgrammatiko'
     runs-on: ubuntu-latest
     steps:
 
