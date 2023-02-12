@@ -22,6 +22,9 @@ jobs:
         with:
           node-version: 16
 
+      - name: NPM Install
+        run: npm install
+
       - name: Update all outdated packages
         run: npm install $(npm outdated | cut -d' ' -f 1 | sed '1d' | xargs -I '$' echo '$@latest' | xargs echo)
 
