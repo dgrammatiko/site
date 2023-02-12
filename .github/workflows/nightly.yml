@@ -33,7 +33,7 @@ jobs:
         id: createpr
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: ci/updates
+          branch: npm-update
           # Access token is needed to trigger CI on this PR
           token: ${{ secrets.GH_TOKEN }}
           commit-message: '[ci] NPM updates '
