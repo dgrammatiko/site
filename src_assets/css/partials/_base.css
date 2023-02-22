@@ -29,6 +29,7 @@
   --menu-fg: #fff;
   --button-bg: rgb(0, 155, 167);
   --button-fg: #fff;
+  --card-bg: #4ba4a7;
   --def-font: "dgrammatiko", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --alt-font: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
@@ -40,6 +41,7 @@
       --link-focus-color: color(display-p3 0.196 0.786 0.815);
       --menu-bg: color(display-p3 0.011 0.301 0.315);
       --button-bg: color(display-p3 0.128 0.548 0.57);
+      --card-bg: color(display-p3 0.39 0.64 0.65);
     }
 }
 
@@ -81,6 +83,7 @@
     --button-fg: rgb(26, 24, 24);
     --body-color: #333;
     --menu-fg: #fff;
+    --card-bg: #4ba4a7;
   }
 
   @supports (color: color(display-p3 1 1 1)) {
@@ -91,6 +94,7 @@
       --link-focus-color: color(display-p3 0.196 0.786 0.815);
       --button-bg: color(display-p3 0.128 0.548 0.57);
       --button-fg: color(display-p3 0.1 0.095 0.095);
+      --card-bg: color(display-p3 0.39 0.64 0.65);
     }
   }
 
@@ -113,6 +117,7 @@
   --button-fg: rgb(26, 24, 24);
   --body-color: #f0f0f0;
   --menu-fg: #fff;
+  --card-bg: #4ba4a7;
 }
 
 :root.is-light {
@@ -125,6 +130,7 @@
   --menu-fg: #fff;
   --button-bg: rgb(0, 142, 147);
   --button-fg: #fff;
+  --card-bg: #4ba4a7;
   --def-font: "dgrammatiko", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --alt-font: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
@@ -136,6 +142,7 @@
       --link-focus-color: color(display-p3 0.196 0.786 0.815);
       --menu-bg: color(display-p3 0.011 0.301 0.315);
       --button-bg: color(display-p3 0.128 0.548 0.57);
+      --card-bg: color(display-p3 0.39 0.64 0.65);
     }
     :root.is-dark {
       /* P3 */
@@ -144,6 +151,7 @@
       --link-focus-color: color(display-p3 0.196 0.786 0.815);
       --button-bg: color(display-p3 0.128 0.548 0.57);
       --button-fg: color(display-p3 0.1 0.095 0.095);
+      --card-bg: color(display-p3 0.39 0.64 0.65);
     }
 }
 

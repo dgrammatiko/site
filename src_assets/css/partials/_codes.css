@@ -1,5 +1,14 @@
 @use postcss-nested;
 
+/* inspired by moderncss.dev */
+.code-title {
+  color: var(--menu-fg);
+  text-align: center;
+  font-size: 5rem;
+  text-shadow: .2rem .2rem var(--link-focus-color);
+  margin-bottom: 2em;
+}
+
 .grid-cards {
   display: grid;
   flex-wrap: wrap;
@@ -8,40 +17,69 @@
   grid-gap: 2rem;
 }
 
-.grid-cards-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 4px;
-  background-color: var(--menu-bg);
-  color: var(--menu-fg);
-  box-shadow: 0 1px 1px rgba(0,0,0,.06),0 2px 2px rgba(0,0,0,.06),0 4px 4px rgba(0,0,0,.06),0 8px 8px rgba(0,0,0,.06);
-  transition: color .3s,box-shadow .3s,transform .3s;
-  position: relative;
-  z-index: 1;
-  min-height: 320px;
-  max-width: 280px;
-  overflow: hidden;
-}
-
 .card-header {
-  margin: 3rem 1rem 1rem 1rem;
-  border-bottom: 1px solid rgba(100,100,100,.1);
-  padding: 0 1rem;
-  /* max-height: 210px; */
-  border-radius: 4px 4px 0 0;
+  min-height: 9rem;
   overflow: hidden;
+
+  & > .card-title {
+    margin: 1em;
+    color: var(--menu-fg);
+
+    & > :last-child {
+      margin-bottom: unset;
+    }
+  }
 }
 
 .card-body {
   flex: 1;
-  padding: 20px;
   min-height: 140px;
-  background: var(--menu-bg);
+  background: var(--card-bg);
+  margin-top: 0;
+  min-height: 20rem;
+
+  & p {
+    color: var(--menu-fg);
+    padding: 1rem;
+  }
+}
+
+.card-img {
+  height: 124px;
 }
 
 .card-footer {
   display: flex;
+  border-top: none;
+  bottom: 0;
+  background-color: unset;
+
+  &> nav {
+    color: #fff;
+    color: var(--menu-fg);
+    margin-bottom: 1rem;
+  }
+
+  & .nav-links {
+    align-items: center;
+    justify-items: stretch;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
+
+
+    & .nav-item {
+      width: 100%;
+      height: 100%;
+
+      & > a {
+        width: 100%;
+        border: 1px solid var(--button-bg);
+        text-align: center;
+      }
+    }
+  }
 }
 
 .cards {
@@ -51,12 +89,67 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   & article {
-    background-color: var(--menu-bg);
+    background-color: var(--card-bg);
     color: var(--menu-fg);
     display: flex;
     flex-direction: column;
-    /* padding: 1rem; */
     justify-content: space-between;
-    /* min-height: 360px; */
   }
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  position: relative;
+  margin-bottom: 1rem;
+  padding-bottom: 2rem;
+
+  &::before,
+  &::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: skewY(7deg);
+  }
+
+  &::before {
+    top: -1px;
+    height: 100%;
+    transition: transform .24s ease-in;
+  }
+
+  &::after {
+    background-color: var(--card-bg);
+    margin: 5px;
+    padding-bottom: 1rem;
+  }
+
+  &:hover {
+    &::before {
+      transform: skewY(7deg) scale(1.03);
+      background-image: linear-gradient(
+        270deg,
+        hsl(182deg 100% 16%) 0%,
+        hsl(193deg 88% 28%) 40%,
+        hsl(198deg 89% 40%) 55%,
+        hsl(200deg 100% 50%) 65%,
+        hsl(194deg 92% 56%) 72%,
+        hsl(183deg 84% 54%) 78%,
+        hsl(173deg 100% 50%) 82%,
+        hsl(165deg 100% 55%) 86%,
+        hsl(158deg 100% 55%) 89%,
+        hsl(153deg 100% 50%) 91%,
+        hsl(139deg 100% 58%) 94%,
+        hsl(127deg 100% 60%) 96%,
+        hsl(108deg 100% 50%) 100%
+      );
+    }
+  }
+}
+
+

@@ -71,9 +71,7 @@
       "link": "https://joomla-needed-fixes.netlify.app/data",
       "repo": "https://github.com/dgrammatiko/showcase-audit",
       "maintained": false
-    }
-  ],
-  "joomla": [
+    },
     {
       "title": "Responsive Images",
       "description": "A plugin for responsive images using the picture element. Supports Webp",

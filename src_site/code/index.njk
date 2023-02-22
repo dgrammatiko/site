@@ -3,74 +3,37 @@ layout: base.njk
 title: Code
 ---
 <main class="main">
-<h2 style="text-align: center; font-size: 5rem; text-shadow: .2rem .2rem var(--link-focus-color);">Web</h2>
-<section class="cards web">
-{# Loop through all the web widgets #}
-{% for blog in codeData.web %}
-      <article>
+<h2 class="code-title">Side Projects</h2>
+  <ul class="cards web">
+  {# Loop through all the web widgets #}
+  {% for blog in codeData.web %}
+    <li class="card">
+      {% if blog.title %}
         <header class="card-header">
-          <h2 class="card-title">{% if blog.title %}{{ blog.title }}{% endif %}</h2>
+          <h2 class="card-title">{{ blog.title }}</h2>
         </header>
-        <div class="card-body">
-          {% if blog.image %}
-              <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
-          {% endif %}
-          <p>{{ blog.description }}</p>
-          <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}Not really maintained anymore{% endif %}</p>
-        </div>
-        <footer>
-          <nav style="display: block;">
-            <ul class="nav-links" style="justify-content: space-around;">
-              {% if blog.link %}
-                <li class="nav-item">
-                  <a class="btn" target="_blank" rel="noopener" href="{{ blog.link }}" style="padding: 1rem 2rem;">website</a>
-                </li>
-              {% endif %}
-              {% if blog.repo %}
-                <li class="nav-item">
-                  <a class="btn" target="_blank" rel="noopener" href="{{ blog.repo }}" style="padding: 1rem 2rem;">Source code</a>
-                </li>
-              {% endif %}
-        </footer>
-      </article>
-{% endfor %}
-</section>
-
-<hr style="border: 2rem solid transparent"/>
-
-<h2 style="text-align: center; font-size: 5rem; text-shadow: .2rem .2rem var(--link-focus-color);">Joomla</h2>
-
-<section class="cards joomla">
-{# Loop through all the joomla widgets #}
-{% for blog in codeData.joomla %}
-      <article>
-        <header class="card-header">
-          <h2 class="card-title">{% if blog.title %}{{ blog.title }}{% endif %}</h2>
-        </header>
-        <div class="card-body">
-          {% if blog.image %}
-              <img loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
-          {% endif %}
-          <p>{{ blog.description }}</p>
-          <p>{% if blog.maintained %}<strong>maintained</strong>{% else %}Not really maintained anymore{% endif %}</p>
-        </div>
-        <footer>
-          <nav style="display: block;">
-            <ul class="nav-links" style="justify-content: space-around;">
-              {% if blog.link %}
-                <li class="nav-item">
-                  <a class="btn" target="_blank" rel="noopener" href="{{ blog.link }}" style="padding: 1rem 2rem;">website</a>
-                </li>
-              {% endif %}
-              {% if blog.repo %}
-                <li class="nav-item">
-                  <a class="btn" target="_blank" rel="noopener" href="{{ blog.repo }}" style="padding: 1rem 2rem;">Source code</a>
-                </li>
-              {% endif %}
-        </footer>
-      </article>
-{% endfor %}
-</section>
-
-<hr style="border: 2rem solid transparent"/>
+      {% endif %}
+      <div class="card-body">
+        {% if blog.image %}
+          <img class="card-img" loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
+        {% endif %}
+        <p>{{ blog.description }}</p>
+      </div>
+      <footer class="card-footer">
+        <nav>
+          <ul class="nav-links">
+            {% if blog.link %}
+              <li class="nav-item">
+                <a target="_blank" rel="noopener" href="{{ blog.link }}">website</a>
+              </li>
+            {% endif %}
+            {% if blog.repo %}
+              <li class="nav-item">
+                <a target="_blank" rel="noopener" href="{{ blog.repo }}">Source code</a>
+              </li>
+            {% endif %}
+      </footer>
+    </li>
+  {% endfor %}
+  </ul>
 </main>

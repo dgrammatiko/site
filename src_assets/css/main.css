@@ -4,12 +4,14 @@
 @import './src_assets/css/partials/_button.css';
 
 @import './src_assets/css/partials/_main.css';
+@import './src_assets/css/partials/footer.css';
+@import './src_assets/css/partials/nav.css';
+
 @import './src_assets/css/partials/_blogs.css';
 @import './src_assets/css/partials/_blog.css';
 @import './src_assets/css/partials/_blog_lang.css';
+
 @import './src_assets/css/partials/_codes.css';
-@import './src_assets/css/partials/footer.css';
-@import './src_assets/css/partials/nav.css';
 
 @import './src_assets/css/partials/lazy-tube.css';
 @import './src_assets/css/partials/toggler.css';
