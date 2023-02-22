@@ -53,6 +53,7 @@
   border-top: none;
   bottom: 0;
   background-color: unset;
+  margin-top: unset;
 
   &> nav {
     color: #fff;

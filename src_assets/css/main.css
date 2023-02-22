@@ -4,8 +4,8 @@
 @import './src_assets/css/partials/_button.css';
 
 @import './src_assets/css/partials/_main.css';
-@import './src_assets/css/partials/footer.css';
-@import './src_assets/css/partials/nav.css';
+@import './src_assets/css/partials/_footer.css';
+@import './src_assets/css/partials/_nav.css';
 
 @import './src_assets/css/partials/_blogs.css';
 @import './src_assets/css/partials/_blog.css';

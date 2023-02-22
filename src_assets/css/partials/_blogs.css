@@ -26,7 +26,7 @@ header {
     text-align: center;
 
     & .date {
-      font-family: var(--alt-font);
+      font-family: var(--def-font);
       font-size: 1rem;
       margin: 0 0 1.2rem 0;
     }
