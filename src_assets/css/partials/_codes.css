@@ -4,7 +4,6 @@
 .code-title {
   color: var(--menu-fg);
   text-align: center;
-  font-size: 5rem;
   text-shadow: .2rem .2rem var(--link-focus-color);
   margin-bottom: 2em;
 }

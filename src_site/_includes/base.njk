@@ -33,7 +33,6 @@
     <style>{{ getCSS[0]['src_assets/css/main.css'] | safe }}</style>
     <script src="/static/js/ce-theme-switcher.esm.js?v=0" type="module" async></script>
   </head>
-
   <body>
     {% include "menu.njk" %}
 
@@ -43,5 +42,4 @@
 
     <script type="module">if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }); }</script>
   </body>
-
 </html>

@@ -17,9 +17,7 @@
       X-Frame-Options = "DENY"
       X-XSS-Protection = "1; mode=block"
 
-      Link = '''
-      </static/fonts/Qw3PZQNVED7rKGKxtqIqX5E-AVSJrOCfjY46_LjQbMZhKSbpUVzEEQ.woff>; rel=preload; as=font; crossorigin, \
-      </static/fonts/dgrammatiko.woff2>; rel=preload; as=font; crossorigin'''
+      Link = '''</static/fonts/dgrammatiko.woff2>; rel=preload; as=font; crossorigin'''
 
 [[headers]]
   for = "/*.webmanifest"

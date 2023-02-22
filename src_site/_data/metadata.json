@@ -1,4 +1,5 @@
 {
+  "version": "1.0.0",
   "title": "dGrammatiko",
   "domain": "dgrammatiko.dev",
   "url": "https://dgrammatiko.dev/",
@@ -27,6 +28,5 @@
         "purpose": "any"
       }
     ]
-  },
-  "version": "1.0.0"
+  }
 }
