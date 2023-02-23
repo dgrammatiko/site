@@ -1,5 +1,13 @@
 {
   "talks": [
+        {
+      "title": "Tools are not rules",
+      "description": "A review of the existing Joomla (developer) tools, how they contribute to the project's maintenance and how they could, potentially, attract new developers and thus help growing the userbase",
+      "image": "joomlanext.jpg",
+      "imageAltText" : "Joomla Next Dimitris' banner",
+      "videoId": "UCll4VTX51s",
+      "slides": ""
+    },
     {
       "title": "London JUG December 2021: <br/>Child Templates",
       "description": "Deep dive into Child Templates",
@@ -7,6 +15,22 @@
       "imageAltText" : "London JUG December 2021 banner",
       "videoId": "8lX44gS9QG8",
       "slides": "/talks/london-jug-december-2021/index.html"
+    },
+    {
+      "title": "JAB18 - Let’s build a Joomla PWA/PWS website",
+      "description": "Building a PWA with perfect lighthouse score",
+      "image": "jab2018.jpg",
+      "imageAltText" : "JAB banner",
+      "videoId": "Hg_ATQEl9_U",
+      "slides": ""
+    },
+    {
+      "title": "JD17DE - Embrace web components, embrace the platform, embrace the future",
+      "description": "About Web Components",
+      "image": "jd2017.jpg",
+      "imageAltText" : "JD2017 banner",
+      "videoId": "15gbkeLity8",
+      "slides": ""
     }
   ]
 }
