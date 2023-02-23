@@ -37,42 +37,6 @@
       "maintained": true
     },
     {
-      "title": "Docsify codepen generator",
-      "description": "Docsify shortcode for codepen",
-      "image": "docsify-codepen.jpg",
-      "imageAltText": "screenshot of the app",
-      "link": "https://github.com/ttc-freebies/documentation",
-      "repo": "https://github.com/ttc-freebies/documentation",
-      "maintained": true
-    },
-    {
-      "title": "wc-polyfills",
-      "description": "Web Components polyfill",
-      "image": "wc-polyfills.jpg",
-      "imageAltText": "screenshot of the app",
-      "link": "https://github.com/dgrammatiko/wc-polyfills",
-      "repo": "https://github.com/dgrammatiko/wc-polyfills",
-      "maintained": false
-    },
-    {
-      "title": "on-a-diet",
-      "description": "11ty shortcode for codepen",
-      "image": "on-a-diet.jpg",
-      "imageAltText": "screenshot of the app",
-      "link": "https://dgrammatiko.github.io/on-a-diet",
-      "repo": "https://github.com/dgrammatiko/on-a-diet",
-      "maintained": true
-    },
-    {
-      "title": "showcase-audit",
-      "description": "A simple 11ty based site that benchmarks some sites",
-      "image": "showcase-audit.png",
-      "imageAltText": "screenshot of the app",
-      "link": "https://joomla-needed-fixes.netlify.app/data",
-      "repo": "https://github.com/dgrammatiko/showcase-audit",
-      "maintained": false
-    },
-    {
       "title": "Responsive Images",
       "description": "A plugin for responsive images using the picture element. Supports Webp",
       "image": "responsive-images.jpg",
@@ -83,9 +47,17 @@
     {
       "title": "Invalidate Cache",
       "description": "A plugin for invalidating the browser cache of static assets",
-      "image": "responsive-images.jpg",
+      "image": "invalidate-cache.jpg",
       "link": "https://invalidate-cache.dgrammatiko.dev",
       "repo": "https://github.com/dgrammatiko/invalidate-cache",
+      "maintained": true
+    },
+    {
+      "title": "WYSIWYG tinyMCE",
+      "description": "A plugin enabling many hidden (or not so) features of the core tinyMCE editor ",
+      "image": "tinymce.jpg",
+      "link": "https://wysiwyg.dgrammatiko.dev",
+      "repo": "https://github.com/dgrammatiko/wysiwyg-tinymce-j4.1",
       "maintained": true
     },
     {
@@ -132,8 +104,8 @@
       "title": "Sloth",
       "description": "A Joomla 4 starter template for PWA/SPA",
       "image": "",
-      "link": "",
-      "repo": "",
+      "link": "https://github.com/dgrammatiko/sloth",
+      "repo": "https://github.com/dgrammatiko/sloth",
       "maintained": false
     },
     {
@@ -175,6 +147,42 @@
       "image": "",
       "link": "https://github.com/ttc-freebies/plugin-webcomponents",
       "repo": "",
+      "maintained": false
+    },
+    {
+      "title": "on-a-diet",
+      "description": "11ty shortcode for codepen",
+      "image": "on-a-diet.jpg",
+      "imageAltText": "screenshot of the app",
+      "link": "https://dgrammatiko.github.io/on-a-diet",
+      "repo": "https://github.com/dgrammatiko/on-a-diet",
+      "maintained": true
+    },
+    {
+      "title": "showcase-audit",
+      "description": "A simple 11ty based site that benchmarks some sites",
+      "image": "showcase-audit.png",
+      "imageAltText": "screenshot of the app",
+      "link": "https://joomla-needed-fixes.netlify.app/data",
+      "repo": "https://github.com/dgrammatiko/showcase-audit",
+      "maintained": false
+    },
+    {
+      "title": "Docsify codepen generator",
+      "description": "Docsify shortcode for codepen",
+      "image": "docsify-codepen.jpg",
+      "imageAltText": "screenshot of the app",
+      "link": "https://github.com/ttc-freebies/documentation",
+      "repo": "https://github.com/ttc-freebies/documentation",
+      "maintained": true
+    },
+    {
+      "title": "wc-polyfills",
+      "description": "Web Components polyfill",
+      "image": "wc-polyfills.jpg",
+      "imageAltText": "screenshot of the app",
+      "link": "https://github.com/dgrammatiko/wc-polyfills",
+      "repo": "https://github.com/dgrammatiko/wc-polyfills",
       "maintained": false
     }
   ]
