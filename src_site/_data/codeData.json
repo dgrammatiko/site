@@ -61,6 +61,22 @@
       "maintained": true
     },
     {
+      "title": "Restricted FS",
+      "description": "A plugin that introduces a restricted access to a specific part of the images folder",
+      "image": "tinymce.jpg",
+      "link": "https://restrictedfs.dgrammatiko.dev",
+      "repo": "https://github.com/dgrammatiko/jailed-fs",
+      "maintained": true
+    },
+    {
+      "title": "Muta Admin template",
+      "description": "A rework of the Atum template with Bootstrap 5.3 and native dark theme",
+      "image": "muta.jpg",
+      "link": "https://muta.dgrammatiko.dev/",
+      "repo": "https://github.com/dgrammatiko/muta",
+      "maintained": true
+    },
+    {
       "title": "frontpage",
       "description": "A simple SPA that creates a Joomla component for managing landing pages.",
       "image": "",
@@ -74,6 +90,14 @@
       "image": "",
       "link": "https://customcontenteditform.netlify.app/",
       "repo": "https://github.com/ttc-freebies/custom-edit-forms-per-cat",
+      "maintained": false
+    },
+    {
+      "title": "Sloth",
+      "description": "A Joomla 4 starter template for PWA/SPA",
+      "image": "",
+      "link": "https://github.com/dgrammatiko/sloth",
+      "repo": "https://github.com/dgrammatiko/sloth",
       "maintained": false
     },
     {
@@ -101,14 +125,6 @@
       "maintained": true
     },
     {
-      "title": "Sloth",
-      "description": "A Joomla 4 starter template for PWA/SPA",
-      "image": "",
-      "link": "https://github.com/dgrammatiko/sloth",
-      "repo": "https://github.com/dgrammatiko/sloth",
-      "maintained": false
-    },
-    {
       "title": "frontpage-svelte",
       "description": "A simple svelte SPA that creates a Joomla component (by Michael Babker) for managing landing pages.",
       "image": "",
@@ -122,30 +138,6 @@
       "description": "A complete package for the Sloth template.",
       "image": "",
       "link": "https://github.com/dgrammatiko/sloth-pkg",
-      "repo": "",
-      "maintained": false
-    },
-    {
-      "title": "images-lazy-loading",
-      "description": "A simple plugin that backports the version 4 lazyloading for images.",
-      "image": "",
-      "link": "https://github.com/ttc-freebies/joomla-3.x-images-lazy-loading",
-      "repo": "",
-      "maintained": false
-    },
-    {
-      "title": "com-addlazyloading",
-      "description": "A simple component that prepares the db images entries for the version 4.",
-      "image": "",
-      "link": "",
-      "repo": "https://github.com/ttc-freebies/com_addlazyloading",
-      "maintained": false
-    },
-    {
-      "title": "plugin-webcomponents",
-      "description": "A simple plugin that backports the Web Components support to version 3.",
-      "image": "",
-      "link": "https://github.com/ttc-freebies/plugin-webcomponents",
       "repo": "",
       "maintained": false
     },
@@ -183,6 +175,30 @@
       "imageAltText": "screenshot of the app",
       "link": "https://github.com/dgrammatiko/wc-polyfills",
       "repo": "https://github.com/dgrammatiko/wc-polyfills",
+      "maintained": false
+    },
+    {
+      "title": "images-lazy-loading",
+      "description": "A simple plugin that backports the version 4 lazyloading for images.",
+      "image": "",
+      "link": "https://github.com/ttc-freebies/joomla-3.x-images-lazy-loading",
+      "repo": "",
+      "maintained": false
+    },
+    {
+      "title": "com-addlazyloading",
+      "description": "A simple component that prepares the db images entries for the version 4.",
+      "image": "",
+      "link": "",
+      "repo": "https://github.com/ttc-freebies/com_addlazyloading",
+      "maintained": false
+    },
+    {
+      "title": "plugin-webcomponents",
+      "description": "A simple plugin that backports the Web Components support to version 3.",
+      "image": "",
+      "link": "https://github.com/ttc-freebies/plugin-webcomponents",
+      "repo": "",
       "maintained": false
     }
   ]
