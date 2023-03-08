@@ -36,7 +36,7 @@
     "dotenv": "16.0.3",
     "fs-extra": "11.1.0",
     "html-minifier": "4.0.0",
-    "linkedom": "0.14.22",
+    "linkedom": "0.14.23",
     "lodash": "4.17.21",
     "luxon": "3.3.0",
     "markdown-it": "13.0.1",
