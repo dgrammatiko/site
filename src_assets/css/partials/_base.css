@@ -95,14 +95,14 @@
       --button-fg: color(display-p3 0.1 0.095 0.095);
     }
   }
-
+/*
   :where(img) {
     opacity: .75;
     transition: opacity .5s ease-in-out;
   }
   :where(img):hover {
     opacity: 1;
-  }
+  } */
 }
 
 :root.is-dark {

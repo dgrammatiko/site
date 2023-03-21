@@ -4,8 +4,8 @@ async function getImage(image, dir) {
   let metadata = await Image(
     `./src_assets/images/${dir}/${image}`,
     {
-      urlPath: `/static/images/${dir}/`,
-      outputDir: `live/static/images/${dir}/`,
+      urlPath: `/static/images/${dir ? `${dir}/` : ''}`,
+      outputDir: `live/static/images/${dir ? `${dir}/` : ''}`,
       widths: [1024],
       formats: ['jpeg']
   });

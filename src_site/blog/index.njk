@@ -3,4 +3,27 @@ layout: base.njk
 title: Blog
 ---
 
-{% include "listing-all.njk" %}
+<main class="main">
+<ul class="cards web" style="margin-top: 5rem">
+  {% for blog in collections.blogs | reverse %}
+  <li class="card">
+    <header class="card-header">
+      <h2>{% if blog.data.title %}{{ blog.data.title }}{% endif %}</h2>
+    </header>
+    <div class="card-body">
+      {% if blog.data.image %}
+        {% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+      {% endif %}
+      <p>{{ blog.data.custom_excerpt }}</p>
+    </div>
+    <footer class="card-footer">
+      <nav>
+        <ul class="nav-links">
+          <li class="nav-item">
+            <a href="{{ blog.url }}">{% if blog.data.title %}{{ blog.data.title }}{% endif %}</a>
+          </li>
+        </ul>
+    </footer>
+  </li>
+  {% endfor %}
+</ul>
