@@ -9,6 +9,22 @@
       "slides": ""
     },
     {
+      "title": "JoomlaDay FR 2022 | Rethinking the Joomla Templates",
+      "description": "What would a template for Joomla v4 would look like if we started from a blank slate?",
+      "image": "jdfr02022b.jpg",
+      "imageAltText" : "Joomla Day France 2022 banner",
+      "videoId": "s8dMkbyKq3Y",
+      "slides": ""
+    },
+    {
+      "title": "JoomlaDay FR 2022 | Using Child Templates in Joomla 4",
+      "description": "Using Child Templates to create a cookie popup",
+      "image": "jdfr2022.jpg",
+      "imageAltText" : "Joomla Day France 2022 banner",
+      "videoId": "WgteweLTZGE",
+      "slides": ""
+    },
+    {
       "title": "London JUG December 2021: <br/>Child Templates",
       "description": "Deep dive into Child Templates",
       "image": "jug02021.jpg",
