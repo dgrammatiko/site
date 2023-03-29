@@ -7,8 +7,7 @@ eleventyExcludeFromCollections: true
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Strict-Transport-Security: max-age=31536000; includeSubDomains
-  Permissions-Policy: microphone=(), geolocation=()
-
+  Content-Security-Policy: default-src https: 'unsafe-eval' 'unsafe-inline'; object-src 'none'
 
 /static/*
   X-Robots-Tag: nosnippet
