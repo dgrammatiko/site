@@ -18,7 +18,7 @@
     "name": "dGrammatiko",
     "description": "dGrammatiko's personal site",
     "lang": "en-US",
-    "start_url": "/",
+    "start_url": "https://dgrammatiko.dev",
     "display": "minimal-ui",
     "icons": [
       {
