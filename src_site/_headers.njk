@@ -3,11 +3,14 @@ permalink: /_headers
 eleventyExcludeFromCollections: true
 ---
 /*
+  X-XSS-Protection: 1; mode=block
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  Referrer-Policy: no-referrer
-  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Referrer-Policy: no-referrer-when-downgrade
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Permissions-Policy: geolocation=(self "https://dgrammatiko.dev"), microphone=()
+  Feature-Policy: accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'
+  Accept-CH: Downlink,RTT,Device-Memory,Save-Data,DPR,Width
   Content-Security-Policy: default-src 'self' 'unsafe-eval' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com; object-src 'none'
 
 /static/*
