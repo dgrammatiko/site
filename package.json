@@ -21,7 +21,7 @@
     "lite-youtube-embed": "0.2.0"
   },
   "devDependencies": {
-    "@11ty/eleventy": "2.0.0",
+    "@11ty/eleventy": "2.0.1",
     "@11ty/eleventy-img": "3.0.0",
     "@11ty/eleventy-plugin-rss": "1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "4.2.0",
@@ -50,7 +50,7 @@
     "postcss-import": "15.1.0",
     "postcss-mixins": "9.0.4",
     "postcss-nested": "6.0.1",
-    "postcss-preset-env": "8.1.0",
+    "postcss-preset-env": "8.2.0",
     "rollup": "3.20.2"
   }
 }
