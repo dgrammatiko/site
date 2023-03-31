@@ -39,7 +39,7 @@ jobs:
           branch: npm-update
           delete-branch: true
           # Access token is needed to trigger CI on this PR
-          token: ${{ secrets.ACTION_TOKEN }}
+          token: ${{ secrets.ACTION_PAT }}
           commit-message: '[ci] NPM updates '
           title: '[ci] NPM updates '
           body: >
