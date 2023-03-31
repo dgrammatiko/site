@@ -48,11 +48,18 @@ jobs:
 
       - name: Enable Pull Request Automerge
         if: steps.checkbuild.outcome == 'success' && steps.createpr.outputs.pull-request-operation == 'created'
-        uses: peter-evans/enable-pull-request-automerge@v2
-        with:
-          token: ${{ secrets.ACTION_PAT }}
-          pull-request-number: ${{ steps.createpr.outputs.pull-request-number }}
-          merge-method: squash
+        uses: pascalgn/automerge-action@v0.15.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTION_PAT }
+          MERGE_METHOD: "squash"
+          MERGE_COMMIT_MESSAGE: "Automagic"
+          MERGE_FORKS: false
+          MERGE_RETRIES: 6
+          MERGE_RETRY_SLEEP: 10000
+          MERGE_REQUIRED_APPROVALS: 0
+          UPDATE_LABELS: ""
+          UPDATE_METHOD: squash
+          PULL_REQUEST: ${{ steps.createpr.outputs.pull-request-number }}
 
 
 
