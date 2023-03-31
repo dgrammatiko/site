@@ -51,7 +51,7 @@ jobs:
         uses: pascalgn/automerge-action@v0.15.6
         env:
           GITHUB_TOKEN: ${{ secrets.ACTION_PAT }}
-          MERGE_METHOD: "squash"
+          # MERGE_METHOD: "squash"
           MERGE_COMMIT_MESSAGE: "Automagic"
           MERGE_FORKS: false
           MERGE_RETRIES: 6
