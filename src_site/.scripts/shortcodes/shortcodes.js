@@ -28,7 +28,7 @@ module.exports = {
       return `<meta property="og:image" content="https://${metadata.domain}${await getImage(image, 'talks')}">`;
     }
   },
-  imagine: async (src, dir, alt = '', sizes, classs = '', lazy = true) => {
+  imagine: async (src, dir, alt = '', sizes, classs = '', lazy = false) => {
     let metadata = await Image(`./src_assets/images/${dir}/${src}`, {
       urlPath: `/static/images/${dir}/`,
       outputDir: `live/static/images/${dir}/`,
@@ -41,7 +41,7 @@ module.exports = {
       sizes,
       decoding: 'async',
     };
-    if (lazy) imageAttributes.loading = 'lazy';
+    imageAttributes.loading = lazy ? 'lazy' : 'eager';
     if (classs) imageAttributes.class = classs;
 
     // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)
