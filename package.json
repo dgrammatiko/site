@@ -18,7 +18,7 @@
   "dependencies": {
     "ce-theme-switcher": "0.0.3",
     "flamethrower-router": "0.0.0-meme.12",
-    "lite-youtube-embed": "0.2.0"
+    "lite-youtube-embed": "0.3.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "2.0.1",
@@ -36,7 +36,7 @@
     "dotenv": "16.3.1",
     "fs-extra": "11.1.1",
     "html-minifier": "4.0.0",
-    "linkedom": "0.15.3",
+    "linkedom": "0.15.4",
     "lodash": "4.17.21",
     "luxon": "3.4.3",
     "markdown-it": "13.0.2",
