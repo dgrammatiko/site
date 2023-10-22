@@ -11,7 +11,7 @@ eleventyExcludeFromCollections: true
   Permissions-Policy: geolocation=(self "https://dgrammatiko.dev"), microphone=()
   Feature-Policy: accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'
   Accept-CH: Downlink,RTT,Device-Memory,Save-Data,DPR,Width
-  Content-Security-Policy: default-src 'self' 'unsafe-eval' 'unsafe-inline' https://static.cloudflareinsights.com; img-src 'self' https://webmention.io data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com; object-src 'none';
+  Content-Security-Policy: default-src 'self' 'unsafe-eval' 'unsafe-inline' https://static.cloudflareinsights.com; img-src 'self' https://webmention.io  *.amazonaws.com data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com; object-src 'none';
 /static/*
   X-Robots-Tag: nosnippet
 
