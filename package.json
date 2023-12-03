@@ -42,7 +42,7 @@
     "markdown-it": "13.0.2",
     "markdown-it-anchor": "8.6.7",
     "netlify-plugin-cache-folder": "0.0.8",
-    "postcss": "8.4.31",
+    "postcss": "8.4.32",
     "postcss-custom-media": "10.0.2",
     "postcss-custom-selectors": "7.1.6",
     "postcss-discard-comments": "6.0.0",
