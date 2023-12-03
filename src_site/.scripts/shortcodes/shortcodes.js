@@ -1,4 +1,4 @@
-const Image = require('@11ty/eleventy-img');
+import Image from '@11ty/eleventy-img';
 
 async function getImage(image, dir) {
   let metadata = await Image(
@@ -9,11 +9,11 @@ async function getImage(image, dir) {
       widths: [1024],
       formats: ['jpeg']
   });
-  data = metadata.jpeg[metadata.jpeg.length - 1];
+  const data = metadata.jpeg[metadata.jpeg.length - 1];
   return data.url;
 };
 
-module.exports = {
+export default {
   ogimg: async (image, outputPath, metadata) => {
     if (!image) {
       return `<meta property="og:image" content="https://${metadata.domain}/static/images/android-chrome-512x512.png">`;

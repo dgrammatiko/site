@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "description": "Personal site",
   "main": "build.js",
+  "type": "module",
   "scripts": {
     "watch:eleventy": "NODE_ENV=production ELEVENTY_ENV=watch ./node_modules/.bin/eleventy --watch --serve",
     "build:eleventy": "NODE_ENV=production ./node_modules/.bin/eleventy",
@@ -21,7 +22,7 @@
     "lite-youtube-embed": "0.3.0"
   },
   "devDependencies": {
-    "@11ty/eleventy": "2.0.1",
+    "@11ty/eleventy": "https://github.com/11ty/eleventy.git",
     "@11ty/eleventy-img": "3.1.8",
     "@11ty/eleventy-plugin-rss": "1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.0",
@@ -37,7 +38,7 @@
     "fs-extra": "11.2.0",
     "html-minifier": "4.0.0",
     "linkedom": "0.16.4",
-    "lodash": "4.17.21",
+    "lodash-es": "^4.17.21",
     "luxon": "3.4.4",
     "markdown-it": "13.0.2",
     "markdown-it-anchor": "8.6.7",
