@@ -1,10 +1,11 @@
-const { parseHTML } = require('linkedom');
-const { writeFile, ensureDir } = require('fs-extra');
-const htmlmin = require('html-minifier');
+import { parseHTML } from 'linkedom';
+import htmlmin from 'html-minifier';
+import pkg from 'fs-extra';
 
+const { writeFile, ensureDir } = pkg;
 const root = process.cwd();
 
-module.exports = {
+export default {
   minifyHTML: (content, outputPath)  => {
     if (
       outputPath.endsWith(".html") &&

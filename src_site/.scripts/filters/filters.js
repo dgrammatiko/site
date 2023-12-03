@@ -1,6 +1,6 @@
-const { DateTime } = require("luxon");
+import { DateTime } from "luxon";
 
-module.exports = {
+export default {
   head: (array, n) => (n < 0) ? array.slice(n) : array.slice(0, n),
   htmlDateString: (dateObj) => DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd"),
   readableDate: (dateObj) => DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("dd LLL yyyy"),

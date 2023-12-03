@@ -1,14 +1,14 @@
-const fs = require("fs/promises");
-const postcss = require('postcss');
-const postcssNested = require('postcss-nested');
-const postcssEasyImport = require('postcss-easy-import')
-const postcssImport = require('postcss-import');
-const postcssMixins = require('postcss-mixins');
-const postcssCustomSelectors = require('postcss-custom-selectors');
-const postcssCustomMedia = require('postcss-custom-media');
-const postcssDiscardComments= require('postcss-discard-comments');
-const postcssPresetEnv = require('postcss-preset-env');
-const cssNano = require('cssnano');
+import fs from "fs/promises";
+import postcss from 'postcss';
+import postcssNested from 'postcss-nested';
+import postcssEasyImport from 'postcss-easy-import';
+import postcssImport from 'postcss-import';
+import postcssMixins from 'postcss-mixins';
+import postcssCustomSelectors from 'postcss-custom-selectors';
+import postcssCustomMedia from 'postcss-custom-media';
+import postcssDiscardComments from 'postcss-discard-comments';
+import postcssPresetEnv from 'postcss-preset-env';
+import cssNano from 'cssnano';
 
 const output = {};
 
@@ -56,7 +56,7 @@ const processCss = async (fileName, filePath) => {
   return output;
 }
 
-module.exports = async () => {
+export default async () => {
   const files = await getFiles('./src_assets/css/');
   return Promise.all(files.map(file => processCss(file.name, file.path)))
 }

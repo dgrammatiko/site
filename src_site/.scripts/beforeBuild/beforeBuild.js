@@ -1,18 +1,18 @@
-const { readFile, mkdir, writeFile } = require('fs/promises');
-const postcss = require('postcss');
-const postcssNested = require('postcss-nested');
-const postcssEasyImport = require('postcss-easy-import')
-const postcssImport = require('postcss-import');
-const postcssMixins = require('postcss-mixins');
-const postcssCustomSelectors = require('postcss-custom-selectors');
-const postcssCustomMedia = require('postcss-custom-media');
-const postcssDiscardComments= require('postcss-discard-comments');
-const postcssPresetEnv = require('postcss-preset-env');
-const cssNano = require('cssnano');
-const rollup = require('rollup');
-const { nodeResolve } = require('@rollup/plugin-node-resolve');
-const terser = require('@rollup/plugin-terser');
-const replace = require('@rollup/plugin-replace');
+import { readFile, mkdir, writeFile } from 'fs/promises';
+import postcss from 'postcss';
+import postcssNested from 'postcss-nested';
+import postcssEasyImport from 'postcss-easy-import';
+import postcssImport from 'postcss-import';
+import postcssMixins from 'postcss-mixins';
+import postcssCustomSelectors from 'postcss-custom-selectors';
+import postcssCustomMedia from 'postcss-custom-media';
+import postcssDiscardComments from 'postcss-discard-comments';
+import postcssPresetEnv from 'postcss-preset-env';
+import cssNano from 'cssnano';
+import { rollup } from 'rollup';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
+import replace from '@rollup/plugin-replace';
 
 // PostCSS
 const plugins = [
@@ -38,7 +38,7 @@ const plugins = [
 ];
 
 // Rollup
-opts = [
+const opts = [
   {
     input: `src_site/serviceworker.js`,
     output: {
@@ -84,7 +84,7 @@ opts = [
 
 const pack = async (opt) => {
   try {
-    const bundle = await rollup.rollup({
+    const bundle = await rollup({
         input: opt.input,
         plugins: opt.plugins
       });
@@ -107,7 +107,7 @@ const pack = async (opt) => {
   }
 };
 
-module.exports = {
+export default {
   postcss: async () => {
     try {
       const result = await postcss(plugins).process((await readFile(`${process.cwd()}/src_assets/css/main.css`, {encoding: 'utf8'})), { from: undefined, to: undefined });

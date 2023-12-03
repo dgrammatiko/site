@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   blogs: (collection) => collection.getFilteredByGlob(['src_site/blog/*.md']),
   code: (collection) => collection.getFilteredByGlob(['src_site/code/*.md']),
   tagList: (collection) => {

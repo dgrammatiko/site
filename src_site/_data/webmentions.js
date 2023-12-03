@@ -1,10 +1,14 @@
-const fs = require('fs')
-const axios = require('axios');
-const unionBy = require('lodash/unionBy')
-const {domain} = require('./metadata.json')
+import fs from 'fs';
+import axios from 'axios';
+import { dirname } from 'node:path';
+import { unionBy } from 'lodash-es';
+import dotenv from 'dotenv';
+
+const metaJson = JSON.parse(fs.readFileSync(dirname(import.meta.url).replace('file://', '') + '/metadata.json', { encode: 'utf-8' }));
+const { domain } = metaJson;
 
 // Load .env variables with dotenv
-require('dotenv').config()
+dotenv.config()
 
 // Define Cache Location and API Endpoint
 const CACHE_FILE_PATH = '_cache/webmentions.json'
@@ -56,7 +60,7 @@ function readFromCache() {
     children: []
   }
 }
-module.exports = async function () {
+export default async function () {
   console.log('>>> Reading webmentions from cache...');
   const cache = readFromCache()
 
