@@ -31,7 +31,7 @@
     "@rollup/plugin-terser": "0.4.4",
     "11ty-to-codepen": "1.0.2",
     "axios": "1.6.5",
-    "change-case": "5.4.0",
+    "change-case": "5.4.1",
     "cssnano": "6.0.3",
     "decode-html": "2.0.0",
     "dotenv": "16.3.1",
