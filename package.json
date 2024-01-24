@@ -34,7 +34,7 @@
     "change-case": "5.4.2",
     "cssnano": "6.0.3",
     "decode-html": "2.0.0",
-    "dotenv": "16.3.2",
+    "dotenv": "16.4.0",
     "fs-extra": "11.2.0",
     "html-minifier": "4.0.0",
     "linkedom": "0.16.8",
