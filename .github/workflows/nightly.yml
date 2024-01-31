@@ -11,7 +11,7 @@ on:
 jobs:
   lockfile:
     if: github.repository_owner == 'dgrammatiko'
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     steps:
 
       - name: Check out code using Git
