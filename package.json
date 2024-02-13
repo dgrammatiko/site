@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "https://github.com/11ty/eleventy.git",
-    "@11ty/eleventy-img": "4.0.1",
+    "@11ty/eleventy-img": "4.0.2",
     "@11ty/eleventy-plugin-rss": "1.2.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.0",
     "@rollup/plugin-node-resolve": "15.2.3",
@@ -34,7 +34,7 @@
     "change-case": "5.4.2",
     "cssnano": "6.0.3",
     "decode-html": "2.0.0",
-    "dotenv": "16.4.2",
+    "dotenv": "16.4.3",
     "fs-extra": "11.2.0",
     "html-minifier": "4.0.0",
     "linkedom": "0.16.8",
