@@ -1,0 +1,13 @@
+{
+  "formatter": {
+    "lineWidth": 160,
+    "indentStyle": "space"
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "indentStyle": "space"
+    }
+  },
+  "overrides": []
+}

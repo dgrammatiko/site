@@ -1,13 +1,13 @@
-export default function(eleventyConfig, options = {}) {
+export default function (eleventyConfig, options = {}) {
   eleventyConfig.addPairedShortcode('codepen', toCodepen);
 }
 
-function toCodepen (content, css, js, title, description, buttonText) {
+function toCodepen(content, css, js, title, description, buttonText) {
   const data = {
     title: title || this.fileSlug,
     description: description || `${this.fileSlug} Example`,
-    editors: "111",
-    layout: "left",
+    editors: '111',
+    layout: 'left',
     css_external: css,
     js_external: js,
     js_module: true,
@@ -37,7 +37,7 @@ function toCodepen (content, css, js, title, description, buttonText) {
   return `${content}
 <form action="https://codepen.io/pen/define" method="POST" target="_blank">
   <input type="hidden" name="data" value='${JSON.stringify(data)}'>
-  <button type="submit">${buttonText || "Create New Pen"}</button>
+  <button type="submit">${buttonText || 'Create New Pen'}</button>
 </form>
 `;
-};
+}

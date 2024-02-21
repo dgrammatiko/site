@@ -6,26 +6,15 @@ const { writeFile, ensureDir } = pkg;
 const root = process.cwd();
 
 export default {
-  minifyHTML: (content, outputPath)  => {
-    if (
-      outputPath.endsWith(".html") &&
-      ![
-        `${root}/live/index-top.html`,
-        `${root}/live/index-bottom.html`,
-      ].includes(outputPath)
-    ) {
+  minifyHTML: (content, outputPath) => {
+    if (outputPath.endsWith('.html') && ![`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
       return htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
         collapseWhitespace: true,
       });
-    } else if (
-      [
-        `${root}/live/index-top.html`,
-        `${root}/live/index-bottom.html`,
-      ].includes(outputPath)
-    ) {
-      return content.replace(/>\s*\n\s*</g, "><");
+    } else if ([`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
+      return content.replace(/>\s*\n\s*</g, '><');
     }
     return content;
   },
@@ -34,7 +23,7 @@ export default {
       let { document } = parseHTML(value);
 
       if (![`${root}/live/index-top.html`, `${root}/live/index-bottom.html`, `${root}/live/offline.html`].includes(outputPath)) {
-        await ensureDir(outputPath.replace('/index.html', ''))
+        await ensureDir(outputPath.replace('/index.html', ''));
       }
 
       // index-top
@@ -48,12 +37,12 @@ export default {
       const main = document.querySelector('main');
 
       if (main) {
-        await writeFile(outputPath.replace('.html', '.content.html'), `${main.outerHTML}`, {encoding: 'utf8'});
+        await writeFile(outputPath.replace('.html', '.content.html'), `${main.outerHTML}`, { encoding: 'utf8' });
       }
 
       return `<!DOCTYPE html>${document.documentElement.outerHTML}`;
     }
 
     return value;
-  }
-}
+  },
+};

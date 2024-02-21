@@ -25,9 +25,13 @@ async function respondHandler(event) {
   const cachedResp = await respondFromCache(event, cache);
   if (cachedResp) return cachedResp;
 
-  url.pathname = /\/index\.html$/.test(url.pathname) ? url.pathname.replace(/index\.html$/, 'index.content.html')
-    : /\/$/.test(url.pathname) ? `${url.pathname}index.content.html` : `${url.pathname}/index.content.html`;
-  let offline = false, writable;
+  url.pathname = /\/index\.html$/.test(url.pathname)
+    ? url.pathname.replace(/index\.html$/, 'index.content.html')
+    : /\/$/.test(url.pathname)
+      ? `${url.pathname}index.content.html`
+      : `${url.pathname}/index.content.html`;
+  let offline = false,
+    writable;
   const top = await caches.match('/index-top.html');
   const bottom = await caches.match('/index-bottom.html');
   const middle = await fetch(url.toString()).catch(() => caches.match('/offline.html'));
@@ -40,7 +44,7 @@ async function respondHandler(event) {
   //     Promise.resolve()
   //   );
   // } else {
-    resp = `${await top.text()}${await middle.text()}${await bottom.text()}`
+  resp = `${await top.text()}${await middle.text()}${await bottom.text()}`;
   // }
 
   if (event.request.destination === 'document' && !offline) {
@@ -69,21 +73,29 @@ async function respondHandler(event) {
 }
 
 async function onActivate(event) {
-  event.waitUntil((async _ => {
-    const cacheKeys = await caches.keys();
-    await Promise.all(cacheKeys.map(key => { if (CACHENAME !== key) return caches.delete(key); }));
-    // await clients.claim();
-  })());
+  event.waitUntil(
+    (async (_) => {
+      const cacheKeys = await caches.keys();
+      await Promise.all(
+        cacheKeys.map((key) => {
+          if (CACHENAME !== key) return caches.delete(key);
+        }),
+      );
+      // await clients.claim();
+    })(),
+  );
 }
 
 async function onInstall(event) {
   skipWaiting();
 
-  event.waitUntil(async function () {
-    const cache = await caches.open(CACHENAME);
-    await cache.addAll(preCached);
-    // await cache.addAll([...new Set([...preCached ,...ROUTES])]);
-  }());
+  event.waitUntil(
+    (async function () {
+      const cache = await caches.open(CACHENAME);
+      await cache.addAll(preCached);
+      // await cache.addAll([...new Set([...preCached ,...ROUTES])]);
+    })(),
+  );
 }
 
 async function onFetch(event) {
@@ -96,7 +108,7 @@ async function onFetch(event) {
 
     let resp;
     try {
-      resp = await fetch(event.request)
+      resp = await fetch(event.request);
     } catch (err) {
       // event.respondWith(fetch(event.request));
     }
@@ -106,12 +118,11 @@ async function onFetch(event) {
   } else {
     debugger;
     // event.waitUntil((async (event) => {
-      return await respondHandler(event);
+    return await respondHandler(event);
     // })());
     // return await respondHandler(event);
   }
 }
-
 
 async function respondFromCache(event, cache) {
   const cachedReponse = await cache.match(event.request);

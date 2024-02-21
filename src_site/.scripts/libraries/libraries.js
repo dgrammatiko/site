@@ -1,6 +1,6 @@
 /* Markdown Plugins */
-import markdownIt from "markdown-it";
-import markdownItAnchor from "markdown-it-anchor";
+import markdownIt from 'markdown-it';
+import markdownItAnchor from 'markdown-it-anchor';
 import Nunjucks from 'nunjucks';
 
 const options = {
@@ -10,8 +10,8 @@ const options = {
 };
 const opts = {
   // permalink: true,
-  permalinkClass: "direct-link",
-  permalinkSymbol: "🔗",
+  permalinkClass: 'direct-link',
+  permalinkSymbol: '🔗',
 };
 
 export default {

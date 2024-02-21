@@ -39,21 +39,29 @@ async function respondHandler(event) {
 }
 
 async function onActivate(event) {
-  event.waitUntil((async _ => {
-    const cacheKeys = await caches.keys();
-    await Promise.all(cacheKeys.map(key => { if (CACHENAME !== key) return caches.delete(key); }));
-    // await clients.claim();
-  })());
+  event.waitUntil(
+    (async (_) => {
+      const cacheKeys = await caches.keys();
+      await Promise.all(
+        cacheKeys.map((key) => {
+          if (CACHENAME !== key) return caches.delete(key);
+        }),
+      );
+      // await clients.claim();
+    })(),
+  );
 }
 
 async function onInstall(event) {
   skipWaiting();
 
-  event.waitUntil(async function () {
-    const cache = await caches.open(CACHENAME);
-    await cache.addAll(preCached);
-    // await cache.addAll([...new Set([...preCached ,...ROUTES])]);
-  }());
+  event.waitUntil(
+    (async function () {
+      const cache = await caches.open(CACHENAME);
+      await cache.addAll(preCached);
+      // await cache.addAll([...new Set([...preCached ,...ROUTES])]);
+    })(),
+  );
 }
 
 async function onFetch(event) {

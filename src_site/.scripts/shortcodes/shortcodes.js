@@ -1,17 +1,15 @@
 import Image from '@11ty/eleventy-img';
 
 async function getImage(image, dir) {
-  let metadata = await Image(
-    `./src_assets/images/${dir}/${image}`,
-    {
-      urlPath: `/static/images/${dir ? `${dir}/` : ''}`,
-      outputDir: `live/static/images/${dir ? `${dir}/` : ''}`,
-      widths: [1024],
-      formats: ['jpeg']
+  let metadata = await Image(`./src_assets/images/${dir}/${image}`, {
+    urlPath: `/static/images/${dir ? `${dir}/` : ''}`,
+    outputDir: `live/static/images/${dir ? `${dir}/` : ''}`,
+    widths: [1024],
+    formats: ['jpeg'],
   });
   const data = metadata.jpeg[metadata.jpeg.length - 1];
   return data.url;
-};
+}
 
 export default {
   ogimg: async (image, outputPath, metadata) => {
@@ -33,7 +31,7 @@ export default {
       urlPath: `/static/images/${dir}/`,
       outputDir: `live/static/images/${dir}/`,
       widths: [300, 600, 1024, 1240],
-      formats: ['avif', 'jpeg']
+      formats: ['avif', 'jpeg'],
     });
 
     let imageAttributes = {

@@ -11,15 +11,15 @@ import { directories } from './src_site/.scripts/passthorughCopy/passthroughCopy
 
 const shortcodeFns = ['addNunjucksAsyncShortcode', 'addLiquidShortcode', 'addJavaScriptFunction'];
 
-export default function(conf) {
+export default function (conf) {
   conf.addWatchTarget('./src_assets/css');
-  directories.forEach(obj => conf.addPassthroughCopy(obj));
+  directories.forEach((obj) => conf.addPassthroughCopy(obj));
 
-  Object.keys(libraries).forEach(name => conf.setLibrary(name, libraries[name]));
-  Object.keys(collections).forEach(name => conf.addCollection(name, collections[name]));
-  Object.keys(filters).forEach(name => conf.addFilter(name, filters[name]));
-  Object.keys(transforms).forEach(name => conf.addTransform(name, transforms[name]));
-  Object.keys(shortcodes).forEach(name => shortcodeFns.map(fn => conf[fn](name, shortcodes[name])));
+  Object.keys(libraries).forEach((name) => conf.setLibrary(name, libraries[name]));
+  Object.keys(collections).forEach((name) => conf.addCollection(name, collections[name]));
+  Object.keys(filters).forEach((name) => conf.addFilter(name, filters[name]));
+  Object.keys(transforms).forEach((name) => conf.addTransform(name, transforms[name]));
+  Object.keys(shortcodes).forEach((name) => shortcodeFns.map((fn) => conf[fn](name, shortcodes[name])));
 
   conf.addPlugin(codepen);
   conf.addPlugin(rss);
@@ -27,10 +27,5 @@ export default function(conf) {
 
   conf.on('beforeBuild', async () => await Promise.all(Object.values(beforeBuild)));
 
-  return {
-    dir: {
-      input: 'src_site',
-      output: `${process.cwd()}/live`,
-    },
-  };
-};
+  return { dir: { input: 'src_site', output: `${process.cwd()}/live` } };
+}
