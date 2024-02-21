@@ -3,7 +3,7 @@
 .main {
   margin: 0 auto;
   max-width: 72rem;
-  min-height: 100vh;
+  min-height: 78vh;
 
   & > * {
     margin: 0;
@@ -12,4 +12,16 @@
   & > *:first-child {
     border-top: 0;
   }
+}
+
+.home {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
+
+.home-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
 }
