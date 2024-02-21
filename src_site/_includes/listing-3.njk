@@ -1,51 +1,25 @@
-{% for blog in collections.blogs | reverse %}
-  {% if loop.index < 3 %}
-  {% if loop.index == 1 %}
-  <article class="post featured">
-      <header class="major">
-        <span class="date">
-          <svg id="ttc-i-calendar-alt" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill=currentColor><path d="M436 160H12c-6.6 0-12-5.4-12-12v-36c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 21.5 48 48v36c0 6.6-5.4 12-12 12zM12 192h424c6.6 0 12 5.4 12 12v260c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V204c0-6.6 5.4-12 12-12zm116 204c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12H76c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm128 128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40zm0-128c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12v40c0 6.6 5.4 12 12 12h40c6.6 0 12-5.4 12-12v-40z"></path></svg>
-          <time class="postslist-date" datetime="{{ blog.date | htmlDateString }}">{{ blog.date | readableDate }}</time>
-        </span>
-        <h1>{% if blog.data.title %}{{ blog.data.title }}{% else %}<code>{{ blog.url }}</code>{% endif %}</h1>
-        <p>{{ blog.data.custom_excerpt }}</p>
-      </header>
-
-      {% if blog.data.image %}
-        {% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw", '', false %}
-      {% endif %}
-
-      <p>
-        <a class="btn big" href="{{ blog.url }}">{{ blog.data.title }}</a>
-      </p>
-  </article>
-  {% endif %}
-  {% endif %}
-{% endfor %}
-
 <section class="posts grid" data-rows="masonry">
 {% for blog in collections.blogs | reverse %}
-  {% if loop.index < 4 %}
-  {% if loop.index !== 1 %}
-      <article>
-        <header class="major">
-          <span class="date">
-            <svg class="icon">
-              <use xlink:href="#ttc-i-calendar-alt"></use>
-            </svg>
-            <time class="postslist-date" datetime="{{ blog.date | htmlDateString }}">{{ blog.date | readableDate }}</time>
-          </span>
-            <h2>{% if blog.data.title %}{{ blog.data.title }}{% endif %}</h2>
-          <p>{{ blog.data.custom_excerpt }}</p>
-        </header>
-          {% if blog.data.image %}
-            {% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
-          {% endif %}
-          <a class="btn" href="{{ blog.url }}">{{ blog.data.title }}</a>
-      </article>
-
-  {% endif %}
-  {% endif %}
+  <article class="article">
+    {% if blog.data.image %}{% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}{% endif %}
+    <ul class="article-category">
+      <li>
+        <a href="/">Inspiration</a>
+      </li>
+      <li>
+        <a href="/">Photography</a>
+      </li>
+    </ul>
+    <h1 class="article-title">
+      <a class="btn" href="{{ blog.url }}">
+        {% if blog.data.title %}{{ blog.data.title }}{% endif %}
+      </a>
+    </h1>
+    <time class="article-date" datetime="{{ blog.date | htmlDateString }}">{{ blog.date | readableDate }}</time>
+    <div class="article-content">
+      <p>{{ blog.data.custom_excerpt }}</p>
+    </div>
+  </article>
 {% endfor %}
 </section>
 <script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>

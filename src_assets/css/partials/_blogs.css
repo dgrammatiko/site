@@ -1,4 +1,4 @@
-@use postcss-nested;
+/* @use postcss-nested;
 
 .post {
   padding: 1rem 1.2rem;
@@ -42,7 +42,8 @@ header {
     text-align: center;
     color: var(--button-bg);
 
-    &:before, &:after {
+    &:before,
+    &:after {
       border-top: .4rem double;
       content: "";
       display: inline-block;
@@ -107,4 +108,4 @@ header {
     padding-inline-start: 1rem;
     padding-inline-end: 1rem;
   }
-}
+} */
