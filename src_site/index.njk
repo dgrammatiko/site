@@ -4,27 +4,20 @@ title: Home
 ---
 
 <main class="main">
-<ul class="cards web" style="margin-top: 5rem">
-  {% for blog in collections.blogs | reverse %}
-  <li class="card">
-    <header class="card-header">
-      <h2>{% if blog.data.title %}{{ blog.data.title }}{% endif %}</h2>
-    </header>
-    <div class="card-body">
-      {% if blog.data.image %}
-        {% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
-      {% endif %}
-      <p>{{ blog.data.custom_excerpt }}</p>
-    </div>
-    <footer class="card-footer">
-      <nav>
-        <ul class="nav-links">
-          <li class="nav-item">
-            <a href="{{ blog.url }}">{% if blog.data.title %}{{ blog.data.title }}{% endif %}</a>
-          </li>
-        </ul>
-    </footer>
-  </li>
-  {% endfor %}
-</ul>
+<section class="about">
+    <section class="center" style="display: flex; justify-content: center; align-items: center; gap: 2rem;">
+        {% imagine "me.jpg", '', "Dimitris' avatar", "(min-width: 30em) 50vw, 100vw" %}
+
+        <div style="max-width: 80ch">
+          <h4>Hello, I'm Dimitris</h4>
+
+          <p class="center">I like to create/build/assemble things and consider myself a full stack developer (polyglot).</p>
+          <p class="center">I do care about UX/UI, performance and anything web related.</p>
+          <p class="center">I've been involved involved in the Joomla CMS for a while as a maintainer, bugsquad member, JS Group lead, GSOC mentor, etc, and have introduced quite some new features (Child Templates, public folder, etc).</p>
+          <p class="center">Currently I'm back to Athens/Greece and looking for my next adventure.</p>
+          <hr>
+          <p class="center">Want to contact me? <a href="mailto:d.grammatiko@gmail.com">Drop me a line</a></p>
+        </div>
+    </section>
+</section>
 </main>
