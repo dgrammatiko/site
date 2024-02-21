@@ -9,7 +9,7 @@
   for = "/*"
     [headers.values]
   #   Content-Security-Policy = "default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self'; media-src 'self'; object-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'"
-  #   Content-Security-Policy = "default-src https://*.dgrammatiko.dev; script-src https://*.dgrammatiko.dev 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.dgrammatiko.dev; font-src https://*.dgrammatiko.dev;"
+  #   Content-Security-Policy = "default-src https://*.dgrammatiko.dev; script-src https://*.dgrammatiko.dev https://www.youtube.com/iframe_api 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: https://*.dgrammatiko.dev; font-src https://*.dgrammatiko.dev;"
   #   Permissions-Policy = "camera=(); display-capture=(); document-domain=(); geolocation=(); microphone=(); payment=(); usb=();"
       Referrer-Policy = "same-origin"
       Strict-Transport-Security = "max-age=15768000"
