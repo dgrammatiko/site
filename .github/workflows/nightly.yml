@@ -11,7 +11,7 @@ on:
 jobs:
   lockfile:
     if: github.repository_owner == 'dgrammatiko'
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     steps:
 
       - name: Check out code using Git
@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: latest
 
       - name: NPM Install
         run: npm install

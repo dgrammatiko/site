@@ -25,7 +25,7 @@ export default function(conf) {
   conf.addPlugin(rss);
   conf.addPlugin(highlight);
 
-  conf.on('befor eBuild', async () => await Promise.all(Object.values(beforeBuild)));
+  conf.on('beforeBuild', async () => await Promise.all(Object.values(beforeBuild)));
 
   return {
     dir: {
