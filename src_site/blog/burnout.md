@@ -17,7 +17,7 @@ If someone follows random developer Twitter stories, there's quite a lot that co
 It's disheartening to look at a graph like this: `They are burning out because they're coding 24/7/365`. This is a very shallow reading of that graph, only if you are unaware of the GitHub actions and the automation that someone could have set up. For example, my graph looks pretty bad; every day, I create and merge PRs. But that's far from the actual reality; I have actions that automatically make a PR, and if the tests pass, they commit the PR on my behalf. Yes, for the stats, I did the work (because I set up the action and the repositories are in my own name, so the creation/commit of the PRs is in my name). Do you get it? I code a script once that does all the work for me. I'm not doing that work daily.
 
 
-## This is not nessessarily a burnout
+## It isn't necessarily a burnout
 
 The CI (continuous integration) could do work on behalf of the developer.
 {% imagine 'burnout2.png', 'blog', 'Am I in a burnout phase', "(min-width: 30em) 50vw, 100vw" %}
