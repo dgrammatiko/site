@@ -19,7 +19,7 @@
   "dependencies": {
     "ce-theme-switcher": "0.0.3",
     "flamethrower-router": "0.0.0-meme.12",
-    "lite-youtube-embed": "0.3.1"
+    "lite-youtube-embed": "0.3.2"
   },
   "devDependencies": {
     "@11ty/eleventy": "https://github.com/11ty/eleventy.git",
@@ -49,7 +49,7 @@
     "postcss-discard-comments": "6.0.1",
     "postcss-easy-import": "4.0.0",
     "postcss-import": "16.0.1",
-    "postcss-mixins": "9.0.4",
+    "postcss-mixins": "10.0.0",
     "postcss-nested": "6.0.1",
     "postcss-preset-env": "9.4.0",
     "rollup": "4.12.0"
