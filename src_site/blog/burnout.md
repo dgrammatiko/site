@@ -5,7 +5,7 @@ tags: blog, joomla
 date: 2024-02-20T23:46:54+00:00
 image: niclas-lundin-qGzWty2oBlQ-unsplash.jpg
 imageAltText: A completely burnt car
-custom_excerpt: "Your GitHub stats graph is too green; you're definitely burned out. Well..."
+custom_excerpt: "Your GitHub stats graph is too green; you're definitely burnt out. Well..."
 ---
 
 If someone follows random developer Twitter stories, there's quite a lot that could be said about burnout. Why's the burnout happening? What are the symptoms? How can we prevent it? And so on. But I'm not going to write about that. I will write about what people perceive as burnout from some very unsophisticated metrics.
