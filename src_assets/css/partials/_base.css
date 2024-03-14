@@ -15,8 +15,6 @@ font-family: -apple-system;
 @font-face {
   font-family: 'dgrammatiko';
   src: url("/static/fonts/dgrammatiko.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
   font-display: swap;
   /*
     font metrics:
@@ -25,10 +23,10 @@ font-family: -apple-system;
     line-gap = 0
     UPM: 2048
   */
-  ascent-override: 120%; /* 87,6953125%; = 1796/2048 */
-  descent-override: 120%;  /* = 441/2048 */
-  line-gap-override: 50%; /* = 0/2048 */
-
+  ascent-override: 87,6953125%; /* 87,6953125%; = 1796/2048 */
+  descent-override: 21,533203125%;  /* = 441/2048 */
+  line-gap-override: 0%; /* = 0/2048 */
+  size-adjust:116%;
 }
 
 :root {
@@ -42,7 +40,7 @@ font-family: -apple-system;
   --button-bg: rgb(0, 155, 167);
   --button-fg: #fff;
   --card-bg: #2a3030;
-  --def-font: -apple-system, -system-ui;
+  --def-font: "dgrammatiko", -apple-system, -system-ui;
   /* -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
   /* --alt-font: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
 }
@@ -76,11 +74,7 @@ font-family: -apple-system;
   box-sizing: border-box;
 }
 
-:where(h1, h2, h3, h4, h5, h6, button, summary, nav) {
-  font-family: var(--def-font);
-}
-
-:where(html,body) {
+:where(html, body, h1, h2, h3, h4, h5, h6, button, summary, nav) {
   font-family: var(--def-font);
 }
 
@@ -182,7 +176,7 @@ body {
 :where(h1, h2, h3, h4, h5, h6) {
   font-weight: 900;
   line-height: 1.5;
-  letter-spacing: 0.075em;
+  /* letter-spacing: 0.075em; */
   text-transform: uppercase;
   margin: 1rem 0;
   line-break: auto;
