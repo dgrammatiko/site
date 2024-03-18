@@ -43,7 +43,7 @@
     "markdown-it": "14.0.0",
     "markdown-it-anchor": "8.6.7",
     "netlify-plugin-cache-folder": "0.0.8",
-    "postcss": "8.4.35",
+    "postcss": "8.4.36",
     "postcss-custom-media": "10.0.4",
     "postcss-custom-selectors": "7.1.8",
     "postcss-discard-comments": "6.0.2",
@@ -51,7 +51,7 @@
     "postcss-import": "16.0.1",
     "postcss-mixins": "10.0.0",
     "postcss-nested": "6.0.1",
-    "postcss-preset-env": "9.5.1",
+    "postcss-preset-env": "9.5.2",
     "rollup": "4.13.0"
   }
 }
