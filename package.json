@@ -44,14 +44,14 @@
     "markdown-it-anchor": "8.6.7",
     "netlify-plugin-cache-folder": "0.0.8",
     "postcss": "8.4.38",
-    "postcss-custom-media": "10.0.4",
-    "postcss-custom-selectors": "7.1.8",
+    "postcss-custom-media": "10.0.6",
+    "postcss-custom-selectors": "7.1.10",
     "postcss-discard-comments": "7.0.0",
     "postcss-easy-import": "4.0.0",
     "postcss-import": "16.1.0",
     "postcss-mixins": "10.0.1",
     "postcss-nested": "6.0.1",
-    "postcss-preset-env": "9.5.9",
+    "postcss-preset-env": "9.5.11",
     "rollup": "4.17.2"
   }
 }
