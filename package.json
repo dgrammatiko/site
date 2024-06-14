@@ -22,9 +22,9 @@
     "lite-youtube-embed": "0.3.2"
   },
   "devDependencies": {
-    "@11ty/eleventy": "https://github.com/11ty/eleventy.git",
+    "@11ty/eleventy": "3.0.0-alpha.13",
     "@11ty/eleventy-img": "4.0.2",
-    "@11ty/eleventy-plugin-rss": "1.2.0",
+    "@11ty/eleventy-plugin-rss": "2.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.0",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-replace": "5.0.7",
