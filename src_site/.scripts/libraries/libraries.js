@@ -16,5 +16,5 @@ const opts = {
 
 export default {
   md: markdownIt(options).use(markdownItAnchor, opts),
-  njk: new Nunjucks.Environment(new Nunjucks.FileSystemLoader('./src_site/_includes')),
+  njk: new Nunjucks.Environment(new Nunjucks.FileSystemLoader(`${process.cwd()}/src_site/_includes`)),
 };
