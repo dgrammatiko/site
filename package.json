@@ -19,7 +19,8 @@
   "dependencies": {
     "ce-theme-switcher": "0.0.3",
     "flamethrower-router": "0.0.0-meme.12",
-    "lite-youtube-embed": "0.3.2"
+    "lite-youtube-embed": "0.3.2",
+    "sharp": "^0.33.4"
   },
   "devDependencies": {
     "@11ty/eleventy": "https://github.com/11ty/eleventy.git",
