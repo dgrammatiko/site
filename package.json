@@ -19,7 +19,7 @@
   "dependencies": {
     "ce-theme-switcher": "0.0.3",
     "flamethrower-router": "0.0.0-meme.12",
-    "lite-youtube-embed": "0.3.2",
+    "lite-youtube-embed": "0.3.3",
     "sharp": "^0.33.4"
   },
   "devDependencies": {
@@ -31,28 +31,28 @@
     "@rollup/plugin-replace": "5.0.7",
     "@rollup/plugin-terser": "0.4.4",
     "11ty-to-codepen": "1.0.2",
-    "axios": "1.7.2",
+    "axios": "1.7.3",
     "change-case": "5.4.4",
-    "cssnano": "7.0.4",
+    "cssnano": "7.0.5",
     "decode-html": "2.0.0",
     "dotenv": "16.4.5",
     "fs-extra": "11.2.0",
     "html-minifier": "4.0.0",
     "linkedom": "0.18.4",
     "lodash-es": "^4.17.21",
-    "luxon": "3.4.4",
+    "luxon": "3.5.0",
     "markdown-it": "14.1.0",
     "markdown-it-anchor": "9.0.1",
     "netlify-plugin-cache-folder": "0.0.8",
-    "postcss": "8.4.39",
-    "postcss-custom-media": "10.0.8",
-    "postcss-custom-selectors": "7.1.12",
-    "postcss-discard-comments": "7.0.1",
+    "postcss": "8.4.41",
+    "postcss-custom-media": "11.0.0",
+    "postcss-custom-selectors": "8.0.0",
+    "postcss-discard-comments": "7.0.2",
     "postcss-easy-import": "4.0.0",
     "postcss-import": "16.1.0",
     "postcss-mixins": "10.0.1",
-    "postcss-nested": "6.0.1",
-    "postcss-preset-env": "9.6.0",
-    "rollup": "4.18.1"
+    "postcss-nested": "6.2.0",
+    "postcss-preset-env": "10.0.0",
+    "rollup": "4.20.0"
   }
 }
