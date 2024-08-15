@@ -52,7 +52,7 @@
     "postcss-import": "16.1.0",
     "postcss-mixins": "10.0.1",
     "postcss-nested": "6.2.0",
-    "postcss-preset-env": "10.0.0",
+    "postcss-preset-env": "10.0.1",
     "rollup": "4.20.0"
   }
 }
