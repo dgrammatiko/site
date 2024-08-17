@@ -20,7 +20,7 @@
     "ce-theme-switcher": "0.0.3",
     "flamethrower-router": "0.0.0-meme.12",
     "lite-youtube-embed": "0.3.3",
-    "sharp": "^0.33.4"
+    "sharp": "0.33.5"
   },
   "devDependencies": {
     "@11ty/eleventy": "https://github.com/11ty/eleventy.git",
