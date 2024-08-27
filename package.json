@@ -53,6 +53,6 @@
     "postcss-mixins": "10.0.1",
     "postcss-nested": "6.2.0",
     "postcss-preset-env": "10.0.2",
-    "rollup": "4.21.0"
+    "rollup": "4.21.1"
   }
 }
