@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(26, 24, 24)">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(24, 116, 116)">
     <script src="/static/js/ce-theme-switcher.esm.js?v=0" type="module" async></script>
     <style>{{ getCSS[0]['src_assets/css/main.css'] | safe }}</style>
     {% if description %}
@@ -11,8 +13,6 @@
     {% else %}
       {% set desc = metadata.description | safe %}
     {% endif %}
-    <meta name="theme-color" content="#004e51" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#1a1818" media="(prefers-color-scheme: dark)">
     <meta name="description" content="{{ desc }}">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:creator" content="@dgrammatiko">
@@ -24,13 +24,13 @@
     <link rel="manifest" href="/manifest.webmanifest?v=0">
     <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="any" href="/static/images/favicon-32x32.png">
-    <link rel="icon" href="/static/images/safari-pinned-tab.svg">
+    <link rel="icon" type="image/svg" href="/static/images/safari-pinned-tab.svg">
 
     <link href="https://social.dgrammatiko.dev/@dgrammatiko" rel="me">
     <link href="https://github.com/dgrammatiko" rel="me">
     <link href="https://twitter.com/dgrammatiko" rel="me">
-    <link rel="webmention" href="https://webmention.io/{{ metadata.domain }}/webmention" />
-    <link rel="pingback" href="https://webmention.io/{{ metadata.domain }}/xmlrpc" />
+    <link rel="webmention" href="https://webmention.io/{{ metadata.domain }}/webmention">
+    <link rel="pingback" href="https://webmention.io/{{ metadata.domain }}/xmlrpc">
     <meta name="generator" content="Eleventy">
   </head>
   <body>
