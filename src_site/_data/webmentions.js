@@ -1,10 +1,11 @@
-import fs from 'fs';
-import axios from 'axios';
+import fs from 'node:fs';
 import { dirname } from 'node:path';
+
 import { unionBy } from 'lodash-es';
+import axios from 'axios';
 import dotenv from 'dotenv';
 
-const metaJson = JSON.parse(fs.readFileSync(dirname(import.meta.url).replace('file://', '') + '/metadata.json', { encode: 'utf-8' }));
+const metaJson = JSON.parse(fs.readFileSync(`${dirname(import.meta.url).replace('file://', '')}/metadata.json`, { encode: 'utf-8' }));
 const { domain } = metaJson;
 
 // Load .env variables with dotenv

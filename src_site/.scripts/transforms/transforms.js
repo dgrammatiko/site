@@ -7,25 +7,21 @@ const root = process.cwd();
 
 export default {
   minifyHTML: (content, outputPath) => {
-     return htmlmin.minify(content, {
-      useShortDoctype: true,
-      removeComments: true,
-      collapseWhitespace: true,
-    });
     if (outputPath.endsWith('.html') && ![`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
       return htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
         collapseWhitespace: true,
       });
-    } else if ([`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
+    }
+    if ([`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
       return content.replace(/>\s*\n\s*</g, '><');
     }
     return content;
   },
   createBodyPart: async (value, outputPath) => {
     if (outputPath.endsWith('.html')) {
-      let { document } = parseHTML(value);
+      const { document } = parseHTML(value);
 
       if (![`${root}/live/index-top.html`, `${root}/live/index-bottom.html`, `${root}/live/offline.html`].includes(outputPath)) {
         await ensureDir(outputPath.replace('/index.html', ''));

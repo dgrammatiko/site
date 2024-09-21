@@ -1,4 +1,4 @@
-import fs from 'fs/promises';
+import fs from 'node:fs/promises';
 import postcss from 'postcss';
 import postcssNested from 'postcss-nested';
 import postcssEasyImport from 'postcss-easy-import';
