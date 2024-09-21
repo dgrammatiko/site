@@ -10,12 +10,12 @@ dark-light-switch {
 ::view-transition-old(darklight) {
   animation: pan 1s ease-in-out;
   backface-visibility: hidden;
-  box-shadow: 2.2px 61.3px 73.1px -2px hsl(0 0% 0% / 0.58);
 }
 
 ::view-transition-new(darklight) {
   --vt-ds: 180deg;
-  background: canvas;
+  background: #000;
+  height: 100lvh;
 }
 
 ::view-transition-old(darklight) {
@@ -29,13 +29,11 @@ dark-light-switch {
   }
 
   25% {
-    transform: scale(0.5) rotateY(var(--vt-ds));
-    box-shadow: 1.8px 50.7px 51.4px -3.2px hsl(0 0% 0% / 0.32);
+    transform: scale(.5) rotateY(var(--vt-ds));
   }
 
   75% {
-    transform: scale(0.5) rotateY(calc(var(--vt-ds) + 180deg));
-    box-shadow: 1.8px 50.7px 51.4px -3.2px hsl(0 0% 0% / 0.32);
+    transform: scale(.5) rotateY(calc(var(--vt-ds) + 180deg));
   }
 
   100% {

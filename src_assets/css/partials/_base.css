@@ -169,6 +169,12 @@ font-family: -apple-system;
     }
 }
 
+html {
+  background-color: #000;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
 body {
   --space-s-l: 1rem;
   --grid-placement: auto-fill;
@@ -179,7 +185,7 @@ body {
   background-color: var(--body-bg);
   font-weight: 200;
   line-height: 1.5rem;
-  height: 100%;
+  min-height: 100vh;
   text-rendering: optimizeLegibility;
   transition: background-color 500ms ease-in-out, color 200ms ease-in-out;
 }
