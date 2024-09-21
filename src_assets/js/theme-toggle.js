@@ -80,13 +80,14 @@ class Switcher extends HTMLElement {
     this.supportsMediaColorScheme = window.matchMedia('(prefers-color-scheme)').media !== 'not all' ? true : false;
     this.systemQuery = this.systemQuery.bind(this);
     this.update = this.update.bind(this);
-    this.onClick = this.onClick.bind(this);
     this.html = document.documentElement;
 
-    this.attachShadow({mode: 'open'});
+    this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = template;
     this.button = this.shadowRoot.querySelector('button');
-    this.button.addEventListener('click', this.onClick)
+    this.onClick = this.onClick.bind(this);
+    this._update = this._update.bind(this);
+    this.button.addEventListener('click', this.onClick);
   }
 
   static get observedAttributes() {
@@ -97,14 +98,9 @@ class Switcher extends HTMLElement {
     return this.#_value;
   }
   set value(value) {
-    if (['true', 'false'].includes(value)){
+    if (['true', 'false'].includes(value)) {
       this.#_value = value;
-      if (!document.startViewTransition) {
-        this.update();
-      } else {
-        document.documentElement.style.viewTransitionName = 'darklight';
-        document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
-      }
+      this.update();
     }
   }
   get on() {
@@ -112,24 +108,14 @@ class Switcher extends HTMLElement {
   }
   set on(value) {
     this.#_on = value;
-    if (!document.startViewTransition) {
-      this.update();
-    } else {
-        document.documentElement.style.viewTransitionName = 'darklight';
-        document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
-    }
+    this._update();
   }
   get off() {
     return this.#_off;
   }
   set off(value) {
     this.#_off = value;
-    if (!document.startViewTransition) {
-      this.update();
-    } else {
-        document.documentElement.style.viewTransitionName = 'darklight';
-        document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
-    }
+    this._update();
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
@@ -137,31 +123,16 @@ class Switcher extends HTMLElement {
       case 'value':
         if (['true', 'false'].includes(newValue)) {
           this.#_value = newValue;
-          if (!document.startViewTransition) {
-            this.update();
-          } else {
-            document.documentElement.style.viewTransitionName = 'darklight';
-            document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
-          }
+          this.update();
         }
         break;
       case 'text-on':
         this.#_on = newValue;
-        if (!document.startViewTransition) {
-          this.update();
-        } else {
-          document.documentElement.style.viewTransitionName = 'darklight';
-          document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
-        }
+        this.update();
         break;
       case 'text-off':
         this.#_off = newValue;
-        if (!document.startViewTransition) {
-          this.update();
-        } else {
-          document.documentElement.style.viewTransitionName = 'darklight';
-          document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
-        }
+        this.update();
         break;
     }
   }
@@ -171,7 +142,7 @@ class Switcher extends HTMLElement {
     if (localStorage.getItem('darkthemeswitcher')) {
       this.#_value = localStorage.getItem('darkthemeswitcher');
     }
-    this.update();
+    this._update();
 
     if (this.supportsMediaColorScheme) {
       this.darkModeMediaQuery.addEventListener('change', this.systemQuery);
@@ -180,12 +151,7 @@ class Switcher extends HTMLElement {
 
   systemQuery(event) {
     this.#_value = event.matches === true ? 'true' : 'false';
-    if (!document.startViewTransition) {
-      this.update();
-    } else {
-      document.documentElement.style.viewTransitionName = 'darklight';
-      document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
-    }
+    this.update();
   }
 
   disconnectedCallback() {
@@ -197,21 +163,31 @@ class Switcher extends HTMLElement {
   onClick() {
     this.#_value = this.#_value === 'true' ? 'false' : 'true';
     localStorage.setItem('darkthemeswitcher', this.#_value);
-    if (!document.startViewTransition) {
-      this.update();
-    } else {
-      document.documentElement.style.viewTransitionName = 'darklight';
-      document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
-    }
+    this.update();
 
     this.dispatchEvent(new Event('change'));
   }
 
-  update() {
+  _update() {
     this.html.classList.remove(this.#_value === 'true' ? 'is-light' : 'is-dark');
     this.html.classList.add(this.#_value === 'true' ? 'is-dark' : 'is-light');
     this.button.setAttribute('aria-pressed', this.#_value === 'true' ? 'true' : 'false');
     this.button.setAttribute('aria-label', `${this.#_value === 'true' ? this.on : this.off}`);
+  }
+
+  async update() {
+    if (!document.startViewTransition) {
+      this._update();
+    } else {
+      this.html.style.viewTransitionName = 'darklight';
+      const transition = document.startViewTransition(this._update);
+
+      try {
+        await transition.finished;
+      } finally {
+        this.html.style.viewTransitionName = 'none';
+      }
+    }
   }
 }
 
