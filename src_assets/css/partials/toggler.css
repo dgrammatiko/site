@@ -1,5 +1,3 @@
-@use postcss-nested;
-
 dark-light-switch {
   position: relative;
   display: block;

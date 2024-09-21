@@ -1,5 +1,3 @@
-@use postcss-nested;
-
 /* inspired by moderncss.dev */
 .code-title {
   color: var(--menu-fg);

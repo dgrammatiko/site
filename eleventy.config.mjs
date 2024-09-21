@@ -24,10 +24,9 @@ export default function (conf) {
   conf.addPlugin(codepen);
   conf.addPlugin(rss);
   conf.addPlugin(highlight);
-
   conf.configureErrorReporting({ allowMissingExtensions: true });
 
-  conf.on('beforeBuild', async () => await Promise.all(Object.values(beforeBuild)));
+  conf.on('beforeBuild', async () => await beforeBuild);
 
   return { dir: { input: 'src_site', output: `${process.cwd()}/live` } };
 }

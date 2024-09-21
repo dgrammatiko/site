@@ -1,5 +1,3 @@
-@use postcss-nested;
-
 .articleBody,
 .webmentions {
   padding-left: 1rem;

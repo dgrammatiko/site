@@ -1,5 +1,3 @@
-@use postcss-nested;
-
 footer {
   background-color: var(--menu-bg);
   color: var(--menu-fg);

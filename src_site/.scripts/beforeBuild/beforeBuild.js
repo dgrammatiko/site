@@ -1,4 +1,4 @@
-import { readFile, mkdir, writeFile } from 'fs/promises';
+import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import postcss from 'postcss';
 import postcssNested from 'postcss-nested';
 import postcssEasyImport from 'postcss-easy-import';
@@ -33,7 +33,7 @@ const plugins = [
   }),
   cssNano({
     from: undefined,
-    // preset: ['default', { normalizeUrl: false }],
+    preset: ['default', { normalizeUrl: false }],
   }),
 ];
 
@@ -121,7 +121,4 @@ async function postcssFn() {
   process.exit(1);
 }
 }
-export default {
-  postcss: Promise.all([postcssFn()]),
-  rollup: Promise.all(opts.map(pack)),
-};
+export default Promise.all([postcssFn(), ...opts.map(pack)]);

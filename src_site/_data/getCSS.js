@@ -13,25 +13,25 @@ import cssNano from 'cssnano';
 const output = {};
 
 const plugins = [
-  postcssNested,
+  // postcssNested,
   postcssEasyImport({ extensions: '.css' }),
   postcssImport({ extensions: '.css', path: ['src_assets/css', 'src_assets/css/partials'] }),
-  postcssMixins,
-  postcssCustomSelectors,
-  postcssCustomMedia,
-  postcssDiscardComments({ removeAll: true }),
-  postcssPresetEnv({
-    autoprefixer: {
-      from: undefined,
-    },
-    features: {
-      'nesting-rules': true,
-    },
-  }),
-  cssNano({
-    from: undefined,
-    preset: ['default', { normalizeUrl: false }],
-  }),
+  // postcssMixins,
+  // postcssCustomSelectors,
+  // postcssCustomMedia,
+  // postcssDiscardComments({ removeAll: true }),
+  // postcssPresetEnv({
+  //   autoprefixer: {
+  //     from: undefined,
+  //   },
+  //   features: {
+  //     'nesting-rules': true,
+  //   },
+  // }),
+  // cssNano({
+  //   from: undefined,
+  //   preset: ['default', { normalizeUrl: false }],
+  // }),
 ];
 
 const getFiles = async (path = './') => {
@@ -48,10 +48,10 @@ const processCss = async (fileName, filePath) => {
 
   const fileContent = await fs.readFile(filePath);
 
-  const { css } = await postcss(plugins).process(fileContent, { from: undefined });
-  output[filePath.replace('./', '')] = css;
+  // const { css } = await postcss(plugins).process(fileContent, { from: undefined });
+  // output[filePath.replace('./', '')] = css;
 
-  return output;
+  return fileContent;
 };
 
 export default async () => {
