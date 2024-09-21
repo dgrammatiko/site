@@ -48,11 +48,11 @@ const opts = [
     plugins: [nodeResolve(), replace({ 'process.env.NODE_ENV': '"production"', preventAssignment: true }), terser()],
   },
   {
-    input: './node_modules/ce-theme-switcher/src/index.js',
+    input: 'src_assets/js/theme-toggle.js',
     output: {
       sourcemap: false,
       format: 'esm',
-      file: `./live/static/js/${'./node_modules/ce-theme-switcher/src/index.js'.replace('./node_modules/', '').replace('/src/index.js', '')}.esm.js`,
+      file: './live/static/js/theme-toggle.js',
     },
     plugins: [terser()],
   },

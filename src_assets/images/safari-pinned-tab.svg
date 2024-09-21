@@ -1,5 +1,5 @@
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="700.000000pt" height="700.000000pt" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
- <style>.im { fill: #000000; } @media (prefers-color-scheme: dark) { .im { fill: #fff; } } </style>
+ <style>.im { fill: red; } @media (prefers-color-scheme: dark) { .im { fill: green; } } </style>
 <g class="im" transform="translate(0.000000,700.000000) scale(0.100000,-0.100000)" stroke="none">
 <path d="M3288 5805 c-1 -1 -23 -5 -48 -8 -191 -24 -360 -88 -633 -241 -72
 -40 -155 -77 -215 -96 -110 -33 -109 -33 -240 -163 -117 -115 -171 -196 -213

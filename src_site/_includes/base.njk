@@ -6,7 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(26 24 24)">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(24 116 116)">
-    <script src="/static/js/ce-theme-switcher.esm.js?v=0" type="module" async></script>
+    <script>
+    const ___ls = localStorage.getItem('darkthemeswitcher');
+    if (!___ls) {
+      const ___mq = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches;
+      localStorage.setItem('darkthemeswitcher', ___mq ? 'true' : 'false');
+      document.documentElement.classList.add(___mq ? 'is-dark' : 'is-light');
+    } else {
+      document.documentElement.classList.add(___ls ? 'is-dark' : 'is-light');
+    }
+    </script>
+    <script src="/static/js/theme-toggle.js?v=0" type="module" async></script>
     <style>{{ getCSS[0]['src_assets/css/main.css'] | safe }}</style>
     {% if description %}
       {% set desc = description | safe %}
@@ -22,7 +32,6 @@
     <meta property="og:description" content="{{ desc }}">
     <meta name="monetization" content="$ilp.uphold.com/29KGbUJg6Xaq">
     <link rel="manifest" href="/manifest.webmanifest?v=0">
-    <link rel="apple-touch-icon" href="/static/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="any" href="/static/images/favicon-32x32.png">
     <link rel="icon" type="image/svg" href="/static/images/safari-pinned-tab.svg">
 

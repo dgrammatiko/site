@@ -33,8 +33,7 @@ nav {
 }
 
 .nav-item {
-  & a,
-  & dark-light-switch {
+  & a {
     display: inline-block;
     text-decoration: none;
     color: var(--menu-fg);
@@ -45,10 +44,6 @@ nav {
       background-color: var(--link-color);
       color: var(--menu-fg);
     }
-  }
-
-  & dark-light-switch {
-    padding: 0;
   }
 }
 

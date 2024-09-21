@@ -1,0 +1,220 @@
+const template = `<style>
+:host {
+  --size: 1.5;
+  position: relative;
+  display: inline-block;
+  width: calc(var(--size) * 2rem);
+  height: calc(var(--size) * 1rem);
+}
+
+button {
+  unset: all;
+  position: absolute;
+  width: calc(var(--size) * 2rem);
+  height: calc(var(--size) * 1rem);
+  padding: 0;
+  margin: 0;
+  color: transparent;
+  background-color: #000;
+  border: 0;
+  border-radius: calc(var(--size) * 1rem);
+  transition: background-color ease 0.4s, transform ease 0.4s;
+}
+
+button::before {
+  position: absolute;
+  top: .15rem;
+  bottom: 0;
+  left: .15rem;
+  width: calc(var(--size) * .8rem);
+  height: calc(var(--size) * .8rem);
+  padding: 0;
+  margin: 0;
+  content: "";
+  background-color: #000;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' role='img' height='.8rem' viewBox='0 0 384 512'%3E%3Cpath fill='white' d='M223.5 32C100 32 0 132.3 0 256S100 480 223.5 480c60.6 0 115.5-24.2 155.8-63.4c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-9.8 1.7-19.8 2.6-30.1 2.6c-96.9 0-175.5-78.8-175.5-176c0-65.8 36-123.1 89.3-153.3c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-6.3-.5-12.6-.8-19-.8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: calc(var(--size) * .8rem);
+  transition: background-color ease 0.4s, transform ease 0.4s;
+}
+
+button[aria-pressed=false] {
+  background-color: royalblue;
+}
+
+button[aria-pressed=false]::before {
+  background-color: royalblue;
+  background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Cpath fill='yellow' stroke='yellow' stroke-width='15' d='M469.333333 128a42.666667 42.666667 0 0 1 85.333334 0v85.333333a42.666667 42.666667 0 0 1-85.333334 0V128z m0 682.666667a42.666667 42.666667 0 0 1 85.333334 0v85.333333a42.666667 42.666667 0 0 1-85.333334 0v-85.333333z m42.666667-85.333334a213.333333 213.333333 0 1 1 0-426.666666 213.333333 213.333333 0 0 1 0 426.666666z m0-85.333333a128 128 0 1 0 0-256 128 128 0 0 0 0 256z m-384-85.333333a42.666667 42.666667 0 0 1 0-85.333334h85.333333a42.666667 42.666667 0 0 1 0 85.333334H128z m682.666667 0a42.666667 42.666667 0 0 1 0-85.333334h85.333333a42.666667 42.666667 0 0 1 0 85.333334h-85.333333z m-30.165334-371.498667a42.666667 42.666667 0 0 1 60.330667 60.330667l-67.456 67.456a42.666667 42.666667 0 0 1-60.330667-60.330667l67.413334-67.456zM243.498667 840.832a42.666667 42.666667 0 1 1-60.330667-60.330667l67.456-67.456a42.666667 42.666667 0 1 1 60.330667 60.330667l-67.413334 67.456z m-60.330667-597.333333a42.666667 42.666667 0 0 1 60.330667-60.330667l67.456 67.456a42.666667 42.666667 0 0 1-60.330667 60.330667l-67.456-67.413334z m657.664 537.002666a42.666667 42.666667 0 0 1-60.330667 60.330667l-67.456-67.456a42.666667 42.666667 0 0 1 60.330667-60.330667l67.456 67.413334z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateX(1.5rem);
+}
+
+button span {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button, button::before {
+    transition: all 0.1s;
+  }
+}</style>
+  <button aria-pressed="false"></button>`;
+
+class Switcher extends HTMLElement {
+  #_value = 'false';
+  #_on = 'Dark theme enabled';
+  #_off = 'Light theme enabled';
+
+  constructor() {
+    super();
+
+    this.darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    this.supportsMediaColorScheme = window.matchMedia('(prefers-color-scheme)').media !== 'not all' ? true : false;
+    this.systemQuery = this.systemQuery.bind(this);
+    this.update = this.update.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.html = document.documentElement;
+
+    this.attachShadow({mode: 'open'});
+    this.shadowRoot.innerHTML = template;
+    this.button = this.shadowRoot.querySelector('button');
+    this.button.addEventListener('click', this.onClick)
+  }
+
+  static get observedAttributes() {
+    return ['value', 'text-on', 'text-off'];
+  }
+
+  get value() {
+    return this.#_value;
+  }
+  set value(value) {
+    if (['true', 'false'].includes(value)){
+      this.#_value = value;
+      if (!document.startViewTransition) {
+        this.update();
+      } else {
+        document.documentElement.style.viewTransitionName = 'darklight';
+        document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
+      }
+    }
+  }
+  get on() {
+    return this.#_on;
+  }
+  set on(value) {
+    this.#_on = value;
+    if (!document.startViewTransition) {
+      this.update();
+    } else {
+        document.documentElement.style.viewTransitionName = 'darklight';
+        document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
+    }
+  }
+  get off() {
+    return this.#_off;
+  }
+  set off(value) {
+    this.#_off = value;
+    if (!document.startViewTransition) {
+      this.update();
+    } else {
+        document.documentElement.style.viewTransitionName = 'darklight';
+        document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
+    }
+  }
+
+  attributeChangedCallback(attr, oldValue, newValue) {
+    switch (attr) {
+      case 'value':
+        if (['true', 'false'].includes(newValue)) {
+          this.#_value = newValue;
+          if (!document.startViewTransition) {
+            this.update();
+          } else {
+            document.documentElement.style.viewTransitionName = 'darklight';
+            document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
+          }
+        }
+        break;
+      case 'text-on':
+        this.#_on = newValue;
+        if (!document.startViewTransition) {
+          this.update();
+        } else {
+          document.documentElement.style.viewTransitionName = 'darklight';
+          document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
+        }
+        break;
+      case 'text-off':
+        this.#_off = newValue;
+        if (!document.startViewTransition) {
+          this.update();
+        } else {
+          document.documentElement.style.viewTransitionName = 'darklight';
+          document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
+        }
+        break;
+    }
+  }
+
+  connectedCallback() {
+    this.html.classList.remove('is-dark', 'is-light');
+    if (localStorage.getItem('darkthemeswitcher')) {
+      this.#_value = localStorage.getItem('darkthemeswitcher');
+    }
+    this.update();
+
+    if (this.supportsMediaColorScheme) {
+      this.darkModeMediaQuery.addEventListener('change', this.systemQuery);
+    }
+  }
+
+  systemQuery(event) {
+    this.#_value = event.matches === true ? 'true' : 'false';
+    if (!document.startViewTransition) {
+      this.update();
+    } else {
+      document.documentElement.style.viewTransitionName = 'darklight';
+      document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.supportsMediaColorScheme) {
+      this.darkModeMediaQuery.removeEventListener(this.systemQuery);
+    }
+  }
+
+  onClick() {
+    this.#_value = this.#_value === 'true' ? 'false' : 'true';
+    localStorage.setItem('darkthemeswitcher', this.#_value);
+    if (!document.startViewTransition) {
+      this.update();
+    } else {
+      document.documentElement.style.viewTransitionName = 'darklight';
+      document.startViewTransition(this.update).then(() => { document.documentElement.style.viewTransitionName = 'none' });
+    }
+
+    this.dispatchEvent(new Event('change'));
+  }
+
+  update() {
+    this.html.classList.remove(this.#_value === 'true' ? 'is-light' : 'is-dark');
+    this.html.classList.add(this.#_value === 'true' ? 'is-dark' : 'is-light');
+    this.button.setAttribute('aria-pressed', this.#_value === 'true' ? 'true' : 'false');
+    this.button.setAttribute('aria-label', `${this.#_value === 'true' ? this.on : this.off}`);
+  }
+}
+
+if (!customElements.get('dark-light-switch')) {
+  customElements.define('dark-light-switch', Switcher);
+}
