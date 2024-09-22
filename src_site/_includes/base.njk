@@ -8,14 +8,13 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(24 116 116)">
     <link href="/static/css/main.css" rel=stylesheet >
     <script>(() => {
-        const ___ls = localStorage.getItem('darkthemeswitcher');
+        let ___ls = localStorage.getItem('darkthemeswitcher');
         if (!___ls) {
           const ___mq = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches;
-          localStorage.setItem('darkthemeswitcher', ___mq);
-          document.documentElement.classList.add(___mq ? 'is-dark' : 'is-light');
-        } else {
-          document.documentElement.classList.add(___ls === 'true' ? 'is-dark' : 'is-light');
+          ___ls = ___mq.toString();
+          localStorage.setItem('darkthemeswitcher', ___ls);
         }
+        document.documentElement.classList.add(___ls === 'true' ? 'is-dark' : 'is-light');
       })();</script>
     <script src="/static/js/theme-toggle.js?v=0" type="module" async></script>
     {% if description %}
