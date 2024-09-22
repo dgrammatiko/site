@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(26 24 24)">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(24 116 116)">
+    <link href="/static/css/main.css" rel=stylesheet >
     <script>
     const ___ls = localStorage.getItem('darkthemeswitcher');
     if (!___ls) {
@@ -17,7 +18,6 @@
     }
     </script>
     <script src="/static/js/theme-toggle.js?v=0" type="module" async></script>
-    <style>{{ getCSS[0]['src_assets/css/main.css'] | safe }}</style>
     {% if description %}
       {% set desc = description | safe %}
     {% else %}

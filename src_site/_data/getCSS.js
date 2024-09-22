@@ -1,38 +1,8 @@
 import fs from 'node:fs/promises';
-import postcss from 'postcss';
-import postcssNested from 'postcss-nested';
-import postcssEasyImport from 'postcss-easy-import';
-import postcssImport from 'postcss-import';
-import postcssMixins from 'postcss-mixins';
-import postcssCustomSelectors from 'postcss-custom-selectors';
-import postcssCustomMedia from 'postcss-custom-media';
-import postcssDiscardComments from 'postcss-discard-comments';
-import postcssPresetEnv from 'postcss-preset-env';
-import cssNano from 'cssnano';
+import { readFileSync } from 'node:fs';
+import { transform, Features } from 'lightningcss';
 
 const output = {};
-
-const plugins = [
-  // postcssNested,
-  postcssEasyImport({ extensions: '.css' }),
-  postcssImport({ extensions: '.css', path: ['src_assets/css', 'src_assets/css/partials'] }),
-  // postcssMixins,
-  // postcssCustomSelectors,
-  // postcssCustomMedia,
-  // postcssDiscardComments({ removeAll: true }),
-  // postcssPresetEnv({
-  //   autoprefixer: {
-  //     from: undefined,
-  //   },
-  //   features: {
-  //     'nesting-rules': true,
-  //   },
-  // }),
-  // cssNano({
-  //   from: undefined,
-  //   preset: ['default', { normalizeUrl: false }],
-  // }),
-];
 
 const getFiles = async (path = './') => {
   const entries = await fs.readdir(path, { withFileTypes: true });
@@ -46,15 +16,26 @@ const processCss = async (fileName, filePath) => {
     return;
   }
 
-  const fileContent = await fs.readFile(filePath);
+  try {
+    const { code, map } = transform({
+      filename: `${process.cwd()}/src_assets/static/css/main.css`,
+      code: Buffer.from(readFileSync(filePath)),
+      minify: true,
+      // sourceMap: false,
+      // include: Features.Colors | Features.Nesting,
+    });
 
-  // const { css } = await postcss(plugins).process(fileContent, { from: undefined });
-  // output[filePath.replace('./', '')] = css;
+    output[filePath.replace('./', '')] = code.toString();
 
-  return fileContent;
+    console.log(output)
+    return output;
+  } catch (error) {
+    throw new Error('Check the CSS');
+  }
 };
 
 export default async () => {
+  return [];
   const files = await getFiles('./src_assets/css/');
   return Promise.all(files.map((file) => processCss(file.name, file.path)));
 };

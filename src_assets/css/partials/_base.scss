@@ -150,27 +150,27 @@ font-family: -apple-system;
 }
 
 @supports (color: color(display-p3 1 1 1)) {
-    :root.is-light {
-      /* P3 */
-      --link-color: color(display-p3 0.16 0.75 0.78);
-      --link-focus-color: color(display-p3 0.196 0.786 0.815);
-      --menu-bg: color(display-p3 0.011 0.301 0.315);
-      --button-bg: color(display-p3 0.16 0.75 0.78);
-    }
-    :root.is-dark {
-      /* P3 */
-      --body-bg: color(display-p3 0.1 0.095 0.095);
-      --link-color: color(display-p3 0.16 0.75 0.78);
-      --link-focus-color: color(display-p3 0.196 0.786 0.815);
-      --button-bg: color(display-p3 0.16 0.75 0.78);
-      --button-fg: color(display-p3 0.1 0.095 0.095);
-    }
+  :root.is-light {
+    /* P3 */
+    --link-color: color(display-p3 0.16 0.75 0.78);
+    --link-focus-color: color(display-p3 0.196 0.786 0.815);
+    --menu-bg: color(display-p3 0.011 0.301 0.315);
+    --button-bg: color(display-p3 0.16 0.75 0.78);
+  }
+  :root.is-dark {
+    /* P3 */
+    --body-bg: color(display-p3 0.1 0.095 0.095);
+    --link-color: color(display-p3 0.16 0.75 0.78);
+    --link-focus-color: color(display-p3 0.196 0.786 0.815);
+    --button-bg: color(display-p3 0.16 0.75 0.78);
+    --button-fg: color(display-p3 0.1 0.095 0.095);
+  }
 }
 
 html {
   background-color: #000;
   min-height: 100vh;
-  min-width: 100vw;
+  // min-width: 100vw;
 }
 
 body {

@@ -1,41 +1,11 @@
-import { readFile, mkdir, writeFile } from 'node:fs/promises';
-import postcss from 'postcss';
-import postcssNested from 'postcss-nested';
-import postcssEasyImport from 'postcss-easy-import';
-import postcssImport from 'postcss-import';
-import postcssMixins from 'postcss-mixins';
-import postcssCustomSelectors from 'postcss-custom-selectors';
-import postcssCustomMedia from 'postcss-custom-media';
-import postcssDiscardComments from 'postcss-discard-comments';
-import postcssPresetEnv from 'postcss-preset-env';
-import cssNano from 'cssnano';
+import { mkdir, writeFile } from 'node:fs/promises';
+// import { readFileSync } from 'node:fs';
+import { compile } from 'sass';
+// import { transform, bundle, Features } from 'lightningcss';
 import { rollup } from 'rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import replace from '@rollup/plugin-replace';
-
-// PostCSS
-const plugins = [
-  postcssImport({ extensions: '.css', path: ['./src_assets/css', './src_assets/css/partials'] }),
-  postcssEasyImport({ extensions: '.css' }),
-  postcssNested,
-  postcssMixins,
-  postcssCustomSelectors,
-  postcssCustomMedia,
-  postcssDiscardComments({ removeAll: true }),
-  postcssPresetEnv({
-    autoprefixer: {
-      from: undefined,
-    },
-    features: {
-      'nesting-rules': true,
-    },
-  }),
-  cssNano({
-    from: undefined,
-    preset: ['default', { normalizeUrl: false }],
-  }),
-];
 
 // Rollup
 const opts = [
@@ -103,22 +73,25 @@ const pack = async (opt) => {
 
 async function postcssFn() {
   try {
-  const result = await postcss(plugins).process(await readFile(`${process.cwd()}/src_assets/css/main.css`, { encoding: 'utf8' }), {
-    from: undefined,
-    to: undefined,
-  });
+    // const { code, map } = bundle({
+    //   filename: 'src_assets/css/main.css',
+    //   minify: true,
+    //   include: Features.Colors | Features.Nesting,
+    // });
+    const code = compile('src_assets/css/main.scss', {
+      style: 'compressed',
+    });
 
-  if (result) {
-    if (!(await mkdir(`${process.cwd()}/live/static/css`, { recursive: true }))) {
-      await writeFile(`${process.cwd()}/live/static/css/main.css`, result.css);
-    } else {
-      await writeFile(`${process.cwd()}/live/static/css/main.css`, result.css);
+    if (code) {
+      if (!(await mkdir(`${process.cwd()}/live/static/css`, { recursive: true }))) {
+        await writeFile(`${process.cwd()}/live/static/css/main.css`, code.css);
+      } else {
+        await writeFile(`${process.cwd()}/live/static/css/main.css`, code.css);
+      }
     }
+  } catch (error) {
+    console.error(error)
+    throw new Error('Check the CSS');
   }
-} catch (error) {
-  // eslint-disable-next-line no-console
-  console.error(error);
-  process.exit(1);
-}
 }
 export default Promise.all([postcssFn(), ...opts.map(pack)]);

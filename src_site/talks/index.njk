@@ -4,38 +4,38 @@ title: Talks
 ---
 <main class="main">
   <h1 class="code-title">Web</h1>
-<ul class="cards web">
-  {% for code in talksData.talks %}
-    <li class="card">
-      {% if code.title %}
-        <header class="card-header">
-          <h2 class="card-title">{{ code.title | safe }}</h2>
-        </header>
-      {% endif %}
-      <div class="card-body">
-        {% if code.videoId %}
-          <lite-youtube videoid="{{ code.videoId }}"  playlabel="Play Video: {{ code.title }}"></lite-youtube>
+  <section class="cards web">
+    {% for code in talksData.talks %}
+      <article class="card">
+        {% if code.title %}
+          <header class="card-header">
+            <h2 class="card-title">{{ code.title | safe }}</h2>
+          </header>
         {% endif %}
-        <p class="card-text">{{ code.description }}</p>
-      </div>
-      <footer class="card-footer">
-        <nav>
-          <ul class="nav-links">
-            {% if code.slides %}
+        <div class="card-body">
+          {% if code.videoId %}
+            <lite-youtube videoid="{{ code.videoId }}"  playlabel="Play Video: {{ code.title }}"></lite-youtube>
+          {% endif %}
+          <p class="card-text">{{ code.description }}</p>
+        </div>
+        <footer class="card-footer">
+          <nav>
+            <ul class="nav-links">
+              {% if code.slides %}
+                <li class="nav-item">
+                  <a class="btn" target="_blank" href="{{ code.slides }}" style="padding: 1rem 2rem;">Slides</a>
+                </li>
+              {% endif %}
+              {% if code.videoId %}
               <li class="nav-item">
-                <a class="btn" target="_blank" href="{{ code.slides }}" style="padding: 1rem 2rem;">Slides</a>
+                <a class="btn" target="_blank" rel="noopener noreferer" href="https://youtube.com/watch?v={{ code.videoId }}" style="padding: 1rem 2rem;">Video</a>
               </li>
-            {% endif %}
-            {% if code.videoId %}
-            <li class="nav-item">
-              <a class="btn" target="_blank" rel="noopener noreferer" href="https://youtube.com/watch?v={{ code.videoId }}" style="padding: 1rem 2rem;">Video</a>
-            </li>
-            {% endif %}
-          </ul>
-      </footer>
-    </li>
-  {% endfor %}
-</ul>
-<script type="module" src="/static/js/lite-youtube-embed.js"></script>
-<script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
+              {% endif %}
+            </ul>
+        </footer>
+      </article>
+    {% endfor %}
+  </section>
+  <script type="module" src="/static/js/lite-youtube-embed.js"></script>
+  <script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
 </main>

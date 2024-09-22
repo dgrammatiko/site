@@ -7,6 +7,7 @@ const root = process.cwd();
 
 export default {
   minifyHTML: (content, outputPath) => {
+    return content;
     if (outputPath.endsWith('.html') && ![`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
       return htmlmin.minify(content, {
         useShortDoctype: true,
