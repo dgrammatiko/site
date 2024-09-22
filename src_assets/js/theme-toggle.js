@@ -162,13 +162,13 @@ class Switcher extends HTMLElement {
 
   onClick() {
     this.#_value = this.#_value === 'true' ? 'false' : 'true';
-    localStorage.setItem('darkthemeswitcher', this.#_value);
     this.update();
 
     this.dispatchEvent(new Event('change'));
   }
 
   _update() {
+    localStorage.setItem('darkthemeswitcher', this.#_value);
     this.html.classList.remove(this.#_value === 'true' ? 'is-light' : 'is-dark');
     this.html.classList.add(this.#_value === 'true' ? 'is-dark' : 'is-light');
     this.button.setAttribute('aria-pressed', this.#_value === 'true' ? 'true' : 'false');
