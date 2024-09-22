@@ -8,8 +8,9 @@
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(24 116 116)">
     <link href="/static/css/main.css" rel=stylesheet >
     <script>(() => {
-        const ___ls = localStorage.getItem('darkthemeswitcher'), ___mq = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches;
+        const ___ls = localStorage.getItem('darkthemeswitcher');
         if (!___ls) {
+          const ___mq = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches;
           localStorage.setItem('darkthemeswitcher', ___mq);
           document.documentElement.classList.add(___mq ? 'is-dark' : 'is-light');
         } else {
