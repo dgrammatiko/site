@@ -7,7 +7,7 @@
     <meta name="color-scheme" content="dark light">
     <meta name="theme-color" content="#18c9cd" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#1a1818" media="(prefers-color-scheme: dark)">
-    <link href="/static/css/main.css" rel=stylesheet crossorigin>
+    <link href="{{ metadata.url2 }}/static/css/main.css" rel=stylesheet crossorigin>
     <script>(() => {
         let ___ls = localStorage.getItem('darkthemeswitcher');
         if (!___ls) {
@@ -16,7 +16,7 @@
         }
         document.documentElement.classList.add(___ls === 'true' ? 'is-dark' : 'is-light');
       })();</script>
-    <script src="/static/js/theme-toggle.js?v=0" type="module" async></script>
+    <script src="{{ metadata.url2 }}/static/js/theme-toggle.js?v=0" type="module" async></script>
     {% if description %}
       {% set desc = description | safe %}
     {% else %}
