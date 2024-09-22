@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(26 24 24)">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(24 116 116)">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#18c9cd" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1a1818" media="(prefers-color-scheme: dark)">
     <link href="/static/css/main.css" rel=stylesheet >
     <script>(() => {
         let ___ls = localStorage.getItem('darkthemeswitcher');
