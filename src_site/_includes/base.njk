@@ -10,8 +10,7 @@
     <script>(() => {
         let ___ls = localStorage.getItem('darkthemeswitcher');
         if (!___ls) {
-          const ___mq = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches;
-          ___ls = ___mq.toString();
+          ___ls = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches.toString();
           localStorage.setItem('darkthemeswitcher', ___ls);
         }
         document.documentElement.classList.add(___ls === 'true' ? 'is-dark' : 'is-light');
