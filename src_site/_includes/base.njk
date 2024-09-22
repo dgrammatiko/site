@@ -7,16 +7,15 @@
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(26 24 24)">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="rgb(24 116 116)">
     <link href="/static/css/main.css" rel=stylesheet >
-    <script>
-    const ___ls = localStorage.getItem('darkthemeswitcher');
-    if (!___ls) {
-      const ___mq = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches;
-      localStorage.setItem('darkthemeswitcher', ___mq ? 'true' : 'false');
-      document.documentElement.classList.add(___mq ? 'is-dark' : 'is-light');
-    } else {
-      document.documentElement.classList.add(___ls ? 'is-dark' : 'is-light');
-    }
-    </script>
+    <script>(() => {
+        const ___ls = localStorage.getItem('darkthemeswitcher'), ___mq = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches;
+        if (!___ls) {
+          localStorage.setItem('darkthemeswitcher', ___mq);
+          document.documentElement.classList.add(___mq ? 'is-dark' : 'is-light');
+        } else {
+          document.documentElement.classList.add(___ls === 'true' ? 'is-dark' : 'is-light');
+        }
+      })();</script>
     <script src="/static/js/theme-toggle.js?v=0" type="module" async></script>
     {% if description %}
       {% set desc = description | safe %}
