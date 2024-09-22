@@ -41,7 +41,7 @@ font-family: -apple-system;
 
 :root {
   color-scheme: dark light;
-  --body-bg: #f3f3f3;
+  --body-bg: #bbb;
   --body-color: rgb(209, 209, 209);
   --link-color: rgb(0, 155, 167);
   --link-focus-color: rgb(23, 235, 241);
@@ -136,7 +136,7 @@ font-family: -apple-system;
 
 :root.is-light {
   color-scheme: light;
-  --body-bg: #f3f3f3;
+  --body-bg: #bbb;
   --body-color: rgb(55, 55, 55);
   --link-color: rgb(0, 142, 147);
   --link-focus-color: rgb(0, 204, 210);
