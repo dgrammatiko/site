@@ -21,7 +21,7 @@
     "@11ty/eleventy-img": "4.0.2",
     "@11ty/eleventy-plugin-rss": "2.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.0",
-    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-node-resolve": "15.2.4",
     "@rollup/plugin-replace": "5.0.7",
     "@rollup/plugin-terser": "0.4.4",
     "11ty-to-codepen": "1.0.2",
@@ -39,7 +39,7 @@
     "luxon": "3.5.0",
     "markdown-it": "14.1.0",
     "markdown-it-anchor": "9.2.0",
-    "rollup": "4.22.2",
+    "rollup": "4.22.4",
     "sass": "^1.79.3",
     "sharp": "^0.33.5"
   }
