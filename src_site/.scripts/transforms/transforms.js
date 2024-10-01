@@ -1,25 +1,37 @@
 import { parseHTML } from 'linkedom';
-import htmlmin from 'html-minifier';
 import pkg from 'fs-extra';
+import htmlnano from 'htmlnano';
 
 const { writeFile, ensureDir } = pkg;
 const root = process.cwd();
 
+const options = {
+  // removeEmptyAttributes: false, // Disable the module "removeEmptyAttributes"
+  collapseWhitespace: 'conservative', // Pass options to the module "collapseWhitespace"
+};
+const postHtmlOptions = {
+  sync: true, // https://github.com/posthtml/posthtml#usage
+  lowerCaseTags: true, // https://github.com/posthtml/posthtml-parser#options
+  quoteAllAttributes: false, // https://github.com/posthtml/posthtml-render#options
+};
+
 export default {
-  minifyHTML: (content, outputPath) => {
-    return content;
-    if (outputPath.endsWith('.html') && ![`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
-      return htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-      });
-    }
-    if ([`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
-      return content.replace(/>\s*\n\s*</g, '><');
-    }
-    return content;
-  },
+  // minifyHTML: async (content, outputPath) => {
+  //   if (outputPath.endsWith('.html') && ![`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
+  //     // "preset" arg might be skipped (see "Presets" section below for more info)
+  //     // "postHtmlOptions" arg might be skipped
+  //     try {
+  //       const result = await htmlnano.process(content, options, 'safe', postHtmlOptions);
+  //       return result.html;
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   }
+  //   if ([`${root}/live/index-top.html`, `${root}/live/index-bottom.html`].includes(outputPath)) {
+  //     return content.replace(/>\s*\n\s*</g, '><');
+  //   }
+  //   return content;
+  // },
   createBodyPart: async (value, outputPath) => {
     if (outputPath.endsWith('.html')) {
       const { document } = parseHTML(value);
