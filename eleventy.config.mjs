@@ -7,6 +7,7 @@ import transforms from './src_site/.scripts/transforms/transforms.js';
 import shortcodes from './src_site/.scripts/shortcodes/shortcodes.js';
 import libraries from './src_site/.scripts/libraries/libraries.js';
 import beforeBuild from './src_site/.scripts/beforeBuild/beforeBuild.js';
+import afterBuild from './src_site/.scripts/afterBuild/afterBuild.js';
 import { directories } from './src_site/.scripts/passthorughCopy/passthroughCopy.js';
 
 const shortcodeFns = ['addNunjucksAsyncShortcode', 'addLiquidShortcode', 'addJavaScriptFunction'];
@@ -26,7 +27,8 @@ export default function (conf) {
   conf.addPlugin(highlight);
   conf.configureErrorReporting({ allowMissingExtensions: true });
 
-  conf.on('beforeBuild', async () => await beforeBuild);
+  conf.on('eleventy.before', async ({ directories, results, runMode, outputMode }) => await beforeBuild({ directories, results, runMode, outputMode }));
+  // conf.on('eleventy.after', async ({ directories, results, runMode, outputMode }) => await afterBuild({ directories, results, runMode, outputMode }));
 
   return { dir: { input: 'src_site', output: `${process.cwd()}/live` } };
 }

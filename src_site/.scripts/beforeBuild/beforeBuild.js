@@ -94,4 +94,4 @@ async function postcssFn() {
     throw new Error('Check the CSS');
   }
 }
-export default Promise.all([postcssFn(), ...opts.map(pack)]);
+export default async () => Promise.all([postcssFn(), ...opts.map(pack)]);
