@@ -48,6 +48,10 @@
 
     {% include "footer.njk" %}
 
-    <script type="module">window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); });</script>
+    <script type="module">window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+      const currentDate = new Date();
+      if (9 === currentDate.getMonth() && 27 === currentDate.getDay() || 10 === currentDate.getMonth() && 29 === currentDate.getDay()) import('/static/js/balloons.js').then(m => m.balloons());
+    });</script>
   </body>
 </html>

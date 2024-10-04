@@ -44,6 +44,15 @@ const opts = [
     },
     plugins: [nodeResolve(), terser()],
   },
+  {
+    input: 'src_assets/js/balloons.js',
+    output: {
+      sourcemap: false,
+      format: 'esm',
+      file: './live/static/js/balloons.js',
+    },
+    plugins: [nodeResolve(), terser()],
+  },
 ];
 
 const pack = async (opt) => {
