@@ -27,7 +27,6 @@ const processCss = async (fileName, filePath) => {
 
     output[filePath.replace('./', '')] = code.toString();
 
-    console.log(output)
     return output;
   } catch (error) {
     throw new Error('Check the CSS');

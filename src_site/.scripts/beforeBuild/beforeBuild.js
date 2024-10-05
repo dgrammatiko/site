@@ -27,7 +27,7 @@ const opts = [
     plugins: [terser()],
   },
   {
-    input: './node_modules/lite-youtube-embed/src/lite-yt-embed.js',
+    input: 'src_assets/js/lite-yt-embed.js',
     output: {
       sourcemap: false,
       format: 'esm',
@@ -35,15 +35,15 @@ const opts = [
     },
     plugins: [nodeResolve(), terser()],
   },
-  {
-    input: './src_site/router.js',
-    output: {
-      sourcemap: false,
-      format: 'esm',
-      file: './live/static/js/router.js',
-    },
-    plugins: [nodeResolve(), terser()],
-  },
+  // {
+  //   input: 'src_assets/js/router.js',
+  //   output: {
+  //     sourcemap: false,
+  //     format: 'esm',
+  //     file: './live/static/js/router.js',
+  //   },
+  //   plugins: [nodeResolve(), terser()],
+  // },
   {
     input: 'src_assets/js/balloons.js',
     output: {
