@@ -57,68 +57,11 @@ font-family: -apple-system;
 @supports (color: color(display-p3 1 1 1)) {
   :root {
     /* P3 */
-      --link-color: color(display-p3 0.02 0.43 0.45);
-      --link-focus-color: color(display-p3 0.196 0.786 0.815);
-      --menu-bg: color(display-p3 0.01 0.38 0.39);
-      --button-bg: color(display-p3 0.16 0.75 0.78);
+    --link-color: color(display-p3 0.02 0.43 0.45);
+    --link-focus-color: color(display-p3 0.196 0.786 0.815);
+    --menu-bg: color(display-p3 0.01 0.38 0.39);
+    --button-bg: color(display-p3 0.16 0.75 0.78);
   }
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  vertical-align: baseline;
-}
-
-*,
-:after,
-:before {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  vertical-align: baseline;
-  box-sizing: border-box;
-}
-
-:where(html, body, h1, h2, h3, h4, h5, h6, button, summary, nav) {
-  font-family: var(--def-font);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root { /* :root:not(.is-light) */
-    color-scheme: dark;
-    --body-bg: rgb(26, 24, 24);
-    --link-color: rgb(62, 140, 146);
-    --link-focus-color: rgb(6, 65, 67);
-    --menu-bg: rgb(26, 24, 24);
-    --button-bg: rgb(0, 79, 82);
-    --button-fg: rgb(26, 24, 24);
-    --body-color: #333;
-    --menu-fg: #fff;
-    --card-bg: rgb(62, 140, 146);
-  }
-
-  @supports (color: color(display-p3 1 1 1)) {
-    :root {
-      /* P3 */
-      --link-color: color(display-p3 0.02 0.43 0.45);
-      --link-focus-color: color(display-p3 0.196 0.786 0.815);
-      --menu-bg: color(display-p3 0.01 0.38 0.39);
-      --button-bg: color(display-p3 0.16 0.75 0.78);
-      --button-fg: color(display-p3 0.1 0.095 0.095);
-    }
-  }
-/*
-  :where(img) {
-    opacity: .75;
-    transition: opacity .5s ease-in-out;
-  }
-  :where(img):hover {
-    opacity: 1;
-  } */
 }
 
 :root.is-dark {
@@ -159,12 +102,35 @@ font-family: -apple-system;
   }
   :root.is-dark {
     /* P3 */
-    --link-color: color(display-p3 0.02 0.43 0.45);
+    --link-color: color(display-p3 0.04 0.67 0.7);
     --link-focus-color: color(display-p3 0.196 0.786 0.815);
     --menu-bg: color(display-p3 0.01 0.38 0.39);
     --button-bg: color(display-p3 0.16 0.75 0.78);
     --button-fg: color(display-p3 0.1 0.095 0.095);
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+}
+
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+:where(html, body, h1, h2, h3, h4, h5, h6, button, summary, nav) {
+  font-family: var(--def-font);
 }
 
 html {
