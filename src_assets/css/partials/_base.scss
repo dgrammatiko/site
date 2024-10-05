@@ -57,10 +57,10 @@ font-family: -apple-system;
 @supports (color: color(display-p3 1 1 1)) {
   :root {
     /* P3 */
-    --link-color: color(display-p3 0.16 0.75 0.78);
-    --link-focus-color: color(display-p3 0.196 0.786 0.815);
-    --menu-bg: color(display-p3 0.011 0.301 0.315);
-    --button-bg: color(display-p3 0.16 0.75 0.78);
+      --link-color: color(display-p3 0.02 0.43 0.45);
+      --link-focus-color: color(display-p3 0.196 0.786 0.815);
+      --menu-bg: color(display-p3 0.01 0.38 0.39);
+      --button-bg: color(display-p3 0.16 0.75 0.78);
   }
 }
 
@@ -92,21 +92,21 @@ font-family: -apple-system;
     color-scheme: dark;
     --body-bg: rgb(26, 24, 24);
     --link-color: rgb(62, 140, 146);
-    --link-focus-color: rgb(0, 204, 210);
+    --link-focus-color: rgb(6, 65, 67);
     --menu-bg: rgb(26, 24, 24);
-    --button-bg: rgb(0, 142, 147);
+    --button-bg: rgb(0, 79, 82);
     --button-fg: rgb(26, 24, 24);
     --body-color: #333;
     --menu-fg: #fff;
-    --card-bg: #4ba4a7;
+    --card-bg: rgb(62, 140, 146);
   }
 
   @supports (color: color(display-p3 1 1 1)) {
     :root {
       /* P3 */
-      --body-bg: color(display-p3 0.1 0.095 0.095);
-      --link-color: color(display-p3 0.16 0.75 0.78);
+      --link-color: color(display-p3 0.02 0.43 0.45);
       --link-focus-color: color(display-p3 0.196 0.786 0.815);
+      --menu-bg: color(display-p3 0.01 0.38 0.39);
       --button-bg: color(display-p3 0.16 0.75 0.78);
       --button-fg: color(display-p3 0.1 0.095 0.095);
     }
@@ -138,13 +138,13 @@ font-family: -apple-system;
   color-scheme: light;
   --body-bg: #bbb;
   --body-color: rgb(55, 55, 55);
-  --link-color: rgb(0, 142, 147);
-  --link-focus-color: rgb(0, 204, 210);
+  --link-color: rgb(0, 79, 82);
+  --link-focus-color: rgb(6, 65, 67);
   --menu-bg: rgb(0, 78, 81);
   --menu-fg: #fff;
-  --button-bg: rgb(0, 142, 147);
+  --button-bg: rgb(0, 79, 82);
   --button-fg: #fff;
-  --card-bg: #187474;
+  --card-bg: rgb(62, 140, 146);
   /* --def-font: "dgrammatiko", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
   /* --alt-font: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
 }
@@ -152,16 +152,16 @@ font-family: -apple-system;
 @supports (color: color(display-p3 1 1 1)) {
   :root.is-light {
     /* P3 */
-    --link-color: color(display-p3 0.16 0.75 0.78);
+    --link-color: color(display-p3 0.02 0.43 0.45);
     --link-focus-color: color(display-p3 0.196 0.786 0.815);
-    --menu-bg: color(display-p3 0.011 0.301 0.315);
+    --menu-bg: color(display-p3 0.01 0.38 0.39);
     --button-bg: color(display-p3 0.16 0.75 0.78);
   }
   :root.is-dark {
     /* P3 */
-    --body-bg: color(display-p3 0.1 0.095 0.095);
-    --link-color: color(display-p3 0.16 0.75 0.78);
+    --link-color: color(display-p3 0.02 0.43 0.45);
     --link-focus-color: color(display-p3 0.196 0.786 0.815);
+    --menu-bg: color(display-p3 0.01 0.38 0.39);
     --button-bg: color(display-p3 0.16 0.75 0.78);
     --button-fg: color(display-p3 0.1 0.095 0.095);
   }
