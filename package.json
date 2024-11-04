@@ -32,7 +32,7 @@
     "dotenv": "16.4.5",
     "fs-extra": "11.2.0",
     "htmlnano": "^2.1.1",
-    "lightningcss": "^1.27.0",
+    "lightningcss": "1.28.1",
     "linkedom": "0.18.5",
     "lite-youtube-embed": "0.3.3",
     "lodash-es": "^4.17.21",
