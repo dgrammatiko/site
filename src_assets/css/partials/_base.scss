@@ -143,13 +143,14 @@ body {
   --space-s-l: 1rem;
   --grid-placement: auto-fill;
   --grid-min-item-size: 1fr;
-  text-align: left;
-  text-align: start;
-  color: var(--body-color);
   background-color: var(--body-bg);
+  color: var(--body-color);
+  display: grid;
   font-weight: 200;
   line-height: 1.5rem;
   min-height: 100vh;
+  text-align: left;
+  text-align: start;
   text-rendering: optimizeLegibility;
   transition: background-color 500ms ease-in-out, color 200ms ease-in-out;
 }
