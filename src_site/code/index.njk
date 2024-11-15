@@ -14,7 +14,7 @@ title: Code
       {% endif %}
       <div class="card-body">
         {% if blog.image %}
-          <img class="card-img" loading="lazy" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
+          <img class="card-img" loading="eager" src="/static/images/code/{{ blog.image }}" alt="{{ blog.imageAltText }}" />
         {% endif %}
         <p>{{ blog.description }}</p>
       </div>
