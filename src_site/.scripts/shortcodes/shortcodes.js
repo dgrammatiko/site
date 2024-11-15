@@ -1,4 +1,5 @@
 import Image from '@11ty/eleventy-img';
+import { existsSync } from 'node:fs';
 
 async function getImage(image, dir) {
   let metadata = await Image(`./src_assets/images/${dir}/${image}`, {
@@ -26,7 +27,10 @@ export default {
       return `<meta property="og:image" content="https://${metadata.domain}${await getImage(image, 'talks')}">`;
     }
   },
-  imagine: async (src, dir, alt = '', sizes, classs = '', lazy = false) => {
+  imagine: async (src, dir, alt = '', sizes = '(min-width: 30em) 50vw, 100vw', classs = '', lazy = false) => {
+    if (!existsSync(`./src_assets/images/${dir}/${src}`)) {
+      return `<br>`;
+    }
     let metadata = await Image(`./src_assets/images/${dir}/${src}`, {
       urlPath: `/static/images/${dir}/`,
       outputDir: `live/static/images/${dir}/`,
