@@ -4,8 +4,8 @@
   navigation: auto;
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
+::view-transition-old(mainEl),
+::view-transition-new(mainEl) {
   --mask-frames: 20;
   --from: 100%;
   --to: 0%;
@@ -16,7 +16,7 @@
   animation: sweep var(--v-t-speed) steps(var(--mask-frames)) both;
 }
 
-::view-transition-new(root) {
+::view-transition-new(mainEl) {
   --from: 0%;
   --to: 100%;
   mask-image: var(--v-t-bg2);

@@ -180,12 +180,17 @@ class Switcher extends HTMLElement {
       this._update();
     } else {
       this.html.style.viewTransitionName = 'darklight';
+      const main = document.querySelector('main');
+      if (main) main.style.viewTransitionName = 'none';
+
       const transition = document.startViewTransition(this._update);
 
       try {
         await transition.finished;
       } finally {
         this.html.style.viewTransitionName = 'none';
+        const main = document.querySelector('main');
+        if (main) main.style.viewTransitionName = 'mainEl';
       }
     }
   }

@@ -17,9 +17,11 @@ renderData:
   permalink: /tags/{{ tag }}/
 ---
 
+<main>
 <h1>Tagged “{{ tag }}”</h1>
 
 {% set postslist = collections[ tag ] %}
 {% include "listing-all.njk" %}
 
 <p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>
+</main>
