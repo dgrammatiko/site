@@ -43,7 +43,7 @@ export default {
       sizes,
       decoding: 'async',
     };
-    imageAttributes.loading = lazy ? 'lazy' : 'eager';
+    // imageAttributes.loading = lazy ? 'lazy' : 'eager';
     if (classs) imageAttributes.class = classs;
 
     // You bet we throw an error on missing alt in `imageAttributes` (alt="" works okay)

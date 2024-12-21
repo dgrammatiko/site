@@ -13,10 +13,12 @@ title: Talks
           </header>
         {% endif %}
         <div class="card-body">
+          <figure>
           {% if code.videoId %}
             <lite-youtube videoid="{{ code.videoId }}"  playlabel="Play Video: {{ code.title }}"></lite-youtube>
           {% endif %}
-          <p class="card-text">{{ code.description }}</p>
+            <figcaption>{{ code.description }}</figcaption>
+          </figure>
         </div>
         <footer>
           <nav>

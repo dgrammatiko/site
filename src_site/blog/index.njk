@@ -11,10 +11,12 @@ title: Blog
         <h2>{% if blog.data.title %}{{ blog.data.title }}{% endif %}</h2>
       </header>
       <div class="card-body">
+        <figure>
         {% if blog.data.image %}
           {% imagine blog.data.image, 'blog', blog.data.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
         {% endif %}
-        <p>{{ blog.data.custom_excerpt }}</p>
+          <figcaption>{{ blog.data.custom_excerpt }}</figcaption>
+        </figure>
       </div>
       <footer>
         <nav>
