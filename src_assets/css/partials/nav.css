@@ -3,7 +3,7 @@ nav {
   height: 5rem;
   background-color: var(--menu-bg);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 

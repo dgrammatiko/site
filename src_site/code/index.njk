@@ -4,21 +4,21 @@ title: Code
 ---
 <main>
   <h1 class="code-title">Side Projects</h1>
-  <section class="cards web">
+  <section class="cards">
   {% for blog in codeData.web %}
-    <article class="card">
+    <article>
       {% if blog.title %}
-        <header class="card-header">
+        <header>
           <h2 class="card-title">{{ blog.title }}</h2>
         </header>
       {% endif %}
       <div class="card-body">
         {% if blog.image %}
-          {% imagine blog.image, "code", blog.imageAltText, "(min-width: 30em) 50vw, 100vw", "card-img", false %}
+          {% imagine blog.image, "code", blog.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
         {% endif %}
         <p>{{ blog.description }}</p>
       </div>
-      <footer class="card-footer">
+      <footer>
         <nav>
           <ul class="nav-links">
             {% if blog.link %}
