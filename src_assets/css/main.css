@@ -1,0 +1,14 @@
+@charset "UTF-8";
+@import "partials/base.css";
+@import "partials/body.css";
+@import "partials/button.css";
+@import "partials/main.css";
+@import "partials/footer.css";
+@import "partials/nav.css";
+@import "partials/blogs.css";
+@import "partials/blog.css";
+@import "partials/blog_lang.css";
+@import "partials/codes.css";
+@import "partials/lazy-tube.css";
+@import "partials/toggler.css";
+@import "partials/view_transitions.css";

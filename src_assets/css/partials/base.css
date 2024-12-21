@@ -136,7 +136,7 @@ font-family: -apple-system;
 html {
   background-color: #000;
   min-height: 100vh;
-  // min-width: 100vw;
+  /* min-width: 100vw; */
 }
 
 body {

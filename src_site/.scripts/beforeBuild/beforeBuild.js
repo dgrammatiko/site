@@ -1,7 +1,5 @@
 import { mkdir, writeFile } from 'node:fs/promises';
-// import { readFileSync } from 'node:fs';
-import { compile } from 'sass';
-// import { transform, bundle, Features } from 'lightningcss';
+import { transform, bundle, Features } from 'lightningcss';
 import { rollup } from 'rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
@@ -82,20 +80,17 @@ const pack = async (opt) => {
 
 async function postcssFn() {
   try {
-    // const { code, map } = bundle({
-    //   filename: 'src_assets/css/main.css',
-    //   minify: true,
-    //   include: Features.Colors | Features.Nesting,
-    // });
-    const code = compile('src_assets/css/main.scss', {
-      style: 'compressed',
+    const { code, map } = bundle({
+      filename: 'src_assets/css/main.css',
+      minify: true,
+      include: Features.Colors | Features.Nesting,
     });
 
     if (code) {
       if (!(await mkdir(`${process.cwd()}/live/static/css`, { recursive: true }))) {
-        await writeFile(`${process.cwd()}/live/static/css/main.css`, code.css);
+        await writeFile(`${process.cwd()}/live/static/css/main.css`, code);
       } else {
-        await writeFile(`${process.cwd()}/live/static/css/main.css`, code.css);
+        await writeFile(`${process.cwd()}/live/static/css/main.css`, code);
       }
     }
   } catch (error) {
