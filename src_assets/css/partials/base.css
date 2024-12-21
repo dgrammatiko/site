@@ -209,10 +209,10 @@ body {
   width: 1px;
   word-wrap: normal !important;
 }
-/*
+
 ::view-transition {
-  background: var(--menu-bg);
-} */
+  background: var(--body-bg);
+}
 
 :where(main) {
   view-transition-name: mainEl;
