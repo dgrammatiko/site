@@ -139,16 +139,12 @@ font-family: -apple-system;
 html {
   background-color: #000;
   min-height: 100vh;
-  /* min-width: 100vw; */
 }
 
 body {
-  --space-s-l: 1rem;
-  --grid-placement: auto-fill;
-  --grid-min-item-size: 1fr;
   background-color: var(--body-bg);
   color: var(--body-color);
-  display: grid;
+  /* display: grid; */
   font-weight: 200;
   line-height: 1.5rem;
   min-height: 100vh;
@@ -156,6 +152,10 @@ body {
   text-align: start;
   text-rendering: optimizeLegibility;
   transition: background-color 500ms ease-in-out, color 200ms ease-in-out;
+}
+
+main {
+  view-transition-name: mainEl;
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -208,12 +208,4 @@ body {
   position: absolute;
   width: 1px;
   word-wrap: normal !important;
-}
-
-::view-transition {
-  background: var(--body-bg);
-}
-
-:where(main) {
-  view-transition-name: mainEl;
 }

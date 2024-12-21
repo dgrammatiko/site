@@ -19,10 +19,9 @@ title: Blog
       <footer>
         <nav>
           <ul class="nav-links">
-            <li class="nav-item">
-              <a href="{{ blog.url }}">{% if blog.data.title %}{{ blog.data.title }}{% endif %}</a>
-            </li>
+            <li class="nav-item"><a href="{{ blog.url }}">{% if blog.data.title %}{{ blog.data.title }}{% endif %}</a></li>
           </ul>
+        </nav>
       </footer>
     </article>
     {% endfor %}

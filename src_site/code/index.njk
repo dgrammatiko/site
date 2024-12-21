@@ -5,34 +5,32 @@ title: Code
 <main>
   <h1 class="code-title">Side Projects</h1>
   <section class="cards">
-  {% for blog in codeData.web %}
+    {% for blog in codeData.web %}
     <article>
-      {% if blog.title %}
-        <header>
-          <h2 class="card-title">{{ blog.title }}</h2>
-        </header>
-      {% endif %}
+      <header>
+        <h2>{% if blog.title %}{{ blog.title }}{% endif %}</h2>
+      </header>
       <div class="card-body">
-        {% if blog.image %}
-          {% imagine blog.image, "code", blog.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
-        {% endif %}
-        <p>{{ blog.description }}</p>
+        <figure>
+          {% if blog.image %}
+            {% imagine blog.image, "code", blog.imageAltText, "(min-width: 30em) 50vw, 100vw" %}
+          {% endif %}
+          <figcaption>{{ blog.description }}</figcaption>
+        </figure>
       </div>
       <footer>
         <nav>
           <ul class="nav-links">
             {% if blog.link %}
-              <li class="nav-item">
-                <a target="_blank" rel="noopener" href="{{ blog.link }}">website</a>
-              </li>
+              <li class="nav-item"><a target="_blank" rel="noopener" href="{{ blog.link }}">website</a></li>
             {% endif %}
             {% if blog.repo %}
-              <li class="nav-item">
-                <a target="_blank" rel="noopener" href="{{ blog.repo }}">Source code</a>
-              </li>
+              <li class="nav-item"><a target="_blank" rel="noopener" href="{{ blog.repo }}">Source code</a></li>
             {% endif %}
+          </ul>
+        </nav>
       </footer>
     </article>
-  {% endfor %}
+    {% endfor %}
   </section>
 </main>

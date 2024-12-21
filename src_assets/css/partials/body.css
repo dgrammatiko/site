@@ -1,12 +1,15 @@
 /* Code from https://buildexcellentwebsit.es */
-.grid {
-    display: grid;
-    gap: var(--gutter, var(--space-s-l));
-    grid-template-columns: repeat(var(--grid-placement,auto-fill), minmax(var(--grid-min-item-size,16rem),1fr));
+/* :where(body) {
+  --space-s-l: 1rem;
+  --grid-placement: auto-fit;
+  --grid-min-item-size: 1fr;
+  display: grid;
+  gap: var(--gutter, var(--space-s-l));
+  grid-template-columns: repeat(var(--grid-placement,auto-fill), minmax(var(--grid-min-item-size,16rem),1fr));
 }
 
-.grid[data-rows="masonry"] {
+:where(body[data-rows="masonry"]) {
   align-items: start;
   grid-template-rows: masonry;
-}
+} */
 /* End of Code from https://buildexcellentwebsit.es */

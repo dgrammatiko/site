@@ -50,7 +50,7 @@
         max-width: 340px;
       }
 
-      & p {
+      & figcaption {
         color: var(--menu-fg);
         padding: 1rem;
       }
@@ -64,6 +64,7 @@
       margin-top: unset;
 
       &> nav {
+        background-color: transparent;
         color: #fff;
         color: var(--menu-fg);
         margin-bottom: 1rem;
