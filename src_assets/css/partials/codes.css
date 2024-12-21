@@ -3,6 +3,8 @@
   text-align: center;
   text-shadow: .02rem .02rem var(--menu-fg);
   margin-bottom: 2em;
+  font-family: dgrammatiko;
+  margin-block: 2em;
 }
 
 .cards {
