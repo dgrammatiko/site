@@ -209,3 +209,7 @@ body {
   width: 1px;
   word-wrap: normal !important;
 }
+
+::view-transition {
+  background: var(--menu-bg);
+}
