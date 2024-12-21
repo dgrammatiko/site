@@ -12,7 +12,7 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 
   & article {
-    background-color: var(--card-bg);
+    background-color: var(--menu-bg);
     color: var(--menu-fg);
     display: flex;
     flex-direction: column;
@@ -42,7 +42,7 @@
     & .card-body {
       flex: 1;
       min-height: 140px;
-      background: var(--card-bg);
+      background: var(--body-bg);
       margin-top: 0;
       min-height: 20rem;
 
@@ -51,7 +51,7 @@
       }
 
       & figcaption {
-        color: var(--menu-fg);
+        color: var(--body-color);
         padding: 1rem;
       }
     }
@@ -61,9 +61,9 @@
       border-top: none;
       bottom: 0;
       background-color: unset;
-      margin-top: unset;
+      margin-top: .5rem;
 
-      &> nav {
+      & > nav {
         background-color: transparent;
         color: #fff;
         color: var(--menu-fg);

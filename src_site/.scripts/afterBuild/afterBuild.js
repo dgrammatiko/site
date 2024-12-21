@@ -6,7 +6,7 @@ const options = {
 };
 const postHtmlOptions = {
   lowerCaseTags: true, // https://github.com/posthtml/posthtml-parser#options
-  quoteAllAttributes: false, // https://github.com/posthtml/posthtml-render#options
+  quoteAllAttributes: true, // https://github.com/posthtml/posthtml-render#options
 };
 
 async function minimize(file) {

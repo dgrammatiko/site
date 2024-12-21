@@ -8,8 +8,8 @@
   background: var(--body-bg);
 }
 
-::view-transition-old(mainEl),
-::view-transition-new(mainEl) {
+::view-transition-old(list-of-things),
+::view-transition-new(list-of-things) {
   --mask-frames: 20;
   --from: 100%;
   --to: 0%;
@@ -20,7 +20,7 @@
   animation: sweep var(--v-t-speed) steps(var(--mask-frames)) both;
 }
 
-::view-transition-new(mainEl) {
+::view-transition-new(list-of-things) {
   --from: 0%;
   --to: 100%;
   mask-image: var(--v-t-bg2);

@@ -2,10 +2,13 @@ main {
   margin: 0 auto;
   max-width: 72rem;
   min-height: 78vh;
-  view-transition-name: mainEl;
 
   & > * {
     margin: 0;
+  }
+
+  & section {
+    view-transition-name: list-of-things;
   }
 
   & > *:first-child {
