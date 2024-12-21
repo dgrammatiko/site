@@ -18,8 +18,12 @@
   overflow: hidden;
 
   & > .card-title {
-    margin: 1em;
     color: var(--menu-fg);
+    margin: 1em;
+    text-overflow: ellipsis;
+    max-width: 100ch;
+    overflow: hidden;
+    height: 80px;
 
     & > :last-child {
       margin-bottom: unset;
