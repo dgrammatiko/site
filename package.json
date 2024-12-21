@@ -11,7 +11,7 @@
     "production": "NODE_ENV=production npm run build:eleventy",
     "dev": "NODE_ENV=production npm run watch:eleventy",
     "watch": "NODE_ENV=production npm run watch:eleventy",
-    "build": "NODE_ENV=production npm run build:eleventy",
+    "build": "npm install --include=optional sharp & NODE_ENV=production npm run build:eleventy",
     "test": "NODE_ENV=production npm run build:eleventy"
   },
   "author": "dgrammatiko",
