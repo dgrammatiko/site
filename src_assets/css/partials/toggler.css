@@ -6,7 +6,7 @@ dark-light-switch {
 
 ::view-transition-new(darklight),
 ::view-transition-old(darklight) {
-  animation: pan-v-t 1s ease-in-out;
+  animation: pan-v-t .5s ease-in-out;
   backface-visibility: hidden;
 }
 
