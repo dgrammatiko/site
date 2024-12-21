@@ -176,22 +176,15 @@ class Switcher extends HTMLElement {
   }
 
   async update() {
-    if (!document.startViewTransition) {
-      this._update();
-    } else {
-      this.html.style.viewTransitionName = 'darklight';
-      const main = document.querySelector('main');
-      if (main) main.style.viewTransitionName = 'none';
+    if (!document.startViewTransition) return this._update();
 
-      const transition = document.startViewTransition(this._update);
+    this.html.style.viewTransitionName = 'darklight';
+    const transition = document.startViewTransition(this._update);
 
-      try {
-        await transition.finished;
-      } finally {
-        this.html.style.viewTransitionName = 'none';
-        const main = document.querySelector('main');
-        if (main) main.style.viewTransitionName = 'mainEl';
-      }
+    try {
+      await transition.finished;
+    } finally {
+      this.html.style.viewTransitionName = 'none';
     }
   }
 }
