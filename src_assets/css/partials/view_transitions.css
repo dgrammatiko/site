@@ -1,7 +1,7 @@
 /* code from @jh3y: https://github.com/jh3y/pixel-view-transitions */
 
 @view-transition {
-  /* navigation: auto; */
+  navigation: auto;
 }
 
 ::view-transition {
