@@ -144,8 +144,9 @@ html {
 body {
   background-color: var(--body-bg);
   color: var(--body-color);
-  /* display: grid; */
+  display: grid;
   font-weight: 200;
+  grid-auto-columns: 1fr 1fr 1fr;
   line-height: 1.5rem;
   min-height: 100vh;
   text-align: left;
