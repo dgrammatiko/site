@@ -3,27 +3,3 @@ dark-light-switch {
   display: block;
   padding: 1.75rem .5rem;
 }
-
-::view-transition-new(darklight),
-::view-transition-old(darklight) {
-  animation: pan-v-t var(--v-t-speed) ease-in-out;
-  backface-visibility: hidden;
-}
-
-::view-transition-new(darklight) {
-  --vt-ds: 180deg;
-  background: #000;
-  height: 100lvh;
-}
-
-::view-transition-old(darklight) {
-  --vt-ds: 0deg;
-  backface-visibility: hidden;
-}
-
-@keyframes pan-v-t {
-  0% { transform: scale(1) rotateY(var(--vt-ds)); }
-  25% { transform: scale(.5) rotateY(var(--vt-ds)); }
-  75% { transform: scale(.5) rotateY(calc(var(--vt-ds) + 180deg)); }
-  100% { transform: scale(1) rotateY(calc(var(--vt-ds) + 180deg)); }
-}

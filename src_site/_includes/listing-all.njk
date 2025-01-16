@@ -1,5 +1,5 @@
 <main class="main">
-<section class="posts grid" data-rows="masonry">
+<section class="posts list-of-things">
   {% for blog in collections.blogs | reverse %}
     <article>
       <header class="major">
@@ -18,5 +18,4 @@
     </article>
   {% endfor %}
 </section>
-<script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
 </main>

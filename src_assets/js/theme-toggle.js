@@ -80,7 +80,6 @@ class Switcher extends HTMLElement {
     this.supportsMediaColorScheme = window.matchMedia('(prefers-color-scheme)').media !== 'not all' ? true : false;
     this.systemQuery = this.systemQuery.bind(this);
     this.update = this.update.bind(this);
-    this.html = document.documentElement;
 
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = template;
@@ -138,7 +137,7 @@ class Switcher extends HTMLElement {
   }
 
   connectedCallback() {
-    this.html.classList.remove('is-dark', 'is-light');
+    document.documentElement.classList.remove('is-dark', 'is-light');
     if (localStorage.getItem('darkthemeswitcher')) {
       this.#_value = localStorage.getItem('darkthemeswitcher');
     }
@@ -169,8 +168,8 @@ class Switcher extends HTMLElement {
 
   _update() {
     localStorage.setItem('darkthemeswitcher', this.#_value);
-    this.html.classList.remove(this.#_value === 'true' ? 'is-light' : 'is-dark');
-    this.html.classList.add(this.#_value === 'true' ? 'is-dark' : 'is-light');
+    document.documentElement.classList.remove(this.#_value === 'true' ? 'is-light' : 'is-dark');
+    document.documentElement.classList.add(this.#_value === 'true' ? 'is-dark' : 'is-light');
     this.button.setAttribute('aria-pressed', this.#_value === 'true' ? 'true' : 'false');
     this.button.setAttribute('aria-label', `${this.#_value === 'true' ? this.on : this.off}`);
   }
@@ -178,16 +177,15 @@ class Switcher extends HTMLElement {
   async update() {
     if (!document.startViewTransition) return this._update();
 
-    this.html.style.viewTransitionName = 'darklight';
-    document.querySelector('body section').style.viewTransitionName = 'none';
-
+    document.documentElement.style.viewTransitionName = 'dark-light';
+    document.querySelector('.list-of-things').style.viewTransitionName = 'none';
     const transition = document.startViewTransition(this._update);
 
     try {
       await transition.finished;
     } finally {
-      this.html.style.viewTransitionName = 'none';
-      document.querySelector('body section').style.viewTransitionName = 'list-of-things';
+      document.documentElement.style.viewTransitionName = 'none';
+      document.querySelector('.list-of-things').style.viewTransitionName = 'list-of-things';
     }
   }
 }
