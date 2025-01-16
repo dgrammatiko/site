@@ -24,7 +24,7 @@
   --from: 0%;
   --to: 100%;
   mask-image: var(--v-t-bg2);
-  animation-delay: calc(var(--v-t-speed) * 2);
+  animation-delay: calc(var(--v-t-speed) / 2);
 }
 
 @keyframes sweep {
