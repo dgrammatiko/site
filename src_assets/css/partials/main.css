@@ -7,10 +7,6 @@ main {
     margin: 0;
   }
 
-  & section {
-    view-transition-name: list-of-things;
-  }
-
   & > *:first-child {
     border-top: 0;
   }

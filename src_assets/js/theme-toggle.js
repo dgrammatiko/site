@@ -78,13 +78,12 @@ class Switcher extends HTMLElement {
 
     this.darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     this.supportsMediaColorScheme = window.matchMedia('(prefers-color-scheme)').media !== 'not all' ? true : false;
-    this.systemQuery = this.systemQuery.bind(this);
-    this.update = this.update.bind(this);
-
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = template;
     this.button = this.shadowRoot.querySelector('button');
+    this.systemQuery = this.systemQuery.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.update = this.update.bind(this);
     this._update = this._update.bind(this);
     this.button.addEventListener('click', this.onClick);
   }
@@ -177,15 +176,15 @@ class Switcher extends HTMLElement {
   async update() {
     if (!document.startViewTransition) return this._update();
 
+    document.documentElement.classList.remove('list-of-things');
     document.documentElement.style.viewTransitionName = 'dark-light';
-    document.querySelector('.list-of-things').style.viewTransitionName = 'none';
     const transition = document.startViewTransition(this._update);
 
     try {
       await transition.finished;
     } finally {
-      document.documentElement.style.viewTransitionName = 'none';
-      document.querySelector('.list-of-things').style.viewTransitionName = 'list-of-things';
+      document.documentElement.style = '';
+      document.documentElement.classList.add('list-of-things');
     }
   }
 }
