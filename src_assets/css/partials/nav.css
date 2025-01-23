@@ -10,7 +10,7 @@ nav {
 .logo {
   display: none;
   color: var(--menu-fg);
-  font-family: dgrammatiko;
+  font-family: var(--def-font);
   font-size: 3rem;
   text-decoration: none;
   /* margin-left: 1rem; */
