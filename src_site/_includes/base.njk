@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" class="list-of-things">
+<html lang=en class="page-transition">
   <head>
     <meta charset="utf-8">
     <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=viewport content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="dark light">
     <meta name="theme-color" content="rgb(3.979% 31.8% 32.3%)" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="rgb(10.2% 9.412% 9.412%)" media="(prefers-color-scheme: dark)">
@@ -16,30 +16,31 @@
         document.documentElement.classList.add(___ls === 'true' ? 'is-dark' : 'is-light');
       })();</script>
     <link href="/static/css/main.css" rel=stylesheet>
-    <script src="/static/js/theme-toggle.js?v=0" type="module" async></script>
+    <script src="/static/js/theme-toggle.js?v=0" type=module async></script>
     {% if description %}
       {% set desc = description | safe %}
     {% else %}
       {% set desc = metadata.description | safe %}
     {% endif %}
     <meta name="description" content="{{ desc }}">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:creator" content="@dgrammatiko">
-    {% ogimg image, page.url, metadata %}
+
     <meta property="og:url" content="https://{{ metadata.domain }}{{ page.url }}">
     <meta property="og:title" content="{{ metadata.title }}{% if title %} - {{ title }}{% endif %}">
     <meta property="og:description" content="{{ desc }}">
-    <meta name="monetization" content="$ilp.uphold.com/29KGbUJg6Xaq">
-    <link rel="manifest" href="/manifest.webmanifest?v=0">
-    <link rel="icon" type="image/svg+xml" href="/static/images/safari-pinned-tab.svg">
-    <link rel="icon" type="image/png" sizes="any" href="/static/images/favicon-32x32.png">
+    {% ogimg image, page.url, metadata %}
 
-    <link href="https://social.dgrammatiko.dev/@dgrammatiko" rel="me">
-    <link href="https://github.com/dgrammatiko" rel="me">
-    <link href="https://twitter.com/dgrammatiko" rel="me">
-    <link rel="webmention" href="https://webmention.io/{{ metadata.domain }}/webmention">
-    <link rel="pingback" href="https://webmention.io/{{ metadata.domain }}/xmlrpc">
-    <meta name="generator" content="Eleventy">
+    <meta name=monetization content="$ilp.uphold.com/29KGbUJg6Xaq">
+    <link rel=manifest href="/manifest.webmanifest?v=0">
+    <link rel=icon type="image/svg+xml" href="/static/images/safari-pinned-tab.svg">
+    <link rel=icon type="image/png" sizes="any" href="/static/images/favicon-32x32.png">
+
+    <link href="https://social.dgrammatiko.dev/@dgrammatiko" rel=me>
+    <link href="https://github.com/dgrammatiko" rel=me>
+    <link href="https://bsky.app/profile/dgrammatiko.dev" rel=me>
+    <link rel=webmention href="https://webmention.io/{{ metadata.domain }}/webmention">
+    <link rel=pingback href="https://webmention.io/{{ metadata.domain }}/xmlrpc">
+
+    <meta name=generator content=Eleventy>
     <script type=speculationrules>{"prefetch": [{"source": "document","where": {"selector_matches": "a[href^='/']"},"eagerness": "immediate"}],"prerender": [{"source": "document","where": {"selector_matches": "a[href^='/']"},"eagerness": "moderate"}]}</script>
   </head>
   <body>
@@ -49,7 +50,7 @@
 
     {% include "footer.njk" %}
 
-    <script type="module">
+    <script type=module>
       navigator.serviceWorker.register("/sw.js", { scope: "/" }).then((registration) => registration.unregister());
       const currentDate = new Date(), m = currentDate.getUTCMonth(), d = currentDate.getUTCDate();
       if (9 === m && 26 === d || 10 === m && 28 === d) import('/static/js/balloons.js').then(m => m.balloons());

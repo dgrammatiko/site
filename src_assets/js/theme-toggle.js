@@ -176,7 +176,7 @@ class Switcher extends HTMLElement {
   async update() {
     if (!document.startViewTransition) return this._update();
 
-    document.documentElement.classList.remove('list-of-things');
+    document.documentElement.classList.remove('page-transition');
     document.documentElement.style.viewTransitionName = 'dark-light';
     const transition = document.startViewTransition(this._update);
 
@@ -184,7 +184,7 @@ class Switcher extends HTMLElement {
       await transition.finished;
     } finally {
       document.documentElement.style = '';
-      document.documentElement.classList.add('list-of-things');
+      document.documentElement.classList.add('page-transition');
     }
   }
 }

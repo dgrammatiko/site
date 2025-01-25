@@ -8,8 +8,8 @@
   background: var(--menu-bg);
 }
 
-::view-transition-old(list-of-things),
-::view-transition-new(list-of-things) {
+::view-transition-old(page-transition),
+::view-transition-new(page-transition) {
   --mask-frames: 20;
   --from: 100%;
   --to: 0%;
@@ -20,7 +20,7 @@
   animation: sweep-v-t var(--v-t-speed) steps(var(--mask-frames)) both;
 }
 
-::view-transition-new(list-of-things) {
+::view-transition-new(page-transition) {
   --from: 0%;
   --to: 100%;
   mask-image: var(--v-t-bg2);
