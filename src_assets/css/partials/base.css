@@ -11,7 +11,7 @@ font-family: -apple-system;
 */
 
 /* greek */
-@font-face {
+/* @font-face {
   font-family: 'Geologica';
   font-style: normal;
   font-weight: 100 800;
@@ -19,7 +19,7 @@ font-family: -apple-system;
   font-display: swap;
   src: url(/static/fonts/Geologica-greek.woff2) format('woff2');
   unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
-}
+} */
 /* latin */
 @font-face {
   font-family: 'Geologica';
