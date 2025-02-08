@@ -34,14 +34,14 @@
     "fs-extra": "11.3.0",
     "htmlnano": "^2.1.1",
     "lightningcss": "1.29.1",
-    "linkedom": "0.18.7",
+    "linkedom": "0.18.9",
     "lite-youtube-embed": "0.3.3",
     "lodash-es": "^4.17.21",
     "luxon": "3.5.0",
     "markdown-it": "14.1.0",
     "markdown-it-anchor": "9.2.0",
     "postcss": "8.5.1",
-    "rollup": "4.34.4",
+    "rollup": "4.34.6",
     "sharp": "^0.33.5"
   }
 }
