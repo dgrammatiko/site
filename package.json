@@ -41,7 +41,7 @@
     "markdown-it": "14.1.0",
     "markdown-it-anchor": "9.2.0",
     "postcss": "8.5.3",
-    "rollup": "4.36.0",
+    "rollup": "4.37.0",
     "sharp": "^0.33.5"
   }
 }
