@@ -26,7 +26,7 @@
     "@rollup/plugin-terser": "0.4.4",
     "11ty-to-codepen": "1.0.2",
     "axios": "1.8.4",
-    "balloons-js": "0.0.2",
+    "balloons-js": "0.0.3",
     "ce-theme-switcher": "0.0.3",
     "change-case": "5.4.4",
     "cssnano": "^7.0.6",
