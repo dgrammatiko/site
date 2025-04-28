@@ -7,7 +7,7 @@ import transforms from './src_site/.scripts/transforms/transforms.js';
 import shortcodes from './src_site/.scripts/shortcodes/shortcodes.js';
 import libraries from './src_site/.scripts/libraries/libraries.js';
 import beforeBuild from './src_site/.scripts/beforeBuild/beforeBuild.js';
-import afterBuild from './src_site/.scripts/afterBuild/afterBuild.js';
+// import afterBuild from './src_site/.scripts/afterBuild/afterBuild.js';
 import { directories } from './src_site/.scripts/passthorughCopy/passthroughCopy.js';
 
 const shortcodeFns = ['addNunjucksAsyncShortcode', 'addLiquidShortcode', 'addJavaScriptFunction'];

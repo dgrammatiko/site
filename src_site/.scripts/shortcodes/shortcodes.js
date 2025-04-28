@@ -29,16 +29,16 @@ export default {
   },
   imagine: async (src, dir, alt = '', sizes = '(min-width: 30em) 50vw, 100vw', classs = '', lazy = false) => {
     if (!existsSync(`./src_assets/images/${dir}/${src}`)) {
-      return `<br>`;
+      return '<br>';
     }
-    let metadata = await Image(`./src_assets/images/${dir}/${src}`, {
+    const metadata = await Image(`./src_assets/images/${dir}/${src}`, {
       urlPath: `/static/images/${dir}/`,
       outputDir: `live/static/images/${dir}/`,
       widths: [300, 600, 1024, 1240],
-      formats: ['avif', 'jpeg'],
+      formats: [/* 'jxl', */ 'avif', 'jpeg'],
     });
 
-    let imageAttributes = {
+    const imageAttributes = {
       alt: alt || '',
       sizes,
       decoding: 'async',
