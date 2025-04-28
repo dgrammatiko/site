@@ -1,5 +1,7 @@
-const template = `<style>
-:host {
+const template = '<button aria-pressed="false"></button>';
+
+const sheet = new CSSStyleSheet();
+sheet.replaceSync(`:host {
   --size: 1.5;
   position: relative;
   display: inline-block;
@@ -65,8 +67,7 @@ button span {
   button, button::before {
     transition: all 0.1s;
   }
-}</style>
-  <button aria-pressed="false"></button>`;
+}`);
 
 class Switcher extends HTMLElement {
   #_value = 'false';
@@ -79,6 +80,7 @@ class Switcher extends HTMLElement {
     this.darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     this.supportsMediaColorScheme = window.matchMedia('(prefers-color-scheme)').media !== 'not all' ? true : false;
     this.attachShadow({ mode: 'open' });
+    this.shadowRoot.adoptedStyleSheets.push(sheet);
     this.shadowRoot.innerHTML = template;
     this.button = this.shadowRoot.querySelector('button');
     this.systemQuery = this.systemQuery.bind(this);
