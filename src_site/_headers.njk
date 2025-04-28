@@ -13,7 +13,7 @@ eleventyExcludeFromCollections: true
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Permissions-Policy: picture-in-picture=()
   Accept-CH: Downlink,RTT,Device-Memory,Save-Data,DPR,Width
-  Content-Security-Policy: default-src 'self' 'unsafe-eval' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.youtube.com https://static.cloudflareinsights.com; img-src 'self' https://webmention.io  *.amazonaws.com data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; connect-src https://cloudflareinsights.com/cdn-cgi/rum; object-src 'none'; font-src 'self';
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.youtube.com https://static.cloudflareinsights.com; img-src 'self' https://webmention.io  *.amazonaws.com data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; connect-src https://cloudflareinsights.com/cdn-cgi/rum; object-src 'none'; font-src 'self';
 
 /static/*
   X-Robots-Tag: nosnippet
