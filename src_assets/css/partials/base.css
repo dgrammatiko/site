@@ -159,6 +159,7 @@ font-family: -apple-system;
 
 html {
   background-color: #000;
+  color-scheme: dark light;
   min-height: 100vh;
   view-transition-name: page-transition;
 }
