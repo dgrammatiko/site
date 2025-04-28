@@ -10,7 +10,7 @@
 
 ::view-transition-old(page-transition),
 ::view-transition-new(page-transition) {
-  --mask-frames: 5;
+  --mask-frames: 15;
   --from: 100%;
   --to: 0%;
   mask-image: var(--v-t-bg1);

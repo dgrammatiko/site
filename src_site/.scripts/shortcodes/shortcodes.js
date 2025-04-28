@@ -2,7 +2,7 @@ import Image from '@11ty/eleventy-img';
 import { existsSync } from 'node:fs';
 
 async function getImage(image, dir) {
-  let metadata = await Image(`./src_assets/images/${dir}/${image}`, {
+  const metadata = await Image(`./src_assets/images/${dir}/${image}`, {
     urlPath: `/static/images/${dir ? `${dir}/` : ''}`,
     outputDir: `live/static/images/${dir ? `${dir}/` : ''}`,
     widths: [1024],
