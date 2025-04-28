@@ -51,6 +51,15 @@ const opts = [
     },
     plugins: [nodeResolve(), terser()],
   },
+  {
+    input: 'src_assets/js/tpl.js',
+    output: {
+      sourcemap: false,
+      format: 'esm',
+      dir: './live/static/js',
+    },
+    plugins: [terser()],
+  },
 ];
 
 const pack = async (opt) => {

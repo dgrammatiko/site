@@ -7,15 +7,8 @@
     <meta name="color-scheme" content="dark light">
     <meta name="theme-color" content="rgb(3.979% 31.8% 32.3%)" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="rgb(10.2% 9.412% 9.412%)" media="(prefers-color-scheme: dark)">
-    <script>(() => {
-        let ___ls = localStorage.getItem('darkthemeswitcher');
-        if (!___ls) {
-          ___ls = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches.toString();
-          localStorage.setItem('darkthemeswitcher', ___ls);
-        }
-        document.documentElement.classList.add(___ls === 'true' ? 'is-dark' : 'is-light');
-      })();</script>
     <link href="/static/css/main.css" rel=stylesheet>
+    <script src="/static/js/tpl.js?v=0" type=module></script>
     <script src="/static/js/theme-toggle.js?v=0" type=module async></script>
     {% if description %}
       {% set desc = description | safe %}
@@ -49,11 +42,5 @@
     {{ content | safe }}
 
     {% include "footer.njk" %}
-
-    <script type=module>
-      navigator.serviceWorker.register("/sw.js", { scope: "/" }).then((registration) => registration.unregister());
-      const currentDate = new Date(), m = currentDate.getUTCMonth(), d = currentDate.getUTCDate();
-      if (9 === m && 26 === d || 10 === m && 28 === d) import('/static/js/balloons.js').then(m => m.balloons());
-    </script>
   </body>
 </html>
