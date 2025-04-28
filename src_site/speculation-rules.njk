@@ -1,0 +1,24 @@
+---
+permalink: /speculation-rules.json
+eleventyExcludeFromCollections: true
+---
+{
+  "prefetch": [
+    {
+      "source": "document",
+      "where": {
+        "selector_matches": "a[href^='/']"
+      },
+      "eagerness": "immediate"
+    }
+  ],
+  "prerender": [
+    {
+      "source": "document",
+      "where": {
+        "selector_matches": "a[href^='/']"
+      },
+      "eagerness": "moderate"
+    }
+  ]
+}
