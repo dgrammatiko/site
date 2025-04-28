@@ -3,6 +3,7 @@ layout: base.njk
 title: Talks
 ---
 <main>
+  <script type="module" src="/static/js/lite-youtube-embed.js"></script>
   <h1 class="code-title">Talk is cheap</h1>
   <section class="cards">
     {% for code in talksData.talks %}
@@ -35,6 +36,4 @@ title: Talks
       </article>
     {% endfor %}
   </section>
-  <script type="module" src="/static/js/lite-youtube-embed.js"></script>
-  <script type="module" id="only-for-partials">document.title =  "{{ metadata.title }}{% if title %} - {{ title }}{% endif %}";</script>
 </main>
