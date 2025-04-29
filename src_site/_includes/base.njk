@@ -34,6 +34,28 @@
     <link rel=pingback href="https://webmention.io/{{ metadata.domain }}/xmlrpc">
 
     <meta name=generator content=Eleventy>
+    <script type="speculationrules">
+    {
+      "prefetch": [
+        {
+          "source": "document",
+          "where": {
+            "selector_matches": "a[href^='/']"
+          },
+          "eagerness": "immediate"
+        }
+      ],
+      "prerender": [
+        {
+          "source": "document",
+          "where": {
+            "selector_matches": "a[href^='/']"
+          },
+          "eagerness": "moderate"
+        }
+      ]
+    }
+  </script>
   </head>
   <body>
     {% include "menu.njk" %}
