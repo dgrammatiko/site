@@ -18,9 +18,9 @@
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy": "3.0.0",
-    "@11ty/eleventy-img": "6.0.2",
-    "@11ty/eleventy-plugin-rss": "2.0.3",
-    "@11ty/eleventy-plugin-syntaxhighlight": "5.0.0",
+    "@11ty/eleventy-img": "6.0.3",
+    "@11ty/eleventy-plugin-rss": "2.0.4",
+    "@11ty/eleventy-plugin-syntaxhighlight": "5.0.1",
     "@rollup/plugin-node-resolve": "16.0.1",
     "@rollup/plugin-replace": "6.0.2",
     "@rollup/plugin-terser": "0.4.4",
@@ -29,7 +29,7 @@
     "balloons-js": "0.0.3",
     "ce-theme-switcher": "0.0.3",
     "change-case": "5.4.4",
-    "cssnano": "^7.0.6",
+    "cssnano": "7.0.7",
     "dotenv": "16.5.0",
     "fs-extra": "11.3.0",
     "htmlnano": "2.1.2",
@@ -41,7 +41,7 @@
     "markdown-it": "14.1.0",
     "markdown-it-anchor": "9.2.0",
     "postcss": "8.5.3",
-    "rollup": "4.40.1",
+    "rollup": "4.40.2",
     "sharp": "0.34.1"
   }
 }
