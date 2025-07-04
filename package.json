@@ -30,7 +30,7 @@
     "ce-theme-switcher": "0.0.3",
     "change-case": "5.4.4",
     "cssnano": "7.0.7",
-    "dotenv": "16.6.0",
+    "dotenv": "17.0.1",
     "fs-extra": "11.3.0",
     "htmlnano": "2.1.2",
     "lightningcss": "1.30.1",
