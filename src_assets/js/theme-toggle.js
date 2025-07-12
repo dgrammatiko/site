@@ -69,21 +69,27 @@ button span {
   }
 }`);
 
+function supportsMediaColorScheme() {
+  return typeof window.matchMedia === 'function' &&
+         typeof window.matchMedia('(prefers-color-scheme)').media === 'string' &&
+         window.matchMedia('(prefers-color-scheme)').media !== 'not all' &&
+         window.matchMedia('(prefers-color-scheme)').media !== 'all';
+}
+
+const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
 class Switcher extends HTMLElement {
-  #_value = 'false';
+  #_value = false;
   #_on = 'Dark theme enabled';
   #_off = 'Light theme enabled';
 
   constructor() {
     super();
 
-    this.darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    this.supportsMediaColorScheme = window.matchMedia('(prefers-color-scheme)').media !== 'not all' ? true : false;
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.adoptedStyleSheets.push(sheet);
     this.shadowRoot.innerHTML = template;
     this.button = this.shadowRoot.querySelector('button');
-    this.systemQuery = this.systemQuery.bind(this);
     this.onClick = this.onClick.bind(this);
     this.update = this.update.bind(this);
     this._update = this._update.bind(this);
@@ -98,10 +104,8 @@ class Switcher extends HTMLElement {
     return this.#_value;
   }
   set value(value) {
-    if (['true', 'false'].includes(value)) {
-      this.#_value = value;
-      this.update();
-    }
+    this.#_value = value === 'true' || value === true;
+    this.update();
   }
   get on() {
     return this.#_on;
@@ -121,10 +125,8 @@ class Switcher extends HTMLElement {
   attributeChangedCallback(attr, oldValue, newValue) {
     switch (attr) {
       case 'value':
-        if (['true', 'false'].includes(newValue)) {
-          this.#_value = newValue;
-          this.update();
-        }
+        this.#_value = newValue === 'true' || value === true;;
+        this.update();
         break;
       case 'text-on':
         this.#_on = newValue;
@@ -144,24 +146,24 @@ class Switcher extends HTMLElement {
     }
     this._update();
 
-    if (this.supportsMediaColorScheme) {
-      this.darkModeMediaQuery.addEventListener('change', this.systemQuery);
+    if (supportsMediaColorScheme()) {
+      darkModeMediaQuery.addEventListener('change', this.systemQuery);
     }
   }
 
   systemQuery(event) {
-    this.#_value = event.matches === true ? 'true' : 'false';
+    this.#_value = event.matches === true;
     this.update();
   }
 
   disconnectedCallback() {
-    if (this.supportsMediaColorScheme) {
-      this.darkModeMediaQuery.removeEventListener(this.systemQuery);
+    if (supportsMediaColorScheme()) {
+      darkModeMediaQuery.removeEventListener(this.systemQuery);
     }
   }
 
   onClick() {
-    this.#_value = this.#_value === 'true' ? 'false' : 'true';
+    this.#_value = !this.#_value;
     this.update();
 
     this.dispatchEvent(new Event('change'));
@@ -169,10 +171,10 @@ class Switcher extends HTMLElement {
 
   _update() {
     localStorage.setItem('darkthemeswitcher', this.#_value);
-    document.documentElement.classList.remove(this.#_value === 'true' ? 'is-light' : 'is-dark');
-    document.documentElement.classList.add(this.#_value === 'true' ? 'is-dark' : 'is-light');
-    this.button.setAttribute('aria-pressed', this.#_value === 'true' ? 'true' : 'false');
-    this.button.setAttribute('aria-label', `${this.#_value === 'true' ? this.on : this.off}`);
+    document.documentElement.classList.remove(this.#_value ? 'is-light' : 'is-dark');
+    document.documentElement.classList.add(this.#_value ? 'is-dark' : 'is-light');
+    this.button.setAttribute('aria-pressed', this.#_value);
+    this.button.setAttribute('aria-label', `${this.#_value ? this.on : this.off}`);
   }
 
   async update() {
