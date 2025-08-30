@@ -104,7 +104,7 @@ class Switcher extends HTMLElement {
     return this.#_value;
   }
   set value(value) {
-    this.#_value = value === 'true' || value === true;
+    this.#_value = value;
     this.update();
   }
   get on() {
@@ -125,7 +125,7 @@ class Switcher extends HTMLElement {
   attributeChangedCallback(attr, oldValue, newValue) {
     switch (attr) {
       case 'value':
-        this.#_value = newValue === 'true' || value === true;;
+        this.#_value = !!newValue;
         this.update();
         break;
       case 'text-on':
@@ -142,7 +142,7 @@ class Switcher extends HTMLElement {
   connectedCallback() {
     document.documentElement.classList.remove('is-dark', 'is-light');
     if (localStorage.getItem('darkthemeswitcher')) {
-      this.#_value = localStorage.getItem('darkthemeswitcher');
+      this.#_value = !!localStorage.getItem('darkthemeswitcher');
     }
     this._update();
 
@@ -152,7 +152,7 @@ class Switcher extends HTMLElement {
   }
 
   systemQuery(event) {
-    this.#_value = event.matches === true;
+    this.#_value = event.matches;
     this.update();
   }
 
