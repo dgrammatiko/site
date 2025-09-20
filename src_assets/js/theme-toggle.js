@@ -198,7 +198,6 @@ class Switcher extends HTMLElement {
       document.querySelector('.site-header_notransition')?.classList.replace('site-header_notransition', 'site-header');
       document.querySelector('.site-main_notransition')?.classList.replace('site-main_notransition', 'site-main');
       document.querySelector('.site-footer_notransition')?.classList.replace('site-footer_notransition', 'site-footer');
-      // document.documentElement.classList.add('page-transition');
     }
   }
 }
