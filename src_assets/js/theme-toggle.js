@@ -180,19 +180,19 @@ class Switcher extends HTMLElement {
   async update() {
     if (!document.startViewTransition) return this._update();
 
-    document.querySelector('body header').classList.remove('site-header');
-    document.querySelector('body main').classList.remove('site-main');
-    document.querySelector('body footer').classList.remove('site-footer');
-    document.documentElement.style.viewTransitionName = 'dark-light';
+    document.querySelector('.site-header')?.classList.remove('site-header').add('site-header_notransition');
+    document.querySelector('.site-main')?.classList.remove('site-main').add('site-main_notransition');
+    document.querySelector('.site-footer')?.classList.remove('site-footer').add('site-footer_notransition');
+    // document.documentElement.style.viewTransitionName = 'dark-light';
     const transition = document.startViewTransition(this._update);
 
     try {
       await transition.finished;
     } finally {
-      document.documentElement.style = '';
-      document.querySelector('body header').classList.add('site-header');
-      document.querySelector('body main').classList.add('site-main');
-      document.querySelector('body footer').classList.add('site-footer');
+      // document.documentElement.style = '';
+      document.querySelector('.site-header')?.classList.add('site-header').remove('site-header_notransition');
+      document.querySelector('.site-main')?.classList.add('site-main').remove('site-main_notransition');
+      document.querySelector('.site-footer')?.classList.add('site-footer').remove('site-footer_notransition');
       // document.documentElement.classList.add('page-transition');
     }
   }

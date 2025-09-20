@@ -2,8 +2,7 @@
 layout: base.njk
 title: Talks
 ---
-<main>
-  <script type="module" src="/static/js/lite-youtube-embed.js"></script>
+<main class="site-main">
   <h1 class="code-title">Talk is cheap</h1>
   <section class="cards">
     {% for code in talksData.talks %}
@@ -37,3 +36,4 @@ title: Talks
     {% endfor %}
   </section>
 </main>
+<script type="module" src="/static/js/lite-youtube-embed.js"></script>
