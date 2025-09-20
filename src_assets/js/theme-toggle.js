@@ -142,7 +142,7 @@ class Switcher extends HTMLElement {
   connectedCallback() {
     document.documentElement.classList.remove('is-dark', 'is-light');
     if (localStorage.getItem('darkthemeswitcher')) {
-      this.#_value = !!localStorage.getItem('darkthemeswitcher');
+      this.#_value = localStorage.getItem('darkthemeswitcher') === 'true';
     }
     this._update();
 

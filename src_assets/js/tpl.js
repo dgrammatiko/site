@@ -1,13 +1,11 @@
 (() => {
-  let ___ls = localStorage.getItem('darkthemeswitcher');
-  if (!___ls) {
-    ___ls = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches.toString();
-    localStorage.setItem('darkthemeswitcher', ___ls);
+  let theme = localStorage.getItem('darkthemeswitcher');
+  if (!theme) {
+    theme = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches.toString();
+    localStorage.setItem('darkthemeswitcher', theme);
   }
-  document.documentElement.classList.add(___ls === 'true' ? 'is-dark' : 'is-light');
+  document.documentElement.classList.add(theme === 'true' ? 'is-dark' : 'is-light');
 })();
 // navigator.serviceWorker.register('/sw.js', { scope: '/' }).then((registration) => registration.unregister());
-const currentDate = new Date(),
-  m = currentDate.getUTCMonth(),
-  d = currentDate.getUTCDate();
-if ((9 === m && 26 === d) || (10 === m && 28 === d)) import('https://dgrammatiko.dev/static/js/balloons.js').then((m) => m.balloons());
+const currentDate = new Date(), month = currentDate.getUTCMonth() + 1, day = currentDate.getUTCDate();
+if ((10 === month && 26 === day) || (11 === month && 28 === day)) import('https://dgrammatiko.dev/static/js/balloons.js').then((m) => m.balloons());
