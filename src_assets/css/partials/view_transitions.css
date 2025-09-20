@@ -37,7 +37,7 @@
 ::view-transition-new(site-footer),
 ::view-transition-old(site-header),
 ::view-transition-old(site-footer){
-  animation: none; /*fade-v-t calc(var(--v-t-speed) / 2) ease-in-out;*/
+  animation: fade-v-t calc(var(--v-t-speed) / 3) ease-in-out;
 }
 
 ::view-transition-new(dark-light),
