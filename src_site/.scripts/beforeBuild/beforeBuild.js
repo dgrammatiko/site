@@ -25,6 +25,15 @@ const opts = [
     plugins: [terser()],
   },
   {
+    input: 'src_assets/js/ee.js',
+    output: {
+      sourcemap: false,
+      format: 'esm',
+      file: './live/static/js/ee.js',
+    },
+    plugins: [terser()],
+  },
+  {
     input: 'src_assets/js/lite-yt-embed.js',
     output: {
       sourcemap: false,
@@ -55,7 +64,7 @@ const opts = [
     input: 'src_assets/js/tpl.js',
     output: {
       sourcemap: false,
-      format: 'esm',
+      format: 'iife',
       dir: './live/static/js',
     },
     plugins: [terser()],
