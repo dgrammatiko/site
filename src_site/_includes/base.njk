@@ -4,12 +4,16 @@
     <meta charset="utf-8">
     <title>{{ metadata.title }}{% if title %} - {{ title }}{% endif %}</title>
     <meta name=viewport content="width=device-width, initial-scale=1">
+    {# <link rel="preload" href="/static/fonts/Geologica-latin.woff2" as="font" type="font/woff2" crossorigin="anonymous"> #}
+
     <meta name="color-scheme" content="dark light">
     <meta name="theme-color" content="rgb(3.979% 31.8% 32.3%)" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="rgb(10.2% 9.412% 9.412%)" media="(prefers-color-scheme: dark)">
+
+    <script src="/static/js/tpl.js?v=1"></script>
+
     <link href="/static/css/main.css" rel=stylesheet>
-    <script src="/static/js/tpl.js?v=0" type=module></script>
-    <script src="/static/js/theme-toggle.js?v=0" type=module async></script>
+    <script src="/static/js/theme-toggle.js?v=1" type=module async></script>
     {% if description %}
       {% set desc = description | safe %}
     {% else %}
@@ -34,7 +38,7 @@
     <link rel=pingback href="https://webmention.io/{{ metadata.domain }}/xmlrpc">
 
     <meta name=generator content=Eleventy>
-    <script type="speculationrules">{"prefetch": [{"source": "document","where": {"selector_matches": "a[href^='/']"},"eagerness": "conservative"}],"prerender": [{"source": "document","where": {"selector_matches": "a[href^='/']"},"eagerness": "moderate"}]}</script>
+    {# <script type="speculationrules">{"prefetch": [{"source": "document","where": {"selector_matches": "a[href^='/']"},"eagerness": "conservative"}],"prerender": [{"source": "document","where": {"selector_matches": "a[href^='/']"},"eagerness": "moderate"}]}</script> #}
   </head>
   <body>
     {% include "menu.njk" %}
@@ -42,5 +46,6 @@
     {{ content | safe }}
 
     {% include "footer.njk" %}
+    <script src="/static/js/ee.js?v=0" type=module></script>
   </body>
 </html>
