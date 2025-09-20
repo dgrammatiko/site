@@ -2,9 +2,6 @@
 permalink: /_headers
 eleventyExcludeFromCollections: true
 ---
-#  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline' https://www.youtube.com https://static.cloudflareinsights.com; img-src 'self' https://webmention.io https://avatars.webmention.io *.amazonaws.com; data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; connect-src https://cloudflareinsights.com/cdn-cgi/rum; object-src 'none';
-#  Link: <https://dgrammatiko.dev/static/fonts/Geologica-latin.woff2>; rel="preload"; as="font"; type="font/woff2"; crossorigin=""
-
 /speculation-rules.json
   Content-Type: application/speculationrules+json
   Access-Control-Allow-Origin: *
@@ -26,17 +23,25 @@ eleventyExcludeFromCollections: true
 /dist/*
   X-Robots-Tag: noindex
 
-#/static/*.css
+/robots.txt
+  Content-Type: text/plain; charset=utf-8
+  X-Robots-Tag: noindex, nofollow, nosnippet, noarchive
+
+
+#  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline' https://www.youtube.com https://static.cloudflareinsights.com; img-src 'self' https://webmention.io https://avatars.webmention.io *.amazonaws.com; data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; connect-src https://cloudflareinsights.com/cdn-cgi/rum; object-src 'none';
+#  Link: <https://dgrammatiko.dev/static/fonts/Geologica-latin.woff2>; rel="preload"; as="font"; type="font/woff2"; crossorigin=""
+
+# /static/*.css
 #  ! Content-Security-Policy
-#/static/*.js
+# /static/*.js
 #  ! Content-Security-Policy
-#/static/*.jpg
+# /static/*.jpg
 #  ! Content-Security-Policy
-#/static/*.avif
+# /static/*.avif
 #  ! Content-Security-Policy
-#/static/*.webp
+# /static/*.webp
 #  ! Content-Security-Policy
-#/*.json
+# /*.json
 #  ! Content-Security-Policy
 
 # https://*.dgrammatiko.dev/*
