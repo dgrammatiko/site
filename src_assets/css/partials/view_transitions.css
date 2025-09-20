@@ -14,11 +14,18 @@
 
 ::view-transition-new(site-header),
 ::view-transition-new(site-footer),
-::view-transition-new(site-main),
 ::view-transition-old(site-header),
-::view-transition-old(site-footer),
-::view-transition-old(site-main) {
+::view-transition-old(site-footer) {
   animation: fade-v-t calc(var(--v-t-speed) / 3) ease-in-out;
+}
+
+::view-transition-new(site-main) {
+  animation-delay: calc(var(--v-t-speed) * 1.3);
+  animation: zoomIn var(--v-t-speed) ease-in-out;
+}
+
+::view-transition-old(site-main) {
+  animation: zoomOut var(--v-t-speed) ease-in-out;
 }
 
 ::view-transition-new(dark-light),
@@ -53,4 +60,30 @@
 @keyframes fade-v-t {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes zoomOut {
+    0% {
+        opacity:1
+    }
+
+    50% {
+        opacity: 0;
+        transform:scale3d(.3, .3, .3)
+    }
+
+    to {
+        opacity:0
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform:scale3d(.3, .3, .3)
+    }
+
+    50% {
+        opacity:1
+    }
 }
