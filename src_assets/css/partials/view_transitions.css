@@ -1,5 +1,3 @@
-/* some code is from @jh3y: https://github.com/jh3y/pixel-view-transitions */
-
 @view-transition {
   navigation: auto;
 }
@@ -13,25 +11,6 @@
 ::view-transition {
   background: var(--menu-bg);
 }
-
-/* ::view-transition-old(site-main),
-::view-transition-new(site-main) {
-  --mask-frames: 15;
-  --from: 100%;
-  --to: 0%;
-  mask-image: var(--v-t-bg1);
-  mask-repeat: no-repeat;
-  mask-size: calc((var(--mask-frames) + 1) * 100vmax) 100vmax;
-  mask-position: var(--from, 100%) 50%;
-  animation: sweep-v-t var(--v-t-speed) steps(var(--mask-frames)) both;
-} */
-
-/* ::view-transition-new(site-main) {
-  --from: 0%;
-  --to: 100%;
-  mask-image: var(--v-t-bg2);
-  animation-delay: calc(var(--v-t-speed) / 2);
-} */
 
 ::view-transition-new(site-header),
 ::view-transition-new(site-footer),
