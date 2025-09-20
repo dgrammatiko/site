@@ -180,9 +180,10 @@ class Switcher extends HTMLElement {
   async update() {
     if (!document.startViewTransition) return this._update();
 
-    document.querySelector('.site-header')?.classList.remove('site-header').add('site-header_notransition');
-    document.querySelector('.site-main')?.classList.remove('site-main').add('site-main_notransition');
-    document.querySelector('.site-footer')?.classList.remove('site-footer').add('site-footer_notransition');
+    document.querySelector('.site-header')?.classList.replace('site-header', 'site-header_notransition');
+    document.querySelector('.site-main')?.classList.replace('site-main', 'site-main_notransition');
+    document.querySelector('.site-footer')?.classList.replace('site-footer', 'site-footer_notransition');
+
     // document.documentElement.style.viewTransitionName = 'dark-light';
     const transition = document.startViewTransition(this._update);
 
@@ -190,9 +191,9 @@ class Switcher extends HTMLElement {
       await transition.finished;
     } finally {
       // document.documentElement.style = '';
-      document.querySelector('.site-header')?.classList.add('site-header').remove('site-header_notransition');
-      document.querySelector('.site-main')?.classList.add('site-main').remove('site-main_notransition');
-      document.querySelector('.site-footer')?.classList.add('site-footer').remove('site-footer_notransition');
+      document.querySelector('.site-header_notransition')?.classList.replace('site-header_notransition', 'site-header');
+      document.querySelector('.site-main_notransition')?.classList.replace('site-main_notransition', 'site-main');
+      document.querySelector('.site-footer_notransition')?.classList.replace('site-footer_notransition', 'site-footer');
       // document.documentElement.classList.add('page-transition');
     }
   }
