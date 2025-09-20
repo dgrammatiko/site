@@ -169,16 +169,20 @@ class Switcher extends HTMLElement {
     this.dispatchEvent(new Event('change'));
   }
 
-  _update() {
+  async _update() {
     localStorage.setItem('darkthemeswitcher', this.#_value);
     document.documentElement.classList.remove(this.#_value ? 'is-light' : 'is-dark');
     document.documentElement.classList.add(this.#_value ? 'is-dark' : 'is-light');
     this.button.setAttribute('aria-pressed', this.#_value);
     this.button.setAttribute('aria-label', `${this.#_value ? this.on : this.off}`);
+
+    return Promise.resolve();
   }
 
   async update() {
-    if (!document.startViewTransition) return this._update();
+    if (!('startViewTransition' in document)) {
+      return this._update();
+    }
 
     document.querySelector('.site-header')?.classList.replace('site-header', 'site-header_notransition');
     document.querySelector('.site-main')?.classList.replace('site-main', 'site-main_notransition');
