@@ -180,7 +180,9 @@ class Switcher extends HTMLElement {
   async update() {
     if (!document.startViewTransition) return this._update();
 
-    document.documentElement.classList.remove('page-transition');
+    document.querySelector('body header').classList.remove('site-header');
+    document.querySelector('body main').classList.remove('site-main');
+    document.querySelector('body footer').classList.remove('site-footer');
     document.documentElement.style.viewTransitionName = 'dark-light';
     const transition = document.startViewTransition(this._update);
 
@@ -188,7 +190,10 @@ class Switcher extends HTMLElement {
       await transition.finished;
     } finally {
       document.documentElement.style = '';
-      document.documentElement.classList.add('page-transition');
+      document.querySelector('body header').classList.add('site-header');
+      document.querySelector('body main').classList.add('site-main');
+      document.querySelector('body footer').classList.add('site-footer');
+      // document.documentElement.classList.add('page-transition');
     }
   }
 }

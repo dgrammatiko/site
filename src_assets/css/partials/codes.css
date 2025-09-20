@@ -9,9 +9,10 @@
 
 .cards {
   height: auto;
+  width: 100%;
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   & article {
     background-color: var(--menu-bg);
@@ -49,7 +50,8 @@
       min-height: 20rem;
 
       picure {
-        max-width: 340px;
+        width: 100%;
+        height: auto;
       }
 
       & figcaption {
