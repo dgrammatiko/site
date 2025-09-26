@@ -32,7 +32,7 @@
     "cssnano": "7.1.1",
     "dotenv": "17.2.2",
     "fs-extra": "11.3.2",
-    "htmlnano": "2.1.4",
+    "htmlnano": "2.1.5",
     "lightningcss": "1.30.1",
     "linkedom": "0.18.12",
     "lite-youtube-embed": "0.3.3",
@@ -41,7 +41,7 @@
     "markdown-it": "14.1.0",
     "markdown-it-anchor": "9.2.0",
     "postcss": "8.5.6",
-    "rollup": "4.50.2",
+    "rollup": "4.52.2",
     "sharp": "0.34.4"
   }
 }
