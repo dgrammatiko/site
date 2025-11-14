@@ -16,18 +16,18 @@
 ::view-transition-new(site-footer),
 ::view-transition-old(site-header),
 ::view-transition-old(site-footer) {
-  animation: fade-v-t calc((var(--v-t-speed) / 3) * 1s) ease-in-out;
+  animation: fade-v-t calc(((var(--v-t-speed) / 3) * 1000ms) * 1s) ease-in-out;
 }
 
 ::view-transition-new(site-main) {
-  animation-delay: calc(var(--v-t-speed) * 2s);
+  animation-delay: calc(var(--v-t-speed) * 2000ms);
   animation: zoomIn calc(var(--v-t-speed) * 1000ms) ease-in-out;
-  animation-fill-mode: both;
+  animation-fill-mode: forwards;
 }
 
 ::view-transition-old(site-main) {
   animation: zoomOut calc(var(--v-t-speed) * 1000ms) ease-in-out;
-  animation-fill-mode: both;
+  animation-fill-mode: forwards;
 }
 
 ::view-transition-new(dark-light),
