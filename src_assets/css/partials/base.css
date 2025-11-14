@@ -21,7 +21,7 @@
   --button-fg: #fff;
   --card-bg: #2a3030;
   --def-font: Geologica, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  --v-t-speed: .75s;
+  --v-t-speed: .75;
 }
 
 @supports (color: color(display-p3 1 1 1)) {
