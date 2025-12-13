@@ -9,7 +9,33 @@
 }
 
 ::view-transition {
-  background: var(--menu-bg);
+  /* Match the background color of the page to avoid flashes */
+  background-color: var(--menu-bg, #fff);
+  /* Ensure the pseudo-element covers the entire viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; /* Ensure it is above all other elements */
+  pointer-events: none; /* Prevent interaction */
+}
+
+/* Add smooth transitions for elements */
+::view-transition-group {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Fade-out effect for exiting elements */
+::view-transition-old {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+/* Fade-in effect for entering elements */
+::view-transition-new {
+  opacity: 1;
+  transform: scale(1);
 }
 
 ::view-transition-new(site-header),
