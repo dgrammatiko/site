@@ -1,3 +1,10 @@
+let theme = localStorage.getItem('darkthemeswitcher');
+if (!theme) {
+  theme = window?.matchMedia?.('(prefers-color-scheme:dark)')?.matches.toString();
+  localStorage.setItem('darkthemeswitcher', theme);
+}
+document.documentElement.classList.add(theme === 'true' ? 'is-dark' : 'is-light');
+
 const template = '<button aria-pressed="false"></button>';
 
 const sheet = new CSSStyleSheet();
@@ -70,10 +77,12 @@ button span {
 }`);
 
 function supportsMediaColorScheme() {
-  return typeof window.matchMedia === 'function' &&
-         typeof window.matchMedia('(prefers-color-scheme)').media === 'string' &&
-         window.matchMedia('(prefers-color-scheme)').media !== 'not all' &&
-         window.matchMedia('(prefers-color-scheme)').media !== 'all';
+  return (
+    typeof window.matchMedia === 'function' &&
+    typeof window.matchMedia('(prefers-color-scheme)').media === 'string' &&
+    window.matchMedia('(prefers-color-scheme)').media !== 'not all' &&
+    window.matchMedia('(prefers-color-scheme)').media !== 'all'
+  );
 }
 
 const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
