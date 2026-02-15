@@ -3,14 +3,19 @@
 }
 
 @media not (prefers-reduced-motion: reduce) {
-  .site-header { view-transition-name: site-header; }
-  .site-main { view-transition-name: site-main; }
-  .site-footer { view-transition-name: site-footer; }
+  .site-header {
+    view-transition-name: site-header;
+  }
+  .site-main {
+    view-transition-name: site-main;
+  }
+  .site-footer {
+    view-transition-name: site-footer;
+  }
 }
 
 /* Ensure the view-transition pseudo-element matches the background */
 ::view-transition {
-  background-color: var(--body-bg);
   position: fixed;
   top: 0;
   left: 0;
@@ -29,13 +34,13 @@
 
 ::view-transition-new(site-main) {
   animation-name: zoomIn;
-  animation-duration: 700ms;
+  animation-duration: 350ms;
   animation-timing-function: ease-in-out;
 }
 
 ::view-transition-old(site-main) {
   animation-name: zoomOut;
-  animation-duration: 300ms;
+  animation-duration: 350ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -59,10 +64,18 @@
 }
 
 @keyframes pan-v-t {
-  0% { transform: scale(1) rotateY(var(--vt-ds)); }
-  25% { transform: scale(.45) rotateY(var(--vt-ds)); }
-  75% { transform: scale(.45) rotateY(calc(var(--vt-ds) + 180deg)); }
-  100% { transform: scale(1) rotateY(calc(var(--vt-ds) + 180deg)); }
+  0% {
+    transform: scale(1) rotateY(var(--vt-ds));
+  }
+  25% {
+    transform: scale(0.45) rotateY(var(--vt-ds));
+  }
+  75% {
+    transform: scale(0.45) rotateY(calc(var(--vt-ds) + 180deg));
+  }
+  100% {
+    transform: scale(1) rotateY(calc(var(--vt-ds) + 180deg));
+  }
 }
 
 @keyframes sweep-v-t {
@@ -72,32 +85,36 @@
 }
 
 @keyframes fade-v-t {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes zoomOut {
-    0% {
-        opacity:1
-    }
+  0% {
+    opacity: 1;
+  }
 
-    50% {
-        opacity: 0;
-        transform:scale3d(.3, .3, .3)
-    }
+  50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
 
-    to {
-        opacity:0
-    }
+  to {
+    opacity: 0;
+  }
 }
 
 @keyframes zoomIn {
-    0% {
-        opacity: 0;
-        transform:scale3d(.3, .3, .3)
-    }
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
 
-    50% {
-        opacity:1
-    }
+  50% {
+    opacity: 1;
+  }
 }
