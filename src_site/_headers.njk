@@ -11,7 +11,6 @@ eleventyExcludeFromCollections: true
   Cache-Control: public, max-age=0, must-revalidate
 
   # Performance Headers
-  Link: </static/fonts/Geologica-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin
   Speculation-Rules: "/speculation-rules.json"
   Accept-CH: Downlink,RTT,Device-Memory,Save-Data,DPR,Width
 
@@ -20,7 +19,7 @@ eleventyExcludeFromCollections: true
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: accelerator=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Content-Security-Policy: upgrade-insecure-requests; default-src 'none'; style-src 'self'; script-src 'self' 'inline-speculation-rules' https://www.youtube.com https://static.cloudflareinsights.com; img-src 'self' https://webmention.io https://avatars.webmention.io *.amazonaws.com data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; connect-src https://cloudflareinsights.com/cdn-cgi/rum; object-src 'none'; font-src 'self'; frame-ancestors 'self'; form-action 'self'; base-uri 'none'; manifest-src 'self';
 
