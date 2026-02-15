@@ -3,20 +3,16 @@ permalink: /speculation-rules.json
 eleventyExcludeFromCollections: true
 ---
 {
-  "prefetch": [
-    {
-      "source": "document",
-      "where": {
-        "selector_matches": "a[href^='/']"
-      },
-      "eagerness": "moderate"
-    }
-  ],
   "prerender": [
     {
       "source": "document",
       "where": {
-        "selector_matches": "a[href^='/']"
+        "and": [
+          { "href_matches": "/*" },
+          { "not": { "href_matches": "/admin/*" } },
+          { "not": { "href_matches": "/logout" } },
+          { "not": { "selector_matches": ".no-prerender" } }
+        ]
       },
       "eagerness": "moderate"
     }

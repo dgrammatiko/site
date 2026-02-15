@@ -16,10 +16,19 @@
   },
   "manifest": {
     "name": "dGrammatiko",
+    "short_name": "dGrammatiko",
     "description": "dGrammatiko's personal site",
     "lang": "en-US",
-    "start_url": "https://dgrammatiko.dev",
+    "start_url": "/",
+    "background_color": "#1a1818",
+    "theme_color": "#0a5152",
+    "display": "standalone",
     "icons": [
+      {
+        "src": "/static/images/android-chrome-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
       {
         "src": "/static/images/android-chrome-512x512.png",
         "sizes": "512x512",
