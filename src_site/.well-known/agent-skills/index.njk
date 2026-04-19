@@ -1,0 +1,27 @@
+---
+eleventyExcludeFromCollections: true
+permalink: /.well-known/agent-skills/index.json
+---
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/agent-skills-discovery-rfc/main/skill.draft.schema.json",
+  "skills": [
+    {
+      "name": "api-catalog",
+      "type": "discovery",
+      "description": "API Catalog for automated API discovery (RFC 9727)",
+      "url": "{{ metadata.url }}.well-known/api-catalog.json"
+    },
+    {
+      "name": "mcp-server-card",
+      "type": "mcp",
+      "description": "MCP Server Card for agent discovery",
+      "url": "{{ metadata.url }}.well-known/mcp/server-card.json"
+    },
+    {
+      "name": "content-signals",
+      "type": "robots",
+      "description": "AI content usage preferences declared in robots.txt",
+      "url": "{{ metadata.url }}robots.txt"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+---
+eleventyExcludeFromCollections: true
+permalink: /.well-known/api-catalog.json
+---
+{
+  "linkset": [
+    {
+      "anchor": "{{ metadata.url }}",
+      "links": [
+        {
+          "rel": "service-doc",
+          "href": "{{ metadata.url }}about/",
+          "type": "text/html"
+        },
+        {
+          "rel": "status",
+          "href": "{{ metadata.url }}",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

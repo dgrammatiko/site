@@ -1,9 +1,9 @@
 import { mkdir, writeFile } from 'node:fs/promises';
-import { transform, bundle, Features } from 'lightningcss';
-import { rollup } from 'rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import terser from '@rollup/plugin-terser';
 import replace from '@rollup/plugin-replace';
+import terser from '@rollup/plugin-terser';
+import { Features, bundle, transform } from 'lightningcss';
+import { rollup } from 'rollup';
 
 // Rollup
 const opts = [
@@ -69,6 +69,15 @@ const opts = [
     },
     plugins: [terser()],
   },
+  {
+    input: 'src_assets/js/webmcp.js',
+    output: {
+      sourcemap: false,
+      format: 'esm',
+      file: './live/static/js/webmcp.js',
+    },
+    plugins: [terser()],
+  },
 ];
 
 const pack = async (opt) => {
@@ -112,7 +121,7 @@ async function postcssFn() {
       }
     }
   } catch (error) {
-    console.error(error)
+    console.error(error);
     throw new Error('Check the CSS');
   }
 }

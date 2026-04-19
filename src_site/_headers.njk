@@ -6,6 +6,19 @@ eleventyExcludeFromCollections: true
   Content-Type: application/speculationrules+json
   Access-Control-Allow-Origin: *
 
+/.well-known/api-catalog.json
+  Content-Type: application/linkset+json
+
+/.well-known/agent-skills/index.json
+  Content-Type: application/json
+
+/.well-known/mcp/server-card.json
+  Content-Type: application/json
+
+/*
+  Accept: text/markdown
+  Content-Type: text/markdown; charset=utf-8
+
 /*
   # Caching for HTML (revalidate immediately)
   # Cache-Control: public, max-age=0, must-revalidate
@@ -13,8 +26,13 @@ eleventyExcludeFromCollections: true
 
   # Performance Headers
   # Link: </static/fonts/Geologica-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Speculation-Rules: "/speculation-rules.json"
+  Speculation-Rules: "/speculation_rules.json"
   Accept-CH: Downlink,RTT,Device-Memory,Save-Data,DPR,Width
+
+  # Agent Discovery Headers (RFC 8288)
+  Link: </.well-known/api-catalog.json>; rel="api-catalog"
+  Link: </.well-known/agent-skills/index.json>; rel="skills"
+  Link: </.well-known/mcp/server-card.json>; rel="mcp-server"
 
   # Security Headers
   X-XSS-Protection: 1; mode=block
