@@ -25,14 +25,14 @@
     "@rollup/plugin-replace": "6.0.3",
     "@rollup/plugin-terser": "1.0.0",
     "11ty-to-codepen": "1.0.2",
-    "axios": "1.15.0",
+    "axios": "1.15.2",
     "balloons-js": "0.0.3",
     "ce-theme-switcher": "0.0.3",
     "change-case": "5.4.4",
-    "cssnano": "7.1.5",
+    "cssnano": "7.1.7",
     "dotenv": "17.4.2",
     "fs-extra": "11.3.4",
-    "htmlnano": "3.2.0",
+    "htmlnano": "3.2.1",
     "lightningcss": "1.32.0",
     "linkedom": "0.18.12",
     "lite-youtube-embed": "0.3.4",
@@ -41,7 +41,7 @@
     "markdown-it": "14.1.1",
     "markdown-it-anchor": "9.2.0",
     "postcss": "8.5.10",
-    "rollup": "4.60.1",
+    "rollup": "4.60.2",
     "sharp": "0.34.5"
   }
 }
