@@ -14,15 +14,15 @@ main {
 
 .home {
   display: flex;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
-  padding: 1rem;
 }
 
 .home-inline {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
+  padding: 0 1rem;
   gap: 2rem;
 
   > div {
