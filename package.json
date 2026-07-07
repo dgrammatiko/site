@@ -32,7 +32,7 @@
     "cssnano": "8.0.0",
     "dotenv": "17.4.2",
     "fs-extra": "11.3.5",
-    "htmlnano": "3.2.1",
+    "htmlnano": "3.3.2",
     "lightningcss": "1.32.0",
     "linkedom": "0.18.12",
     "lite-youtube-embed": "0.3.4",
