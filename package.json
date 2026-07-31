@@ -18,14 +18,14 @@
   "license": "MIT",
   "dependencies": {
     "@11ty/eleventy": "3.1.6",
-    "@11ty/eleventy-img": "6.0.4",
+    "@11ty/eleventy-img": "7.0.0",
     "@11ty/eleventy-plugin-rss": "3.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.2",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-replace": "6.0.3",
     "@rollup/plugin-terser": "1.0.0",
     "11ty-to-codepen": "1.0.2",
-    "axios": "1.18.1",
+    "axios": "1.19.0",
     "balloons-js": "0.0.3",
     "ce-theme-switcher": "0.0.3",
     "change-case": "5.4.4",
@@ -38,10 +38,10 @@
     "lite-youtube-embed": "0.3.4",
     "lodash-es": "4.18.1",
     "luxon": "3.7.2",
-    "markdown-it": "14.3.0",
+    "markdown-it": "15.0.0",
     "markdown-it-anchor": "9.2.1",
-    "postcss": "8.5.22",
-    "rollup": "4.62.2",
+    "postcss": "8.5.25",
+    "rollup": "4.62.3",
     "sharp": "0.35.3"
   }
 }
