@@ -8,10 +8,14 @@
 }
 
 .cards {
+  --card-radius: 1rem;
+  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --card-shadow-hover: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
   height: auto;
   width: 100%;
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
   & article {
@@ -20,21 +24,39 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 1rem;
-    padding: 1rem 1rem 2rem;
+    padding: 0;
     position: relative;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--menu-bg) 80%, var(--body-color));
+    box-shadow: var(--card-shadow);
+    transition: transform 200ms ease-in-out, box-shadow 200ms ease-in-out;
+
+    &:hover,
+    &:focus-within {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+    }
 
     & header {
-      min-height: 9rem;
+      min-height: 7rem;
       overflow: hidden;
+      padding: 1.25rem;
+      display: grid;
+      place-content: center;
+      text-align: center;
+      background: color-mix(in srgb, var(--menu-bg) 90%, black);
 
+      & h2,
       & > .card-title {
         color: var(--menu-fg);
-        margin: 1em;
-        text-overflow: ellipsis;
-        max-width: 100ch;
+        margin: 0;
+        font-size: 1.35rem;
+        line-height: 1.3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         overflow: hidden;
-        height: 80px;
 
         & > :last-child {
           margin-bottom: unset;
@@ -44,34 +66,51 @@
 
     & .card-body {
       flex: 1;
-      min-height: 140px;
       background: var(--body-bg);
-      margin-top: 0;
-      min-height: 20rem;
+      display: flex;
+      flex-direction: column;
 
-      picure {
+      & figure {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin: 0;
+      }
+
+      picture,
+      lite-youtube {
         width: 100%;
         height: auto;
+        display: block;
+      }
+
+      & img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
       }
 
       & figcaption {
         color: var(--body-color);
-        padding: 1rem;
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        flex: 1;
       }
     }
 
     & footer {
       display: flex;
-      border-top: none;
-      bottom: 0;
-      background-color: unset;
-      margin-top: .5rem;
+      border-top: 1px solid color-mix(in srgb, var(--menu-bg) 80%, var(--body-color));
+      background-color: color-mix(in srgb, var(--menu-bg) 90%, black);
+      margin-top: 0;
+      padding: 1rem 1.25rem 1.25rem;
 
       & > nav {
         background-color: transparent;
-        color: #fff;
         color: var(--menu-fg);
-        margin-bottom: 1rem;
+        width: 100%;
       }
 
       & .nav-links {
@@ -81,16 +120,46 @@
         margin-right: 0;
         width: 100%;
         height: 100%;
-
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
 
         & .nav-item {
-          width: 100%;
-          height: 100%;
+          flex: 1 1 auto;
+          min-width: min(100%, 7rem);
 
           & > a {
             width: 100%;
-            border: 1px solid var(--button-bg);
             text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.75rem;
+            line-height: 1.25;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background-color: var(--button-bg);
+            color: var(--button-fg);
+            border: 0;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 0.15);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            transition: transform 150ms ease-in-out, box-shadow 150ms ease-in-out, filter 150ms ease-in-out;
+
+            &:hover,
+            &:focus {
+              transform: translateY(-2px);
+              box-shadow: 0 6px 12px rgb(0 0 0 / 0.2);
+              filter: brightness(1.1);
+              background-color: var(--button-bg);
+              color: var(--button-fg);
+            }
+
+            &:active {
+              transform: translateY(0);
+              box-shadow: 0 1px 2px rgb(0 0 0 / 0.15);
+            }
           }
         }
       }

@@ -107,12 +107,13 @@ html {
   background-color: #000;
   color-scheme: dark light;
   min-height: 100vh;
+  scrollbar-gutter: stable;
 }
 
 body {
   background-color: var(--body-bg);
   color: var(--body-color);
-  /* display: grid; */
+  display: grid;
   font-weight: 200;
   /* grid-auto-columns: 1fr 1fr 1fr; */
   line-height: 1.5rem;
