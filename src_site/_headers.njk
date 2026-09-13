@@ -2,6 +2,9 @@
 permalink: /_headers
 eleventyExcludeFromCollections: true
 ---
+# ------------------------------------------------------------------------------
+# 1. Specific JSON & Well-Known Endpoints
+# ------------------------------------------------------------------------------
 /speculation-rules.json
   Content-Type: application/speculationrules+json
   Access-Control-Allow-Origin: *
@@ -15,34 +18,9 @@ eleventyExcludeFromCollections: true
 /.well-known/mcp/server-card.json
   Content-Type: application/json
 
-/*
-  Accept: text/markdown
-  Content-Type: text/markdown; charset=utf-8
-
-/*
-  # Caching for HTML (revalidate immediately)
-  # Cache-Control: public, max-age=0, must-revalidate
-  Cache-Control: public, max-age=300, s-maxage=3600
-
-  # Performance Headers
-  # Link: </static/fonts/Geologica-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous
-  Speculation-Rules: "/speculation_rules.json"
-  Accept-CH: Downlink,RTT,Device-Memory,Save-Data,DPR,Width
-
-  # Agent Discovery Headers (RFC 8288)
-  Link: </.well-known/api-catalog.json>; rel="api-catalog"
-  Link: </.well-known/agent-skills/index.json>; rel="skills"
-  Link: </.well-known/mcp/server-card.json>; rel="mcp-server"
-
-  # Security Headers
-  X-XSS-Protection: 1; mode=block
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  Content-Security-Policy: upgrade-insecure-requests; default-src 'none'; style-src 'self'; script-src 'self' 'inline-speculation-rules' https://www.youtube.com https://static.cloudflareinsights.com; img-src 'self' https://webmention.io https://avatars.webmention.io *.amazonaws.com data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://cloudflareinsights.com/cdn-cgi/rum; object-src 'none'; font-src 'self'; frame-ancestors 'self'; form-action 'self'; base-uri 'none'; manifest-src 'self';
-
+# ------------------------------------------------------------------------------
+# 2. Long-Term Immutable Static Assets (/static/* & /dist/*)
+# ------------------------------------------------------------------------------
 /static/*
   Cache-Control: public, max-age=31536000, immutable
   X-Robots-Tag: nosnippet
@@ -50,3 +28,26 @@ eleventyExcludeFromCollections: true
 /dist/*
   Cache-Control: public, max-age=31536000, immutable
   X-Robots-Tag: noindex
+
+# ------------------------------------------------------------------------------
+# 3. Global Fallback / Dynamic HTML Content (/*)
+# ------------------------------------------------------------------------------
+/*
+  # Caching: Short edge/browser cache or require revalidation for HTML
+  Cache-Control: public, max-age=0, must-revalidate
+
+  # Performance & Negotiation
+  Accept-CH: Downlink, RTT, Device-Memory, Save-Data, DPR, Width
+
+  # Agent Discovery Headers (RFC 8288)
+  Link: </.well-known/api-catalog.json>; rel="api-catalog"
+  Link: </.well-known/agent-skills/index.json>; rel="skills"
+  Link: </.well-known/mcp/server-card.json>; rel="mcp-server"
+
+  # Security Headers
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: upgrade-insecure-requests; default-src 'none'; style-src 'self'; script-src 'self' 'inline-speculation-rules' https://www.youtube.com https://static.cloudflareinsights.com; img-src 'self' https://webmention.io https://avatars.webmention.io *.amazonaws.com data: https://i.ytimg.com; frame-src 'self' https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://cloudflareinsights.com/cdn-cgi/rum; object-src 'none'; font-src 'self'; frame-ancestors 'self'; form-action 'self'; base-uri 'none'; manifest-src 'self';
