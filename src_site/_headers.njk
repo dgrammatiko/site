@@ -34,7 +34,8 @@ eleventyExcludeFromCollections: true
 # ------------------------------------------------------------------------------
 /*
   # Caching: Short edge/browser cache or require revalidation for HTML
-  Cache-Control: public, max-age=0, must-revalidate
+  # Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=300, s-maxage=86400, stale-while-revalidate=86400
 
   # Performance & Negotiation
   Accept-CH: Downlink, RTT, Device-Memory, Save-Data, DPR, Width
