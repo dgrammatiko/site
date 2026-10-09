@@ -29,8 +29,8 @@
     "balloons-js": "0.0.3",
     "ce-theme-switcher": "0.0.3",
     "change-case": "5.4.4",
-    "cssnano": "9.1.2",
-    "dotenv": "18.0.5",
+    "cssnano": "9.4.0",
+    "dotenv": "18.0.6",
     "fs-extra": "11.4.1",
     "htmlnano": "3.5.1",
     "lightningcss": "1.33.0",
@@ -40,8 +40,8 @@
     "luxon": "3.7.2",
     "markdown-it": "15.0.2",
     "markdown-it-anchor": "10.0.0",
-    "postcss": "8.5.28",
-    "rollup": "4.63.6",
+    "postcss": "8.5.29",
+    "rollup": "4.64.3",
     "sharp": "0.35.5"
   }
 }
