@@ -1,5 +1,5 @@
 import Image from '@11ty/eleventy-img';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 async function getImage(image, dir) {
   const metadata = await Image(`./src_assets/images/${dir}/${image}`, {
@@ -13,6 +13,10 @@ async function getImage(image, dir) {
 }
 
 export default {
+  inlinecss: async () => {
+    const css = readFileSync('./live/static/css/main.css', 'utf8');
+    return `<style>${css}</style>`;
+  },
   ogimg: async (image, outputPath, metadata) => {
     if (!image) {
       return `<meta property="og:image" content="https://${metadata.domain}/static/images/android-chrome-512x512.png">`;

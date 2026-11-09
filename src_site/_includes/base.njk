@@ -19,7 +19,7 @@
         document.documentElement.classList.add(theme === 'true' ? 'is-dark' : 'is-light');
       })();
     </script>
-    <link href="/static/css/main.css" rel=stylesheet>
+    {% inlinecss %}
     <script src="/static/js/theme-toggle.js?v=1" type=module async></script>
     {% if description %}
       {% set desc = description | safe %}
