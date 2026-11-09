@@ -139,6 +139,7 @@ class Switcher extends HTMLElement {
     this.onClick = this.onClick.bind(this);
     this.update = this.update.bind(this);
     this._update = this._update.bind(this);
+    this.systemQuery = this.systemQuery.bind(this);
     this.button.addEventListener('click', this.onClick);
   }
 
@@ -226,7 +227,10 @@ class Switcher extends HTMLElement {
   }
 
   async update() {
-    if (!('startViewTransition' in document)) {
+    if (
+      !('startViewTransition' in document) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
       return this._update();
     }
 
@@ -240,7 +244,7 @@ class Switcher extends HTMLElement {
     try {
       await transition.finished;
     } finally {
-      document.documentElement.style = '';
+      document.documentElement.style.removeProperty('view-transition-name');
       document.querySelector('.site-header_notransition')?.classList.replace('site-header_notransition', 'site-header');
       document.querySelector('.site-main_notransition')?.classList.replace('site-main_notransition', 'site-main');
       document.querySelector('.site-footer_notransition')?.classList.replace('site-footer_notransition', 'site-footer');

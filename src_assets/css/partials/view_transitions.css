@@ -2,6 +2,12 @@
   navigation: auto;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
 @media not (prefers-reduced-motion: reduce) {
   .site-header {
     view-transition-name: site-header;
@@ -23,13 +29,17 @@
   height: 100%;
   z-index: 9999;
   pointer-events: none;
+  background-color: var(--body-bg);
 }
 
 ::view-transition-new(site-header),
-::view-transition-new(site-footer),
+::view-transition-new(site-footer) {
+  animation: fade-in-v-t 300ms ease-in-out both;
+}
+
 ::view-transition-old(site-header),
 ::view-transition-old(site-footer) {
-  animation-name: fade-v-t;
+  animation: fade-out-v-t 300ms ease-in-out both;
 }
 
 ::view-transition-new(site-main),
@@ -78,11 +88,20 @@
   }
 }
 
-@keyframes fade-v-t {
+@keyframes fade-in-v-t {
   from {
     opacity: 0;
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes fade-out-v-t {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
